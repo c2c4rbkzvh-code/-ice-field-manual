@@ -1,1 +1,28 @@
-{"name":"ICE – Field Manual","short_name":"ICE","start_url":"./","scope":"./","display":"standalone","background_color":"#0e1714","theme_color":"#19352a","description":"Träningsmanual och daglig plan för Ice.","icons":[{"src":"icon-192.png","sizes":"192x192","type":"image/png"},{"src":"icon-512.png","sizes":"512x512","type":"image/png"}]}
+{
+  "name": "ICE – Field Manual",
+  "short_name": "ICE",
+  "description": "Träningsplattform för Ice – från valp till sök- och räddningshund.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07110e",
+  "theme_color": "#0d211a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
