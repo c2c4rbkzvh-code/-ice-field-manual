@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#19352a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ICE">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>ICE Field Manual</title>
+  <style>
+    :root{--bg:#0e1714;--panel:#17231f;--panel2:#203129;--text:#eef4f0;--muted:#a9b9b0;--accent:#d6a84b;--ok:#6fb58f;--danger:#d77a70}
+    *{box-sizing:border-box}
+    body{margin:0;font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(#0e1714,#111c18);color:var(--text);padding-bottom:88px}
+    header{padding:calc(env(safe-area-inset-top) + 20px) 20px 18px;background:linear-gradient(135deg,#19352a,#101c17);position:sticky;top:0;z-index:10;border-bottom:1px solid #2e4439}
+    .brand{display:flex;gap:14px;align-items:center}.brand img{width:58px;height:58px;border-radius:16px;object-fit:cover}.brand h1{font-size:1.25rem;margin:0}.brand p{margin:2px 0 0;color:var(--muted);font-size:.9rem}
+    main{max-width:780px;margin:auto;padding:16px}
+    section{display:none}.active{display:block}
+    .card{background:var(--panel);border:1px solid #2b4036;border-radius:18px;padding:16px;margin:0 0 14px;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+    h2{margin:4px 0 14px;font-size:1.35rem}h3{margin:0 0 8px;font-size:1.05rem}.muted{color:var(--muted)}
+    .hero{background:linear-gradient(145deg,#234334,#15241e)}
+    .badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#334b3f;color:#dce9e2;font-size:.78rem;margin-bottom:10px}
+    label.check{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #2a3d34}
+    label.check:last-child{border-bottom:0}
+    input[type=checkbox]{width:22px;height:22px;accent-color:var(--ok);flex:0 0 auto}
+    textarea,input[type=number],input[type=text]{width:100%;padding:12px;border-radius:12px;border:1px solid #385044;background:#0f1915;color:var(--text);font:inherit}
+    button{border:0;border-radius:12px;padding:12px 14px;font-weight:700;background:var(--accent);color:#19140b}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.small{font-size:.88rem}
+    nav{position:fixed;left:0;right:0;bottom:0;padding:8px 8px calc(8px + env(safe-area-inset-bottom));background:rgba(14,23,20,.96);backdrop-filter:blur(12px);border-top:1px solid #2a4035;display:grid;grid-template-columns:repeat(4,1fr);z-index:20}
+    nav button{background:none;color:var(--muted);padding:8px 3px;font-size:.74rem}nav button.on{color:var(--accent)}
+    .navicon{display:block;font-size:1.35rem;margin-bottom:2px}
+    .alert{border-left:4px solid var(--accent);padding-left:12px}.danger{border-left-color:var(--danger)}.ok{border-left-color:var(--ok)}
+    ul{padding-left:20px}
+  </style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <img src="icon-192.png" alt="Ice">
+    <div><h1>ICE – Field Manual</h1><p>Version 1.0 · Hämtning 30 juli 2026</p></div>
+  </div>
+</header>
+
+<main>
+<section id="today" class="active">
+  <div class="card hero">
+    <span class="badge">FÖRBEREDELSEFAS</span>
+    <h2>Före hämtningen</h2>
+    <p>Just nu bygger du förutsättningarna för en lugn start. Målet är inte träning ännu, utan struktur, utrustning och en tydlig plan för första dygnet.</p>
+  </div>
+  <div class="card">
+    <h3>Dagens checklista</h3>
+    <label class="check"><input type="checkbox" data-key="prep-sleep"><span>Bestäm Ices sovplats nära dig de första nätterna.</span></label>
+    <label class="check"><input type="checkbox" data-key="prep-food"><span>Kontrollera vilket foder, mängd och måltidsrytm uppfödaren använder.</span></label>
+    <label class="check"><input type="checkbox" data-key="prep-home"><span>Valpsäkra kablar, trappor, kemikalier och föremål som kan sväljas.</span></label>
+    <label class="check"><input type="checkbox" data-key="prep-car"><span>Kontrollera bilburens storlek, infästning och halkfritt underlag.</span></label>
+    <label class="check"><input type="checkbox" data-key="prep-vet"><span>Spara nummer till veterinär och närmaste jourmottagning.</span></label>
+  </div>
+  <div class="card alert ok">
+    <h3>Huvudprincip</h3>
+    <p>Relation före precision. Avsluta korta pass medan Ice fortfarande vill fortsätta.</p>
+  </div>
+</section>
+
+<section id="plan">
+  <h2>Första 30 dagarna</h2>
+  <div class="card"><h3>Dag 1–3: trygghet</h3><ul><li>Hem, rastning, mat, sömn.</li><li>Inga krav och få besökare.</li><li>Namnlek och kort lek, 30–90 sekunder.</li><li>Ut efter sömn, lek och mat.</li></ul></div>
+  <div class="card"><h3>Dag 4–7: relation</h3><ul><li>Spontan kontakt belönas.</li><li>Följsamhet i hem och trädgård.</li><li>Kort hantering av tassar, öron och mun.</li><li>En lugn ny miljö åt gången.</li></ul></div>
+  <div class="card"><h3>Vecka 2: nyfikenhet</h3><ul><li>Mycket enkla godis- och leksakssök.</li><li>Korta bilresor.</li><li>Olika underlag och ljud på tryggt avstånd.</li><li>Inkallning som lek mellan två personer.</li></ul></div>
+  <div class="card"><h3>Vecka 3–4: arbetsglädje</h3><ul><li>Korta synliga figurantövningar.</li><li>Utveckla kamp och byteshandel.</li><li>Ensamträning i sekunder och minuter, inte timmar.</li><li>Vila efter varje ny upplevelse.</li></ul></div>
+  <div class="card alert danger"><h3>Undvik</h3><p>Långa promenader, upprepade hopp, okontrollerade hundmöten, hårda korrigeringar och för många nya miljöer samma dag.</p></div>
+</section>
+
+<section id="manual">
+  <h2>Manual</h2>
+  <div class="card"><h3>1. Relation och belöning</h3><p>Mat, lek, kamp, social belöning och tillgång till miljön används medvetet. Testa vad Ice värderar högst i olika situationer.</p></div>
+  <div class="card"><h3>2. Grundläggande sök</h3><p>Börja med att figuranten är synlig och aktiv. Figuranten belönar. Avstånd och svårighet ökas först när Ice springer ut med tydlig förväntan.</p></div>
+  <div class="card"><h3>3. Miljöträning</h3><p>Miljöträning betyder att kunna observera, undersöka och återhämta sig – inte att hälsa på alla.</p></div>
+  <div class="card"><h3>4. Återhämtning</h3><p>En ung valp behöver mycket sömn. Övertrötthet kan se ut som bitande, spring, frustration eller svårighet att komma till ro.</p></div>
+  <div class="card alert"><h3>Redo att gå vidare när…</h3><p>Ice visar glädje, tar belöning, återhämtar sig snabbt och söker dig spontant. Gå tillbaka ett steg om motivation eller trygghet minskar.</p></div>
+</section>
+
+<section id="journal">
+  <h2>Journal</h2>
+  <div class="card">
+    <div class="grid">
+      <div><label>Vikt (kg)</label><input id="weight" type="number" step="0.1"></div>
+      <div><label>Datum</label><input id="date" type="text" placeholder="2026-07-30"></div>
+    </div>
+    <p><label>Vad fungerade bra?</label><textarea id="good" rows="4"></textarea></p>
+    <p><label>Vad behöver utvecklas?</label><textarea id="develop" rows="4"></textarea></p>
+    <p><label>Miljöer och observationer</label><textarea id="notes" rows="5"></textarea></p>
+    <button id="save">Spara journal</button>
+    <p id="saved" class="muted small"></p>
+  </div>
+</section>
+</main>
+
+<nav>
+  <button data-tab="today" class="on"><span class="navicon">✓</span>Idag</button>
+  <button data-tab="plan"><span class="navicon">▦</span>Plan</button>
+  <button data-tab="manual"><span class="navicon">⌕</span>Manual</button>
+  <button data-tab="journal"><span class="navicon">✎</span>Journal</button>
+</nav>
+
+<script>
+  document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(x=>x.classList.remove('on'));
+    document.getElementById(b.dataset.tab).classList.add('active'); b.classList.add('on');
+    window.scrollTo(0,0);
+  });
+  document.querySelectorAll('input[type=checkbox][data-key]').forEach(c=>{
+    c.checked=localStorage.getItem(c.dataset.key)==='1';
+    c.onchange=()=>localStorage.setItem(c.dataset.key,c.checked?'1':'0');
+  });
+  ['weight','date','good','develop','notes'].forEach(id=>{
+    const el=document.getElementById(id); el.value=localStorage.getItem('journal-'+id)||'';
+  });
+  document.getElementById('save').onclick=()=>{
+    ['weight','date','good','develop','notes'].forEach(id=>localStorage.setItem('journal-'+id,document.getElementById(id).value));
+    document.getElementById('saved').textContent='Sparat lokalt på den här telefonen.';
+  };
+  if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
+</script>
+</body>
+</html>
