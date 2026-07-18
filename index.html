@@ -1,418 +1,416 @@
 <!doctype html>
 <html lang="sv">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0d211a">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="ICE">
-  <link rel="apple-touch-icon" href="icon-180.png">
-  <link rel="manifest" href="manifest.webmanifest">
-  <title>ICE – Field Manual</title>
-  <style>
-    :root{
-      --bg:#07110e;--panel:#10261e;--panel2:#163328;--line:#2b4b3f;
-      --text:#eff7f2;--muted:#a8bbb1;--gold:#e1b34f;--ok:#63c48c;
-      --warn:#e6a34c;--danger:#df6d65;--shadow:0 18px 50px rgba(0,0,0,.25);
-    }
-    *{box-sizing:border-box}
-    html{background:var(--bg);color-scheme:dark}
-    body{margin:0;background:linear-gradient(180deg,#091713 0,#07110e 60%);color:var(--text);
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
-    button,input,textarea,select{font:inherit}
-    button{cursor:pointer}
-    .app{max-width:760px;margin:auto;padding-bottom:calc(92px + env(safe-area-inset-bottom))}
-    header{position:relative;min-height:250px;overflow:hidden;border-bottom:1px solid var(--line)}
-    header img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.52) saturate(.9)}
-    header:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,8,6,.05),#07110e 96%)}
-    .hero{position:relative;z-index:1;padding:calc(24px + env(safe-area-inset-top)) 24px 26px;display:flex;flex-direction:column;justify-content:flex-end;min-height:250px}
-    .version{align-self:flex-start;background:rgba(7,17,14,.72);border:1px solid rgba(255,255,255,.14);padding:7px 11px;border-radius:999px;color:var(--muted);font-size:13px}
-    h1{font-size:38px;margin:38px 0 4px;letter-spacing:-1.2px}
-    .hero p{margin:0;color:#d2ded7;font-size:17px}
-    main{padding:18px}
-    .screen{display:none}.screen.active{display:block}
-    .grid{display:grid;gap:14px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .card{background:linear-gradient(145deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:var(--shadow)}
-    .card h2,.card h3{margin:0 0 10px}.card p{color:var(--muted);line-height:1.5}
-    .eyebrow{text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--gold);font-weight:750}
-    .metric{font-size:28px;font-weight:780;margin-top:5px}.metric small{font-size:13px;color:var(--muted);font-weight:500}
-    .mission{border-color:#6f5c2c;background:linear-gradient(145deg,#2f2a17,#15251d)}
-    .mission-title{font-size:28px;font-weight:800;margin:8px 0 8px}
-    .task{display:flex;gap:12px;padding:15px 0;border-top:1px solid var(--line);align-items:flex-start}
-    .task:first-of-type{border-top:0}
-    .task input{width:25px;height:25px;accent-color:var(--gold);flex:0 0 auto}
-    .task.done span{text-decoration:line-through;color:#7e9489}
-    .pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);padding:7px 10px;border-radius:999px;color:#dbe5df;font-size:13px}
-    .section-title{display:flex;justify-content:space-between;align-items:end;margin:25px 2px 12px}
-    .section-title h2{margin:0}.section-title span{color:var(--muted);font-size:13px}
-    .button{border:0;border-radius:15px;padding:13px 16px;background:var(--gold);color:#162014;font-weight:800}
-    .button.secondary{background:#203f33;color:var(--text);border:1px solid var(--line)}
-    .button.danger{background:#4a2323;color:#ffdada}
-    .button.block{width:100%}
-    .row{display:flex;gap:10px;flex-wrap:wrap}
-    label{display:block;color:var(--muted);font-size:13px;margin:12px 0 6px}
-    input,textarea,select{width:100%;border:1px solid var(--line);background:#081510;color:var(--text);border-radius:14px;padding:13px}
-    textarea{min-height:100px;resize:vertical}
-    .shift-list,.journal-list{display:grid;gap:10px}
-    .item{background:#0b1b16;border:1px solid var(--line);border-radius:17px;padding:14px}
-    .item strong{display:block;margin-bottom:4px}.item small{color:var(--muted)}
-    .bar{height:10px;border-radius:999px;background:#07120e;overflow:hidden;margin-top:9px}
-    .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--ok));border-radius:999px}
-    .empty{color:var(--muted);text-align:center;padding:28px 10px}
-    .milestone{display:grid;grid-template-columns:30px 1fr;gap:12px;padding:13px 0;border-top:1px solid var(--line)}
-    .milestone:first-child{border-top:0}
-    .milestone input{width:24px;height:24px;accent-color:var(--gold)}
-    .milestone strong{display:block}.milestone small{color:var(--muted)}
-    .tabs{position:fixed;z-index:10;left:0;right:0;bottom:0;background:rgba(7,17,14,.96);backdrop-filter:blur(16px);
-      border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center}
-    .tabs-inner{display:grid;grid-template-columns:repeat(5,1fr);max-width:760px;width:100%}
-    .tab{border:0;background:none;color:var(--muted);padding:7px 2px;font-size:11px;font-weight:700}
-    .tab b{display:block;font-size:22px;line-height:1.1;margin-bottom:3px}
-    .tab.active{color:var(--gold)}
-    dialog{border:1px solid var(--line);border-radius:24px;background:var(--panel);color:var(--text);width:min(92vw,620px);padding:20px}
-    dialog::backdrop{background:rgba(0,0,0,.7)}
-    .notice{padding:12px 14px;border-radius:14px;background:#26371c;color:#dbf0ce;margin-bottom:12px;display:none}
-    @media(max-width:480px){.grid.two{grid-template-columns:1fr 1fr}h1{font-size:34px}.card{padding:17px}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0d211a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ICE">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<title>ICE – Field Manual 3.0</title>
+<style>
+:root{
+ --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
+ --muted:#a9bbb2;--gold:#e2b44e;--green:#63c58c;--orange:#e8a34b;--red:#df7169;
+ --shadow:0 18px 48px rgba(0,0,0,.28)
+}
+*{box-sizing:border-box}html{background:var(--bg);color-scheme:dark}
+body{margin:0;background:linear-gradient(180deg,#091713 0,#06100d 58%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.app{max-width:780px;margin:auto;padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+header{position:relative;min-height:265px;overflow:hidden;border-bottom:1px solid var(--line)}
+header img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.9)}
+header:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,8,6,.08),#06100d 96%)}
+.hero{position:relative;z-index:1;min-height:265px;display:flex;flex-direction:column;justify-content:flex-end;padding:calc(26px + env(safe-area-inset-top)) 24px 27px}
+.version{align-self:flex-start;background:rgba(6,16,13,.76);border:1px solid rgba(255,255,255,.14);padding:7px 11px;border-radius:999px;color:#d5dfd9;font-size:13px}
+h1{font-size:40px;margin:38px 0 4px;letter-spacing:-1.2px}.hero p{margin:0;color:#d6e0da;font-size:17px}
+main{padding:18px}.screen{display:none}.screen.active{display:block}
+.grid{display:grid;gap:14px}.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{background:linear-gradient(145deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:23px;padding:19px;box-shadow:var(--shadow)}
+.card h2,.card h3{margin:0 0 10px}.card p{color:var(--muted);line-height:1.5}
+.eyebrow{text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--gold);font-weight:800}
+.metric{font-size:29px;font-weight:800;margin-top:5px}.metric small{font-size:13px;color:var(--muted)}
+.section-title{display:flex;justify-content:space-between;align-items:end;margin:25px 2px 12px}.section-title h2{margin:0}.section-title span{font-size:13px;color:var(--muted)}
+.mission{border-color:#705c29;background:linear-gradient(145deg,#322c17,#14251c)}
+.mission-title{font-size:29px;font-weight:800;margin:8px 0}
+.task{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line)}
+.task:first-of-type{border-top:0}.task input{width:24px;height:24px;accent-color:var(--gold);flex:0 0 auto}.task.done span{text-decoration:line-through;color:#7c9186}
+.pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);padding:7px 10px;border-radius:999px;color:#dce5e0;font-size:13px}
+.button{border:0;border-radius:14px;padding:13px 16px;background:var(--gold);color:#162014;font-weight:800}
+.button.secondary{background:#203f33;color:var(--text);border:1px solid var(--line)}.button.danger{background:#4b2524;color:#ffd9d7}.block{width:100%}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+label{display:block;color:var(--muted);font-size:13px;margin:12px 0 6px}
+input,select,textarea{width:100%;border:1px solid var(--line);background:#07140f;color:var(--text);border-radius:13px;padding:13px}
+textarea{min-height:100px;resize:vertical}
+.item{background:#0a1a15;border:1px solid var(--line);border-radius:16px;padding:14px;margin-top:10px}.item strong{display:block}.item small{color:var(--muted)}
+.bar{height:10px;background:#07120e;border-radius:999px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--green));border-radius:999px}
+.coach{border-color:#3e6f58;background:linear-gradient(145deg,#15372a,#10261f)}
+.coach-score{display:flex;align-items:center;gap:13px}.score{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:#0a1a15;border:5px solid var(--green);font-size:21px;font-weight:800}
+.warning{padding:12px 14px;border-radius:13px;background:#472c18;color:#ffe0b9;margin-top:12px}.good{padding:12px 14px;border-radius:13px;background:#183727;color:#d7f6df;margin-top:12px}
+.milestone{display:grid;grid-template-columns:30px 1fr;gap:11px;padding:13px 0;border-top:1px solid var(--line)}.milestone:first-child{border-top:0}.milestone input{width:24px;height:24px;accent-color:var(--gold)}.milestone small{display:block;color:var(--muted)}
+.env-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.env{background:#0a1a15;border:1px solid var(--line);border-radius:15px;padding:12px}.env label{display:flex;gap:9px;margin:0;color:var(--text);align-items:flex-start}.env input{width:21px;height:21px;accent-color:var(--gold)}
+.sar-step{padding:15px 0;border-top:1px solid var(--line)}.sar-step:first-child{border-top:0}.sar-step.locked{opacity:.5}
+.photo-preview{width:100%;max-height:260px;object-fit:cover;border-radius:15px;margin-top:10px;display:none}
+.journal-photo{width:100%;max-height:240px;object-fit:cover;border-radius:13px;margin-top:10px}
+.tabs{position:fixed;z-index:20;left:0;right:0;bottom:0;background:rgba(6,16,13,.96);backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:7px 6px calc(7px + env(safe-area-inset-bottom));display:flex;justify-content:center}
+.tabs-inner{display:grid;grid-template-columns:repeat(6,1fr);max-width:780px;width:100%}.tab{border:0;background:none;color:var(--muted);padding:7px 1px;font-size:10px;font-weight:750}.tab b{display:block;font-size:21px;line-height:1.1;margin-bottom:3px}.tab.active{color:var(--gold)}
+.empty{text-align:center;color:var(--muted);padding:25px 8px}.notice{display:none;padding:11px 13px;border-radius:13px;background:#26371c;color:#dcf0d1;margin-bottom:12px}
+@media(max-width:480px){.two{grid-template-columns:1fr 1fr}.env-grid{grid-template-columns:1fr 1fr}.card{padding:16px}.tab{font-size:9px}.tab b{font-size:20px}}
+</style>
 </head>
 <body>
 <div class="app">
-  <header>
-    <img src="ice-photo.jpg" alt="Ice">
-    <div class="hero">
-      <span class="version">VERSION 2.1 · HUNDFÖRARENS VERKTYG</span>
-      <h1>ICE</h1>
-      <p id="heroAge">Beräknar ålder…</p>
-    </div>
-  </header>
+<header>
+<img src="ice-photo.jpg" alt="Ice">
+<div class="hero">
+<span class="version">VERSION 3.1 · DYNAMISK TRÄNINGSPLAN</span>
+<h1>ICE</h1>
+<p id="heroAge">Beräknar ålder…</p>
+</div>
+</header>
 
-  <main>
-    <section id="today" class="screen active">
-      <div id="updateNotice" class="notice">Ny version installerad.</div>
-      <div class="grid two">
-        <div class="card"><div class="eyebrow">Fas</div><div class="metric" id="phaseMetric">–</div><small id="phaseText">–</small></div>
-        <div class="card"><div class="eyebrow">Dagar till hämtning</div><div class="metric" id="pickupMetric">–</div><small>Hämtning 30 juli 2026</small></div>
-      </div>
-
-      <div class="section-title"><h2>Dagens uppdrag</h2><span id="todayDate"></span></div>
-      <div class="card mission">
-        <div class="eyebrow" id="missionNumber">MISSION</div>
-        <div class="mission-title" id="missionTitle">Förbered en trygg start</div>
-        <p id="missionIntro">Korta, positiva moment. Avsluta medan Ice fortfarande vill fortsätta.</p><div class="pill" id="missionDose">Rekommenderad total tid: 10–15 min</div>
-        <div id="missionTasks"></div>
-        <button class="button block" id="completeMission">Markera uppdraget klart</button>
-      </div>
-
-      <div class="section-title"><h2>Veckans fokus</h2><span id="weekNumber"></span></div>
-      <div class="card">
-        <div class="eyebrow" id="weeklyPhase">VECKOMÅL</div>
-        <h3 id="weeklyTitle">Trygghet före prestation</h3>
-        <p id="weeklyIntro"></p>
-        <div id="weeklyGoals"></div>
-      </div>
-
-      <div class="section-title"><h2>Milstolpar</h2><span>från valp till SAR</span></div>
-      <div class="card">
-        <div id="milestoneList"></div>
-      </div>
-
-      <div class="section-title"><h2>Arbetsläge</h2><span>anpassa dagens belastning</span></div>
-      <div class="card">
-        <div class="row">
-          <button class="button secondary shiftQuick" data-type="ledig">Ledig</button>
-          <button class="button secondary shiftQuick" data-type="dag">Dag 08–17:30</button>
-          <button class="button secondary shiftQuick" data-type="natt">Natt 17:30–08</button>
-          <button class="button secondary shiftQuick" data-type="dygn">Dygn 08–08</button>
-        </div>
-        <p id="workAdvice"></p>
-      </div>
-    </section>
-
-    <section id="plan" class="screen">
-      <div class="section-title"><h2>Utvecklingsplan</h2><span>åldersanpassad</span></div>
-      <div id="planCards" class="grid"></div>
-      <div class="section-title"><h2>Arbetspass</h2><span>sparas på telefonen</span></div>
-      <div class="card">
-        <label>Datum</label><input type="date" id="shiftDate">
-        <label>Typ</label>
-        <select id="shiftType"><option value="dag">Dag 08:00–17:30</option><option value="natt">Natt 17:30–08:00</option><option value="dygn">Dygn 08:00–08:00</option></select>
-        <button class="button block" id="addShift" style="margin-top:12px">Lägg till pass</button>
-      </div>
-      <div id="shiftList" class="shift-list" style="margin-top:12px"></div>
-    </section>
-
-    <section id="journal" class="screen">
-      <div class="section-title"><h2>Träningsjournal</h2><span>en post per pass</span></div>
-      <div class="card">
-        <label>Datum</label><input type="date" id="journalDate">
-        <div class="grid two">
-          <div><label>Typ</label><select id="journalType"><option>Relation & lek</option><option>Inkallning</option><option>Miljö</option><option>Nosarbete</option><option>Sök</option><option>Vila/återhämtning</option></select></div>
-          <div><label>Känsla 1–5</label><select id="journalRating"><option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option></select></div>
-        </div>
-        <label>Anteckning</label><textarea id="journalNote" placeholder="Vad gjorde ni, vad fungerade och vad blir nästa steg?"></textarea>
-        <label>Vikt (kg, valfritt)</label><input inputmode="decimal" id="journalWeight" placeholder="t.ex. 7,4">
-        <button class="button block" id="saveJournal" style="margin-top:12px">Spara journalpost</button>
-      </div>
-      <div id="journalList" class="journal-list" style="margin-top:12px"></div>
-    </section>
-
-    <section id="progress" class="screen">
-      <div class="section-title"><h2>Utveckling</h2><span>från journalen</span></div>
-      <div class="grid two">
-        <div class="card"><div class="eyebrow">Träningspass</div><div class="metric" id="statSessions">0</div></div>
-        <div class="card"><div class="eyebrow">Slutförda uppdrag</div><div class="metric" id="statMissions">0</div></div>
-      </div>
-      <div class="card" style="margin-top:14px">
-        <h3>Träningsfördelning</h3>
-        <div id="categoryStats"></div>
-      </div>
-      <div class="card" style="margin-top:14px">
-        <h3>Senaste vikt</h3>
-        <div class="metric" id="latestWeight">Ingen vikt ännu</div>
-        <p id="latestWeightDate"></p>
-      </div>
-    </section>
-
-    <section id="settings" class="screen">
-      <div class="section-title"><h2>Inställningar</h2><span>kan ändras senare</span></div>
-      <div class="card">
-        <label>Ices födelsedatum</label><input type="date" id="birthDate">
-        <label>Hämtningsdatum</label><input type="date" id="pickupDate">
-        <button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button>
-      </div>
-      <div class="card" style="margin-top:14px">
-        <h3>Säkerhetskopia</h3>
-        <p>Exportera journal, arbetspass och inställningar till en fil som kan sparas i Filer.</p>
-        <div class="row">
-          <button class="button secondary" id="exportData">Exportera</button>
-          <button class="button secondary" id="importButton">Importera</button>
-          <input type="file" id="importData" accept="application/json" hidden>
-        </div>
-      </div>
-      <div class="card" style="margin-top:14px">
-        <h3>Appuppdatering</h3>
-        <p>Kontrollera om GitHub Pages har en nyare version och ladda om appens filer.</p>
-        <button class="button secondary block" id="forceUpdate">Sök efter ny version</button>
-      </div>
-      <div class="card" style="margin-top:14px">
-        <h3>Om versionen</h3>
-        <p>ICE Field Manual 2.1. Data sparas lokalt i webbläsaren. För kritisk information bör du regelbundet exportera en säkerhetskopia.</p>
-        <button class="button danger" id="resetData">Nollställ all lokal data</button>
-      </div>
-    </section>
-  </main>
+<main>
+<section id="today" class="screen active">
+<div id="updateNotice" class="notice">Version 3.0 är installerad.</div>
+<div class="grid two">
+<div class="card"><div class="eyebrow">Fas</div><div class="metric" id="phaseMetric">–</div><small id="phaseText">–</small></div>
+<div class="card"><div class="eyebrow">Dagens belastning</div><div class="metric" id="loadMetric">–</div><small id="loadText">–</small></div>
 </div>
 
-<nav class="tabs">
-  <div class="tabs-inner">
-    <button class="tab active" data-screen="today"><b>✓</b>Idag</button>
-    <button class="tab" data-screen="plan"><b>▦</b>Plan</button>
-    <button class="tab" data-screen="journal"><b>✎</b>Journal</button>
-    <button class="tab" data-screen="progress"><b>↗</b>Utveckling</button>
-    <button class="tab" data-screen="settings"><b>⚙</b>Inställningar</button>
-  </div>
-</nav>
+<div class="section-title"><h2>Smart coach</h2><span>lokal analys</span></div>
+<div class="card coach">
+<div class="coach-score"><div class="score" id="coachScore">–</div><div><div class="eyebrow">Dagens rekommendation</div><h3 id="coachTitle">Analyserar…</h3></div></div>
+<p id="coachText"></p><div id="coachWarning"></div>
+</div>
+
+<div class="section-title"><h2>Dagens träningsplan</h2><span>automatiskt vald</span></div>
+<div class="card">
+  <div id="dailyPlanSummary"></div>
+  <div id="dailyExerciseList"></div>
+  <button class="button secondary block" id="refreshDailyPlan" style="margin-top:12px">Skapa ny kombination</button>
+</div>
+
+<div class="section-title"><h2>Dagens uppdrag</h2><span id="todayDate"></span></div>
+<div class="card mission">
+<div class="eyebrow" id="missionNumber">MISSION</div><div class="mission-title" id="missionTitle"></div>
+<p id="missionIntro"></p><div class="pill" id="missionDose"></div><div id="missionTasks"></div>
+<button class="button block" id="completeMission">Markera uppdraget klart</button>
+</div>
+
+<div class="section-title"><h2>Dagens schema</h2><span>dynamiskt</span></div>
+<div class="card">
+<div id="todayShiftSummary" class="item"></div>
+<p id="workAdvice"></p>
+<div class="row">
+<button class="button secondary shiftQuick" data-type="ledig">Ledig</button>
+<button class="button secondary shiftQuick" data-type="dag">Dag</button>
+<button class="button secondary shiftQuick" data-type="natt">Natt</button>
+<button class="button secondary shiftQuick" data-type="dygn">Dygn</button>
+</div>
+</div>
+</section>
+
+<section id="plan" class="screen">
+<div class="section-title"><h2>Veckans fokus</h2><span id="weekNumber"></span></div>
+<div class="card"><div class="eyebrow">VECKOMÅL</div><h3 id="weeklyTitle"></h3><p id="weeklyIntro"></p><div id="weeklyGoals"></div></div>
+
+<div class="section-title"><h2>Arbetsschema</h2><span>lägg till och ändra fritt</span></div>
+<div class="card">
+<input type="hidden" id="shiftEditIndex">
+<label>Datum</label><input type="date" id="shiftDate">
+<label>Typ av pass</label>
+<select id="shiftType"><option value="ledig">Ledig</option><option value="dag">Dag 08:00–17:30</option><option value="natt">Natt 17:30–08:00</option><option value="dygn">Dygn 08:00–08:00</option><option value="annat">Annat pass</option></select>
+<div class="grid two"><div><label>Start</label><input type="time" id="shiftStart"></div><div><label>Slut</label><input type="time" id="shiftEnd"></div></div>
+<label>Anteckning</label><input id="shiftNote" placeholder="t.ex. Ice med till jobbet">
+<div class="row" style="margin-top:12px"><button class="button" id="saveShift">Spara pass</button><button class="button secondary" id="cancelShiftEdit" style="display:none">Avbryt</button></div>
+</div>
+<div id="shiftList"></div>
+</section>
+
+<section id="journal" class="screen">
+<div class="section-title"><h2>Journal Pro</h2><span>pass, vikt och bild</span></div>
+<div class="card">
+<label>Datum</label><input type="date" id="journalDate">
+<div class="grid two">
+<div><label>Typ</label><select id="journalType"><option>Relation & lek</option><option>Inkallning</option><option>Miljö</option><option>Nosarbete</option><option>Sök</option><option>Markering</option><option>Vila/återhämtning</option></select></div>
+<div><label>Känsla 1–5</label><select id="journalRating"><option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option></select></div>
+</div>
+<label>Träningstid (min)</label><input type="number" min="0" max="180" id="journalMinutes" placeholder="t.ex. 10">
+<label>Anteckning</label><textarea id="journalNote" placeholder="Vad gjorde ni, vad fungerade och vad blir nästa steg?"></textarea>
+<label>Vikt (kg, valfritt)</label><input inputmode="decimal" id="journalWeight" placeholder="t.ex. 7,4">
+<label>Bild (valfritt)</label><input type="file" accept="image/*" id="journalPhoto">
+<img id="photoPreview" class="photo-preview" alt="">
+<button class="button block" id="saveJournal" style="margin-top:12px">Spara journalpost</button>
+</div>
+<div id="journalList"></div>
+</section>
+
+<section id="environment" class="screen">
+<div class="section-title"><h2>Miljöbank</h2><span id="envProgress"></span></div>
+<div class="card"><p>Bocka av när Ice har upplevt miljön lugnt och kunnat återhämta sig. Ett besök är inte automatiskt ett godkänt moment.</p><div id="envGrid" class="env-grid"></div></div>
+<div class="section-title"><h2>Milstolpar</h2><span>valp till SAR</span></div>
+<div class="card"><div id="milestoneList"></div></div>
+</section>
+
+<section id="sar" class="screen">
+<div class="section-title"><h2>Övningsbibliotek</h2><span id="exerciseCount"></span></div>
+<div class="card">
+  <label>Filtrera kategori</label>
+  <select id="exerciseFilter">
+    <option value="alla">Alla</option>
+    <option value="relation">Relation</option>
+    <option value="inkallning">Inkallning</option>
+    <option value="nos">Nosarbete</option>
+    <option value="miljo">Miljö</option>
+    <option value="sar">SAR</option>
+    <option value="aterhamtning">Återhämtning</option>
+  </select>
+  <div id="exerciseLibrary"></div>
+</div>
+<div class="section-title"><h2>SAR-program</h2><span>progression, inte kalenderkrav</span></div>
+<div class="card"><p>Gå vidare när kriterierna är stabila, inte enbart för att Ice har uppnått en viss ålder.</p><div id="sarList"></div></div>
+</section>
+
+<section id="progress" class="screen">
+<div class="section-title"><h2>Utveckling</h2><span>senaste 7 dagarna</span></div>
+<div class="grid two">
+<div class="card"><div class="eyebrow">Pass</div><div class="metric" id="statSessions">0</div></div>
+<div class="card"><div class="eyebrow">Minuter</div><div class="metric" id="statMinutes">0</div></div>
+<div class="card"><div class="eyebrow">Uppdrag</div><div class="metric" id="statMissions">0</div></div>
+<div class="card"><div class="eyebrow">Miljöer</div><div class="metric" id="statEnvs">0</div></div>
+</div>
+<div class="card" style="margin-top:14px"><h3>Träningsfördelning</h3><div id="categoryStats"></div></div>
+<div class="card" style="margin-top:14px"><h3>Återhämtningsbedömning</h3><div id="recoveryText"></div></div>
+<div class="card" style="margin-top:14px"><h3>Senaste vikt</h3><div class="metric" id="latestWeight"></div><p id="latestWeightDate"></p></div>
+</section>
+
+<section id="settings" class="screen">
+<div class="section-title"><h2>Inställningar</h2><span>ändringsbart</span></div>
+<div class="card"><label>Födelsedatum</label><input type="date" id="birthDate"><label>Hämtningsdatum</label><input type="date" id="pickupDate"><button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button></div>
+<div class="card" style="margin-top:14px"><h3>Säkerhetskopia</h3><p>Exportera all data. Bilder gör filen större.</p><div class="row"><button class="button secondary" id="exportData">Exportera</button><button class="button secondary" id="importButton">Importera</button><input type="file" id="importData" accept="application/json" hidden></div></div>
+<div class="card" style="margin-top:14px"><h3>Appuppdatering</h3><button class="button secondary block" id="forceUpdate">Sök efter ny version</button></div>
+<div class="card" style="margin-top:14px"><h3>Om</h3><p>Version 3.1. Planeringsmotorn och Smart Coach körs lokalt och använder inte extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
+</section>
+</main>
+</div>
+
+<nav class="tabs"><div class="tabs-inner">
+<button class="tab active" data-screen="today"><b>✓</b>Idag</button>
+<button class="tab" data-screen="plan"><b>▦</b>Plan</button>
+<button class="tab" data-screen="journal"><b>✎</b>Journal</button>
+<button class="tab" data-screen="environment"><b>⌖</b>Miljö</button>
+<button class="tab" data-screen="sar"><b>◎</b>SAR</button>
+<button class="tab" data-screen="progress"><b>↗</b>Utveckling</button>
+</div></nav>
 
 <script>
-const VERSION = "2.1.0";
-const STORE = "iceFieldManualV2";
-const defaults = {
-  birthDate:"2026-06-04", pickupDate:"2026-07-30", currentWorkMode:"ledig",
-  shifts:[
-    {date:"2026-08-25",type:"dag"},{date:"2026-08-26",type:"natt"},
-    {date:"2026-08-31",type:"natt"},{date:"2026-09-04",type:"natt"},
-    {date:"2026-09-06",type:"dygn"},{date:"2026-09-09",type:"dag"},
-    {date:"2026-09-10",type:"natt"}
-  ],
-  journal:[], completedMissions:{}, milestones:{}
+const VERSION="3.1.0", STORE="iceFieldManualV3";
+const defaults={
+ birthDate:"2026-06-04",pickupDate:"2026-07-30",currentWorkMode:"ledig",
+ shifts:[{date:"2026-08-25",type:"dag",start:"08:00",end:"17:30",note:""},{date:"2026-08-26",type:"natt",start:"17:30",end:"08:00",note:""},{date:"2026-08-31",type:"natt",start:"17:30",end:"08:00",note:""}],
+ journal:[],completedMissions:{},milestones:{},environments:{},sarCompleted:{}
 };
-let state = load();
-
-function load(){
-  try{
-    const parsed=JSON.parse(localStorage.getItem(STORE)||"null");
-    return parsed ? {...structuredClone(defaults),...parsed} : structuredClone(defaults);
-  }catch(e){return structuredClone(defaults)}
-}
-function save(){localStorage.setItem(STORE,JSON.stringify(state));renderAll()}
-function dateOnly(s){return new Date(s+"T12:00:00")}
-function daysBetween(a,b){return Math.round((dateOnly(b)-dateOnly(a))/86400000)}
-function isoToday(){const d=new Date();return d.toISOString().slice(0,10)}
+let state=load(), pendingPhoto="";
+function clone(x){return JSON.parse(JSON.stringify(x))}
+function load(){try{const p=JSON.parse(localStorage.getItem(STORE)||"null");return p?{...clone(defaults),...p}:clone(defaults)}catch(e){return clone(defaults)}}
+function save(){try{localStorage.setItem(STORE,JSON.stringify(state));renderAll()}catch(e){alert("Lagringen är full. Exportera en backup och ta bort några bilder.")}}
+function dateOnly(s){return new Date(s+"T12:00:00")}function isoToday(){return new Date().toISOString().slice(0,10)}
 function svDate(s){return dateOnly(s).toLocaleDateString("sv-SE",{day:"numeric",month:"long",year:"numeric"})}
-function ageParts(){
-  const birth=dateOnly(state.birthDate), now=new Date();
-  let total=Math.max(0,Math.floor((now-birth)/86400000));
-  return {days:total,weeks:Math.floor(total/7),rest:total%7};
+function daysBetween(a,b){return Math.round((dateOnly(b)-dateOnly(a))/86400000)}
+function ageParts(){const total=Math.max(0,Math.floor((new Date()-dateOnly(state.birthDate))/86400000));return{days:total,weeks:Math.floor(total/7),rest:total%7}}
+function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function phase(){const w=ageParts().weeks;if(new Date()<dateOnly(state.pickupDate))return["Förberedelse","Hemmet, rutiner och planering."];if(w<12)return["Trygg start","Relation, sömn, lek och lugn miljö."];if(w<16)return["Grundperiod","Inkallning, följsamhet och enkel nos."];if(w<24)return["Upptäckarperiod","Miljö, personsök som lek och återhämtning."];if(w<40)return["Unghund","Självkontroll, uthållighet och progression."];return["Fortsatt utveckling","Individanpassad SAR-träning."]}
+function shiftForDate(d){return state.shifts.find(s=>s.date===d)||null}
+function effectiveMode(){const s=shiftForDate(isoToday());return s?s.type:state.currentWorkMode}
+function workAdvice(m){return{ledig:"Ledig: fördela korta pass över dagen och lämna gott om sömn.",dag:"Dagpass: ett kort pass före jobbet. Familjen prioriterar rastning, lugn och sömn.",natt:"Nattpass: håll förmiddagen lugn och gör bara ett kort kvalitetspass före arbetet.",dygn:"Dygnspass: planera ansvarig person, rastning och återhämtning. Undvik långvarig onödig burvistelse.",annat:"Anpassa träningen till frånvarons längd och kvaliteten på tillsynen."}[m]||""}
+function shiftLabel(s){if(!s)return"Inget pass registrerat idag.";const n={ledig:"Ledig",dag:"Dagpass",natt:"Nattpass",dygn:"Dygnspass",annat:"Annat pass"};return`${n[s.type]||s.type}${s.start||s.end?` · ${s.start||"–"}–${s.end||"–"}`:""}${s.note?" · "+s.note:""}`}
+function recentJournal(days=7){const cut=new Date();cut.setDate(cut.getDate()-days);return state.journal.filter(j=>dateOnly(j.date)>=cut)}
+function workload(){const r=recentJournal(3),mins=r.reduce((a,j)=>a+(+j.minutes||0),0),poor=r.filter(j=>+j.rating<=2).length;let level="Låg",score=88,text="Bra utrymme för ett kort kvalitetspass.";if(mins>45||poor>=1){level="Måttlig";score=70;text="Välj kort träning och prioritera återhämtning."}if(mins>80||poor>=2){level="Hög";score=48;text="Planera en lugn dag med vila, relation och mycket låg belastning."}if(["natt","dygn"].includes(effectiveMode())){score-=12;text+=" Arbetspasset sänker dagens rekommenderade belastning."}return{level,score:Math.max(30,score),text}}
+const environments=["Trädgård","Bil","Skog","Grus","Asfalt","Trapphus","Hiss","Bro","Tågstation","Centrum","Butiksmiljö","Hamnområde","Vattenkant","Mörker","Höga ljud","Brandstation","Veterinär","Nya vuxna hundar"];
+const milestones=[["home","Trygg hemma","Äter, sover och återhämtar sig."],["name","Namnet fungerar","Orienterar sig snabbt mot föraren."],["recall","Första säkra inkallningen","Kommer glatt i lätt miljö."],["play","Aktiv förarlek","Leker och stannar i relationen."],["nose","Första nosuppgiften","Söker självständigt efter foder eller föremål."],["person","Första personsöket","Hittar en lätt gömd figurant."],["mark","Tydlig markering","Visar konsekvent beteende vid fynd."]];
+const sarSteps=[
+ ["foundation","1. Relation och belöning","Ice väljer föraren, kan leka och återhämta sig."],
+ ["nose","2. Nosintresse","Självständiga godissök och enkla föremålssök."],
+ ["runner","3. Springfigurant","Synlig figurant springer bort och belönar kraftigt."],
+ ["hidden","4. Enkel dold figurant","Kort avstånd, lätt vind och tydlig belöning."],
+ ["indication","5. Markering","Utveckla skall, återgång eller annan vald markering."],
+ ["wind","6. Vindarbete","Förstå vindriktning och låt Ice lösa vittringen."],
+ ["search","7. Söksystem","Korta systematiska sök med hög lyckandefrekvens."],
+ ["duration","8. Uthållighet","Öka tid, terräng och svårighet gradvis."],
+ ["operational","9. Operativ generalisering","Mörker, buller, ruiner och realistiska figuranter."]
+];
+const exerciseLibrary=[
+ {id:"rel_name",cat:"relation",title:"Namnleken",minWeeks:8,maxWeeks:20,duration:2,load:1,goal:"Snabb orientering mot föraren.",steps:["Säg Ice en gång.","Belöna omedelbart när han vänder huvudet.","Avsluta efter 4–6 lyckade repetitioner."],mistake:"Upprepa inte namnet flera gånger.",progress:"Respons inom en sekund i lugn miljö."},
+ {id:"rel_follow",cat:"relation",title:"Följ mig",minWeeks:8,maxWeeks:24,duration:3,load:1,goal:"Bygga frivillig följsamhet.",steps:["Backa några steg.","Belöna när Ice följer.","Byt riktning mjukt."],mistake:"Dra inte i kopplet.",progress:"Följer 5–10 meter frivilligt."},
+ {id:"recall_short",cat:"inkallning",title:"Kort inkallning",minWeeks:8,maxWeeks:40,duration:3,load:1,goal:"Skapa hög fart mot föraren.",steps:["Låt en hjälpare hålla lätt.","Backa och kalla en gång.","Belöna nära kroppen."],mistake:"Kalla inte när du tror att han kommer misslyckas.",progress:"Fem säkra repetitioner i lätt miljö."},
+ {id:"nose_food",cat:"nos",title:"Godissök i gräs",minWeeks:8,maxWeeks:52,duration:5,load:1,goal:"Utveckla självständigt nosarbete.",steps:["Strö 5–10 små bitar.","Säg ett konsekvent sökord.","Låt Ice lösa uppgiften utan hjälp."],mistake:"Peka inte ut varje bit.",progress:"Söker lugnt och systematiskt."},
+ {id:"nose_boxes",cat:"nos",title:"Kartongsök",minWeeks:10,maxWeeks:80,duration:5,load:2,goal:"Söka bland enkla behållare.",steps:["Placera tre kartonger.","Göm belöning i en.","Låt Ice undersöka fritt."],mistake:"Öka inte antalet för snabbt.",progress:"Söker alla kartonger utan stress."},
+ {id:"env_surface",cat:"miljo",title:"Nytt underlag",minWeeks:8,maxWeeks:60,duration:4,load:1,goal:"Trygghet på olika underlag.",steps:["Låt Ice närma sig frivilligt.","Belöna nyfikenhet.","Gå av innan osäkerhet växer."],mistake:"Locka inte över vid tydlig rädsla.",progress:"Kan stanna, äta och återhämta sig."},
+ {id:"env_sound",cat:"miljo",title:"Ljud på avstånd",minWeeks:10,maxWeeks:70,duration:4,load:2,goal:"Neutralitet till vardagsljud.",steps:["Starta på långt avstånd.","Belöna lugn orientering.","Avsluta tidigt."],mistake:"Gå inte närmare bara för att han är tyst.",progress:"Kan ta belöning och återgå till kontakt."},
+ {id:"sar_runner",cat:"sar",title:"Springfigurant",minWeeks:14,maxWeeks:120,duration:6,load:2,goal:"Skapa stark motivation att hitta människa.",steps:["Figurant leker kort.","Figuranten springer synligt 20–30 meter.","Släpp Ice och låt figuranten belöna."],mistake:"Försvåra inte gömman för tidigt.",progress:"Springer direkt och stannar engagerad hos figuranten."},
+ {id:"sar_hidden",cat:"sar",title:"Enkel dold figurant",minWeeks:20,maxWeeks:160,duration:8,load:3,goal:"Första självständiga personsöket.",steps:["Låt figuranten försvinna bakom enkel skärm.","Vänta kort.","Skicka Ice mot vinden."],mistake:"Undvik långa söktider.",progress:"Hittar snabbt och förblir engagerad."},
+ {id:"recovery_mat",cat:"aterhamtning",title:"Lugn på filt",minWeeks:8,maxWeeks:200,duration:5,load:1,goal:"Träna aktiv återhämtning.",steps:["Lägg ut filten.","Belöna lugna beteenden.","Ge något att tugga på och avsluta utan signal."],mistake:"Kräv inte lång liggtid.",progress:"Kan varva ner inom några minuter."}
+];
+function completedExerciseIds(days=5){
+ const cut=new Date();cut.setDate(cut.getDate()-days);
+ return state.journal.filter(j=>dateOnly(j.date)>=cut).map(j=>j.exerciseId).filter(Boolean);
 }
-function phase(){
-  const a=ageParts().weeks;
-  if(new Date()<dateOnly(state.pickupDate)) return ["Förberedelse","Hemmet, rutiner och planering före hämtningen."];
-  if(a<12) return ["Trygg start","Relation, sömn, lek, namn och lugn miljöträning."];
-  if(a<16) return ["Grundperiod","Inkallning, följsamhet, föremålslek och enkla nosövningar."];
-  if(a<24) return ["Upptäckarperiod","Generaliserad miljöträning och korta, lekfulla sökuppgifter."];
-  if(a<40) return ["Unghund","Självkontroll, uthållighet och tydlig progression utan överbelastning."];
-  return ["Fortsatt utveckling","Individanpassad sök-, lydnads- och miljöträning."];
+function selectDailyExercises(forceSeed=0){
+ const weeks=ageParts().weeks,mode=effectiveMode(),recent=completedExerciseIds(4);
+ let maxLoad=mode==="dygn"?2:mode==="natt"?3:mode==="dag"?4:6;
+ const eligible=exerciseLibrary.filter(x=>weeks>=x.minWeeks&&weeks<=x.maxWeeks&&!recent.includes(x.id));
+ const categories=["relation","inkallning","nos","miljo","sar","aterhamtning"];
+ const selected=[];
+ const categoryPriority=categories.sort((a,b)=>{
+   const ca=recentJournal(7).filter(j=>j.exerciseCategory===a).length;
+   const cb=recentJournal(7).filter(j=>j.exerciseCategory===b).length;
+   return ca-cb;
+ });
+ for(const cat of categoryPriority){
+   const pool=eligible.filter(x=>x.cat===cat&&x.load<=maxLoad);
+   if(pool.length){
+     const idx=(new Date().getDate()+forceSeed+selected.length)%pool.length;
+     selected.push(pool[idx]);maxLoad-=pool[idx].load;
+   }
+   if(selected.length>=3||maxLoad<=1)break;
+ }
+ if(!selected.length) selected.push(exerciseLibrary[0],exerciseLibrary[9]);
+ return selected.slice(0,3);
 }
-const missionSets = {
-  pre:[
-    ["Säkra sovplatsen","Bestäm lugn sovplats nära familjen.","Kontrollera foder, sele, koppel och transportbur.","Valpsäkra sladdar, kemikalier och lösa föremål."],
-    ["Planera första dygnet","Bestäm rastningsplats och enkel väg dit.","Planera en lugn hemkomst utan besöksparad.","Förbered små mjuka belöningar och en leksak."],
-    ["Bygg rutinen","Skriv en enkel plan för sömn, mat och rastning.","Bestäm vilka familjemedlemmar som ansvarar när du arbetar.","Förbered en lugn plats på jobbet som reservlösning."]
-  ],
-  puppy:[
-    ["Relation före prestation","Tre korta lekstunder på Ices villkor.","Belöna fem spontana kontakter.","En ny, lugn miljö i högst några minuter."],
-    ["Namnet betyder något bra","Säg Ice en gång och belöna orientering mot dig.","Två lekfulla inkallningar på mycket kort avstånd.","Avsluta innan koncentrationen sjunker."],
-    ["Nos och nyfikenhet","Sprid fem foderbitar i kort gräs.","Låt Ice undersöka utan styrning.","Lek tillsammans direkt efter nosövningen."],
-    ["Följa föraren","Byt riktning lekfullt på en trygg plats.","Belöna när Ice självmant följer.","Ingen lång promenad – kvalitet före sträcka."],
-    ["Återhämtning är träning","Prioritera sömn och lugn efter nya intryck.","En kort kontaktlek hemma.","Ingen extra miljöträning idag."]
-  ]
-};
+function getDailyPlan(){
+ const key="dailyPlan_"+isoToday();
+ if(!state[key]) state[key]=selectDailyExercises(0).map(x=>x.id);
+ return state[key].map(id=>exerciseLibrary.find(x=>x.id===id)).filter(Boolean);
+}
+
+const weekly=[["Förbered tryggheten","Sovplats, rastningsrutin och familjens ansvar."],["Relation och vila","Mikropass, sömn och spontan kontakt."],["Namn och följsamhet","Namnlek, kort inkallning och följsamhet."],["Nos och miljö","Godissök och lugna nya underlag."]]
+function weekIndex(){if(new Date()<dateOnly(state.pickupDate))return 0;return Math.max(1,Math.floor((new Date()-dateOnly(state.pickupDate))/604800000)+1)}
+function coach(){
+ const w=ageParts().weeks,mode=effectiveMode(),r=recentJournal(5),cats={};r.forEach(j=>cats[j.type]=(cats[j.type]||0)+1);
+ let title="Relation före prestation",text="Fokusera på trygghet, lek och korta positiva erfarenheter.";
+ if(w>=12){const least=["Relation & lek","Inkallning","Miljö","Nosarbete"].sort((a,b)=>(cats[a]||0)-(cats[b]||0))[0];title="Balansera veckan";text=`Den minst tränade kategorin senaste dagarna är ${least}. Välj ett kort pass där idag.`}
+ if(mode==="natt"){title="Låg belastning före natt";text="Gör ett enda kort kvalitetspass och prioritera sömn och lugn före arbetet."}
+ if(mode==="dygn"){title="Återhämtning och tillsyn";text="Dagens huvuduppgift är en trygg tillsynsplan. Träning är sekundärt."}
+ const wl=workload();return{title,text,score:wl.score,warning:wl.level==="Hög"?wl.text:""}
+}
 function mission(){
-  const pre = new Date()<dateOnly(state.pickupDate);
-  const pool=pre?missionSets.pre:missionSets.puppy;
-  const n=Math.abs(daysBetween(state.birthDate,isoToday()));
-  const m=pool[n%pool.length];
-  return {number:n+1,title:m[0],tasks:m.slice(1)};
-}
-function workAdvice(mode){
-  return {
-    ledig:"Ledig dag: fördela 3–5 mycket korta pass över dagen och prioritera sömn mellan passen.",
-    dag:"Dagpass: gör ett lugnt kontakt- eller nospass före arbetet. Familjen sköter rastning och vila; håll kvällen enkel.",
-    natt:"Nattpass: prioritera sömn och låg belastning före passet. Gör bara ett kort kvalitativt pass innan du åker.",
-    dygn:"Dygnspass: planera ansvarig familjemedlem i förväg. Jobbmiljön får endast vara ett kort, tryggt miljöpass – inte många timmar av stress eller onödig burvistelse."
-  }[mode];
+ const pre=new Date()<dateOnly(state.pickupDate),modes=effectiveMode(),base=pre?
+ ["Bygg rutinen",["Kontrollera sovplats och rastningsväg.","Bekräfta foder och måltidsrytm med uppfödaren.","Planera vem som hjälper till när du arbetar."]]:
+ ["Kvalitet före mängd",["Tre korta lek- eller kontaktstunder.","En enkel nosuppgift.","En lugn ny erfarenhet med möjlighet att dra sig undan."]];
+ if(modes==="dag")base[1].push("Planera rastning och vila under dagpasset.");
+ if(modes==="natt")base[1].push("Håll passet före jobbet mycket kort.");
+ if(modes==="dygn")base[1].push("Säkerställ ansvarig person under hela dygnet.");
+ return{title:base[0],tasks:base[1],number:Math.abs(daysBetween(state.birthDate,isoToday()))+1}
 }
 
-const weeklyPrograms = [
-  {
-    title:"Förbered tryggheten",
-    intro:"Allt som minskar stress första dygnet är viktigare än lydnad.",
-    goals:["Sovplats och rastningsrutin bestämd","Familjens ansvar är tydligt","Transport och utrustning provad"]
-  },
-  {
-    title:"Relation och återhämtning",
-    intro:"Ice ska lära sig att du är trygghet, lek och vägledning.",
-    goals:["3–5 mikropass per dag","Minst 18–20 timmars vila/sömn","Belöna spontan kontakt"]
-  },
-  {
-    title:"Namn och följsamhet",
-    intro:"Bygg reflexen att orientera sig mot dig utan krav eller korrigering.",
-    goals:["Namnlek i lugn miljö","Lekfull följsamhet några meter","Mycket korta inkallningar"]
-  },
-  {
-    title:"Nos och miljö",
-    intro:"Låt nosen och nyfikenheten driva utvecklingen utan att överbelasta.",
-    goals:["En enkel godissök-övning","Två nya lugna underlag","En kort bil- eller arbetsmiljöträning"]
-  }
-];
-
-const milestoneData = [
-  {id:"home",title:"Trygg hemma",desc:"Kan äta, sova och återhämta sig i hemmet."},
-  {id:"name",title:"Namnet fungerar",desc:"Orienterar sig snabbt när du säger Ice."},
-  {id:"recall",title:"Första säkra inkallningen",desc:"Kommer glatt på kort avstånd i lätt miljö."},
-  {id:"play",title:"Aktiv lek med förare",desc:"Kan leka och vinna utan att lämna relationen."},
-  {id:"newenv",title:"Nya miljöer med balans",desc:"Undersöker och återhämtar sig efter nya intryck."},
-  {id:"nose",title:"Första nosuppgiften",desc:"Söker självständigt efter foder eller föremål."},
-  {id:"person",title:"Första personsöket",desc:"Hittar en lätt gömd figurant som en lek."},
-  {id:"mark",title:"Första tydliga markeringen",desc:"Visar ett konsekvent beteende vid fynd."}
-];
-
-function currentWeekIndex(){
-  const pickup = dateOnly(state.pickupDate);
-  const now = new Date();
-  if(now < pickup) return 0;
-  return Math.max(1, Math.floor((now-pickup)/604800000)+1);
+function renderDailyPlan(){
+ const plan=getDailyPlan(),mode=effectiveMode();
+ const total=plan.reduce((a,x)=>a+x.duration,0);
+ document.querySelector("#dailyPlanSummary").innerHTML=`<div class="good"><strong>${plan.length} övningar · cirka ${total} minuter</strong><br>${workAdvice(mode)}</div>`;
+ document.querySelector("#dailyExerciseList").innerHTML=plan.map(x=>`<div class="item">
+   <strong>${x.title}</strong><small>${x.cat} · ${x.duration} min · belastning ${x.load}/3</small>
+   <p><b>Mål:</b> ${x.goal}</p>
+   <details><summary>Visa steg för steg</summary><ol>${x.steps.map(s=>`<li>${s}</li>`).join("")}</ol><p><b>Vanligt misstag:</b> ${x.mistake}</p><p><b>Gå vidare när:</b> ${x.progress}</p></details>
+   <button class="button secondary" data-logexercise="${x.id}">Logga denna övning</button>
+ </div>`).join("");
 }
-function weeklyPlan(){
-  const idx = Math.min(weeklyPrograms.length-1, currentWeekIndex());
-  return weeklyPrograms[idx];
-}
-function missionDose(){
-  const w=ageParts().weeks;
-  if(new Date()<dateOnly(state.pickupDate)) return "Rekommenderad total tid: 10–20 min planering";
-  if(w<12) return "Rekommenderad total aktiv träning: 8–15 min utspritt";
-  if(w<16) return "Rekommenderad total aktiv träning: 12–20 min utspritt";
-  return "Rekommenderad total aktiv träning: 15–25 min utspritt";
-}
-function renderWeekly(){
-  const plan=weeklyPlan(), wk=currentWeekIndex();
-  document.querySelector("#weekNumber").textContent=new Date()<dateOnly(state.pickupDate)?"före hämtning":"vecka "+wk+" hemma";
-  document.querySelector("#weeklyTitle").textContent=plan.title;
-  document.querySelector("#weeklyIntro").textContent=plan.intro;
-  document.querySelector("#weeklyGoals").innerHTML=plan.goals.map((g,i)=>`<div class="task"><span class="pill">${i+1}</span><span>${g}</span></div>`).join("");
-}
-function renderMilestones(){
-  document.querySelector("#milestoneList").innerHTML=milestoneData.map(m=>`
-    <label class="milestone">
-      <input type="checkbox" data-milestone="${m.id}" ${state.milestones[m.id]?"checked":""}>
-      <span><strong>${m.title}</strong><small>${m.desc}</small></span>
-    </label>`).join("");
+function renderExerciseLibrary(){
+ const filter=document.querySelector("#exerciseFilter")?.value||"alla";
+ const list=exerciseLibrary.filter(x=>filter==="alla"||x.cat===filter);
+ document.querySelector("#exerciseCount").textContent=`${list.length} övningar`;
+ document.querySelector("#exerciseLibrary").innerHTML=list.map(x=>`<div class="item"><strong>${x.title}</strong><small>${x.cat} · från vecka ${x.minWeeks}</small><p>${x.goal}</p><details><summary>Instruktion</summary><ol>${x.steps.map(s=>`<li>${s}</li>`).join("")}</ol><p><b>Vanligt misstag:</b> ${x.mistake}</p><p><b>Kriterium:</b> ${x.progress}</p></details></div>`).join("");
 }
 
 function renderToday(){
-  const a=ageParts(), p=phase(), m=mission(), today=isoToday();
-  document.querySelector("#heroAge").textContent=`${a.weeks} veckor och ${a.rest} dagar · född ${svDate(state.birthDate)}`;
-  document.querySelector("#phaseMetric").textContent=p[0]; document.querySelector("#phaseText").textContent=p[1];
-  const left=daysBetween(today,state.pickupDate);
-  document.querySelector("#pickupMetric").textContent=left>0?left:(left===0?"Idag":"Hemma");
-  document.querySelector("#todayDate").textContent=new Date().toLocaleDateString("sv-SE",{weekday:"long",day:"numeric",month:"long"});
-  document.querySelector("#missionNumber").textContent=`MISSION #${m.number}`;
-  document.querySelector("#missionTitle").textContent=m.title; document.querySelector("#missionDose").textContent=missionDose();
-  const done=state.completedMissions[today]?.tasks||[];
-  document.querySelector("#missionTasks").innerHTML=m.tasks.map((t,i)=>`<label class="task ${done.includes(i)?"done":""}"><input type="checkbox" data-mtask="${i}" ${done.includes(i)?"checked":""}><span>${t}</span></label>`).join("");
-  document.querySelector("#completeMission").textContent=state.completedMissions[today]?.complete?"Uppdraget är klart ✓":"Markera uppdraget klart";
-  document.querySelector("#workAdvice").textContent=workAdvice(state.currentWorkMode);
-  document.querySelectorAll(".shiftQuick").forEach(b=>b.style.outline=b.dataset.type===state.currentWorkMode?"2px solid var(--gold)":"none");
+ const a=ageParts(),p=phase(),wl=workload(),c=coach(),m=mission(),today=isoToday(),done=state.completedMissions[today]?.tasks||[];
+ document.querySelector("#heroAge").textContent=`${a.weeks} veckor och ${a.rest} dagar · född ${svDate(state.birthDate)}`;
+ document.querySelector("#phaseMetric").textContent=p[0];document.querySelector("#phaseText").textContent=p[1];
+ document.querySelector("#loadMetric").textContent=wl.level;document.querySelector("#loadText").textContent=wl.text;
+ document.querySelector("#coachScore").textContent=c.score;document.querySelector("#coachTitle").textContent=c.title;document.querySelector("#coachText").textContent=c.text;
+ document.querySelector("#coachWarning").innerHTML=c.warning?`<div class="warning">${c.warning}</div>`:`<div class="good">Ingen tydlig överbelastningssignal i de senaste loggarna.</div>`;
+ document.querySelector("#todayDate").textContent=new Date().toLocaleDateString("sv-SE",{weekday:"long",day:"numeric",month:"long"});
+ document.querySelector("#missionNumber").textContent=`MISSION #${m.number}`;document.querySelector("#missionTitle").textContent=m.title;document.querySelector("#missionIntro").textContent="Avsluta medan Ice fortfarande vill fortsätta.";
+ document.querySelector("#missionDose").textContent=new Date()<dateOnly(state.pickupDate)?"10–20 min planering":ageParts().weeks<12?"8–15 min aktiv träning utspritt":"12–25 min aktiv träning utspritt";
+ document.querySelector("#missionTasks").innerHTML=m.tasks.map((t,i)=>`<label class="task ${done.includes(i)?"done":""}"><input type="checkbox" data-mtask="${i}" ${done.includes(i)?"checked":""}><span>${t}</span></label>`).join("");
+ document.querySelector("#completeMission").textContent=state.completedMissions[today]?.complete?"Uppdraget är klart ✓":"Markera uppdraget klart";
+ document.querySelector("#todayShiftSummary").innerHTML=`<strong>${svDate(today)}</strong><small>${shiftLabel(shiftForDate(today))}</small>`;
+ document.querySelector("#workAdvice").textContent=workAdvice(effectiveMode());
+ document.querySelectorAll(".shiftQuick").forEach(b=>b.style.outline=b.dataset.type===effectiveMode()?"2px solid var(--gold)":"none");
 }
 function renderPlan(){
-  const cards=[
-    ["8–12 veckor","Trygghet, anknytning, namn, lek, sömn och mycket kort miljöträning.",35],
-    ["12–16 veckor","Följsamhet, inkallning, föremålslek, hantering och enkla nosövningar.",20],
-    ["4–6 månader","Generaliserade miljöer, personsök som lek och kontrollerad uthållighet.",8],
-    ["6–12 månader","Stabilitet, självkontroll, sökprogression och fortsatt fysisk försiktighet.",3]
-  ];
-  document.querySelector("#planCards").innerHTML=cards.map(c=>`<div class="card"><div class="eyebrow">${c[0]}</div><h3>${c[1]}</h3><div class="bar"><i style="width:${c[2]}%"></i></div></div>`).join("");
-  const names={dag:"Dag 08:00–17:30",natt:"Natt 17:30–08:00",dygn:"Dygn 08:00–08:00"};
-  document.querySelector("#shiftList").innerHTML=state.shifts.length?state.shifts.sort((a,b)=>a.date.localeCompare(b.date)).map((s,i)=>`<div class="item"><strong>${svDate(s.date)}</strong><small>${names[s.type]}</small><button class="button danger" data-delshift="${i}" style="float:right;margin-top:-32px;padding:7px 10px">Ta bort</button></div>`).join(""):'<div class="empty">Inga arbetspass sparade.</div>';
+ const wi=Math.min(weekly.length-1,weekIndex()),w=weekly[wi];document.querySelector("#weekNumber").textContent=new Date()<dateOnly(state.pickupDate)?"före hämtning":`vecka ${weekIndex()} hemma`;
+ document.querySelector("#weeklyTitle").textContent=w[0];document.querySelector("#weeklyIntro").textContent=w[1];
+ document.querySelector("#weeklyGoals").innerHTML=["Genomför korta pass","Prioritera sömn","Skriv minst två journalposter"].map((g,i)=>`<div class="task"><span class="pill">${i+1}</span><span>${g}</span></div>`).join("");
+ const names={ledig:"Ledig",dag:"Dag 08:00–17:30",natt:"Natt 17:30–08:00",dygn:"Dygn 08:00–08:00",annat:"Annat pass"};
+ const sorted=state.shifts.map((s,i)=>({...s,_i:i})).sort((a,b)=>a.date.localeCompare(b.date));
+ document.querySelector("#shiftList").innerHTML=sorted.length?sorted.map(s=>`<div class="item"><strong>${svDate(s.date)}</strong><small>${names[s.type]||s.type}${s.start||s.end?` · ${s.start||"–"}–${s.end||"–"}`:""}${s.note?" · "+escapeHtml(s.note):""}</small><div class="row" style="margin-top:9px"><button class="button secondary" data-editshift="${s._i}">Ändra</button><button class="button danger" data-delshift="${s._i}">Ta bort</button></div></div>`).join(""):'<div class="empty">Inga pass sparade.</div>';
 }
 function renderJournal(){
-  document.querySelector("#journalList").innerHTML=state.journal.length?[...state.journal].reverse().map((j,ri)=>{const i=state.journal.length-1-ri;return `<div class="item"><strong>${j.type} · ${j.rating}/5</strong><small>${svDate(j.date)}${j.weight?" · "+j.weight+" kg":""}</small><p>${escapeHtml(j.note)}</p><button class="button danger" data-deljournal="${i}">Ta bort</button></div>`}).join(""):'<div class="empty">Ingen journalpost ännu.</div>';
+ document.querySelector("#journalList").innerHTML=state.journal.length?[...state.journal].reverse().map((j,ri)=>{const i=state.journal.length-1-ri;return`<div class="item"><strong>${j.type} · ${j.rating}/5</strong><small>${svDate(j.date)} · ${j.minutes||0} min${j.weight?" · "+j.weight+" kg":""}</small><p>${escapeHtml(j.note)}</p>${j.photo?`<img class="journal-photo" src="${j.photo}" alt="">`:""}<button class="button danger" data-deljournal="${i}">Ta bort</button></div>`}).join(""):'<div class="empty">Ingen journalpost ännu.</div>';
 }
-function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function renderEnvironment(){
+ const n=Object.values(state.environments).filter(Boolean).length;document.querySelector("#envProgress").textContent=`${n}/${environments.length}`;
+ document.querySelector("#envGrid").innerHTML=environments.map((e,i)=>`<div class="env"><label><input type="checkbox" data-env="${i}" ${state.environments[i]?"checked":""}><span>${e}</span></label></div>`).join("");
+ document.querySelector("#milestoneList").innerHTML=milestones.map(m=>`<label class="milestone"><input type="checkbox" data-milestone="${m[0]}" ${state.milestones[m[0]]?"checked":""}><span><strong>${m[1]}</strong><small>${m[2]}</small></span></label>`).join("");
+}
+function renderSar(){
+ document.querySelector("#sarList").innerHTML=sarSteps.map((s,i)=>{const prev=i===0||state.sarCompleted[sarSteps[i-1][0]],locked=!prev;return`<div class="sar-step ${locked?"locked":""}"><label class="milestone"><input type="checkbox" data-sar="${s[0]}" ${state.sarCompleted[s[0]]?"checked":""} ${locked?"disabled":""}><span><strong>${s[1]}</strong><small>${s[2]}</small></span></label>${locked?'<small class="pill">Lås upp föregående steg först</small>':""}</div>`}).join("");
+}
 function renderProgress(){
-  document.querySelector("#statSessions").textContent=state.journal.length;
-  document.querySelector("#statMissions").textContent=Object.values(state.completedMissions).filter(x=>x.complete).length;
-  const counts={};state.journal.forEach(j=>counts[j.type]=(counts[j.type]||0)+1);
-  const max=Math.max(1,...Object.values(counts));
-  document.querySelector("#categoryStats").innerHTML=Object.keys(counts).length?Object.entries(counts).map(([k,v])=>`<div style="margin:14px 0"><strong>${k}</strong><small style="float:right">${v}</small><div class="bar"><i style="width:${v/max*100}%"></i></div></div>`).join(""):'<div class="empty">Statistik visas när du har sparat pass.</div>';
-  const weights=state.journal.filter(j=>j.weight);
-  if(weights.length){const w=weights[weights.length-1];document.querySelector("#latestWeight").textContent=w.weight+" kg";document.querySelector("#latestWeightDate").textContent=svDate(w.date)}
-  else{document.querySelector("#latestWeight").textContent="Ingen vikt ännu";document.querySelector("#latestWeightDate").textContent=""}
+ const r=recentJournal(7),mins=r.reduce((a,j)=>a+(+j.minutes||0),0),cats={};r.forEach(j=>cats[j.type]=(cats[j.type]||0)+1);
+ document.querySelector("#statSessions").textContent=r.length;document.querySelector("#statMinutes").textContent=mins;document.querySelector("#statMissions").textContent=Object.values(state.completedMissions).filter(x=>x.complete).length;document.querySelector("#statEnvs").textContent=Object.values(state.environments).filter(Boolean).length;
+ const mx=Math.max(1,...Object.values(cats));document.querySelector("#categoryStats").innerHTML=Object.keys(cats).length?Object.entries(cats).map(([k,v])=>`<div style="margin:13px 0"><strong>${k}</strong><small style="float:right">${v}</small><div class="bar"><i style="width:${v/mx*100}%"></i></div></div>`).join(""):'<div class="empty">Ingen statistik ännu.</div>';
+ const wl=workload();document.querySelector("#recoveryText").innerHTML=`<div class="${wl.level==="Hög"?"warning":"good"}"><strong>${wl.level} belastning</strong><br>${wl.text}</div>`;
+ const ws=state.journal.filter(j=>j.weight);if(ws.length){const w=ws[ws.length-1];document.querySelector("#latestWeight").textContent=w.weight+" kg";document.querySelector("#latestWeightDate").textContent=svDate(w.date)}else{document.querySelector("#latestWeight").textContent="Ingen vikt";document.querySelector("#latestWeightDate").textContent=""}
 }
 function renderSettings(){document.querySelector("#birthDate").value=state.birthDate;document.querySelector("#pickupDate").value=state.pickupDate}
-function renderAll(){renderToday();renderWeekly();renderMilestones();renderPlan();renderJournal();renderProgress();renderSettings()}
+function renderAll(){renderToday();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderExerciseLibrary();renderProgress();renderSettings()}
+function defaultsForShift(t){return{ledig:["",""],dag:["08:00","17:30"],natt:["17:30","08:00"],dygn:["08:00","08:00"],annat:["",""]}[t]||["",""]}
+function clearShift(){document.querySelector("#shiftEditIndex").value="";document.querySelector("#shiftDate").value=isoToday();document.querySelector("#shiftType").value="dag";const p=defaultsForShift("dag");document.querySelector("#shiftStart").value=p[0];document.querySelector("#shiftEnd").value=p[1];document.querySelector("#shiftNote").value="";document.querySelector("#cancelShiftEdit").style.display="none";document.querySelector("#saveShift").textContent="Spara pass"}
+function editShift(i){const s=state.shifts[i];document.querySelector("#shiftEditIndex").value=i;document.querySelector("#shiftDate").value=s.date;document.querySelector("#shiftType").value=s.type;document.querySelector("#shiftStart").value=s.start||"";document.querySelector("#shiftEnd").value=s.end||"";document.querySelector("#shiftNote").value=s.note||"";document.querySelector("#cancelShiftEdit").style.display="inline-block";document.querySelector("#saveShift").textContent="Spara ändring"}
+async function compressImage(file){return new Promise((resolve,reject)=>{const img=new Image(),r=new FileReader();r.onload=e=>img.src=e.target.result;img.onload=()=>{const max=900,scale=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement("canvas");c.width=img.width*scale;c.height=img.height*scale;c.getContext("2d").drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL("image/jpeg",.7))};r.onerror=reject;r.readAsDataURL(file)})}
 document.addEventListener("click",e=>{
-  const tab=e.target.closest(".tab");if(tab){document.querySelectorAll(".tab,.screen").forEach(x=>x.classList.remove("active"));tab.classList.add("active");document.querySelector("#"+tab.dataset.screen).classList.add("active");scrollTo(0,0)}
-  if(e.target.matches(".shiftQuick")){state.currentWorkMode=e.target.dataset.type;save()}
-  if(e.target.dataset.mtask!==undefined){const t=isoToday();state.completedMissions[t] ||= {tasks:[],complete:false};const i=+e.target.dataset.mtask;state.completedMissions[t].tasks=e.target.checked?[...new Set([...state.completedMissions[t].tasks,i])]:state.completedMissions[t].tasks.filter(x=>x!==i);save()}
-  if(e.target.dataset.milestone!==undefined){state.milestones[e.target.dataset.milestone]=e.target.checked;save()}
-  if(e.target.id==="forceUpdate"){if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>Promise.all(rs.map(r=>r.update()))).finally(()=>location.reload(true))}else location.reload(true)}
-  if(e.target.id==="completeMission"){const t=isoToday();state.completedMissions[t] ||= {tasks:[],complete:false};state.completedMissions[t].complete=!state.completedMissions[t].complete;save()}
-  if(e.target.id==="addShift"){const d=document.querySelector("#shiftDate").value;if(!d)return alert("Välj datum.");state.shifts.push({date:d,type:document.querySelector("#shiftType").value});save()}
-  if(e.target.dataset.delshift!==undefined){state.shifts.splice(+e.target.dataset.delshift,1);save()}
-  if(e.target.id==="saveJournal"){const date=document.querySelector("#journalDate").value,note=document.querySelector("#journalNote").value.trim();if(!date||!note)return alert("Fyll i datum och anteckning.");state.journal.push({date,type:document.querySelector("#journalType").value,rating:+document.querySelector("#journalRating").value,note,weight:document.querySelector("#journalWeight").value.trim().replace(",",".")});document.querySelector("#journalNote").value="";document.querySelector("#journalWeight").value="";save()}
-  if(e.target.dataset.deljournal!==undefined){state.journal.splice(+e.target.dataset.deljournal,1);save()}
-  if(e.target.id==="saveSettings"){state.birthDate=document.querySelector("#birthDate").value;state.pickupDate=document.querySelector("#pickupDate").value;save();alert("Datumen är sparade.")}
-  if(e.target.id==="exportData"){const blob=new Blob([JSON.stringify({version:VERSION,exported:new Date().toISOString(),data:state},null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="ICE-backup-"+isoToday()+".json";a.click();URL.revokeObjectURL(a.href)}
-  if(e.target.id==="importButton")document.querySelector("#importData").click();
-  if(e.target.id==="resetData"&&confirm("Nollställa all lokal data?")){localStorage.removeItem(STORE);state=structuredClone(defaults);save()}
+ const tab=e.target.closest(".tab");if(tab){document.querySelectorAll(".tab,.screen").forEach(x=>x.classList.remove("active"));tab.classList.add("active");document.querySelector("#"+tab.dataset.screen).classList.add("active");scrollTo(0,0)}
+ if(e.target.matches(".shiftQuick")){state.currentWorkMode=e.target.dataset.type;save()}
+ if(e.target.dataset.mtask!==undefined){const t=isoToday();state.completedMissions[t]||={tasks:[],complete:false};const i=+e.target.dataset.mtask;state.completedMissions[t].tasks=e.target.checked?[...new Set([...state.completedMissions[t].tasks,i])]:state.completedMissions[t].tasks.filter(x=>x!==i);save()}
+ if(e.target.id==="completeMission"){const t=isoToday();state.completedMissions[t]||={tasks:[],complete:false};state.completedMissions[t].complete=!state.completedMissions[t].complete;save()}
+ if(e.target.id==="refreshDailyPlan"){state["dailyPlan_"+isoToday()]=selectDailyExercises(Date.now()%97).map(x=>x.id);save()}
+ if(e.target.dataset.logexercise!==undefined){
+   const x=exerciseLibrary.find(v=>v.id===e.target.dataset.logexercise);
+   document.querySelectorAll(".tab,.screen").forEach(v=>v.classList.remove("active"));
+   document.querySelector('[data-screen="journal"]').classList.add("active");
+   document.querySelector("#journal").classList.add("active");
+   document.querySelector("#journalType").value=x.cat==="nos"?"Nosarbete":x.cat==="miljo"?"Miljö":x.cat==="inkallning"?"Inkallning":x.cat==="sar"?"Sök":x.cat==="aterhamtning"?"Vila/återhämtning":"Relation & lek";
+   document.querySelector("#journalMinutes").value=x.duration;
+   document.querySelector("#journalNote").value=x.title+" – ";
+   document.querySelector("#journalNote").dataset.exerciseId=x.id;
+   document.querySelector("#journalNote").dataset.exerciseCategory=x.cat;
+   scrollTo(0,0);
+ }
+ if(e.target.id==="saveShift"){const d=document.querySelector("#shiftDate").value;if(!d)return alert("Välj datum.");const s={date:d,type:document.querySelector("#shiftType").value,start:document.querySelector("#shiftStart").value,end:document.querySelector("#shiftEnd").value,note:document.querySelector("#shiftNote").value.trim()},i=document.querySelector("#shiftEditIndex").value;i===""?state.shifts.push(s):state.shifts[+i]=s;clearShift();save()}
+ if(e.target.id==="cancelShiftEdit")clearShift();
+ if(e.target.dataset.editshift!==undefined)editShift(+e.target.dataset.editshift);
+ if(e.target.dataset.delshift!==undefined&&confirm("Ta bort passet?")){state.shifts.splice(+e.target.dataset.delshift,1);save()}
+ if(e.target.dataset.env!==undefined){state.environments[e.target.dataset.env]=e.target.checked;save()}
+ if(e.target.dataset.milestone!==undefined){state.milestones[e.target.dataset.milestone]=e.target.checked;save()}
+ if(e.target.dataset.sar!==undefined){state.sarCompleted[e.target.dataset.sar]=e.target.checked;save()}
+ if(e.target.id==="saveJournal"){const d=document.querySelector("#journalDate").value,n=document.querySelector("#journalNote").value.trim();if(!d||!n)return alert("Fyll i datum och anteckning.");state.journal.push({date:d,type:document.querySelector("#journalType").value,rating:+document.querySelector("#journalRating").value,minutes:+document.querySelector("#journalMinutes").value||0,note:n,weight:document.querySelector("#journalWeight").value.trim().replace(",","."),photo:pendingPhoto,exerciseId:document.querySelector("#journalNote").dataset.exerciseId||"",exerciseCategory:document.querySelector("#journalNote").dataset.exerciseCategory||""});pendingPhoto="";document.querySelector("#journalNote").dataset.exerciseId="";document.querySelector("#journalNote").dataset.exerciseCategory="";document.querySelector("#journalNote").value="";document.querySelector("#journalMinutes").value="";document.querySelector("#journalWeight").value="";document.querySelector("#journalPhoto").value="";document.querySelector("#photoPreview").style.display="none";save()}
+ if(e.target.dataset.deljournal!==undefined&&confirm("Ta bort journalposten?")){state.journal.splice(+e.target.dataset.deljournal,1);save()}
+ if(e.target.id==="saveSettings"){state.birthDate=document.querySelector("#birthDate").value;state.pickupDate=document.querySelector("#pickupDate").value;save();alert("Sparat.")}
+ if(e.target.id==="exportData"){const b=new Blob([JSON.stringify({version:VERSION,exported:new Date().toISOString(),data:state},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="ICE-backup-"+isoToday()+".json";a.click();URL.revokeObjectURL(a.href)}
+ if(e.target.id==="importButton")document.querySelector("#importData").click();
+ if(e.target.id==="forceUpdate"){navigator.serviceWorker?.getRegistrations().then(rs=>Promise.all(rs.map(r=>r.update()))).finally(()=>location.reload(true))}
+ if(e.target.id==="resetData"&&confirm("Nollställa all lokal data?")){localStorage.removeItem(STORE);state=clone(defaults);save()}
 });
-document.querySelector("#importData").addEventListener("change",async e=>{try{const j=JSON.parse(await e.target.files[0].text());state={...structuredClone(defaults),...(j.data||j)};save();alert("Säkerhetskopian är importerad.")}catch(err){alert("Filen kunde inte läsas.")}});
-document.querySelector("#journalDate").value=isoToday();document.querySelector("#shiftDate").value="2026-08-25";
+document.querySelector("#exerciseFilter").addEventListener("change",renderExerciseLibrary);
+document.querySelector("#shiftType").addEventListener("change",e=>{const p=defaultsForShift(e.target.value);document.querySelector("#shiftStart").value=p[0];document.querySelector("#shiftEnd").value=p[1]});
+document.querySelector("#journalPhoto").addEventListener("change",async e=>{if(!e.target.files[0])return;pendingPhoto=await compressImage(e.target.files[0]);const p=document.querySelector("#photoPreview");p.src=pendingPhoto;p.style.display="block"});
+document.querySelector("#importData").addEventListener("change",async e=>{try{const j=JSON.parse(await e.target.files[0].text());state={...clone(defaults),...(j.data||j)};save();alert("Importerad.")}catch(err){alert("Filen kunde inte läsas.")}});
+document.querySelector("#journalDate").value=isoToday();clearShift();
 if(localStorage.getItem("iceAppVersion")!==VERSION){localStorage.setItem("iceAppVersion",VERSION);document.querySelector("#updateNotice").style.display="block";setTimeout(()=>document.querySelector("#updateNotice").style.display="none",5000)}
-renderAll();
-if("serviceWorker" in navigator)navigator.serviceWorker.register("./sw.js");
+renderAll();if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
 </script>
 </body>
 </html>

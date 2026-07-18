@@ -1,11 +1,11 @@
 {
-  "name": "ICE – Field Manual",
+  "name": "ICE – Field Manual 3.0",
   "short_name": "ICE",
-  "description": "Träningsplattform för Ice – från valp till sök- och räddningshund.",
+  "description": "Dynamisk träningsplattform för Ice – från valp till sök- och räddningshund.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#07110e",
+  "background_color": "#06100d",
   "theme_color": "#0d211a",
   "orientation": "portrait",
   "icons": [

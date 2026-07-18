@@ -1,11 +1,15 @@
-ICE – Field Manual 2.1
+ICE – Field Manual 3.1 Foundation
+
+Detta är första uppdateringen i den långsiktiga arkitekturen.
 
 Nytt:
-- veckans fokus och veckomål
-- milstolpar från valp till SAR
-- bättre tidsrekommendation för dagens uppdrag
-- manuell knapp för att söka efter ny appversion
-- fortsatt lokal lagring, journal, arbetspass och backup
+- dynamisk daglig träningsplan
+- övningar väljs utifrån ålder, arbetspass, belastning och senaste träning
+- första utbyggbara övningsbiblioteket
+- steg-för-steg, mål, misstag och kriterier
+- direktknapp från övning till journal
+- journalen sparar övnings-ID och kategori för framtida planering
+- samma lokala databasnyckel används så att tidigare data bevaras
 
-Ladda upp de uppackade filerna direkt i repositoryts huvudnivå och ersätt befintliga filer.
-Ladda inte upp ZIP-filen.
+Framtida versioner kan bygga vidare med fler övningar, avancerad progression, hälsa,
+vaccinationer, instruktörsläge och extern AI utan att grundstrukturen behöver göras om.
