@@ -1,18 +1,11 @@
-ICE Field Manual – PWA v1.0
+ICE Field Manual v1.1
 
-Filer:
-- index.html
-- manifest.webmanifest
-- sw.js
-- appikoner
+Nyheter:
+- Automatisk ålder från uppskattat födelsedatum 4 juni 2026
+- Dynamisk fas före/efter hämtning 30 juli
+- Plan fram till arbetsstart 25 augusti
+- Råd för dag-, natt- och dygnspass samt med på jobbet
+- Journal med lokal lagring och export
+- Ny bild på Ice och uppdaterade appikoner
 
-För att installera på iPhone måste mappen publiceras via HTTPS.
-Enklast är GitHub Pages, Netlify eller Cloudflare Pages.
-
-När sidan är publicerad:
-1. Öppna adressen i Safari.
-2. Tryck Dela.
-3. Välj Lägg till på hemskärmen.
-4. Tryck Lägg till.
-
-Checklistor och journal sparas lokalt i telefonens webbläsare.
+Ladda upp alla filer i repositoryts rot och ersätt befintliga filer.
