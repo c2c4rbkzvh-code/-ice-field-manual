@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="ICE">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>ICE – Field Manual 3.0</title>
+<title>ICE – Field Manual 3.2</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -55,8 +55,9 @@ textarea{min-height:100px;resize:vertical}
 .photo-preview{width:100%;max-height:260px;object-fit:cover;border-radius:15px;margin-top:10px;display:none}
 .journal-photo{width:100%;max-height:240px;object-fit:cover;border-radius:13px;margin-top:10px}
 .tabs{position:fixed;z-index:20;left:0;right:0;bottom:0;background:rgba(6,16,13,.96);backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:7px 6px calc(7px + env(safe-area-inset-bottom));display:flex;justify-content:center}
-.tabs-inner{display:grid;grid-template-columns:repeat(6,1fr);max-width:780px;width:100%}.tab{border:0;background:none;color:var(--muted);padding:7px 1px;font-size:10px;font-weight:750}.tab b{display:block;font-size:21px;line-height:1.1;margin-bottom:3px}.tab.active{color:var(--gold)}
+.tabs-inner{display:grid;grid-template-columns:repeat(7,1fr);max-width:780px;width:100%}.tab{border:0;background:none;color:var(--muted);padding:7px 1px;font-size:10px;font-weight:750}.tab b{display:block;font-size:21px;line-height:1.1;margin-bottom:3px}.tab.active{color:var(--gold)}
 .empty{text-align:center;color:var(--muted);padding:25px 8px}.notice{display:none;padding:11px 13px;border-radius:13px;background:#26371c;color:#dcf0d1;margin-bottom:12px}
+.profile-row{display:flex;gap:9px;overflow:auto;padding-bottom:4px}.profile{min-width:92px;border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:16px;padding:12px 9px;text-align:center}.profile.active{border-color:var(--gold);box-shadow:0 0 0 2px rgba(226,180,78,.18)}.profile b{display:block;font-size:22px}.badge{display:inline-block;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:800;background:#203f33;color:#dce5e0}.badge.driver{background:#4d3d16;color:#ffe2a1}.badge.family{background:#173a2b;color:#c9f1d7}.task-card{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}.task-card:first-child{border-top:0}.task-card input[type=checkbox]{width:23px;height:23px;accent-color:var(--gold)}.task-meta{font-size:12px;color:var(--muted);margin-top:4px}.icon-btn{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:11px;padding:7px 9px}.segmented{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.segmented button{border:1px solid var(--line);background:#0a1a15;color:var(--muted);border-radius:12px;padding:10px 5px}.segmented button.active{background:#294b3d;color:var(--text);border-color:#4a7965}.hidden{display:none!important}.timeline-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);margin-top:6px}.timeline-item{display:grid;grid-template-columns:14px 1fr;gap:9px;padding:12px 0;border-top:1px solid var(--line)}
 @media(max-width:480px){.two{grid-template-columns:1fr 1fr}.env-grid{grid-template-columns:1fr 1fr}.card{padding:16px}.tab{font-size:9px}.tab b{font-size:20px}}
 </style>
 </head>
@@ -65,7 +66,7 @@ textarea{min-height:100px;resize:vertical}
 <header>
 <img src="ice-photo.jpg" alt="Ice">
 <div class="hero">
-<span class="version">VERSION 3.1 · DYNAMISK TRÄNINGSPLAN</span>
+<span class="version">VERSION 3.2 · FAMILJ & LIVSBOK</span>
 <h1>ICE</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -73,7 +74,13 @@ textarea{min-height:100px;resize:vertical}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Version 3.0 är installerad.</div>
+<div id="updateNotice" class="notice">Version 3.2 är installerad.</div>
+
+<div class="section-title"><h2>Vem använder appen?</h2><span>personligt läge</span></div>
+<div class="card"><div id="todayProfiles" class="profile-row"></div><div id="activeProfileNote" class="good"></div></div>
+
+<div class="section-title"><h2>Mina uppgifter idag</h2><span id="myTaskCount"></span></div>
+<div class="card"><div id="myTasksToday"></div><button class="button secondary block" data-open-family="1" style="margin-top:12px">Öppna familjecentralen</button></div>
 <div class="grid two">
 <div class="card"><div class="eyebrow">Fas</div><div class="metric" id="phaseMetric">–</div><small id="phaseText">–</small></div>
 <div class="card"><div class="eyebrow">Dagens belastning</div><div class="metric" id="loadMetric">–</div><small id="loadText">–</small></div>
@@ -186,12 +193,46 @@ textarea{min-height:100px;resize:vertical}
 <div class="card" style="margin-top:14px"><h3>Senaste vikt</h3><div class="metric" id="latestWeight"></div><p id="latestWeightDate"></p></div>
 </section>
 
+
+<section id="family" class="screen">
+<div class="section-title"><h2>Familjecentral</h2><span>vardag, ansvar och livsbok</span></div>
+<div class="card"><div id="familyProfiles" class="profile-row"></div><div id="familyRoleText" class="good"></div></div>
+
+<div class="section-title"><h2>Dagens gemensamma läge</h2><span id="familyDoneSummary"></span></div>
+<div class="card"><div id="familyTaskList"></div></div>
+
+<div class="section-title"><h2>Ny uppgift</h2><span>larm är valfritt</span></div>
+<div class="card">
+<label>Uppgift</label><select id="taskTemplate"><option value="">Välj eller skriv egen</option><option>Gå promenad</option><option>Ge mat</option><option>Kontrollera/fyll vatten</option><option>Rastning</option><option>Lek och samvaro</option><option>Godissök</option><option>Borstning</option><option>Tasskontroll</option><option>Vila/passivitet</option><option>Åka bil</option></select>
+<label>Egen rubrik</label><input id="taskTitle" placeholder="t.ex. Kvällspromenad">
+<div class="grid two"><div><label>Datum</label><input type="date" id="taskDate"></div><div><label>Tid (valfritt)</label><input type="time" id="taskTime"></div></div>
+<label>Ansvarig</label><select id="taskAssignee"></select>
+<label>Typ</label><select id="taskAccess"><option value="family">Familjen kan göra</option><option value="all">Alla kan göra</option><option value="driver">Endast Marcus</option><option value="instructor">Instruktör/figurant</option></select>
+<label>Anteckning</label><input id="taskNote" placeholder="kort instruktion eller mängd">
+<label><input type="checkbox" id="taskReminder" style="width:auto;margin-right:8px"> Aktivera larm/påminnelse</label>
+<div id="reminderOptions" class="hidden"><div class="grid two"><div><label>Påminn</label><select id="taskReminderOffset"><option value="0">Vid tiden</option><option value="10">10 min före</option><option value="30">30 min före</option><option value="60">1 timme före</option><option value="1440">1 dag före</option></select></div><div><label>Mottagare</label><select id="taskReminderAudience"><option value="assignee">Endast ansvarig</option><option value="all">Hela familjen</option></select></div></div><label><input type="checkbox" id="taskRepeatReminder" style="width:auto;margin-right:8px"> Upprepa var 30:e minut tills klar</label></div>
+<button class="button block" id="saveFamilyTask" style="margin-top:12px">Lägg till uppgift</button>
+</div>
+
+<div class="section-title"><h2>Registrera händelse</h2><span>Ices livsbok</span></div>
+<div class="card">
+<div class="grid two"><div><label>Datum</label><input type="date" id="lifeDate"></div><div><label>Kategori</label><select id="lifeCategory"><option>Socialisering</option><option>Hundmöte</option><option>Veterinär</option><option>Vaccination</option><option>Hälsa</option><option>Vardag</option><option>Milstolpe</option><option>Kurs</option><option>Övrigt</option></select></div></div>
+<label>Rubrik</label><input id="lifeTitle" placeholder="t.ex. Lekte med grannens labrador">
+<label>Hur gick det?</label><select id="lifeRating"><option value="5">Mycket trygg / mycket bra</option><option value="4">Trygg / bra</option><option value="3">Neutral</option><option value="2">Lite osäker</option><option value="1">Rädd eller stressad</option></select>
+<label>Anteckning</label><textarea id="lifeNote" placeholder="Vad hände, hur reagerade Ice och vad bör följas upp?"></textarea>
+<label>Registrerad av</label><select id="lifePerson"></select>
+<button class="button block" id="saveLifeEvent" style="margin-top:12px">Spara i livsboken</button>
+</div>
+<div class="section-title"><h2>Senaste i livsboken</h2><span>tidslinje</span></div><div class="card"><div id="lifeTimeline"></div></div>
+<div class="card" style="margin-top:14px"><button class="button secondary block" data-open-settings="1">Öppna inställningar och säkerhetskopia</button></div>
+</section>
+
 <section id="settings" class="screen">
 <div class="section-title"><h2>Inställningar</h2><span>ändringsbart</span></div>
 <div class="card"><label>Födelsedatum</label><input type="date" id="birthDate"><label>Hämtningsdatum</label><input type="date" id="pickupDate"><button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button></div>
 <div class="card" style="margin-top:14px"><h3>Säkerhetskopia</h3><p>Exportera all data. Bilder gör filen större.</p><div class="row"><button class="button secondary" id="exportData">Exportera</button><button class="button secondary" id="importButton">Importera</button><input type="file" id="importData" accept="application/json" hidden></div></div>
 <div class="card" style="margin-top:14px"><h3>Appuppdatering</h3><button class="button secondary block" id="forceUpdate">Sök efter ny version</button></div>
-<div class="card" style="margin-top:14px"><h3>Om</h3><p>Version 3.1. Planeringsmotorn och Smart Coach körs lokalt och använder inte extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
+<div class="card" style="margin-top:14px"><h3>Om</h3><p>Version 3.2. Familjeprofiler, vardagsuppgifter, valfria påminnelser och livsbok. Planeringsmotorn och Smart Coach körs lokalt och använder inte extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
 </section>
 </main>
 </div>
@@ -203,14 +244,16 @@ textarea{min-height:100px;resize:vertical}
 <button class="tab" data-screen="environment"><b>⌖</b>Miljö</button>
 <button class="tab" data-screen="sar"><b>◎</b>SAR</button>
 <button class="tab" data-screen="progress"><b>↗</b>Utveckling</button>
+<button class="tab" data-screen="family"><b>⌂</b>Familj</button>
 </div></nav>
 
 <script>
-const VERSION="3.1.0", STORE="iceFieldManualV3";
+const VERSION="3.2.0", STORE="iceFieldManualV3";
 const defaults={
  birthDate:"2026-06-04",pickupDate:"2026-07-30",currentWorkMode:"ledig",
  shifts:[{date:"2026-08-25",type:"dag",start:"08:00",end:"17:30",note:""},{date:"2026-08-26",type:"natt",start:"17:30",end:"08:00",note:""},{date:"2026-08-31",type:"natt",start:"17:30",end:"08:00",note:""}],
- journal:[],completedMissions:{},milestones:{},environments:{},sarCompleted:{}
+ journal:[],completedMissions:{},milestones:{},environments:{},sarCompleted:{},
+ activeProfile:"marcus",profiles:[{id:"marcus",name:"Marcus",role:"driver",icon:"👨"},{id:"anna-lena",name:"Anna-Lena",role:"family",icon:"👩"},{id:"elliot",name:"Elliot",role:"family",icon:"👤"},{id:"rasmus",name:"Rasmus",role:"family",icon:"👤"},{id:"benjamin",name:"Benjamin",role:"family",icon:"👤"}],familyTasks:[],lifeEvents:[],notificationPermissionAsked:false
 };
 let state=load(), pendingPhoto="";
 function clone(x){return JSON.parse(JSON.stringify(x))}
@@ -365,14 +408,57 @@ function renderProgress(){
  const wl=workload();document.querySelector("#recoveryText").innerHTML=`<div class="${wl.level==="Hög"?"warning":"good"}"><strong>${wl.level} belastning</strong><br>${wl.text}</div>`;
  const ws=state.journal.filter(j=>j.weight);if(ws.length){const w=ws[ws.length-1];document.querySelector("#latestWeight").textContent=w.weight+" kg";document.querySelector("#latestWeightDate").textContent=svDate(w.date)}else{document.querySelector("#latestWeight").textContent="Ingen vikt";document.querySelector("#latestWeightDate").textContent=""}
 }
+
+function profileById(id){return state.profiles.find(p=>p.id===id)||state.profiles[0]}
+function activeProfile(){return profileById(state.activeProfile)}
+function profileButtons(target){
+ target.innerHTML=state.profiles.map(p=>`<button class="profile ${p.id===state.activeProfile?'active':''}" data-profile="${p.id}"><b>${p.icon}</b>${escapeHtml(p.name)}<small>${p.role==='driver'?'Förare':'Familj'}</small></button>`).join('');
+}
+function accessBadge(a){return a==='driver'?'<span class="badge driver">Endast Marcus</span>':a==='instructor'?'<span class="badge">Instruktör</span>':a==='all'?'<span class="badge family">Alla</span>':'<span class="badge family">Familjen</span>'}
+function canProfileDoTask(t,p){if(t.access==='driver')return p.id==='marcus';if(t.access==='instructor')return false;return t.assignee==='all'||t.assignee===p.id||p.id==='marcus'}
+function taskVisible(t,p){return t.assignee==='all'||t.assignee===p.id||p.id==='marcus'}
+function renderTask(t,index,compact=false){const who=t.completedBy?profileById(t.completedBy).name:'';return `<div class="task-card ${t.done?'done':''}"><input type="checkbox" data-familydone="${index}" ${t.done?'checked':''} ${!canProfileDoTask(t,activeProfile())&&!t.done?'disabled':''}><div><strong>${escapeHtml(t.title)}</strong><div class="task-meta">${t.date}${t.time?' · '+t.time:''} · ${t.assignee==='all'?'Alla':escapeHtml(profileById(t.assignee).name)} ${t.reminder?' · 🔔':' · 🔕'}</div>${t.note?`<div class="task-meta">${escapeHtml(t.note)}</div>`:''}<div style="margin-top:6px">${accessBadge(t.access)} ${t.done?`<span class="badge">Klar av ${escapeHtml(who)}</span>`:''}</div></div>${compact?'':`<button class="icon-btn" data-delfamily="${index}" aria-label="Ta bort">×</button>`}</div>`}
+function renderFamily(){
+ const p=activeProfile();profileButtons(document.querySelector('#todayProfiles'));profileButtons(document.querySelector('#familyProfiles'));
+ document.querySelector('#activeProfileNote').innerHTML=p.role==='driver'?`<strong>${p.name} · hundförare</strong><br>Du ser hela planen och de förarunika momenten.`:`<strong>${p.name} · familjeläge</strong><br>Du ser vardagsuppgifter och invigda moment som hjälper Ice utan att störa förararbetet.`;
+ document.querySelector('#familyRoleText').innerHTML=p.role==='driver'?'<strong>Förarläge</strong><br>Full åtkomst till uppgifter, livsbok och planering.':'<strong>Familjeläge</strong><br>Promenad, mat, vatten, skötsel, social samvaro och tilldelade aktiviteter.';
+ const today=isoToday(),mine=state.familyTasks.map((t,i)=>({t,i})).filter(x=>x.t.date===today&&taskVisible(x.t,p));
+ document.querySelector('#myTaskCount').textContent=`${mine.filter(x=>!x.t.done).length} kvar`;
+ document.querySelector('#myTasksToday').innerHTML=mine.length?mine.map(x=>renderTask(x.t,x.i,true)).join(''):'<div class="empty">Inga uppgifter tilldelade idag.</div>';
+ const all=state.familyTasks.map((t,i)=>({t,i})).filter(x=>x.t.date===today);
+ document.querySelector('#familyDoneSummary').textContent=`${all.filter(x=>x.t.done).length}/${all.length} klara`;
+ document.querySelector('#familyTaskList').innerHTML=all.length?all.map(x=>renderTask(x.t,x.i)).join(''):'<div class="empty">Inga gemensamma uppgifter idag.</div>';
+ const opts='<option value="all">Alla</option>'+state.profiles.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');
+ document.querySelector('#taskAssignee').innerHTML=opts;document.querySelector('#lifePerson').innerHTML=state.profiles.map(x=>`<option value="${x.id}" ${x.id===state.activeProfile?'selected':''}>${escapeHtml(x.name)}</option>`).join('');
+ const events=[...state.lifeEvents].sort((a,b)=>(b.date+b.created).localeCompare(a.date+a.created)).slice(0,20);
+ document.querySelector('#lifeTimeline').innerHTML=events.length?events.map((e,i)=>`<div class="timeline-item"><span class="timeline-dot"></span><div><strong>${escapeHtml(e.title)}</strong><div class="task-meta">${svDate(e.date)} · ${escapeHtml(e.category)} · ${escapeHtml(profileById(e.person).name)} · ${'★'.repeat(+e.rating)}</div>${e.note?`<p>${escapeHtml(e.note)}</p>`:''}<button class="icon-btn" data-dellife="${state.lifeEvents.indexOf(e)}">Ta bort</button></div></div>`).join(''):'<div class="empty">Livsboken är tom ännu.</div>';
+}
+async function requestNotifications(){if(!('Notification' in window)){alert('Den här webbläsaren stöder inte systemnotiser. Uppgiften sparas ändå i appen.');return false}if(Notification.permission==='granted')return true;const r=await Notification.requestPermission();return r==='granted'}
+function reminderMoment(t){if(!t.reminder||!t.time||t.done)return null;const d=new Date(`${t.date}T${t.time}:00`);d.setMinutes(d.getMinutes()-(+t.reminderOffset||0));return d}
+function checkReminders(){const now=Date.now();state.familyTasks.forEach((t,i)=>{const when=reminderMoment(t);if(!when)return;const key=`${t.date}-${t.time}-${t.reminderOffset||0}`;const repeat=t.repeatReminder?30*60000:86400000;const last=t.lastNotified||0;if(now>=when.getTime()&&now-last>=repeat&&now-when.getTime()<86400000){const p=activeProfile();if(t.reminderAudience==='all'||t.assignee==='all'||t.assignee===p.id){if(Notification.permission==='granted')new Notification(`ICE · ${t.title}`,{body:t.note||`Ansvarig: ${t.assignee==='all'?'Alla':profileById(t.assignee).name}`,icon:'icon-192.png'});t.lastNotified=now;localStorage.setItem(STORE,JSON.stringify(state));}}})}
+function seedFamilyTasks(){if(state.familyTasks.length)return;const d=isoToday();state.familyTasks=[
+ {title:'Kontrollera och fyll vatten',date:d,time:'08:00',assignee:'all',access:'family',note:'Se till att skålen är ren och har friskt vatten.',reminder:false,done:false},
+ {title:'Gå en lugn promenad',date:d,time:'',assignee:'anna-lena',access:'family',note:'Låt Ice nosa och håll tempot lugnt.',reminder:false,done:false},
+ {title:'Kort förarpass',date:d,time:'',assignee:'marcus',access:'driver',note:'Följ dagens automatiska träningsplan.',reminder:false,done:false}
+ ];localStorage.setItem(STORE,JSON.stringify(state))}
+
 function renderSettings(){document.querySelector("#birthDate").value=state.birthDate;document.querySelector("#pickupDate").value=state.pickupDate}
-function renderAll(){renderToday();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderExerciseLibrary();renderProgress();renderSettings()}
+function renderAll(){renderToday();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderExerciseLibrary();renderProgress();renderSettings();renderFamily()}
 function defaultsForShift(t){return{ledig:["",""],dag:["08:00","17:30"],natt:["17:30","08:00"],dygn:["08:00","08:00"],annat:["",""]}[t]||["",""]}
 function clearShift(){document.querySelector("#shiftEditIndex").value="";document.querySelector("#shiftDate").value=isoToday();document.querySelector("#shiftType").value="dag";const p=defaultsForShift("dag");document.querySelector("#shiftStart").value=p[0];document.querySelector("#shiftEnd").value=p[1];document.querySelector("#shiftNote").value="";document.querySelector("#cancelShiftEdit").style.display="none";document.querySelector("#saveShift").textContent="Spara pass"}
 function editShift(i){const s=state.shifts[i];document.querySelector("#shiftEditIndex").value=i;document.querySelector("#shiftDate").value=s.date;document.querySelector("#shiftType").value=s.type;document.querySelector("#shiftStart").value=s.start||"";document.querySelector("#shiftEnd").value=s.end||"";document.querySelector("#shiftNote").value=s.note||"";document.querySelector("#cancelShiftEdit").style.display="inline-block";document.querySelector("#saveShift").textContent="Spara ändring"}
 async function compressImage(file){return new Promise((resolve,reject)=>{const img=new Image(),r=new FileReader();r.onload=e=>img.src=e.target.result;img.onload=()=>{const max=900,scale=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement("canvas");c.width=img.width*scale;c.height=img.height*scale;c.getContext("2d").drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL("image/jpeg",.7))};r.onerror=reject;r.readAsDataURL(file)})}
-document.addEventListener("click",e=>{
+document.addEventListener("click",async e=>{
  const tab=e.target.closest(".tab");if(tab){document.querySelectorAll(".tab,.screen").forEach(x=>x.classList.remove("active"));tab.classList.add("active");document.querySelector("#"+tab.dataset.screen).classList.add("active");scrollTo(0,0)}
+ if(e.target.dataset.profile){state.activeProfile=e.target.dataset.profile;save()}
+ if(e.target.dataset.openFamily!==undefined){document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));document.querySelector('[data-screen="family"]').classList.add('active');document.querySelector('#family').classList.add('active');scrollTo(0,0)}
+ if(e.target.dataset.openSettings!==undefined){document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));document.querySelector('#settings').classList.add('active');scrollTo(0,0)}
+ if(e.target.dataset.familydone!==undefined){const i=+e.target.dataset.familydone,t=state.familyTasks[i];if(!canProfileDoTask(t,activeProfile())&&!t.done){alert('Den här uppgiften är inte tilldelad den valda profilen.');return}t.done=e.target.checked;t.completedBy=t.done?state.activeProfile:'';t.completedAt=t.done?new Date().toISOString():'';save()}
+ if(e.target.dataset.delfamily!==undefined&&confirm('Ta bort uppgiften?')){state.familyTasks.splice(+e.target.dataset.delfamily,1);save()}
+ if(e.target.dataset.dellife!==undefined&&confirm('Ta bort händelsen ur livsboken?')){state.lifeEvents.splice(+e.target.dataset.dellife,1);save()}
+ if(e.target.id==='saveFamilyTask'){const title=(document.querySelector('#taskTitle').value.trim()||document.querySelector('#taskTemplate').value),date=document.querySelector('#taskDate').value;if(!title||!date)return alert('Välj uppgift/rubrik och datum.');const reminder=document.querySelector('#taskReminder').checked;if(reminder&&document.querySelector('#taskTime').value)await requestNotifications();state.familyTasks.push({title,date,time:document.querySelector('#taskTime').value,assignee:document.querySelector('#taskAssignee').value,access:document.querySelector('#taskAccess').value,note:document.querySelector('#taskNote').value.trim(),reminder,reminderOffset:+document.querySelector('#taskReminderOffset').value,reminderAudience:document.querySelector('#taskReminderAudience').value,repeatReminder:document.querySelector('#taskRepeatReminder').checked,done:false,created:new Date().toISOString()});document.querySelector('#taskTitle').value='';document.querySelector('#taskTemplate').value='';document.querySelector('#taskNote').value='';document.querySelector('#taskTime').value='';document.querySelector('#taskReminder').checked=false;document.querySelector('#reminderOptions').classList.add('hidden');save()}
+ if(e.target.id==='saveLifeEvent'){const title=document.querySelector('#lifeTitle').value.trim(),date=document.querySelector('#lifeDate').value;if(!title||!date)return alert('Fyll i datum och rubrik.');state.lifeEvents.push({date,category:document.querySelector('#lifeCategory').value,title,rating:+document.querySelector('#lifeRating').value,note:document.querySelector('#lifeNote').value.trim(),person:document.querySelector('#lifePerson').value,created:new Date().toISOString()});document.querySelector('#lifeTitle').value='';document.querySelector('#lifeNote').value='';save()}
+
  if(e.target.matches(".shiftQuick")){state.currentWorkMode=e.target.dataset.type;save()}
  if(e.target.dataset.mtask!==undefined){const t=isoToday();state.completedMissions[t]||={tasks:[],complete:false};const i=+e.target.dataset.mtask;state.completedMissions[t].tasks=e.target.checked?[...new Set([...state.completedMissions[t].tasks,i])]:state.completedMissions[t].tasks.filter(x=>x!==i);save()}
  if(e.target.id==="completeMission"){const t=isoToday();state.completedMissions[t]||={tasks:[],complete:false};state.completedMissions[t].complete=!state.completedMissions[t].complete;save()}
@@ -405,12 +491,14 @@ document.addEventListener("click",e=>{
  if(e.target.id==="resetData"&&confirm("Nollställa all lokal data?")){localStorage.removeItem(STORE);state=clone(defaults);save()}
 });
 document.querySelector("#exerciseFilter").addEventListener("change",renderExerciseLibrary);
+document.querySelector("#taskReminder").addEventListener("change",e=>document.querySelector("#reminderOptions").classList.toggle("hidden",!e.target.checked));
+document.querySelector("#taskTemplate").addEventListener("change",e=>{if(e.target.value)document.querySelector("#taskTitle").value=e.target.value});
 document.querySelector("#shiftType").addEventListener("change",e=>{const p=defaultsForShift(e.target.value);document.querySelector("#shiftStart").value=p[0];document.querySelector("#shiftEnd").value=p[1]});
 document.querySelector("#journalPhoto").addEventListener("change",async e=>{if(!e.target.files[0])return;pendingPhoto=await compressImage(e.target.files[0]);const p=document.querySelector("#photoPreview");p.src=pendingPhoto;p.style.display="block"});
 document.querySelector("#importData").addEventListener("change",async e=>{try{const j=JSON.parse(await e.target.files[0].text());state={...clone(defaults),...(j.data||j)};save();alert("Importerad.")}catch(err){alert("Filen kunde inte läsas.")}});
-document.querySelector("#journalDate").value=isoToday();clearShift();
+document.querySelector("#journalDate").value=isoToday();document.querySelector("#taskDate").value=isoToday();document.querySelector("#lifeDate").value=isoToday();clearShift();seedFamilyTasks();
 if(localStorage.getItem("iceAppVersion")!==VERSION){localStorage.setItem("iceAppVersion",VERSION);document.querySelector("#updateNotice").style.display="block";setTimeout(()=>document.querySelector("#updateNotice").style.display="none",5000)}
-renderAll();if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
+renderAll();checkReminders();setInterval(checkReminders,60000);if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
 </script>
 </body>
 </html>

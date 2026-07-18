@@ -13,3 +13,12 @@ Nytt:
 
 Framtida versioner kan bygga vidare med fler övningar, avancerad progression, hälsa,
 vaccinationer, instruktörsläge och extern AI utan att grundstrukturen behöver göras om.
+
+
+VERSION 3.2 – FAMILJ & LIVSBOK
+- Familjeprofiler: Marcus, Anna-Lena, Elliot, Rasmus och Benjamin
+- Personliga uppgiftslistor och förarläge/familjeläge
+- Vardagsuppgifter för mat, vatten, promenad, lek och skötsel
+- Valfria webbläsarnotiser per uppgift
+- Livsbok för veterinär, hundmöten, socialisering och milstolpar
+- All data lagras lokalt i webbläsaren. Delning mellan olika telefoner kräver framtida molnsynk.
