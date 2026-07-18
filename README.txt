@@ -1,15 +1,11 @@
-ICE – Field Manual 2.0
+ICE – Field Manual 2.1
 
-Ladda upp filerna direkt i roten av GitHub-repositoryt och ersätt befintliga filer.
-Ladda inte upp ZIP-filen till repositoryt.
+Nytt:
+- veckans fokus och veckomål
+- milstolpar från valp till SAR
+- bättre tidsrekommendation för dagens uppdrag
+- manuell knapp för att söka efter ny appversion
+- fortsatt lokal lagring, journal, arbetspass och backup
 
-Version 2.0 innehåller:
-- dynamiskt dagens uppdrag
-- ålders- och fasberäkning
-- arbetslägen och arbetspass
-- journal och utvecklingsstatistik
-- export/import av lokal säkerhetskopia
-- offline-stöd
-
-Efter uppladdning kan den gamla PWA-cachen behöva rensas genom att ta bort appen från hemskärmen,
-öppna webbadressen i Safari, uppdatera och därefter lägga till den på hemskärmen igen.
+Ladda upp de uppackade filerna direkt i repositoryts huvudnivå och ersätt befintliga filer.
+Ladda inte upp ZIP-filen.

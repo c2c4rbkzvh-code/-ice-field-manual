@@ -60,6 +60,10 @@
     .bar{height:10px;border-radius:999px;background:#07120e;overflow:hidden;margin-top:9px}
     .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--ok));border-radius:999px}
     .empty{color:var(--muted);text-align:center;padding:28px 10px}
+    .milestone{display:grid;grid-template-columns:30px 1fr;gap:12px;padding:13px 0;border-top:1px solid var(--line)}
+    .milestone:first-child{border-top:0}
+    .milestone input{width:24px;height:24px;accent-color:var(--gold)}
+    .milestone strong{display:block}.milestone small{color:var(--muted)}
     .tabs{position:fixed;z-index:10;left:0;right:0;bottom:0;background:rgba(7,17,14,.96);backdrop-filter:blur(16px);
       border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center}
     .tabs-inner{display:grid;grid-template-columns:repeat(5,1fr);max-width:760px;width:100%}
@@ -77,7 +81,7 @@
   <header>
     <img src="ice-photo.jpg" alt="Ice">
     <div class="hero">
-      <span class="version">VERSION 2.0 · LOKAL & OFFLINE</span>
+      <span class="version">VERSION 2.1 · HUNDFÖRARENS VERKTYG</span>
       <h1>ICE</h1>
       <p id="heroAge">Beräknar ålder…</p>
     </div>
@@ -95,9 +99,22 @@
       <div class="card mission">
         <div class="eyebrow" id="missionNumber">MISSION</div>
         <div class="mission-title" id="missionTitle">Förbered en trygg start</div>
-        <p id="missionIntro">Korta, positiva moment. Avsluta medan Ice fortfarande vill fortsätta.</p>
+        <p id="missionIntro">Korta, positiva moment. Avsluta medan Ice fortfarande vill fortsätta.</p><div class="pill" id="missionDose">Rekommenderad total tid: 10–15 min</div>
         <div id="missionTasks"></div>
         <button class="button block" id="completeMission">Markera uppdraget klart</button>
+      </div>
+
+      <div class="section-title"><h2>Veckans fokus</h2><span id="weekNumber"></span></div>
+      <div class="card">
+        <div class="eyebrow" id="weeklyPhase">VECKOMÅL</div>
+        <h3 id="weeklyTitle">Trygghet före prestation</h3>
+        <p id="weeklyIntro"></p>
+        <div id="weeklyGoals"></div>
+      </div>
+
+      <div class="section-title"><h2>Milstolpar</h2><span>från valp till SAR</span></div>
+      <div class="card">
+        <div id="milestoneList"></div>
       </div>
 
       <div class="section-title"><h2>Arbetsläge</h2><span>anpassa dagens belastning</span></div>
@@ -174,8 +191,13 @@
         </div>
       </div>
       <div class="card" style="margin-top:14px">
+        <h3>Appuppdatering</h3>
+        <p>Kontrollera om GitHub Pages har en nyare version och ladda om appens filer.</p>
+        <button class="button secondary block" id="forceUpdate">Sök efter ny version</button>
+      </div>
+      <div class="card" style="margin-top:14px">
         <h3>Om versionen</h3>
-        <p>ICE Field Manual 2.0. Data sparas lokalt i webbläsaren. För kritisk information bör du regelbundet exportera en säkerhetskopia.</p>
+        <p>ICE Field Manual 2.1. Data sparas lokalt i webbläsaren. För kritisk information bör du regelbundet exportera en säkerhetskopia.</p>
         <button class="button danger" id="resetData">Nollställ all lokal data</button>
       </div>
     </section>
@@ -193,7 +215,7 @@
 </nav>
 
 <script>
-const VERSION = "2.0.1";
+const VERSION = "2.1.0";
 const STORE = "iceFieldManualV2";
 const defaults = {
   birthDate:"2026-06-04", pickupDate:"2026-07-30", currentWorkMode:"ledig",
@@ -203,7 +225,7 @@ const defaults = {
     {date:"2026-09-06",type:"dygn"},{date:"2026-09-09",type:"dag"},
     {date:"2026-09-10",type:"natt"}
   ],
-  journal:[], completedMissions:{}
+  journal:[], completedMissions:{}, milestones:{}
 };
 let state = load();
 
@@ -261,6 +283,73 @@ function workAdvice(mode){
     dygn:"Dygnspass: planera ansvarig familjemedlem i förväg. Jobbmiljön får endast vara ett kort, tryggt miljöpass – inte många timmar av stress eller onödig burvistelse."
   }[mode];
 }
+
+const weeklyPrograms = [
+  {
+    title:"Förbered tryggheten",
+    intro:"Allt som minskar stress första dygnet är viktigare än lydnad.",
+    goals:["Sovplats och rastningsrutin bestämd","Familjens ansvar är tydligt","Transport och utrustning provad"]
+  },
+  {
+    title:"Relation och återhämtning",
+    intro:"Ice ska lära sig att du är trygghet, lek och vägledning.",
+    goals:["3–5 mikropass per dag","Minst 18–20 timmars vila/sömn","Belöna spontan kontakt"]
+  },
+  {
+    title:"Namn och följsamhet",
+    intro:"Bygg reflexen att orientera sig mot dig utan krav eller korrigering.",
+    goals:["Namnlek i lugn miljö","Lekfull följsamhet några meter","Mycket korta inkallningar"]
+  },
+  {
+    title:"Nos och miljö",
+    intro:"Låt nosen och nyfikenheten driva utvecklingen utan att överbelasta.",
+    goals:["En enkel godissök-övning","Två nya lugna underlag","En kort bil- eller arbetsmiljöträning"]
+  }
+];
+
+const milestoneData = [
+  {id:"home",title:"Trygg hemma",desc:"Kan äta, sova och återhämta sig i hemmet."},
+  {id:"name",title:"Namnet fungerar",desc:"Orienterar sig snabbt när du säger Ice."},
+  {id:"recall",title:"Första säkra inkallningen",desc:"Kommer glatt på kort avstånd i lätt miljö."},
+  {id:"play",title:"Aktiv lek med förare",desc:"Kan leka och vinna utan att lämna relationen."},
+  {id:"newenv",title:"Nya miljöer med balans",desc:"Undersöker och återhämtar sig efter nya intryck."},
+  {id:"nose",title:"Första nosuppgiften",desc:"Söker självständigt efter foder eller föremål."},
+  {id:"person",title:"Första personsöket",desc:"Hittar en lätt gömd figurant som en lek."},
+  {id:"mark",title:"Första tydliga markeringen",desc:"Visar ett konsekvent beteende vid fynd."}
+];
+
+function currentWeekIndex(){
+  const pickup = dateOnly(state.pickupDate);
+  const now = new Date();
+  if(now < pickup) return 0;
+  return Math.max(1, Math.floor((now-pickup)/604800000)+1);
+}
+function weeklyPlan(){
+  const idx = Math.min(weeklyPrograms.length-1, currentWeekIndex());
+  return weeklyPrograms[idx];
+}
+function missionDose(){
+  const w=ageParts().weeks;
+  if(new Date()<dateOnly(state.pickupDate)) return "Rekommenderad total tid: 10–20 min planering";
+  if(w<12) return "Rekommenderad total aktiv träning: 8–15 min utspritt";
+  if(w<16) return "Rekommenderad total aktiv träning: 12–20 min utspritt";
+  return "Rekommenderad total aktiv träning: 15–25 min utspritt";
+}
+function renderWeekly(){
+  const plan=weeklyPlan(), wk=currentWeekIndex();
+  document.querySelector("#weekNumber").textContent=new Date()<dateOnly(state.pickupDate)?"före hämtning":"vecka "+wk+" hemma";
+  document.querySelector("#weeklyTitle").textContent=plan.title;
+  document.querySelector("#weeklyIntro").textContent=plan.intro;
+  document.querySelector("#weeklyGoals").innerHTML=plan.goals.map((g,i)=>`<div class="task"><span class="pill">${i+1}</span><span>${g}</span></div>`).join("");
+}
+function renderMilestones(){
+  document.querySelector("#milestoneList").innerHTML=milestoneData.map(m=>`
+    <label class="milestone">
+      <input type="checkbox" data-milestone="${m.id}" ${state.milestones[m.id]?"checked":""}>
+      <span><strong>${m.title}</strong><small>${m.desc}</small></span>
+    </label>`).join("");
+}
+
 function renderToday(){
   const a=ageParts(), p=phase(), m=mission(), today=isoToday();
   document.querySelector("#heroAge").textContent=`${a.weeks} veckor och ${a.rest} dagar · född ${svDate(state.birthDate)}`;
@@ -269,7 +358,7 @@ function renderToday(){
   document.querySelector("#pickupMetric").textContent=left>0?left:(left===0?"Idag":"Hemma");
   document.querySelector("#todayDate").textContent=new Date().toLocaleDateString("sv-SE",{weekday:"long",day:"numeric",month:"long"});
   document.querySelector("#missionNumber").textContent=`MISSION #${m.number}`;
-  document.querySelector("#missionTitle").textContent=m.title;
+  document.querySelector("#missionTitle").textContent=m.title; document.querySelector("#missionDose").textContent=missionDose();
   const done=state.completedMissions[today]?.tasks||[];
   document.querySelector("#missionTasks").innerHTML=m.tasks.map((t,i)=>`<label class="task ${done.includes(i)?"done":""}"><input type="checkbox" data-mtask="${i}" ${done.includes(i)?"checked":""}><span>${t}</span></label>`).join("");
   document.querySelector("#completeMission").textContent=state.completedMissions[today]?.complete?"Uppdraget är klart ✓":"Markera uppdraget klart";
@@ -302,11 +391,13 @@ function renderProgress(){
   else{document.querySelector("#latestWeight").textContent="Ingen vikt ännu";document.querySelector("#latestWeightDate").textContent=""}
 }
 function renderSettings(){document.querySelector("#birthDate").value=state.birthDate;document.querySelector("#pickupDate").value=state.pickupDate}
-function renderAll(){renderToday();renderPlan();renderJournal();renderProgress();renderSettings()}
+function renderAll(){renderToday();renderWeekly();renderMilestones();renderPlan();renderJournal();renderProgress();renderSettings()}
 document.addEventListener("click",e=>{
   const tab=e.target.closest(".tab");if(tab){document.querySelectorAll(".tab,.screen").forEach(x=>x.classList.remove("active"));tab.classList.add("active");document.querySelector("#"+tab.dataset.screen).classList.add("active");scrollTo(0,0)}
   if(e.target.matches(".shiftQuick")){state.currentWorkMode=e.target.dataset.type;save()}
   if(e.target.dataset.mtask!==undefined){const t=isoToday();state.completedMissions[t] ||= {tasks:[],complete:false};const i=+e.target.dataset.mtask;state.completedMissions[t].tasks=e.target.checked?[...new Set([...state.completedMissions[t].tasks,i])]:state.completedMissions[t].tasks.filter(x=>x!==i);save()}
+  if(e.target.dataset.milestone!==undefined){state.milestones[e.target.dataset.milestone]=e.target.checked;save()}
+  if(e.target.id==="forceUpdate"){if("serviceWorker" in navigator){navigator.serviceWorker.getRegistrations().then(rs=>Promise.all(rs.map(r=>r.update()))).finally(()=>location.reload(true))}else location.reload(true)}
   if(e.target.id==="completeMission"){const t=isoToday();state.completedMissions[t] ||= {tasks:[],complete:false};state.completedMissions[t].complete=!state.completedMissions[t].complete;save()}
   if(e.target.id==="addShift"){const d=document.querySelector("#shiftDate").value;if(!d)return alert("Välj datum.");state.shifts.push({date:d,type:document.querySelector("#shiftType").value});save()}
   if(e.target.dataset.delshift!==undefined){state.shifts.splice(+e.target.dataset.delshift,1);save()}

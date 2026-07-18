@@ -1,4 +1,4 @@
-const CACHE = "ice-field-manual-v2.0.1";
+const CACHE = "ice-field-manual-v2.1.0";
 const ASSETS = [
   "./",
   "./index.html",
