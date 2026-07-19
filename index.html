@@ -83,6 +83,17 @@ textarea{min-height:100px;resize:vertical}
 .health-detail{display:block;font-size:10px;color:var(--muted);margin-top:3px}.section-link{border:0;background:none;color:var(--muted);padding:0;font-size:13px}.section-link:after{content:'  ›'}
 @media(max-width:480px){.command-stats{grid-template-columns:repeat(3,1fr)}.command-stat{padding:10px 5px}.hq-welcome h2{font-size:25px}.command-stat b{font-size:17px}.sar-roadmap-row{grid-template-columns:28px 1fr auto;padding:10px}}
 
+
+.session-overlay{position:fixed;inset:0;background:rgba(1,8,6,.95);z-index:100;display:none;overflow:auto;padding:calc(18px + env(safe-area-inset-top)) 18px calc(30px + env(safe-area-inset-bottom))}.session-overlay.open{display:block}.session-shell{max-width:620px;margin:auto}.session-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.session-close{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#0a1a15;color:var(--text);font-size:24px}.session-card{border:1px solid rgba(222,178,72,.55);background:linear-gradient(145deg,rgba(93,70,24,.30),rgba(19,54,42,.96));border-radius:26px;padding:22px}.session-counter{color:var(--gold);font-weight:900;letter-spacing:.08em;font-size:12px}.session-title{font-size:30px;margin:10px 0}.session-timer{font-size:54px;font-weight:900;line-height:1;margin:22px 0;text-align:center;font-variant-numeric:tabular-nums}.session-step{background:rgba(255,255,255,.045);border-radius:18px;padding:14px;margin:10px 0}.session-step b{display:block;margin-bottom:5px}.session-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.session-progress{height:9px;background:#06100d;border-radius:999px;overflow:hidden;margin:12px 0}.session-progress i{display:block;height:100%;background:var(--gold);border-radius:inherit}.session-summary{text-align:center;padding:18px 0}.start-session{margin-top:12px}
+
+.profile-device-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding-top:13px;border-top:1px solid var(--line)}
+.profile-device-row small{display:block;color:var(--muted);line-height:1.35}.profile-device-row strong{display:block;margin-bottom:3px}
+.profile-switch{border:1px solid #6f5b2a;background:#2a2517;color:#ffe6a8;border-radius:12px;padding:10px 13px;font-weight:800;white-space:nowrap}
+.profile-modal{position:fixed;inset:0;z-index:9999;background:rgba(2,8,6,.93);display:flex;align-items:flex-end;justify-content:center;padding:16px;backdrop-filter:blur(10px)}
+.profile-modal.hidden{display:none}.profile-modal-card{width:min(520px,100%);max-height:88vh;overflow:auto;background:linear-gradient(180deg,#10271f,#091713);border:1px solid #315443;border-radius:25px 25px 18px 18px;padding:22px;box-shadow:0 -20px 70px rgba(0,0,0,.45)}
+.profile-modal-card h2{font-size:28px;margin:5px 0 8px}.profile-modal-card>p{color:var(--muted);margin:0 0 18px;line-height:1.45}.profile-picker{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.profile-pick{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:17px;padding:16px 10px;text-align:center}.profile-pick b{display:block;font-size:30px;margin-bottom:7px}.profile-pick strong{display:block;font-size:16px}.profile-pick small{display:block;color:var(--muted);margin-top:4px}.profile-pick.driver{grid-column:1/-1;border-color:#79642e;background:linear-gradient(145deg,#302818,#11231b)}
+.device-badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 9px;background:#173a2b;color:#c9f1d7;font-size:11px;font-weight:850}.family-mode .driver-only{display:none!important}
+@media(min-width:700px){.profile-modal{align-items:center}.profile-modal-card{border-radius:25px}}
 </style>
 </head>
 <body>
@@ -90,7 +101,7 @@ textarea{min-height:100px;resize:vertical}
 <header>
 <img src="ice-photo.jpg" alt="Ice">
 <div class="hero">
-<span class="version">VERSION 3.3 · CORE BUILD 10</span>
+<span class="version">VERSION 3.3 · CORE BUILD 12</span>
 <h1>ICE</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -98,7 +109,7 @@ textarea{min-height:100px;resize:vertical}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Version 3.3 Build 9 är installerad.</div>
+<div id="updateNotice" class="notice">Version 3.3 Build 12 är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">ICE HQ</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -128,7 +139,7 @@ textarea{min-height:100px;resize:vertical}
 
 
 <div class="section-title"><h2>Aktiv profil</h2><span>personligt läge</span></div>
-<div class="card"><div id="todayProfiles" class="profile-row"></div><div id="activeProfileNote" class="good profile-card-note"></div></div>
+<div class="card"><div id="todayProfiles" class="profile-row"></div><div id="activeProfileNote" class="good profile-card-note"></div><div class="profile-device-row"><div><strong><span class="device-badge">📱 Den här telefonen</span></strong><small id="deviceProfileText">Profilen sparas bara på denna enhet.</small></div><button class="profile-switch" data-change-device-profile="1">Byt profil</button></div></div>
 <div class="section-title"><h2>Idag med Ice</h2><span id="ageStageLabel">åldersanpassat</span></div>
 <div class="card focus-card click-card" data-goto="sar">
 <div class="eyebrow">DAGENS FOKUS</div><div class="focus-title" id="ageFocusTitle">–</div><p id="ageFocusText">–</p>
@@ -145,7 +156,7 @@ textarea{min-height:100px;resize:vertical}
 <div class="card">
 <div class="hq-status"><div><strong id="hqTasks">0</strong><small>uppgifter kvar</small></div><div><strong id="hqMinutes">0</strong><small>minuter / 7 dagar</small></div><div><strong id="hqStreak">0</strong><small>aktiva dagar</small></div></div>
 <div class="quick-grid" style="margin-top:16px">
-<button class="quick-action" data-goto="journal"><b>✎</b>Logga</button><button class="quick-action" data-goto="sar"><b>🎯</b>Aktivitet</button><button class="quick-action" data-goto="family"><b>⌂</b>Uppgift</button><button class="quick-action" data-goto="progress"><b>↗</b>Statistik</button>
+<button class="quick-action" data-goto="journal"><b>✎</b>Logga</button><button class="quick-action driver-only" data-goto="sar"><b>🎯</b>Aktivitet</button><button class="quick-action" data-goto="family"><b>⌂</b>Uppgift</button><button class="quick-action driver-only" data-goto="progress"><b>↗</b>Statistik</button>
 </div></div>
 
 <div class="section-title"><h2>Mina uppgifter idag</h2><span id="myTaskCount"></span></div>
@@ -333,30 +344,33 @@ textarea{min-height:100px;resize:vertical}
 <div class="card"><label>Födelsedatum</label><input type="date" id="birthDate"><label>Hämtningsdatum</label><input type="date" id="pickupDate"><button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button></div>
 <div class="card" style="margin-top:14px"><h3>Säkerhetskopia</h3><p>Exportera all data. Bilder gör filen större.</p><div class="row"><button class="button secondary" id="exportData">Exportera</button><button class="button secondary" id="importButton">Importera</button><input type="file" id="importData" accept="application/json" hidden></div></div>
 <div class="card" style="margin-top:14px"><h3>Appuppdatering</h3><button class="button secondary block" id="forceUpdate">Sök efter ny version</button></div>
-<div class="card" style="margin-top:14px"><h3>Om</h3><p>Version 3.3 Build 9. ICE-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och ICE idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
+<div class="card" style="margin-top:14px"><h3>Om</h3><p>Version 3.3 Build 11. Träningspass-läget guidar steg för steg och ICE-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och ICE idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
 </section>
 </main>
 </div>
 
+<div id="profileSetup" class="profile-modal hidden" role="dialog" aria-modal="true" aria-labelledby="profileSetupTitle"><div class="profile-modal-card"><div class="eyebrow">ENHETSPROFIL</div><h2 id="profileSetupTitle">Vem använder den här telefonen?</h2><p>Välj en gång. ICE kommer sedan ihåg profilen på just den här enheten och öppnar direkt i rätt läge.</p><div id="deviceProfilePicker" class="profile-picker"></div></div></div>
+<div id="trainingSession" class="session-overlay" aria-hidden="true"><div class="session-shell"><div class="session-top"><div><div class="eyebrow">ICE TRÄNINGSPASS</div><strong id="sessionHeader">Dagens pass</strong></div><button class="session-close" id="closeSession" aria-label="Stäng">×</button></div><div id="sessionContent"></div></div></div>
 <nav class="tabs"><div class="tabs-inner">
 <button class="tab active" data-screen="today"><b>⌂</b>HQ</button>
-<button class="tab" data-screen="plan"><b>▦</b>Plan</button>
+<button class="tab driver-only" data-screen="plan"><b>▦</b>Plan</button>
 <button class="tab" data-screen="journal"><b>✎</b>Journal</button>
 <button class="tab" data-screen="environment"><b>⌖</b>Miljö</button>
-<button class="tab" data-screen="sar"><b>◎</b>SAR</button>
-<button class="tab" data-screen="progress"><b>↗</b>Utveckling</button>
+<button class="tab driver-only" data-screen="sar"><b>◎</b>SAR</button>
+<button class="tab driver-only" data-screen="progress"><b>↗</b>Utveckling</button>
 <button class="tab" data-screen="family"><b>⌂</b>Familj</button>
 </div></nav>
 
 <script>
-const VERSION="3.3.10", STORE="iceFieldManualV3";
+const VERSION="3.3.12", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
 const defaults={
  birthDate:"2026-06-04",pickupDate:"2026-07-30",currentWorkMode:"ledig",
  shifts:[{date:"2026-08-25",type:"dag",start:"08:00",end:"17:30",note:""},{date:"2026-08-26",type:"natt",start:"17:30",end:"08:00",note:""},{date:"2026-08-31",type:"natt",start:"17:30",end:"08:00",note:""}],
  journal:[],completedMissions:{},milestones:{},environments:{},sarCompleted:{},
- favoriteExercises:[],commandProgress:{},activeProfile:"marcus",profiles:[{id:"marcus",name:"Marcus",role:"driver",icon:"👨"},{id:"anna-lena",name:"Anna-Lena",role:"family",icon:"👩"},{id:"elliot",name:"Elliot",role:"family",icon:"👤"},{id:"rasmus",name:"Rasmus",role:"family",icon:"👤"},{id:"benjamin",name:"Benjamin",role:"family",icon:"👤"}],familyTasks:[],lifeEvents:[],notificationPermissionAsked:false
+ favoriteExercises:[],commandProgress:{},activeProfile:"marcus",profiles:[{id:"marcus",name:"Marcus",role:"driver",icon:"👨"},{id:"anna-lena",name:"Anna-Lena",role:"family",icon:"👩"},{id:"elliot",name:"Elliot",role:"family",icon:"👤"},{id:"rasmus",name:"Rasmus",role:"family",icon:"👤"},{id:"benjamin",name:"Benjamin",role:"family",icon:"👤"}],familyTasks:[],lifeEvents:[],notificationPermissionAsked:false,activeTrainingSession:null
 };
 let state=load(), pendingPhoto="";
+const storedDeviceProfile=localStorage.getItem(DEVICE_PROFILE_KEY);if(storedDeviceProfile&&state.profiles.some(p=>p.id===storedDeviceProfile))state.activeProfile=storedDeviceProfile;
 function clone(x){return JSON.parse(JSON.stringify(x))}
 function load(){try{const p=JSON.parse(localStorage.getItem(STORE)||"null");return p?{...clone(defaults),...p}:clone(defaults)}catch(e){return clone(defaults)}}
 function save(){try{localStorage.setItem(STORE,JSON.stringify(state));renderAll()}catch(e){alert("Lagringen är full. Exportera en backup och ta bort några bilder.")}}
@@ -461,17 +475,10 @@ function mission(){
 }
 
 function renderDailyPlan(){
- const plan=getDailyPlan(),mode=effectiveMode();
- const total=plan.reduce((a,x)=>a+x.duration,0);
- document.querySelector("#dailyPlanSummary").innerHTML=`<div class="good"><strong>${plan.length} övningar · cirka ${total} minuter</strong><br>${workAdvice(mode)}</div>`;
- document.querySelector("#dailyExerciseList").innerHTML=plan.map(x=>`<div class="item">
-   <strong>${x.title}</strong><small>${x.cat} · ${x.duration} min · belastning ${x.load}/3</small>
-   <p><b>Mål:</b> ${x.goal}</p>
-   <details><summary>Visa steg för steg</summary><ol>${x.steps.map(s=>`<li>${s}</li>`).join("")}</ol><p><b>Vanligt misstag:</b> ${x.mistake}</p><p><b>Gå vidare när:</b> ${x.progress}</p></details>
-   <button class="button secondary" data-logexercise="${x.id}">Logga denna övning</button>
- </div>`).join("");
+ const plan=getDailyPlan(),mode=effectiveMode(),total=plan.reduce((a,x)=>a+x.duration,0);
+ document.querySelector("#dailyPlanSummary").innerHTML=`<div class="good"><strong>${plan.length} övningar · cirka ${total} minuter</strong><br>${workAdvice(mode)}</div>${plan.length?`<button class="button block start-session" id="startTrainingSession">▶ Starta dagens pass</button>`:''}`;
+ document.querySelector("#dailyExerciseList").innerHTML=plan.length?plan.map((x,i)=>`<div class="item"><strong>${i+1}. ${x.title}</strong><small>${x.cat} · ${x.duration} min · belastning ${x.load}/3</small><p><b>Mål:</b> ${x.goal}</p><details><summary>Visa steg för steg</summary><ol>${x.steps.map(v=>`<li>${v}</li>`).join('')}</ol><p><b>Vanligt misstag:</b> ${x.mistake}</p><p><b>Gå vidare när:</b> ${x.progress}</p></details><button class="button secondary" data-logexercise="${x.id}">Logga separat</button></div>`).join(''):'<div class="empty">Inga aktiva övningar ännu. Appen prioriterar trygghet, hemförberedelser och vila fram till vecka 8.</div>';
 }
-
 function exerciseSessions(id){return state.journal.filter(j=>j.exerciseId===id).length}
 function exerciseLevel(id){const n=exerciseSessions(id);return n>=8?3:n>=4?2:n>=1?1:0}
 function exerciseCard(x,status="now",locked=false){
@@ -621,6 +628,10 @@ function renderProgress(){
  const ws=state.journal.filter(j=>j.weight);if(ws.length){const w=ws[ws.length-1];document.querySelector("#latestWeight").textContent=w.weight+" kg";document.querySelector("#latestWeightDate").textContent=svDate(w.date)}else{document.querySelector("#latestWeight").textContent="Ingen vikt";document.querySelector("#latestWeightDate").textContent=""}
 }
 
+function setDeviceProfile(id){if(!state.profiles.some(p=>p.id===id))return;state.activeProfile=id;localStorage.setItem(DEVICE_PROFILE_KEY,id);document.querySelector('#profileSetup').classList.add('hidden');save()}
+function renderDeviceProfilePicker(){const target=document.querySelector('#deviceProfilePicker');if(!target)return;target.innerHTML=state.profiles.map(p=>`<button class="profile-pick ${p.role==='driver'?'driver':''}" data-device-profile="${p.id}"><b>${p.icon}</b><strong>${escapeHtml(p.name)}</strong><small>${p.role==='driver'?'Hundförare · full åtkomst':'Familj · vardagsläge'}</small></button>`).join('')}
+function showProfileSetup(){renderDeviceProfilePicker();document.querySelector('#profileSetup').classList.remove('hidden')}
+function applyProfileMode(){const p=activeProfile();document.body.classList.toggle('family-mode',p.role!=='driver');const text=document.querySelector('#deviceProfileText');if(text)text.textContent=`Den här telefonen öppnas automatiskt som ${p.name}.`;if(p.role!=='driver'){const active=document.querySelector('.screen.active');if(active&&['plan','sar','progress'].includes(active.id)){document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));document.querySelector('[data-screen="today"]').classList.add('active');document.querySelector('#today').classList.add('active')}}}
 function profileById(id){return state.profiles.find(p=>p.id===id)||state.profiles[0]}
 function activeProfile(){return profileById(state.activeProfile)}
 function profileButtons(target){
@@ -631,6 +642,7 @@ function canProfileDoTask(t,p){if(t.access==='driver')return p.id==='marcus';if(
 function taskVisible(t,p){return t.assignee==='all'||t.assignee===p.id||p.id==='marcus'}
 function renderTask(t,index,compact=false){const who=t.completedBy?profileById(t.completedBy).name:'';return `<div class="task-card ${t.done?'done':''}"><input type="checkbox" data-familydone="${index}" ${t.done?'checked':''} ${!canProfileDoTask(t,activeProfile())&&!t.done?'disabled':''}><div><strong>${escapeHtml(t.title)}</strong><div class="task-meta">${t.date}${t.time?' · '+t.time:''} · ${t.assignee==='all'?'Alla':escapeHtml(profileById(t.assignee).name)} ${t.reminder?' · 🔔':' · 🔕'}</div>${t.note?`<div class="task-meta">${escapeHtml(t.note)}</div>`:''}<div style="margin-top:6px">${accessBadge(t.access)} ${t.done?`<span class="badge">Klar av ${escapeHtml(who)}</span>`:''}</div></div>${compact?'':`<button class="icon-btn" data-delfamily="${index}" aria-label="Ta bort">×</button>`}</div>`}
 function renderFamily(){
+ applyProfileMode();
  const p=activeProfile();profileButtons(document.querySelector('#todayProfiles'));profileButtons(document.querySelector('#familyProfiles'));
  document.querySelector('#activeProfileNote').innerHTML=p.role==='driver'?`<strong>${p.name} · hundförare</strong><br>Du ser hela planen och de förarunika momenten.`:`<strong>${p.name} · familjeläge</strong><br>Du ser vardagsuppgifter och invigda moment som hjälper Ice utan att störa förararbetet.`;
  document.querySelector('#familyRoleText').innerHTML=p.role==='driver'?'<strong>Förarläge</strong><br>Full åtkomst till uppgifter, livsbok och planering.':'<strong>Familjeläge</strong><br>Promenad, mat, vatten, skötsel, social samvaro och tilldelade aktiviteter.';
@@ -654,6 +666,15 @@ function seedFamilyTasks(){if(state.familyTasks.length)return;const d=isoToday()
  {title:'Kort förarpass',date:d,time:'',assignee:'marcus',access:'driver',note:'Följ dagens automatiska träningsplan.',reminder:false,done:false}
  ];localStorage.setItem(STORE,JSON.stringify(state))}
 
+let sessionTimer=null;
+function trainingSessionPlan(){const ids=(state.activeTrainingSession&&state.activeTrainingSession.exerciseIds)||getDailyPlan().map(x=>x.id);return ids.map(id=>exerciseLibrary.find(x=>x.id===id)).filter(Boolean)}
+function openTrainingSession(){const plan=getDailyPlan();if(!plan.length)return alert('Det finns inga aktiva övningar i dagens pass ännu.');if(!state.activeTrainingSession||state.activeTrainingSession.date!==isoToday()||state.activeTrainingSession.finished){state.activeTrainingSession={date:isoToday(),exerciseIds:plan.map(x=>x.id),index:0,results:[],startedAt:new Date().toISOString(),finished:false}}document.querySelector('#trainingSession').classList.add('open');document.querySelector('#trainingSession').setAttribute('aria-hidden','false');renderTrainingSession()}
+function closeTrainingSession(){clearInterval(sessionTimer);sessionTimer=null;document.querySelector('#trainingSession').classList.remove('open');document.querySelector('#trainingSession').setAttribute('aria-hidden','true')}
+function renderTrainingSession(){clearInterval(sessionTimer);sessionTimer=null;const box=document.querySelector('#sessionContent'),ss=state.activeTrainingSession,plan=trainingSessionPlan();if(!ss||!plan.length){box.innerHTML='<div class="card">Passet kunde inte läsas.</div>';return}if(ss.finished){const done=ss.results.filter(r=>!r.skipped),mins=done.reduce((a,r)=>a+r.minutes,0);document.querySelector('#sessionHeader').textContent='Passet klart';box.innerHTML=`<div class="session-card session-summary"><div class="eyebrow">PASSET ÄR SPARAT</div><h2>Bra jobbat tillsammans</h2><div class="metric">${mins} min</div><p>${done.length} moment registrerades i journalen, livsboken, XP och statistik.</p><button class="button block" id="finishSession">Tillbaka till ICE HQ</button></div>`;return}const i=Math.min(ss.index,plan.length-1),x=plan[i];document.querySelector('#sessionHeader').textContent=`Steg ${i+1} av ${plan.length}`;box.innerHTML=`<div class="session-card"><div class="session-counter">MOMENT ${i+1} AV ${plan.length}</div><div class="session-progress"><i style="width:${Math.round(i/plan.length*100)}%"></i></div><h2 class="session-title">${x.title}</h2><p>${x.goal}</p><div class="session-timer" id="sessionTimer">${String(x.duration).padStart(2,'0')}:00</div><div class="session-step"><b>Gör så här</b>${x.steps.map((v,n)=>`<div>${n+1}. ${v}</div>`).join('')}</div><div class="session-step"><b>Observera</b>${x.progress}</div><div class="session-step"><b>Undvik</b>${x.mistake}</div><div class="session-actions"><button class="button secondary" id="toggleTimer">Starta timer</button><button class="button" id="completeSessionStep">Moment klart</button></div><button class="button secondary block" id="skipSessionStep" style="margin-top:10px">Hoppa över idag</button></div>`}
+function startStepTimer(){const plan=trainingSessionPlan(),ss=state.activeTrainingSession,x=plan[ss.index];let sec=x.duration*60,out=document.querySelector('#sessionTimer'),btn=document.querySelector('#toggleTimer');if(sessionTimer){clearInterval(sessionTimer);sessionTimer=null;btn.textContent='Fortsätt timer';return}btn.textContent='Pausa timer';sessionTimer=setInterval(()=>{sec--;if(out)out.textContent=`${String(Math.floor(sec/60)).padStart(2,'0')}:${String(sec%60).padStart(2,'0')}`;if(sec<=0){clearInterval(sessionTimer);sessionTimer=null;if(btn)btn.textContent='Tiden är klar'}},1000)}
+function completeTrainingStep(skipped=false){clearInterval(sessionTimer);sessionTimer=null;const ss=state.activeTrainingSession,plan=trainingSessionPlan(),x=plan[ss.index];ss.results.push({id:x.id,title:x.title,cat:x.cat,minutes:skipped?0:x.duration,skipped,completedAt:new Date().toISOString()});ss.index++;if(ss.index>=plan.length){ss.finished=true;finalizeTrainingSession()}else{localStorage.setItem(STORE,JSON.stringify(state));renderTrainingSession()}}
+function finalizeTrainingSession(){const ss=state.activeTrainingSession,done=ss.results.filter(r=>!r.skipped);if(done.length){const created=new Date().toISOString(),total=done.reduce((a,r)=>a+r.minutes,0),titles=done.map(r=>r.title).join(', ');done.forEach(r=>state.journal.push({date:ss.date,type:r.cat==='nos'?'Nosarbete':r.cat==='miljo'?'Miljö':r.cat==='inkallning'?'Inkallning':r.cat==='sar'?'Sök':r.cat==='aterhamtning'?'Vila/återhämtning':'Relation & lek',rating:5,minutes:r.minutes,note:`Guidat pass: ${r.title}`,weight:'',photo:'',exerciseId:r.id,exerciseCategory:r.cat,created}));state.lifeEvents.push({date:ss.date,category:'Träning',title:`Guidat träningspass · ${done.length} moment`,note:`${titles}. Totalt ${total} minuter.`,rating:5,person:state.activeProfile,created,source:`guided-session-${ss.startedAt}`})}localStorage.setItem(STORE,JSON.stringify(state));renderTrainingSession();renderAll()}
+
 function renderSettings(){document.querySelector("#birthDate").value=state.birthDate;document.querySelector("#pickupDate").value=state.pickupDate}
 function renderAll(){renderToday();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderWeeklyTraining();renderExerciseLibrary();renderProgress();renderSettings();renderFamily()}
 function defaultsForShift(t){return{ledig:["",""],dag:["08:00","17:30"],natt:["17:30","08:00"],dygn:["08:00","08:00"],annat:["",""]}[t]||["",""]}
@@ -661,11 +682,19 @@ function clearShift(){document.querySelector("#shiftEditIndex").value="";documen
 function editShift(i){const s=state.shifts[i];document.querySelector("#shiftEditIndex").value=i;document.querySelector("#shiftDate").value=s.date;document.querySelector("#shiftType").value=s.type;document.querySelector("#shiftStart").value=s.start||"";document.querySelector("#shiftEnd").value=s.end||"";document.querySelector("#shiftNote").value=s.note||"";document.querySelector("#cancelShiftEdit").style.display="inline-block";document.querySelector("#saveShift").textContent="Spara ändring"}
 async function compressImage(file){return new Promise((resolve,reject)=>{const img=new Image(),r=new FileReader();r.onload=e=>img.src=e.target.result;img.onload=()=>{const max=900,scale=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement("canvas");c.width=img.width*scale;c.height=img.height*scale;c.getContext("2d").drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL("image/jpeg",.7))};r.onerror=reject;r.readAsDataURL(file)})}
 document.addEventListener("click",async e=>{
+ if(e.target.id==='startTrainingSession'){openTrainingSession();return}
+ if(e.target.id==='closeSession'){closeTrainingSession();return}
+ if(e.target.id==='toggleTimer'){startStepTimer();return}
+ if(e.target.id==='completeSessionStep'){completeTrainingStep(false);return}
+ if(e.target.id==='skipSessionStep'){completeTrainingStep(true);return}
+ if(e.target.id==='finishSession'){closeTrainingSession();state.activeTrainingSession=null;localStorage.setItem(STORE,JSON.stringify(state));renderAll();document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));document.querySelector('[data-screen="today"]').classList.add('active');document.querySelector('#today').classList.add('active');scrollTo(0,0);return}
  const tab=e.target.closest(".tab");if(tab){document.querySelectorAll(".tab,.screen").forEach(x=>x.classList.remove("active"));tab.classList.add("active");document.querySelector("#"+tab.dataset.screen).classList.add("active");scrollTo(0,0)}
  const go=e.target.closest("[data-goto]");if(go){document.querySelectorAll(".tab,.screen").forEach(x=>x.classList.remove("active"));document.querySelector(`[data-screen="${go.dataset.goto}"]`)?.classList.add("active");document.querySelector(`#${go.dataset.goto}`)?.classList.add("active");scrollTo(0,0)}
  if(e.target.dataset.favorite){state.favoriteExercises=state.favoriteExercises||[];const id=e.target.dataset.favorite;state.favoriteExercises=state.favoriteExercises.includes(id)?state.favoriteExercises.filter(x=>x!==id):[...state.favoriteExercises,id];save()}
  if(e.target.id==="randomActivity"){const weeks=ageParts().weeks,pool=exerciseLibrary.filter(x=>weeks>=x.minWeeks&&weeks<=x.maxWeeks);const x=pool[Math.floor(Math.random()*pool.length)]||exerciseLibrary[0];alert(`${x.title} · ${x.duration} min\n\n${x.goal}\n\n${x.steps.join(" → ")}`)}
- if(e.target.dataset.profile){state.activeProfile=e.target.dataset.profile;save()}
+ const profileChoice=e.target.closest('[data-profile]');if(profileChoice){setDeviceProfile(profileChoice.dataset.profile)}
+ const deviceChoice=e.target.closest('[data-device-profile]');if(deviceChoice){setDeviceProfile(deviceChoice.dataset.deviceProfile)}
+ if(e.target.closest('[data-change-device-profile]')){showProfileSetup()}
  if(e.target.dataset.openFamily!==undefined){document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));document.querySelector('[data-screen="family"]').classList.add('active');document.querySelector('#family').classList.add('active');scrollTo(0,0)}
  if(e.target.dataset.openSettings!==undefined){document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));document.querySelector('#settings').classList.add('active');scrollTo(0,0)}
  if(e.target.dataset.familydone!==undefined){const i=+e.target.dataset.familydone,t=state.familyTasks[i];if(!canProfileDoTask(t,activeProfile())&&!t.done){alert('Den här uppgiften är inte tilldelad den valda profilen.');return}t.done=e.target.checked;t.completedBy=t.done?state.activeProfile:'';t.completedAt=t.done?new Date().toISOString():'';save()}
@@ -703,7 +732,7 @@ document.addEventListener("click",async e=>{
  if(e.target.id==="exportData"){const b=new Blob([JSON.stringify({version:VERSION,exported:new Date().toISOString(),data:state},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="ICE-backup-"+isoToday()+".json";a.click();URL.revokeObjectURL(a.href)}
  if(e.target.id==="importButton")document.querySelector("#importData").click();
  if(e.target.id==="forceUpdate"){navigator.serviceWorker?.getRegistrations().then(rs=>Promise.all(rs.map(r=>r.update()))).finally(()=>location.reload(true))}
- if(e.target.id==="resetData"&&confirm("Nollställa all lokal data?")){localStorage.removeItem(STORE);state=clone(defaults);save()}
+ if(e.target.id==="resetData"&&confirm("Nollställa all lokal data?")){localStorage.removeItem(STORE);localStorage.removeItem(DEVICE_PROFILE_KEY);state=clone(defaults);save();showProfileSetup()}
 });
 document.querySelector("#exerciseFilter").addEventListener("change",renderExerciseLibrary);
 document.querySelector("#durationFilter").addEventListener("change",renderExerciseLibrary);
@@ -718,7 +747,7 @@ document.querySelector("#journalPhoto").addEventListener("change",async e=>{if(!
 document.querySelector("#importData").addEventListener("change",async e=>{try{const j=JSON.parse(await e.target.files[0].text());state={...clone(defaults),...(j.data||j)};save();alert("Importerad.")}catch(err){alert("Filen kunde inte läsas.")}});
 document.querySelector("#journalDate").value=isoToday();document.querySelector("#taskDate").value=isoToday();document.querySelector("#lifeDate").value=isoToday();clearShift();seedFamilyTasks();
 if(localStorage.getItem("iceAppVersion")!==VERSION){localStorage.setItem("iceAppVersion",VERSION);document.querySelector("#updateNotice").style.display="block";setTimeout(()=>document.querySelector("#updateNotice").style.display="none",5000)}
-renderAll();checkReminders();setInterval(checkReminders,60000);if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
+renderAll();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();checkReminders();setInterval(checkReminders,60000);if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
 </script>
 </body>
 </html>

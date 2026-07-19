@@ -1,11 +1,9 @@
-ICE Field Manual – Version 3.3 Core Build 10
+ICE Field Manual 3.3 Core Build 12
 
-Build 10 introducerar smart veckoplanering:
-- Övningar sorteras automatiskt efter Ices aktuella ålder.
-- Rekommenderas nu, Kommer snart och Längre fram visas i tydlig ordning.
-- Dagens pass byggs utifrån ålder, arbetspass, belastning och nyligen tränade kategorier.
-- Övningar som ännu inte passar åldern visas låsta med öppningsvecka.
-- Varje övning visar progression baserad på faktiskt loggade pass.
-- Hela aktivitetsbiblioteket och befintliga filter finns kvar.
-
-Befintlig lokal data från tidigare versioner bevaras.
+Nyheter:
+- Profilval första gången appen öppnas på en telefon.
+- Vald profil sparas lokalt per enhet.
+- Snabbt profilbyte på HQ.
+- Familjeläge döljer avancerad planering, SAR och utvecklingsvyer.
+- Marcus behåller full åtkomst.
+- Befintlig lokal data och exportformat bevaras.
