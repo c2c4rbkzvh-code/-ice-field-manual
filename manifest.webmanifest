@@ -1,7 +1,7 @@
 {
-  "name": "ICE Field Manual 3.3 Build 9",
+  "name": "ICE Field Manual 3.3 Build 10",
   "short_name": "ICE",
-  "description": "ICE Field Manual – datadrivet HQ för vardag, hälsa, träning, familj och räddningshundsutveckling.",
+  "description": "ICE Field Manual – smart veckoplanering och datadrivet HQ för vardag, hälsa, träning, familj och räddningshundsutveckling.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

@@ -1,11 +1,11 @@
-ICE Field Manual – Version 3.3 Core Build 9
+ICE Field Manual – Version 3.3 Core Build 10
 
-Build 9 introducerar ICE-motorn:
-- ICE idag med automatisk brief utifrån uppgifter, historik, ålder och träningsbalans.
-- XP och nivå räknas från verkligt sparad aktivitet.
-- Färdighetsmotor för relation, inkallning, miljö, nosarbete, markering och återhämtning.
-- Journalposter påverkar automatiskt HQ, statistik, XP, färdigheter och livsbok.
-- Genomförda dagsuppdrag skapar en livsbokshändelse och ger progression.
-- Nästa SAR-steg visas som upplåsning utan att appen automatiskt godkänner färdigheter.
+Build 10 introducerar smart veckoplanering:
+- Övningar sorteras automatiskt efter Ices aktuella ålder.
+- Rekommenderas nu, Kommer snart och Längre fram visas i tydlig ordning.
+- Dagens pass byggs utifrån ålder, arbetspass, belastning och nyligen tränade kategorier.
+- Övningar som ännu inte passar åldern visas låsta med öppningsvecka.
+- Varje övning visar progression baserad på faktiskt loggade pass.
+- Hela aktivitetsbiblioteket och befintliga filter finns kvar.
 
-All analys sker lokalt i webbläsaren. Befintlig lokal data från tidigare versioner bevaras.
+Befintlig lokal data från tidigare versioner bevaras.
