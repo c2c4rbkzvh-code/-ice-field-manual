@@ -1,4 +1,4 @@
-const CACHE = "ice-field-manual-v3-3-build6";
+const CACHE = "ice-field-manual-v3-3-build7";
 const ASSETS = ["./","./index.html","./manifest.webmanifest","./ice-photo.jpg","./icon-180.png","./icon-192.png","./icon-512.png"];
 
 self.addEventListener("install", event => {

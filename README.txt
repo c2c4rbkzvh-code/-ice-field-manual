@@ -1,10 +1,9 @@
-ICE Field Manual – Version 3.3 Core Build 6
+ICE Field Manual PWA – Version 3.3 Core Build 7
 
-Nyheter:
-- Förbättrade profilkort med namn och roll på separata rader.
-- Ny dynamisk ”Idag med Ice”-vy som anpassas efter ålder.
-- Snabböversikt för ålder, fas, uppgifter och journalpass.
-- Startsidan heter nu HQ i bottennavigeringen.
-- Uppdaterad versionshantering, manifest och service worker.
-
-Data sparas lokalt i webbläsaren. Exportera regelbundet säkerhetskopia från Inställningar.
+Nytt i Build 7:
+- Personlig tidsanpassad hälsning i ICE HQ
+- Dagens lägesbild med genomförande, nästa uppgift, hälsa och veckorytm
+- Ålders- och historikanpassad dagsrekommendation
+- Senaste från Ice samlar livsbok och journal
+- Mission Control visar SAR-procent och nästa milstolpe
+- Uppdaterad PWA-cache och manifest
