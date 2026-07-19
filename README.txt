@@ -1,9 +1,11 @@
-ICE Field Manual PWA – Version 3.3 Core Build 7
+ICE Field Manual PWA – Version 3.3 Core Build 8
 
-Nytt i Build 7:
-- Personlig tidsanpassad hälsning i ICE HQ
-- Dagens lägesbild med genomförande, nästa uppgift, hälsa och veckorytm
-- Ålders- och historikanpassad dagsrekommendation
-- Senaste från Ice samlar livsbok och journal
-- Mission Control visar SAR-procent och nästa milstolpe
+Nytt i Build 8:
+- Datadrivna och klickbara statuskort i ICE HQ
+- Tydligare hälsoläge med senaste registrerade hälsohändelse
+- Nästa aktivitet visar både tid och uppgift
+- Mission Control har en visuell utvecklingsväg med Klar, Pågår och Låst
+- Livsboksflödet öppnas genom hela kortet och visar journal, bilder, hälsa och milstolpar
+- HQ-kort länkar direkt till rätt modul
+- Journal, familjeuppgifter, livsbok och SAR-progression uppdaterar HQ automatiskt
 - Uppdaterad PWA-cache och manifest

@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="ICE">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>ICE – Field Manual 3.3 Build 7</title>
+<title>ICE – Field Manual 3.3 Build 8</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -68,7 +68,15 @@ textarea{min-height:100px;resize:vertical}
 .recommendation-card{border-color:#3e6f58;background:linear-gradient(145deg,#173b2d,#10261f)}.recommendation-card h3{font-size:23px;margin:6px 0}.recommendation-action{display:flex;gap:10px;align-items:flex-start;margin-top:13px;padding:12px;border-radius:14px;background:rgba(255,255,255,.055)}.recommendation-action b{font-size:22px;line-height:1}
 .latest-feed .timeline-item:first-child{border-top:0}.feed-icon{width:34px;height:34px;border-radius:12px;background:#203f33;display:grid;place-items:center;font-size:18px}.feed-row{display:grid;grid-template-columns:34px 1fr;gap:11px;padding:13px 0;border-top:1px solid var(--line)}.feed-row:first-child{border-top:0}.feed-row small{color:var(--muted)}
 .sar-hq{border-color:#446955}.sar-hq-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.sar-percent{font-size:31px;font-weight:850;color:var(--gold)}
-@media(max-width:480px){.command-stats{grid-template-columns:repeat(3,1fr)}.command-stat{padding:10px 5px}.hq-welcome h2{font-size:25px}}
+
+.click-card{cursor:pointer;transition:transform .14s ease,border-color .14s ease,background .14s ease}.click-card:active{transform:scale(.985)}
+.command-stat{border:1px solid var(--line);background:#0a1a15;border-radius:16px;padding:13px 7px;min-height:86px;display:flex;flex-direction:column;justify-content:center}.command-stat .status-icon{font-size:17px;margin-bottom:4px}.command-stat b{font-size:19px}.command-stat small{line-height:1.25}
+.status-ok{color:#9de4b7}.status-watch{color:#ffd38a}.status-time{color:#d9e6df}
+.sar-roadmap{display:grid;gap:8px;margin:15px 0}.sar-roadmap-row{display:grid;grid-template-columns:30px 1fr auto;align-items:center;gap:10px;padding:11px 12px;border-radius:14px;background:#0a1a15;border:1px solid var(--line)}.sar-roadmap-row.done{border-color:#3e7155;background:#112b20}.sar-roadmap-row.current{border-color:#92752c;background:#292515}.sar-roadmap-row.locked{opacity:.55}.roadmap-mark{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:#193329;font-weight:850}.done .roadmap-mark{background:#2e6a49}.current .roadmap-mark{background:var(--gold);color:#172014}.roadmap-state{font-size:11px;color:var(--muted)}
+.feed-row{display:grid;grid-template-columns:44px 1fr auto;gap:11px;align-items:center;padding:13px 0;border-top:1px solid var(--line)}.feed-row:first-child{border-top:0}.feed-icon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:#0a1a15;border:1px solid var(--line);font-size:21px}.feed-row small{color:var(--muted)}.feed-chevron{color:var(--muted);font-size:22px}
+.health-detail{display:block;font-size:10px;color:var(--muted);margin-top:3px}.section-link{border:0;background:none;color:var(--muted);padding:0;font-size:13px}.section-link:after{content:'  ›'}
+@media(max-width:480px){.command-stats{grid-template-columns:repeat(3,1fr)}.command-stat{padding:10px 5px}.hq-welcome h2{font-size:25px}.command-stat b{font-size:17px}.sar-roadmap-row{grid-template-columns:28px 1fr auto;padding:10px}}
+
 </style>
 </head>
 <body>
@@ -76,7 +84,7 @@ textarea{min-height:100px;resize:vertical}
 <header>
 <img src="ice-photo.jpg" alt="Ice">
 <div class="hero">
-<span class="version">VERSION 3.3 · CORE BUILD 7</span>
+<span class="version">VERSION 3.3 · CORE BUILD 8</span>
 <h1>ICE</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -84,7 +92,7 @@ textarea{min-height:100px;resize:vertical}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Version 3.3 Build 7 är installerad.</div>
+<div id="updateNotice" class="notice">Version 3.3 Build 8 är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">ICE HQ</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -100,9 +108,9 @@ textarea{min-height:100px;resize:vertical}
     <small id="nextTaskText">Ingen nästa uppgift registrerad.</small>
   </div>
   <div class="command-stats">
-    <div class="command-stat"><b id="hqHealth">OK</b><small>hälsa</small></div>
-    <div class="command-stat"><b id="hqWeekPercent">0%</b><small>veckans rytm</small></div>
-    <div class="command-stat"><b id="hqNextTime">–</b><small>nästa tid</small></div>
+    <div class="command-stat click-card" data-goto="progress"><span class="status-icon">❤</span><b id="hqHealth">Allt bra</b><small id="hqHealthDetail">ingen avvikelse</small></div>
+    <div class="command-stat click-card" data-goto="progress"><span class="status-icon">↗</span><b id="hqWeekPercent">0%</b><small>veckans aktivitet</small></div>
+    <div class="command-stat click-card" data-goto="family"><span class="status-icon">◷</span><b id="hqNextTime">Flex</b><small id="hqNextLabel">nästa aktivitet</small></div>
   </div>
 </div>
 
@@ -110,16 +118,16 @@ textarea{min-height:100px;resize:vertical}
 <div class="section-title"><h2>Aktiv profil</h2><span>personligt läge</span></div>
 <div class="card"><div id="todayProfiles" class="profile-row"></div><div id="activeProfileNote" class="good profile-card-note"></div></div>
 <div class="section-title"><h2>Idag med Ice</h2><span id="ageStageLabel">åldersanpassat</span></div>
-<div class="card focus-card">
+<div class="card focus-card click-card" data-goto="sar">
 <div class="eyebrow">DAGENS FOKUS</div><div class="focus-title" id="ageFocusTitle">–</div><p id="ageFocusText">–</p>
 <div class="focus-list" id="ageFocusList"></div>
 </div>
 <div class="section-title"><h2>Snabböversikt</h2><span>det viktigaste just nu</span></div>
 <div class="today-overview">
-<div class="overview-card"><b id="overviewAge">–</b><small>ålder</small></div>
-<div class="overview-card"><b id="overviewPhase">–</b><small>utvecklingsfas</small></div>
-<div class="overview-card"><b id="overviewTasks">0</b><small>uppgifter kvar idag</small></div>
-<div class="overview-card"><b id="overviewJournal">0</b><small>loggade pass senaste 7 dagarna</small></div>
+<div class="overview-card click-card" data-open-settings="1"><b id="overviewAge">–</b><small>ålder</small></div>
+<div class="overview-card click-card" data-goto="progress"><b id="overviewPhase">–</b><small>utvecklingsfas</small></div>
+<div class="overview-card click-card" data-goto="family"><b id="overviewTasks">0</b><small>uppgifter kvar idag</small></div>
+<div class="overview-card click-card" data-goto="journal"><b id="overviewJournal">0</b><small>loggade pass senaste 7 dagarna</small></div>
 </div>
 <div class="section-title"><h2>ICE HQ</h2><span>snabbåtkomst</span></div>
 <div class="card">
@@ -137,7 +145,7 @@ textarea{min-height:100px;resize:vertical}
 
 
 <div class="section-title"><h2>Dagens rekommendation</h2><span>ålder + historik</span></div>
-<div class="card recommendation-card">
+<div class="card recommendation-card click-card" data-goto="sar">
   <div class="eyebrow">SMART FÖRSLAG</div>
   <h3 id="dailyRecommendTitle">Analyserar dagens behov…</h3>
   <p id="dailyRecommendText"></p>
@@ -169,11 +177,12 @@ textarea{min-height:100px;resize:vertical}
   <div class="sar-hq-head"><div><div class="eyebrow">EKIPAGETS UTVECKLING</div><h3 style="margin:6px 0" id="sarNextTitle">Nästa milstolpe</h3></div><div class="sar-percent" id="sarPercent">0%</div></div>
   <div class="progress-line"><i id="sarProgressBar" style="width:0%"></i></div>
   <p id="sarNextText"></p>
-  <button class="button secondary block" data-goto="sar">Öppna SAR-programmet</button>
+  <div id="sarRoadmap" class="sar-roadmap"></div>
+  <button class="button secondary block" data-goto="sar">Öppna hela SAR-programmet</button>
 </div>
 
 <div class="section-title"><h2>Senaste från Ice</h2><span>livsbok och journal</span></div>
-<div class="card latest-feed"><div id="latestIceTimeline"></div><button class="button secondary block" data-open-family="1" style="margin-top:12px">Öppna livsboken</button></div>
+<div class="card latest-feed click-card" data-open-family="1"><div id="latestIceTimeline"></div></div>
 <div class="section-title"><h2>Dagens schema</h2><span>dynamiskt</span></div>
 <div class="card">
 <div id="todayShiftSummary" class="item"></div>
@@ -299,7 +308,7 @@ textarea{min-height:100px;resize:vertical}
 <div class="card"><label>Födelsedatum</label><input type="date" id="birthDate"><label>Hämtningsdatum</label><input type="date" id="pickupDate"><button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button></div>
 <div class="card" style="margin-top:14px"><h3>Säkerhetskopia</h3><p>Exportera all data. Bilder gör filen större.</p><div class="row"><button class="button secondary" id="exportData">Exportera</button><button class="button secondary" id="importButton">Importera</button><input type="file" id="importData" accept="application/json" hidden></div></div>
 <div class="card" style="margin-top:14px"><h3>Appuppdatering</h3><button class="button secondary block" id="forceUpdate">Sök efter ny version</button></div>
-<div class="card" style="margin-top:14px"><h3>Om</h3><p>Version 3.3 Build 7. Levande ICE HQ med personlig hälsning, dagsprogression, nästa uppgift, åldersanpassad rekommendation, livsboksflöde och räddningshundsprogression. Aktivitetsbank och standardiserat kommandobibliotek finns kvar. Familjeprofiler, påminnelser och livsbok finns kvar. Planeringsmotorn och Smart Coach körs lokalt och använder inte extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
+<div class="card" style="margin-top:14px"><h3>Om</h3><p>Version 3.3 Build 8. Datadrivet ICE HQ med klickbara statuskort, tydlig hälsolägesbild, nästa aktivitet, levande livsboksflöde och en visuell utvecklingsväg i Mission Control. Journal, familjeuppgifter, hälsa och SAR-progression uppdaterar HQ automatiskt. Planeringsmotorn och Smart Coach körs lokalt och använder inte extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
 </section>
 </main>
 </div>
@@ -481,12 +490,12 @@ function renderToday(){
  const a=ageParts(),p=phase(),wl=workload(),c=coach(),m=mission(),today=isoToday(),done=state.completedMissions[today]?.tasks||[];
  const active=activeProfile(),g=timeGreeting();document.querySelector('#greetingTitle').textContent=`${g} ${active.name} 👋`;document.querySelector('#greetingSubtitle').textContent=`Ice är ${a.weeks} veckor och ${a.rest} dagar. Här är det viktigaste för dagen.`;document.querySelector('#hqTodayLabel').textContent=new Date().toLocaleDateString('sv-SE',{weekday:'long',day:'numeric',month:'short'});
  const allToday=state.familyTasks.filter(t=>t.date===today),doneToday=allToday.filter(t=>t.done).length,totalToday=allToday.length,missionDone=state.completedMissions[today]?.complete?1:0,totalUnits=totalToday+1,doneUnits=doneToday+missionDone,dayPct=Math.round(doneUnits/Math.max(1,totalUnits)*100);document.querySelector('#todayProgressText').textContent=`${doneUnits} av ${totalUnits} delar klara`;document.querySelector('#todayProgressBar').style.width=dayPct+'%';
- const upcoming=allToday.filter(t=>!t.done).sort((x,y)=>(x.time||'99:99').localeCompare(y.time||'99:99'))[0];document.querySelector('#nextTaskText').textContent=upcoming?`Nästa: ${upcoming.title}${upcoming.time?' · '+upcoming.time:''}`:(missionDone?'Dagens plan är genomförd.':'Nästa: genomför dagens träningsuppdrag.');document.querySelector('#hqNextTime').textContent=upcoming?.time||'Flex';
- const healthRecent=state.lifeEvents.filter(e=>['Hälsa','Veterinär','Vaccination'].includes(e.category)).sort((x,y)=>y.date.localeCompare(x.date))[0];document.querySelector('#hqHealth').textContent=healthRecent&&+healthRecent.rating<=2?'Följ upp':'OK';
+ const upcoming=allToday.filter(t=>!t.done).sort((x,y)=>(x.time||'99:99').localeCompare(y.time||'99:99'))[0];document.querySelector('#nextTaskText').textContent=upcoming?`Nästa: ${upcoming.title}${upcoming.time?' · '+upcoming.time:''}`:(missionDone?'Dagens plan är genomförd.':'Nästa: genomför dagens träningsuppdrag.');document.querySelector('#hqNextTime').textContent=upcoming?.time||'Flex';document.querySelector('#hqNextLabel').textContent=upcoming?upcoming.title:'dagens uppdrag';
+ const healthRecent=state.lifeEvents.filter(e=>['Hälsa','Veterinär','Vaccination'].includes(e.category)).sort((x,y)=>(y.date+(y.created||'')).localeCompare(x.date+(x.created||'')))[0];const healthEl=document.querySelector('#hqHealth'),healthDetail=document.querySelector('#hqHealthDetail');if(healthRecent&&+healthRecent.rating<=2){healthEl.textContent='Följ upp';healthEl.className='status-watch';healthDetail.textContent=healthRecent.title}else if(healthRecent){healthEl.textContent='Allt bra';healthEl.className='status-ok';healthDetail.textContent=`senast: ${healthRecent.title}`}else{healthEl.textContent='Ingen logg';healthEl.className='status-time';healthDetail.textContent='lägg till hälsostatus'};
  const weekEntries=recentJournal(7).length+state.lifeEvents.filter(e=>daysBetween(e.date,today)<=7&&daysBetween(e.date,today)>=0).length;const weekPct=Math.min(100,Math.round(weekEntries/7*100));document.querySelector('#hqWeekPercent').textContent=weekPct+'%';
  const rec=dailyRecommendation();document.querySelector('#dailyRecommendTitle').textContent=rec.title;document.querySelector('#dailyRecommendText').textContent=rec.text;document.querySelector('#dailyRecommendIcon').textContent=rec.icon;document.querySelector('#dailyRecommendAction').textContent=rec.action;document.querySelector('#dailyRecommendDose').textContent=rec.dose;
- const sarDone=sarSteps.filter(x=>state.sarCompleted[x[0]]).length,sarPct=Math.round(sarDone/sarSteps.length*100),nextSar=sarSteps.find(x=>!state.sarCompleted[x[0]]);document.querySelector('#sarPercent').textContent=sarPct+'%';document.querySelector('#sarProgressBar').style.width=sarPct+'%';document.querySelector('#sarNextTitle').textContent=nextSar?nextSar[1]:'Alla grundsteg genomförda';document.querySelector('#sarNextText').textContent=nextSar?nextSar[2]:'Fortsätt kvalitetssäkra momenten i varierade miljöer.';
- const feed=latestFeed();document.querySelector('#latestIceTimeline').innerHTML=feed.length?feed.map(x=>`<div class="feed-row"><span class="feed-icon">${x.icon}</span><div><strong>${escapeHtml(x.title)}</strong><div><small>${svDate(x.date)} · ${escapeHtml(x.meta)}</small></div></div></div>`).join(''):'<div class="empty">Här visas snart Ices bilder, milstolpar, hälsa och träningspass.</div>';
+ const sarDone=sarSteps.filter(x=>state.sarCompleted[x[0]]).length,sarPct=Math.round(sarDone/sarSteps.length*100),nextSar=sarSteps.find(x=>!state.sarCompleted[x[0]]);document.querySelector('#sarPercent').textContent=sarPct+'%';document.querySelector('#sarProgressBar').style.width=sarPct+'%';document.querySelector('#sarNextTitle').textContent=nextSar?nextSar[1]:'Alla grundsteg genomförda';document.querySelector('#sarNextText').textContent=nextSar?nextSar[2]:'Fortsätt kvalitetssäkra momenten i varierade miljöer.';document.querySelector('#sarRoadmap').innerHTML=sarSteps.slice(0,5).map((step,i)=>{const isDone=!!state.sarCompleted[step[0]],isCurrent=!isDone&&(i===0||state.sarCompleted[sarSteps[i-1][0]]),cls=isDone?'done':isCurrent?'current':'locked';return `<div class="sar-roadmap-row ${cls}"><span class="roadmap-mark">${isDone?'✓':i+1}</span><div><strong>${escapeHtml(step[1])}</strong><div class="task-meta">${escapeHtml(step[2])}</div></div><span class="roadmap-state">${isDone?'KLAR':isCurrent?'PÅGÅR':'LÅST'}</span></div>`}).join('');
+ const feed=latestFeed();document.querySelector('#latestIceTimeline').innerHTML=feed.length?feed.map(x=>`<div class="feed-row"><span class="feed-icon">${x.icon}</span><div><strong>${escapeHtml(x.title)}</strong><div><small>${svDate(x.date)} · ${escapeHtml(x.meta)}</small></div></div><span class="feed-chevron">›</span></div>`).join(''):'<div class="empty"><strong>Livsboken väntar på första minnet</strong><p>Logga ett träningspass, en vikt, en hälsokontroll eller en milstolpe. Då visas den automatiskt här.</p><span class="pill">Tryck för att öppna livsboken</span></div>';
 
  document.querySelector("#heroAge").textContent=`${a.weeks} veckor och ${a.rest} dagar · född ${svDate(state.birthDate)}`;
  const af=ageFocus();document.querySelector("#ageStageLabel").textContent=af.label;document.querySelector("#ageFocusTitle").textContent=af.title;document.querySelector("#ageFocusText").textContent=af.text;document.querySelector("#ageFocusList").innerHTML=af.items.map(x=>`<div>✓ ${escapeHtml(x)}</div>`).join("");
