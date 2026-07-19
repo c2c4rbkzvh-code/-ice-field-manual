@@ -1,10 +1,10 @@
-ICE Field Manual PWA – Version 3.3 Core Build 4
+ICE Field Manual – Version 3.3 Core Build 6
 
 Nyheter:
-- ICE HQ med dagens kvarvarande uppgifter, träningsminuter, aktiva dagar och snabbknappar.
-- Aktivitetsbank med sökning, kategori-, tids-, ålders- och favoritfilter.
-- Favoriter och slumpad aktivitetsrekommendation.
-- Kommandobibliotek med betydelse, handsignal, behörighet, träningssteg och sparad progression.
-- Ny data sparas lokalt och ingår i export/import.
+- Förbättrade profilkort med namn och roll på separata rader.
+- Ny dynamisk ”Idag med Ice”-vy som anpassas efter ålder.
+- Snabböversikt för ålder, fas, uppgifter och journalpass.
+- Startsidan heter nu HQ i bottennavigeringen.
+- Uppdaterad versionshantering, manifest och service worker.
 
-Publicering: ladda upp alla filer i ZIP-paketet till roten av GitHub Pages-repot.
+Data sparas lokalt i webbläsaren. Exportera regelbundet säkerhetskopia från Inställningar.

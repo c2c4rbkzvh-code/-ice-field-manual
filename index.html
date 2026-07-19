@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="ICE">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>ICE – Field Manual 3.3 Build 4</title>
+<title>ICE – Field Manual 3.3 Build 6</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -57,8 +57,9 @@ textarea{min-height:100px;resize:vertical}
 .tabs{position:fixed;z-index:20;left:0;right:0;bottom:0;background:rgba(6,16,13,.96);backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:7px 6px calc(7px + env(safe-area-inset-bottom));display:flex;justify-content:center}
 .tabs-inner{display:grid;grid-template-columns:repeat(7,1fr);max-width:780px;width:100%}.tab{border:0;background:none;color:var(--muted);padding:7px 1px;font-size:10px;font-weight:750}.tab b{display:block;font-size:21px;line-height:1.1;margin-bottom:3px}.tab.active{color:var(--gold)}
 .empty{text-align:center;color:var(--muted);padding:25px 8px}.notice{display:none;padding:11px 13px;border-radius:13px;background:#26371c;color:#dcf0d1;margin-bottom:12px}
-.profile-row{display:flex;gap:9px;overflow:auto;padding-bottom:4px}.profile{min-width:92px;border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:16px;padding:12px 9px;text-align:center}.profile.active{border-color:var(--gold);box-shadow:0 0 0 2px rgba(226,180,78,.18)}.profile b{display:block;font-size:22px}.badge{display:inline-block;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:800;background:#203f33;color:#dce5e0}.badge.driver{background:#4d3d16;color:#ffe2a1}.badge.family{background:#173a2b;color:#c9f1d7}.task-card{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}.task-card:first-child{border-top:0}.task-card input[type=checkbox]{width:23px;height:23px;accent-color:var(--gold)}.task-meta{font-size:12px;color:var(--muted);margin-top:4px}.icon-btn{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:11px;padding:7px 9px}.segmented{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.segmented button{border:1px solid var(--line);background:#0a1a15;color:var(--muted);border-radius:12px;padding:10px 5px}.segmented button.active{background:#294b3d;color:var(--text);border-color:#4a7965}.hidden{display:none!important}.timeline-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);margin-top:6px}.timeline-item{display:grid;grid-template-columns:14px 1fr;gap:9px;padding:12px 0;border-top:1px solid var(--line)}
+.profile-row{display:flex;gap:9px;overflow:auto;padding:2px 1px 6px;scroll-snap-type:x proximity}.profile{min-width:104px;border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:16px;padding:12px 8px;text-align:center;scroll-snap-align:start}.profile.active{border-color:var(--gold);box-shadow:0 0 0 2px rgba(226,180,78,.18)}.profile b{display:block;font-size:24px}.profile-name{display:block;font-weight:800;line-height:1.15;margin-top:6px;overflow-wrap:anywhere}.profile-role{display:block;color:var(--muted);font-size:11px;margin-top:4px}.badge{display:inline-block;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:800;background:#203f33;color:#dce5e0}.badge.driver{background:#4d3d16;color:#ffe2a1}.badge.family{background:#173a2b;color:#c9f1d7}.task-card{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}.task-card:first-child{border-top:0}.task-card input[type=checkbox]{width:23px;height:23px;accent-color:var(--gold)}.task-meta{font-size:12px;color:var(--muted);margin-top:4px}.icon-btn{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:11px;padding:7px 9px}.segmented{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.segmented button{border:1px solid var(--line);background:#0a1a15;color:var(--muted);border-radius:12px;padding:10px 5px}.segmented button.active{background:#294b3d;color:var(--text);border-color:#4a7965}.hidden{display:none!important}.timeline-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);margin-top:6px}.timeline-item{display:grid;grid-template-columns:14px 1fr;gap:9px;padding:12px 0;border-top:1px solid var(--line)}
 .quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.quick-action{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:16px;padding:12px 6px;text-align:center;font-weight:750}.quick-action b{display:block;font-size:23px;margin-bottom:5px}.filter-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.activity-card{position:relative}.favorite{position:absolute;right:12px;top:12px;border:0;background:transparent;color:var(--muted);font-size:24px}.favorite.on{color:var(--gold)}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-size:11px;color:var(--muted);margin:3px 3px 0 0}.command-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.level-select{width:auto;min-width:112px;padding:8px}.hq-status{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}.hq-status strong{display:block;font-size:22px}.hq-status small{color:var(--muted)}
+.today-overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.overview-card{background:#0a1a15;border:1px solid var(--line);border-radius:16px;padding:13px}.overview-card b{display:block;font-size:20px;margin-bottom:4px}.overview-card small{color:var(--muted);line-height:1.35}.focus-card{border-color:#705c29;background:linear-gradient(145deg,#2f2917,#13251c)}.focus-card .focus-title{font-size:24px;font-weight:850;margin:5px 0}.focus-list{display:grid;gap:8px;margin-top:13px}.focus-list div{background:rgba(255,255,255,.055);border-radius:12px;padding:10px 12px;color:#e4ece7}.profile-card-note{margin-top:14px}
 @media(max-width:480px){.quick-grid{grid-template-columns:repeat(4,1fr)}.quick-action{font-size:11px;padding:10px 3px}.filter-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.two{grid-template-columns:1fr 1fr}.env-grid{grid-template-columns:1fr 1fr}.card{padding:16px}.tab{font-size:9px}.tab b{font-size:20px}}
 </style>
@@ -68,7 +69,7 @@ textarea{min-height:100px;resize:vertical}
 <header>
 <img src="ice-photo.jpg" alt="Ice">
 <div class="hero">
-<span class="version">VERSION 3.3 · CORE BUILD 4</span>
+<span class="version">VERSION 3.3 · CORE BUILD 6</span>
 <h1>ICE</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -76,10 +77,22 @@ textarea{min-height:100px;resize:vertical}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Version 3.3 Build 4 är installerad.</div>
+<div id="updateNotice" class="notice">Version 3.3 Build 6 är installerad.</div>
 
-<div class="section-title"><h2>Vem använder appen?</h2><span>personligt läge</span></div>
-<div class="card"><div id="todayProfiles" class="profile-row"></div><div id="activeProfileNote" class="good"></div></div>
+<div class="section-title"><h2>Aktiv profil</h2><span>personligt läge</span></div>
+<div class="card"><div id="todayProfiles" class="profile-row"></div><div id="activeProfileNote" class="good profile-card-note"></div></div>
+<div class="section-title"><h2>Idag med Ice</h2><span id="ageStageLabel">åldersanpassat</span></div>
+<div class="card focus-card">
+<div class="eyebrow">DAGENS FOKUS</div><div class="focus-title" id="ageFocusTitle">–</div><p id="ageFocusText">–</p>
+<div class="focus-list" id="ageFocusList"></div>
+</div>
+<div class="section-title"><h2>Snabböversikt</h2><span>det viktigaste just nu</span></div>
+<div class="today-overview">
+<div class="overview-card"><b id="overviewAge">–</b><small>ålder</small></div>
+<div class="overview-card"><b id="overviewPhase">–</b><small>utvecklingsfas</small></div>
+<div class="overview-card"><b id="overviewTasks">0</b><small>uppgifter kvar idag</small></div>
+<div class="overview-card"><b id="overviewJournal">0</b><small>loggade pass senaste 7 dagarna</small></div>
+</div>
 <div class="section-title"><h2>ICE HQ</h2><span>snabbåtkomst</span></div>
 <div class="card">
 <div class="hq-status"><div><strong id="hqTasks">0</strong><small>uppgifter kvar</small></div><div><strong id="hqMinutes">0</strong><small>minuter / 7 dagar</small></div><div><strong id="hqStreak">0</strong><small>aktiva dagar</small></div></div>
@@ -239,13 +252,13 @@ textarea{min-height:100px;resize:vertical}
 <div class="card"><label>Födelsedatum</label><input type="date" id="birthDate"><label>Hämtningsdatum</label><input type="date" id="pickupDate"><button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button></div>
 <div class="card" style="margin-top:14px"><h3>Säkerhetskopia</h3><p>Exportera all data. Bilder gör filen större.</p><div class="row"><button class="button secondary" id="exportData">Exportera</button><button class="button secondary" id="importButton">Importera</button><input type="file" id="importData" accept="application/json" hidden></div></div>
 <div class="card" style="margin-top:14px"><h3>Appuppdatering</h3><button class="button secondary block" id="forceUpdate">Sök efter ny version</button></div>
-<div class="card" style="margin-top:14px"><h3>Om</h3><p>Version 3.3 Build 4. ICE HQ, aktivitetsbank med filter och favoriter samt ett standardiserat kommandobibliotek. Familjeprofiler, påminnelser och livsbok finns kvar. Planeringsmotorn och Smart Coach körs lokalt och använder inte extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
+<div class="card" style="margin-top:14px"><h3>Om</h3><p>Version 3.3 Build 6. Förbättrat ICE HQ, renare profilkort, dynamiskt åldersanpassat fokus och tydligare snabböversikt. Aktivitetsbank och standardiserat kommandobibliotek finns kvar. Familjeprofiler, påminnelser och livsbok finns kvar. Planeringsmotorn och Smart Coach körs lokalt och använder inte extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
 </section>
 </main>
 </div>
 
 <nav class="tabs"><div class="tabs-inner">
-<button class="tab active" data-screen="today"><b>✓</b>Idag</button>
+<button class="tab active" data-screen="today"><b>⌂</b>HQ</button>
 <button class="tab" data-screen="plan"><b>▦</b>Plan</button>
 <button class="tab" data-screen="journal"><b>✎</b>Journal</button>
 <button class="tab" data-screen="environment"><b>⌖</b>Miljö</button>
@@ -255,7 +268,7 @@ textarea{min-height:100px;resize:vertical}
 </div></nav>
 
 <script>
-const VERSION="3.3.4", STORE="iceFieldManualV3";
+const VERSION="3.3.6", STORE="iceFieldManualV3";
 const defaults={
  birthDate:"2026-06-04",pickupDate:"2026-07-30",currentWorkMode:"ledig",
  shifts:[{date:"2026-08-25",type:"dag",start:"08:00",end:"17:30",note:""},{date:"2026-08-26",type:"natt",start:"17:30",end:"08:00",note:""},{date:"2026-08-31",type:"natt",start:"17:30",end:"08:00",note:""}],
@@ -391,10 +404,21 @@ function renderCommandLibrary(){
  document.querySelector("#commandLibrary").innerHTML=list.map(c=>`<div class="item"><div class="command-head"><div><strong>${c.name}</strong><small>${c.cat} · ${c.who}</small></div><select class="level-select" data-commandlevel="${c.id}"><option value="0" ${(+progress[c.id]||0)===0?'selected':''}>Ej påbörjad</option><option value="1" ${+progress[c.id]===1?'selected':''}>Introducerad</option><option value="2" ${+progress[c.id]===2?'selected':''}>Under träning</option><option value="3" ${+progress[c.id]===3?'selected':''}>Stabil</option></select></div><p><b>Betydelse:</b> ${c.meaning}</p><p><b>Handsignal:</b> ${c.signal}</p><details><summary>Så tränar ni</summary><ol>${c.steps.map(x=>`<li>${x}</li>`).join('')}</ol><p><b>Kopplade aktiviteter:</b> ${c.activities.join(', ')}</p></details></div>`).join("");
 }
 
+function ageFocus(){
+ const w=ageParts().weeks;
+ if(w<8)return {label:"6–8 veckor",title:"Trygg start",text:"Korta, positiva stunder där relation, sömn och trygghet går före prestation.",items:["Namnrespons och följsamhet i hemmet","Mjuk miljöintroduktion utan press","Lek, vila och hantering i mycket små doser"]};
+ if(w<12)return {label:"8–12 veckor",title:"Socialisering & lek",text:"Bygg nyfikenhet, trygghet och stark belöningskänsla. Avsluta alltid medan Ice vill fortsätta.",items:["Nya underlag, ljud och platser","Inkallningslek och kontakt","Kroppshantering, vila och återhämtning"]};
+ if(w<26)return {label:"3–6 månader",title:"Kontakt & grunder",text:"Skapa enkla vanor och tydliga regler utan att göra passen långa eller monotona.",items:["Följsamhet och frivillig kontakt","Inkallning och loss i lek","Enkla nosövningar och miljöbanor"]};
+ if(w<52)return {label:"6–12 månader",title:"Sökgrund & uthållighet",text:"Utveckla arbetslust och självförtroende, men anpassa belastningen till unghundens kropp och mognad.",items:["Figurantintresse och enkla sök","Markeringens första byggstenar","Balans mellan arbete, lek och vila"]};
+ return {label:"Vuxen hund",title:"Mission Control",text:"Knyt ihop vardagslydnad, sökarbete, markering och fysisk hållbarhet mot ekipagets långsiktiga mål.",items:["Systematiska sökövningar","Stabil markering i varierad miljö","Dokumentation, tester och ekipageutveckling"]};
+}
+
 function renderToday(){
  const a=ageParts(),p=phase(),wl=workload(),c=coach(),m=mission(),today=isoToday(),done=state.completedMissions[today]?.tasks||[];
  document.querySelector("#heroAge").textContent=`${a.weeks} veckor och ${a.rest} dagar · född ${svDate(state.birthDate)}`;
- const todays=state.familyTasks.filter(t=>t.date===today&&!t.done);document.querySelector("#hqTasks").textContent=todays.length;document.querySelector("#hqMinutes").textContent=recentJournal(7).reduce((n,j)=>n+(+j.minutes||0),0);const activeDays=new Set(recentJournal(14).map(j=>j.date));let streak=0,d=new Date();while(activeDays.has(d.toISOString().slice(0,10))){streak++;d.setDate(d.getDate()-1)}document.querySelector("#hqStreak").textContent=streak;
+ const af=ageFocus();document.querySelector("#ageStageLabel").textContent=af.label;document.querySelector("#ageFocusTitle").textContent=af.title;document.querySelector("#ageFocusText").textContent=af.text;document.querySelector("#ageFocusList").innerHTML=af.items.map(x=>`<div>✓ ${escapeHtml(x)}</div>`).join("");
+ document.querySelector("#overviewAge").textContent=`${a.weeks} v ${a.rest} d`;document.querySelector("#overviewPhase").textContent=p[0];document.querySelector("#overviewJournal").textContent=recentJournal(7).length;
+ const todays=state.familyTasks.filter(t=>t.date===today&&!t.done);document.querySelector("#hqTasks").textContent=todays.length;document.querySelector("#overviewTasks").textContent=todays.length;document.querySelector("#hqMinutes").textContent=recentJournal(7).reduce((n,j)=>n+(+j.minutes||0),0);const activeDays=new Set(recentJournal(14).map(j=>j.date));let streak=0,d=new Date();while(activeDays.has(d.toISOString().slice(0,10))){streak++;d.setDate(d.getDate()-1)}document.querySelector("#hqStreak").textContent=streak;
  document.querySelector("#phaseMetric").textContent=p[0];document.querySelector("#phaseText").textContent=p[1];
  document.querySelector("#loadMetric").textContent=wl.level;document.querySelector("#loadText").textContent=wl.text;
  document.querySelector("#coachScore").textContent=c.score;document.querySelector("#coachTitle").textContent=c.title;document.querySelector("#coachText").textContent=c.text;
@@ -438,7 +462,7 @@ function renderProgress(){
 function profileById(id){return state.profiles.find(p=>p.id===id)||state.profiles[0]}
 function activeProfile(){return profileById(state.activeProfile)}
 function profileButtons(target){
- target.innerHTML=state.profiles.map(p=>`<button class="profile ${p.id===state.activeProfile?'active':''}" data-profile="${p.id}"><b>${p.icon}</b>${escapeHtml(p.name)}<small>${p.role==='driver'?'Förare':'Familj'}</small></button>`).join('');
+ target.innerHTML=state.profiles.map(p=>`<button class="profile ${p.id===state.activeProfile?'active':''}" data-profile="${p.id}"><b>${p.icon}</b><span class="profile-name">${escapeHtml(p.name)}</span><span class="profile-role">${p.role==='driver'?'Förare':'Familj'}</span></button>`).join('');
 }
 function accessBadge(a){return a==='driver'?'<span class="badge driver">Endast Marcus</span>':a==='instructor'?'<span class="badge">Instruktör</span>':a==='all'?'<span class="badge family">Alla</span>':'<span class="badge family">Familjen</span>'}
 function canProfileDoTask(t,p){if(t.access==='driver')return p.id==='marcus';if(t.access==='instructor')return false;return t.assignee==='all'||t.assignee===p.id||p.id==='marcus'}
