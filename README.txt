@@ -1,11 +1,11 @@
-ICE Field Manual PWA – Version 3.3 Core Build 8
+ICE Field Manual – Version 3.3 Core Build 9
 
-Nytt i Build 8:
-- Datadrivna och klickbara statuskort i ICE HQ
-- Tydligare hälsoläge med senaste registrerade hälsohändelse
-- Nästa aktivitet visar både tid och uppgift
-- Mission Control har en visuell utvecklingsväg med Klar, Pågår och Låst
-- Livsboksflödet öppnas genom hela kortet och visar journal, bilder, hälsa och milstolpar
-- HQ-kort länkar direkt till rätt modul
-- Journal, familjeuppgifter, livsbok och SAR-progression uppdaterar HQ automatiskt
-- Uppdaterad PWA-cache och manifest
+Build 9 introducerar ICE-motorn:
+- ICE idag med automatisk brief utifrån uppgifter, historik, ålder och träningsbalans.
+- XP och nivå räknas från verkligt sparad aktivitet.
+- Färdighetsmotor för relation, inkallning, miljö, nosarbete, markering och återhämtning.
+- Journalposter påverkar automatiskt HQ, statistik, XP, färdigheter och livsbok.
+- Genomförda dagsuppdrag skapar en livsbokshändelse och ger progression.
+- Nästa SAR-steg visas som upplåsning utan att appen automatiskt godkänner färdigheter.
+
+All analys sker lokalt i webbläsaren. Befintlig lokal data från tidigare versioner bevaras.
