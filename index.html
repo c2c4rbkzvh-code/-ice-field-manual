@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="ICE">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>ICE – Field Manual 3.3 Build 15</title>
+<title>ICE – Field Manual 3.3 Build 16</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -97,7 +97,7 @@ textarea{min-height:100px;resize:vertical}
 
 .equipment-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.equipment-summary div{background:#0a1a15;border:1px solid var(--line);border-radius:15px;padding:12px;text-align:center}.equipment-summary b{display:block;font-size:22px}.equipment-summary small{color:var(--muted)}.equipment-item{border-top:1px solid var(--line);padding:15px 0}.equipment-item:first-child{border-top:0}.equipment-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.equipment-title{font-size:18px;font-weight:850}.equipment-meta{color:var(--muted);font-size:12px;margin-top:5px;line-height:1.4}.equipment-status{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:11px;padding:8px;min-width:105px}.equipment-recommended{border-left:3px solid var(--gold);padding-left:12px}.equipment-phase{display:inline-block;color:#ffe2a1;background:#4d3d16;border-radius:999px;padding:5px 8px;font-size:11px;font-weight:800;margin-top:8px}.equipment-note{background:#173126;border-radius:12px;padding:10px 12px;margin-top:10px;color:#dbe7e0;line-height:1.4}.equipment-filter{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}@media(max-width:460px){.equipment-summary{grid-template-columns:1fr}.equipment-filter{grid-template-columns:1fr}}
 
-/* Build 15 · Visual Upgrade */
+/* Build 16 · Visual Upgrade */
 header{min-height:310px;background:#030a08}
 header img{filter:brightness(.72) saturate(.88);object-position:center}
 header:after{background:linear-gradient(90deg,rgba(3,10,8,.92) 0%,rgba(3,10,8,.58) 48%,rgba(3,10,8,.08) 100%),linear-gradient(180deg,rgba(3,8,6,.04),#06100d 98%)}
@@ -109,15 +109,33 @@ header:after{background:linear-gradient(90deg,rgba(3,10,8,.92) 0%,rgba(3,10,8,.5
 .start-today{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:9px;box-shadow:0 10px 26px rgba(226,180,78,.16)}
 .start-today b{font-size:18px}.focus-card{overflow:hidden;position:relative}.focus-card:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-65px;top:-80px;background:rgba(226,180,78,.08);pointer-events:none}
 @media(max-width:420px){.hero-profile span{display:none}.hero-profile{padding-right:8px}.hero{padding-left:20px}.hero h1{font-size:40px}}
+
+/* Build 16 · Global ICE navigation */
+.app{padding-top:calc(62px + env(safe-area-inset-top));}
+.ice-global{position:fixed;z-index:60;left:0;right:0;top:0;height:calc(58px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 14px 0;background:rgba(4,14,11,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.ice-global-inner{max-width:780px;width:100%;display:flex;align-items:center;gap:10px}
+.ice-home{border:0;background:transparent;color:var(--text);font-size:25px;font-weight:950;letter-spacing:.04em;padding:8px 4px;min-width:62px;text-align:left}.ice-home small{display:block;color:var(--gold);font-size:8px;letter-spacing:.13em;margin-top:-3px}
+.ice-current{min-width:0;flex:1;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:1px solid var(--line);padding-left:11px}
+.ice-current strong{display:block;color:var(--text);font-size:14px;margin-top:2px}
+.ice-menu-btn,.ice-profile-btn{width:42px;height:42px;border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:50%;font-size:20px;display:grid;place-items:center}.ice-profile-btn{font-size:15px;font-weight:850;color:var(--gold)}
+.ice-drawer{position:fixed;z-index:80;inset:0;background:rgba(1,8,6,.72);backdrop-filter:blur(8px);display:none;align-items:flex-start;justify-content:center;padding:calc(72px + env(safe-area-inset-top)) 14px 20px}.ice-drawer.open{display:flex}.ice-drawer-card{width:min(540px,100%);background:linear-gradient(180deg,#143126,#081713);border:1px solid #3a6553;border-radius:24px;padding:18px;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.ice-drawer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.ice-drawer-head h2{margin:0;font-size:29px}.ice-close{border:0;background:#0a1a15;color:var(--text);width:40px;height:40px;border-radius:50%;font-size:22px}
+.ice-nav-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.ice-nav-item{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:16px;padding:13px 6px;text-align:center;font-weight:800}.ice-nav-item b{display:block;font-size:23px;margin-bottom:5px}.ice-nav-item.primary{background:linear-gradient(145deg,#493b18,#25351f);border-color:#7b652d}.ice-nav-note{color:var(--muted);font-size:12px;margin:13px 2px 0;line-height:1.4}
+.screen-back{display:flex;align-items:center;gap:8px;border:0;background:transparent;color:var(--gold);font-weight:800;padding:2px 0 10px;font-size:14px}
+.tabs-inner{grid-template-columns:repeat(6,1fr)}
+@media(max-width:420px){.ice-current{display:none}.ice-nav-grid{grid-template-columns:repeat(2,1fr)}.tab{font-size:9px}.tab b{font-size:19px}}
+
 </style>
 </head>
 <body>
+<div class="ice-global"><div class="ice-global-inner"><button class="ice-home" id="iceHome">ICE<small>FIELD MANUAL</small></button><div class="ice-current"><span>Aktuell vy</span><strong id="iceCurrentView">ICE idag</strong></div><button class="ice-menu-btn" id="iceMenuButton" aria-label="Öppna ICE">☰</button><button class="ice-profile-btn" id="iceTopProfile" data-change-device-profile="1" aria-label="Byt profil">MK</button></div></div>
+<div class="ice-drawer" id="iceDrawer"><div class="ice-drawer-card"><div class="ice-drawer-head"><div><div class="eyebrow">ALLT VIA ICE</div><h2>ICE</h2></div><button class="ice-close" id="iceDrawerClose">×</button></div><div class="ice-nav-grid"><button class="ice-nav-item primary" data-goto="today"><b>⌂</b>Översikt</button><button class="ice-nav-item" id="iceStartPass"><b>▶</b>Dagens pass</button><button class="ice-nav-item" data-goto="journal"><b>✎</b>Logga</button><button class="ice-nav-item" data-goto="equipment"><b>🎒</b>Utrustning</button><button class="ice-nav-item" data-goto="sar"><b>◎</b>SAR</button><button class="ice-nav-item" data-goto="family"><b>👥</b>Familj</button><button class="ice-nav-item" data-goto="environment"><b>⌖</b>Miljö</button><button class="ice-nav-item" data-goto="progress"><b>↗</b>Utveckling</button><button class="ice-nav-item" data-open-settings="1"><b>⚙</b>Inställningar</button></div><p class="ice-nav-note">ICE ligger alltid högst upp. Tryck på namnet för översikten eller öppna menyn för att gå direkt till rätt del.</p></div></div>
 <div class="app">
 <header>
 <img src="ice-hero-dark.jpg" alt="Ice i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">VERSION 3.3 · CORE BUILD 15</span>
+<span class="version">VERSION 3.3 · CORE BUILD 16</span>
 <h1>ICE</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -125,7 +143,7 @@ header:after{background:linear-gradient(90deg,rgba(3,10,8,.92) 0%,rgba(3,10,8,.5
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Version 3.3 Build 15 är installerad.</div>
+<div id="updateNotice" class="notice">Version 3.3 Build 16 är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">ICE HQ</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -324,7 +342,7 @@ header:after{background:linear-gradient(90deg,rgba(3,10,8,.92) 0%,rgba(3,10,8,.5
 
 
 
-<section id="equipment" class="screen">
+<section id="equipment" class="screen"><button class="screen-back" data-back="1">‹ Tillbaka</button>
 <div class="section-title"><h2>Utrustning</h2><span>från valp till SAR</span></div>
 <div class="card">
 <div class="eyebrow">ICE UTRUSTNINGSCENTRAL</div><h3 style="font-size:25px;margin:7px 0">Rätt utrustning vid rätt tid</h3><p>Planera inköp efter Ice ålder och utbildningsnivå. Status sparas på enheten och följer med i backupen.</p>
@@ -378,7 +396,7 @@ header:after{background:linear-gradient(90deg,rgba(3,10,8,.92) 0%,rgba(3,10,8,.5
 <div class="card"><label>Födelsedatum</label><input type="date" id="birthDate"><label>Hämtningsdatum</label><input type="date" id="pickupDate"><button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button></div>
 <div class="card" style="margin-top:14px"><h3>Säkerhetskopia</h3><p>Exportera all data. Bilder gör filen större.</p><div class="row"><button class="button secondary" id="exportData">Exportera</button><button class="button secondary" id="importButton">Importera</button><input type="file" id="importData" accept="application/json" hidden></div></div>
 <div class="card" style="margin-top:14px"><h3>Appuppdatering</h3><button class="button secondary block" id="forceUpdate">Sök efter ny version</button></div>
-<div class="card" style="margin-top:14px"><h3>Om</h3><p>Version 3.3 Build 11. Träningspass-läget guidar steg för steg och ICE-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och ICE idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
+<div class="card" style="margin-top:14px"><h3>Om</h3><p>Version 3.3 Build 16. Träningspass-läget guidar steg för steg och ICE-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och ICE idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
 </section>
 </main>
 </div>
@@ -386,17 +404,16 @@ header:after{background:linear-gradient(90deg,rgba(3,10,8,.92) 0%,rgba(3,10,8,.5
 <div id="profileSetup" class="profile-modal hidden" role="dialog" aria-modal="true" aria-labelledby="profileSetupTitle"><div class="profile-modal-card"><div class="eyebrow">ENHETSPROFIL</div><h2 id="profileSetupTitle">Vem använder den här telefonen?</h2><p>Välj en gång. ICE kommer sedan ihåg profilen på just den här enheten och öppnar direkt i rätt läge.</p><div id="deviceProfilePicker" class="profile-picker"></div></div></div>
 <div id="trainingSession" class="session-overlay" aria-hidden="true"><div class="session-shell"><div class="session-top"><div><div class="eyebrow">ICE TRÄNINGSPASS</div><strong id="sessionHeader">Dagens pass</strong></div><button class="session-close" id="closeSession" aria-label="Stäng">×</button></div><div id="sessionContent"></div></div></div>
 <nav class="tabs"><div class="tabs-inner">
-<button class="tab active" data-screen="today"><b>⌂</b>HQ</button>
+<button class="tab active" data-screen="today"><b>ICE</b>Översikt</button>
 <button class="tab driver-only" data-screen="plan"><b>▦</b>Plan</button>
 <button class="tab" data-screen="journal"><b>✎</b>Journal</button>
-<button class="tab" data-screen="environment"><b>⌖</b>Miljö</button>
+<button class="tab" data-screen="equipment"><b>🎒</b>Utrustning</button>
 <button class="tab driver-only" data-screen="sar"><b>◎</b>SAR</button>
-<button class="tab driver-only" data-screen="progress"><b>↗</b>Utveckling</button>
 <button class="tab" data-screen="family"><b>⌂</b>Familj</button>
 </div></nav>
 
 <script>
-const VERSION="3.3.12", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
+const VERSION="3.3.16", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
 const defaults={
  birthDate:"2026-06-04",pickupDate:"2026-07-30",currentWorkMode:"ledig",
  shifts:[{date:"2026-08-25",type:"dag",start:"08:00",end:"17:30",note:""},{date:"2026-08-26",type:"natt",start:"17:30",end:"08:00",note:""},{date:"2026-08-31",type:"natt",start:"17:30",end:"08:00",note:""}],
@@ -734,11 +751,33 @@ function renderEquipment(){
  document.querySelector('#equipmentOwned').textContent=owned;document.querySelector('#equipmentPlanned').textContent=planned;document.querySelector('#equipmentBudget').textContent=budget.toLocaleString('sv-SE')+' kr';
 }
 function refreshLiveGreeting(){if(document.querySelector('#greetingTitle'))renderToday()}
-function renderAll(){renderToday();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderWeeklyTraining();renderExerciseLibrary();renderProgress();renderSettings();renderFamily();renderEquipment()}
+function renderAll(){updateIceTopProfile();renderToday();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderWeeklyTraining();renderExerciseLibrary();renderProgress();renderSettings();renderFamily();renderEquipment()}
 function defaultsForShift(t){return{ledig:["",""],dag:["08:00","17:30"],natt:["17:30","08:00"],dygn:["08:00","08:00"],annat:["",""]}[t]||["",""]}
 function clearShift(){document.querySelector("#shiftEditIndex").value="";document.querySelector("#shiftDate").value=isoToday();document.querySelector("#shiftType").value="dag";const p=defaultsForShift("dag");document.querySelector("#shiftStart").value=p[0];document.querySelector("#shiftEnd").value=p[1];document.querySelector("#shiftNote").value="";document.querySelector("#cancelShiftEdit").style.display="none";document.querySelector("#saveShift").textContent="Spara pass"}
 function editShift(i){const s=state.shifts[i];document.querySelector("#shiftEditIndex").value=i;document.querySelector("#shiftDate").value=s.date;document.querySelector("#shiftType").value=s.type;document.querySelector("#shiftStart").value=s.start||"";document.querySelector("#shiftEnd").value=s.end||"";document.querySelector("#shiftNote").value=s.note||"";document.querySelector("#cancelShiftEdit").style.display="inline-block";document.querySelector("#saveShift").textContent="Spara ändring"}
 async function compressImage(file){return new Promise((resolve,reject)=>{const img=new Image(),r=new FileReader();r.onload=e=>img.src=e.target.result;img.onload=()=>{const max=900,scale=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement("canvas");c.width=img.width*scale;c.height=img.height*scale;c.getContext("2d").drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL("image/jpeg",.7))};r.onerror=reject;r.readAsDataURL(file)})}
+
+const screenNames={today:'ICE idag',plan:'Plan',journal:'Journal',environment:'Miljö',sar:'SAR-program',progress:'Utveckling',equipment:'Utrustning',family:'Familj',settings:'Inställningar'};
+let screenHistory=['today'];
+function activeScreenId(){return document.querySelector('.screen.active')?.id||'today'}
+function openScreen(id,push=true){
+ const target=document.getElementById(id);if(!target)return;
+ const prev=activeScreenId();
+ document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));
+ document.querySelector(`[data-screen="${id}"]`)?.classList.add('active');target.classList.add('active');
+ if(push&&prev!==id)screenHistory.push(id);
+ document.querySelector('#iceCurrentView').textContent=screenNames[id]||'ICE';
+ document.querySelector('#iceDrawer').classList.remove('open');scrollTo(0,0);
+}
+function goBackScreen(){if(screenHistory.length>1){screenHistory.pop();openScreen(screenHistory[screenHistory.length-1],false)}else openScreen('today',false)}
+function updateIceTopProfile(){const p=state.profiles.find(x=>x.id===state.activeProfile)||state.profiles[0];const initials=p.name.split(/[- ]/).map(x=>x[0]).join('').slice(0,2).toUpperCase();document.querySelector('#iceTopProfile').textContent=initials}
+document.querySelector('#iceHome').addEventListener('click',()=>openScreen('today'));
+document.querySelector('#iceMenuButton').addEventListener('click',()=>document.querySelector('#iceDrawer').classList.add('open'));
+document.querySelector('#iceDrawerClose').addEventListener('click',()=>document.querySelector('#iceDrawer').classList.remove('open'));
+document.querySelector('#iceDrawer').addEventListener('click',e=>{if(e.target.id==='iceDrawer')e.currentTarget.classList.remove('open')});
+document.querySelector('#iceStartPass').addEventListener('click',()=>{document.querySelector('#iceDrawer').classList.remove('open');document.querySelector('#startTrainingFromHQ')?.click()});
+let edgeStart=null;document.addEventListener('touchstart',e=>{const t=e.touches[0];if(t.clientX<28)edgeStart={x:t.clientX,y:t.clientY}}, {passive:true});document.addEventListener('touchend',e=>{if(!edgeStart)return;const t=e.changedTouches[0],dx=t.clientX-edgeStart.x,dy=Math.abs(t.clientY-edgeStart.y);edgeStart=null;if(dx>75&&dy<70&&activeScreenId()!=='today')goBackScreen()},{passive:true});
+
 document.addEventListener("click",async e=>{
  if(e.target.id==='startTrainingSession'||e.target.closest('#startTrainingFromHQ')){openTrainingSession();return}
  if(e.target.id==='closeSession'){closeTrainingSession();return}
@@ -747,7 +786,7 @@ document.addEventListener("click",async e=>{
  if(e.target.id==='skipSessionStep'){completeTrainingStep(true);return}
  if(e.target.id==='finishSession'){closeTrainingSession();state.activeTrainingSession=null;localStorage.setItem(STORE,JSON.stringify(state));renderAll();document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));document.querySelector('[data-screen="today"]').classList.add('active');document.querySelector('#today').classList.add('active');scrollTo(0,0);return}
  const tab=e.target.closest(".tab");if(tab){document.querySelectorAll(".tab,.screen").forEach(x=>x.classList.remove("active"));tab.classList.add("active");document.querySelector("#"+tab.dataset.screen).classList.add("active");scrollTo(0,0)}
- const go=e.target.closest("[data-goto]");if(go){document.querySelectorAll(".tab,.screen").forEach(x=>x.classList.remove("active"));document.querySelector(`[data-screen="${go.dataset.goto}"]`)?.classList.add("active");document.querySelector(`#${go.dataset.goto}`)?.classList.add("active");scrollTo(0,0)}
+ const go=e.target.closest("[data-goto]");if(go){openScreen(go.dataset.goto)} if(e.target.closest("[data-back]")){goBackScreen();return}
  if(e.target.dataset.equipmentStatus){state.equipmentStatus=state.equipmentStatus||{};state.equipmentStatus[e.target.dataset.equipmentStatus]=e.target.value;save();return}
  if(e.target.dataset.favorite){state.favoriteExercises=state.favoriteExercises||[];const id=e.target.dataset.favorite;state.favoriteExercises=state.favoriteExercises.includes(id)?state.favoriteExercises.filter(x=>x!==id):[...state.favoriteExercises,id];save()}
  if(e.target.id==="randomActivity"){const weeks=ageParts().weeks,pool=exerciseLibrary.filter(x=>weeks>=x.minWeeks&&weeks<=x.maxWeeks);const x=pool[Math.floor(Math.random()*pool.length)]||exerciseLibrary[0];alert(`${x.title} · ${x.duration} min\n\n${x.goal}\n\n${x.steps.join(" → ")}`)}
@@ -807,7 +846,7 @@ document.querySelector("#journalPhoto").addEventListener("change",async e=>{if(!
 document.querySelector("#importData").addEventListener("change",async e=>{try{const j=JSON.parse(await e.target.files[0].text());state={...clone(defaults),...(j.data||j)};save();alert("Importerad.")}catch(err){alert("Filen kunde inte läsas.")}});
 document.querySelector("#journalDate").value=isoToday();document.querySelector("#taskDate").value=isoToday();document.querySelector("#lifeDate").value=isoToday();clearShift();seedFamilyTasks();
 if(localStorage.getItem("iceAppVersion")!==VERSION){localStorage.setItem("iceAppVersion",VERSION);document.querySelector("#updateNotice").style.display="block";setTimeout(()=>document.querySelector("#updateNotice").style.display="none",5000)}
-renderAll();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();checkReminders();setInterval(checkReminders,60000);setInterval(refreshLiveGreeting,60000);window.addEventListener('focus',refreshLiveGreeting);window.addEventListener('pageshow',refreshLiveGreeting);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshLiveGreeting()});if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
+renderAll();updateIceTopProfile();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();checkReminders();setInterval(checkReminders,60000);setInterval(refreshLiveGreeting,60000);window.addEventListener('focus',refreshLiveGreeting);window.addEventListener('pageshow',refreshLiveGreeting);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshLiveGreeting()});if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
 </script>
 </body>
 </html>
