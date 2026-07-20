@@ -1,9 +1,3 @@
-ICE 4.1 Focus Edition
+ICE 5.0 Command Edition
 
-Nyheter:
-- Kortare startsida med fyra kärnmoduler.
-- Dagens lägesbild flyttad från startsidan till övriga vyer.
-- Kompakt färdighetsmotor med trendpilar.
-- Mer mänsklig Smart Coach.
-- Tydligare metadata i guidade träningspass.
-- Nedersta hemknappen heter ICE.
+Ny kompakt kommandovy, kortare startsida, panelbaserad ICE-meny, direktstart av dagens pass och bevarad lokal data från tidigare versioner.

@@ -1,4 +1,4 @@
-const CACHE = "ice-4-1-focus";
+const CACHE = "ice-5-0-command";
 const ASSETS = ["./","./index.html","./manifest.webmanifest","./ice-photo.jpg","./icon-180.png","./icon-192.png","./icon-512.png","./ice-app-icon.png","./ice-hero-dark.jpg"];
 
 self.addEventListener("install", event => {

@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="ICE">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>ICE 4.1 – Field Manual</title>
+<title>ICE 5.0 – Field Manual</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -166,17 +166,61 @@ body{background:radial-gradient(circle at 50% -10%,rgba(54,101,79,.28),transpare
 .session-meta span{border:1px solid var(--line);background:rgba(255,255,255,.055);padding:6px 9px;border-radius:999px;color:var(--muted);font-size:12px;font-weight:750}
 @media(max-width:390px){#today #skillGrid{grid-template-columns:repeat(2,minmax(0,1fr))}#today .skill-card strong{font-size:13px}#today .skill-card small{font-size:11px}}
 
+
+/* ICE 5.0 — Command Edition */
+header{display:none}
+body.home-view header{display:block;min-height:178px;margin-top:0}
+body.home-view header img{object-position:68% 36%;filter:brightness(.38) saturate(.85)}
+body.home-view .hero{min-height:178px;padding:calc(18px + env(safe-area-inset-top)) 22px 20px;justify-content:flex-end}
+body.home-view .hero h1{font-size:34px;margin:14px 0 2px}
+body.home-view .hero p{font-size:14px}
+body.home-view .hero-profile{top:calc(12px + env(safe-area-inset-top));right:13px;transform:scale(.9);transform-origin:top right}
+body.home-view .version{font-size:11px;padding:6px 9px}
+body:not(.home-view) main{padding-top:18px}
+#today{padding-bottom:22px}
+#today .hq-welcome{background:linear-gradient(145deg,rgba(22,58,44,.96),rgba(8,25,20,.98));border:1px solid var(--line);border-radius:22px;padding:17px;margin-top:0;box-shadow:var(--shadow)}
+#today .hq-welcome h2{font-size:28px;margin:4px 0 4px}
+.command-chips{display:grid;grid-template-columns:1.3fr .85fr 1fr;gap:8px;margin-top:14px}
+.command-chip{border:1px solid var(--line);background:#081913;color:var(--text);border-radius:13px;padding:11px 8px;font-size:12px;font-weight:850;white-space:nowrap}
+.command-chip.primary{background:var(--gold);color:#172015;border-color:transparent}
+#today .section-title{margin:17px 2px 9px}
+#today .section-title h2{font-size:22px}
+#today .ice-today{padding:15px}
+#today .ice-today .xp-line,#today .ice-today>.bar,#today .ice-today .unlock-card,#today .ice-today .engine-impact{display:none}
+#today .ice-today-head{align-items:center}
+#today .ice-today-head h3{font-size:22px!important;line-height:1.12}
+#today .ice-level{min-width:70px;padding:9px}
+#today .focus-card{padding:16px}
+#today .focus-card .focus-list{display:none}
+#today .focus-card p{margin-bottom:10px}
+#today .start-today{margin-top:10px;min-height:50px}
+#today .coach{padding:15px}
+#today .coach p{margin:10px 0 0}
+#today .coach #coachWarning{display:none}
+#today .score{width:52px;height:52px;border-width:4px;font-size:19px}
+#today #skillGrid{display:flex;overflow-x:auto;gap:9px;scroll-snap-type:x mandatory;padding-bottom:2px}
+#today #skillGrid .skill-card{display:block!important;min-width:165px;min-height:94px;scroll-snap-align:start;padding:12px}
+#today #skillGrid .skill-card:nth-child(n+5){display:none!important}
+#today #skillGrid .skill-card small{font-size:11px}
+#today .section-title.click-card:after{content:'Öppna ›';font-size:12px;color:var(--gold);margin-left:auto}
+.ice-drawer{align-items:flex-end;padding:70px 10px calc(10px + env(safe-area-inset-bottom))}
+.ice-drawer-card{border-radius:26px 26px 20px 20px;max-height:82vh}
+.ice-nav-grid{grid-template-columns:repeat(2,1fr)}
+.ice-nav-item{min-height:70px}
+.tabs{box-shadow:0 -12px 38px rgba(0,0,0,.32)}
+@media(max-width:390px){.command-chips{grid-template-columns:1fr 1fr}.command-chip.primary{grid-column:1/-1}.command-chip{font-size:11px}body.home-view header{min-height:165px}body.home-view .hero{min-height:165px}}
+
 </style>
 </head>
-<body>
+<body class="home-view">
 <div class="ice-global"><div class="ice-global-inner"><button class="ice-home" id="iceHome">ICE<small>FIELD MANUAL</small></button><div class="ice-current"><span>Aktuell vy</span><strong id="iceCurrentView">ICE idag</strong></div><button class="ice-menu-btn" id="iceMenuButton" aria-label="Öppna ICE">☰</button><button class="ice-profile-btn" id="iceTopProfile" data-change-device-profile="1" aria-label="Byt profil">MK</button></div></div>
-<div class="ice-drawer" id="iceDrawer"><div class="ice-drawer-card"><div class="ice-drawer-head"><div><div class="eyebrow">ALLT VIA ICE</div><h2>ICE</h2></div><button class="ice-close" id="iceDrawerClose">×</button></div><div class="ice-nav-grid"><button class="ice-nav-item primary" data-goto="today"><b>⌂</b>ICE</button><button class="ice-nav-item" id="iceStartPass"><b>▶</b>Dagens pass</button><button class="ice-nav-item" data-goto="journal"><b>✎</b>Logga</button><button class="ice-nav-item" data-goto="equipment"><b>🎒</b>Utrustning</button><button class="ice-nav-item" data-goto="sar"><b>◎</b>SAR</button><button class="ice-nav-item" data-goto="family"><b>👥</b>Familj</button><button class="ice-nav-item" data-goto="environment"><b>⌖</b>Miljö</button><button class="ice-nav-item" data-goto="progress"><b>↗</b>Utveckling</button><button class="ice-nav-item" data-open-settings="1"><b>⚙</b>Inställningar</button></div><p class="ice-nav-note">ICE ligger alltid högst upp. Tryck på namnet för översikten eller öppna menyn för att gå direkt till rätt del.</p></div></div>
+<div class="ice-drawer" id="iceDrawer"><div class="ice-drawer-card"><div class="ice-drawer-head"><div><div class="eyebrow">ALLT VIA ICE</div><h2>ICE</h2></div><button class="ice-close" id="iceDrawerClose">×</button></div><div class="ice-nav-grid"><button class="ice-nav-item primary" data-goto="today"><b>⌂</b>ICE</button><button class="ice-nav-item" id="iceStartPass"><b>▶</b>Dagens pass</button><button class="ice-nav-item" data-goto="journal"><b>✎</b>Journal</button><button class="ice-nav-item" data-goto="equipment"><b>🎒</b>Utrustning</button><button class="ice-nav-item" data-goto="sar"><b>◎</b>SAR</button><button class="ice-nav-item" data-goto="family"><b>👥</b>Familj</button><button class="ice-nav-item" data-open-family="1"><b>▤</b>Livsbok</button><button class="ice-nav-item" data-goto="environment"><b>⌖</b>Miljö</button><button class="ice-nav-item" data-goto="progress"><b>↗</b>Utveckling</button><button class="ice-nav-item" data-open-settings="1"><b>⚙</b>Inställningar</button></div><p class="ice-nav-note">ICE är appens kommandocentral. Hemvyn visar bara dagens beslutstöd; hela manualen finns ett tryck bort här.</p></div></div>
 <div class="app">
 <header>
 <img src="ice-hero-dark.jpg" alt="Ice i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">ICE 4.1 · FOKUS</span>
+<span class="version">ICE 5.0 · COMMAND</span>
 <h1>ICE</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -184,11 +228,16 @@ body{background:radial-gradient(circle at 50% -10%,rgba(54,101,79,.28),transpare
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">ICE 4.1 är installerad.</div>
+<div id="updateNotice" class="notice">ICE 5.0 Command Edition är installerad.</div>
 <div class="hq-welcome">
-  <div class="eyebrow">ICE HQ</div>
+  <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
   <p id="greetingSubtitle">Här är läget med Ice just nu.</p>
+  <div class="command-chips">
+    <button id="homeStartPass" class="command-chip primary">▶ <span>Starta pass</span></button>
+    <button class="command-chip" data-goto="journal">✎ <span>Logga</span></button>
+    <button class="command-chip" id="homeOpenIce">☰ <span>Öppna ICE</span></button>
+  </div>
 </div>
 <div class="section-title"><h2>ICE idag</h2><span>datadriven plan</span></div>
 <div class="card ice-today">
@@ -437,7 +486,7 @@ body{background:radial-gradient(circle at 50% -10%,rgba(54,101,79,.28),transpare
 <div class="card"><label>Födelsedatum</label><input type="date" id="birthDate"><label>Hämtningsdatum</label><input type="date" id="pickupDate"><button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button></div>
 <div class="card" style="margin-top:14px"><h3>Säkerhetskopia</h3><p>Exportera all data. Bilder gör filen större.</p><div class="row"><button class="button secondary" id="exportData">Exportera</button><button class="button secondary" id="importButton">Importera</button><input type="file" id="importData" accept="application/json" hidden></div></div>
 <div class="card" style="margin-top:14px"><h3>Appuppdatering</h3><button class="button secondary block" id="forceUpdate">Sök efter ny version</button></div>
-<div class="card" style="margin-top:14px"><h3>Om</h3><p>ICE 4.1 Focus Edition. Träningspass-läget guidar steg för steg och ICE-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och ICE idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
+<div class="card" style="margin-top:14px"><h3>Om</h3><p>ICE 5.0 Command Edition. Träningspass-läget guidar steg för steg och ICE-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och ICE idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
 </section>
 </main>
 </div>
@@ -454,7 +503,7 @@ body{background:radial-gradient(circle at 50% -10%,rgba(54,101,79,.28),transpare
 </div></nav>
 
 <script>
-const VERSION="3.3.16", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
+const VERSION="5.0.0", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
 const defaults={
  birthDate:"2026-06-04",pickupDate:"2026-07-30",currentWorkMode:"ledig",
  shifts:[{date:"2026-08-25",type:"dag",start:"08:00",end:"17:30",note:""},{date:"2026-08-26",type:"natt",start:"17:30",end:"08:00",note:""},{date:"2026-08-31",type:"natt",start:"17:30",end:"08:00",note:""}],
@@ -808,15 +857,15 @@ function openScreen(id,push=true){
  document.querySelector(`[data-screen="${id}"]`)?.classList.add('active');target.classList.add('active');
  if(push&&prev!==id)screenHistory.push(id);
  document.querySelector('#iceCurrentView').textContent=screenNames[id]||'ICE';
+ document.body.classList.toggle('home-view',id==='today');
  document.querySelector('#iceDrawer').classList.remove('open');scrollTo(0,0);
 }
 function goBackScreen(){if(screenHistory.length>1){screenHistory.pop();openScreen(screenHistory[screenHistory.length-1],false)}else openScreen('today',false)}
 
 function configureIce40Dashboard(){
  const today=document.querySelector('#today'); if(!today||today.classList.contains('dashboard-ready'))return;
- const keepTitles=['ICE idag','Idag med Ice','Smart coach','Färdighetsmotor'];
- const children=[...today.children];
- children.forEach(el=>el.classList.add('dashboard-hidden'));
+ const keepTitles=['ICE idag','Smart coach','Idag med Ice','Färdighetsmotor'];
+ [...today.children].forEach(el=>el.classList.add('dashboard-hidden'));
  const welcome=today.querySelector('.hq-welcome'); if(welcome)welcome.classList.remove('dashboard-hidden');
  const notice=today.querySelector('#updateNotice'); if(notice)notice.classList.remove('dashboard-hidden');
  const ordered=[];
@@ -824,11 +873,12 @@ function configureIce40Dashboard(){
    const title=[...today.querySelectorAll(':scope > .section-title')].find(x=>x.querySelector('h2')?.textContent.trim()===name);
    if(title){title.classList.remove('dashboard-hidden');ordered.push(title);const content=title.nextElementSibling;if(content){content.classList.remove('dashboard-hidden');ordered.push(content)}}
  });
- // Put the concise dashboard modules in a deliberate action-first order.
  ordered.forEach(el=>today.appendChild(el));
  today.classList.add('dashboard-ready');
- const sub=document.querySelector('#greetingSubtitle'); if(sub)sub.textContent='Dagens läge, nästa steg och snabbstart.';
+ const sub=document.querySelector('#greetingSubtitle'); if(sub)sub.textContent='Dagens beslutstöd, pass och progression.';
  const current=document.querySelector('#iceCurrentView'); if(current)current.textContent='ICE';
+ const skillTitle=[...today.querySelectorAll(':scope > .section-title')].find(x=>x.querySelector('h2')?.textContent.trim()==='Färdighetsmotor');
+ if(skillTitle){skillTitle.classList.add('click-card');skillTitle.dataset.goto='progress'}
 }
 
 function updateIceTopProfile(){const p=state.profiles.find(x=>x.id===state.activeProfile)||state.profiles[0];const initials=p.name.split(/[- ]/).map(x=>x[0]).join('').slice(0,2).toUpperCase();document.querySelector('#iceTopProfile').textContent=initials}
@@ -837,6 +887,8 @@ document.querySelector('#iceMenuButton').addEventListener('click',()=>document.q
 document.querySelector('#iceDrawerClose').addEventListener('click',()=>document.querySelector('#iceDrawer').classList.remove('open'));
 document.querySelector('#iceDrawer').addEventListener('click',e=>{if(e.target.id==='iceDrawer')e.currentTarget.classList.remove('open')});
 document.querySelector('#iceStartPass').addEventListener('click',()=>{document.querySelector('#iceDrawer').classList.remove('open');document.querySelector('#startTrainingFromHQ')?.click()});
+document.querySelector('#homeStartPass')?.addEventListener('click',()=>document.querySelector('#startTrainingFromHQ')?.click());
+document.querySelector('#homeOpenIce')?.addEventListener('click',()=>document.querySelector('#iceDrawer').classList.add('open'));
 let edgeStart=null;document.addEventListener('touchstart',e=>{const t=e.touches[0];if(t.clientX<28)edgeStart={x:t.clientX,y:t.clientY}}, {passive:true});document.addEventListener('touchend',e=>{if(!edgeStart)return;const t=e.changedTouches[0],dx=t.clientX-edgeStart.x,dy=Math.abs(t.clientY-edgeStart.y);edgeStart=null;if(dx>75&&dy<70&&activeScreenId()!=='today')goBackScreen()},{passive:true});
 
 document.addEventListener("click",async e=>{
