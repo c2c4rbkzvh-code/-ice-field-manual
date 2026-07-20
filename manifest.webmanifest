@@ -1,8 +1,8 @@
 {
-  "name": "ICE Field Manual 3.3 Build 16",
+  "name": "ICE 4.0 — Field Manual",
   "short_name": "ICE",
-  "description": "ICE Field Manual – globalt ICE-nav, svepnavigering, träningsplanering och utrustning.",
-  "start_url": "./",
+  "description": "Dashboard, träningsmotor och familjemanual för Ice.",
+  "start_url": "./?v=4.0",
   "scope": "./",
   "display": "standalone",
   "background_color": "#06100d",

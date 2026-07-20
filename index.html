@@ -125,6 +125,28 @@ header:after{background:linear-gradient(90deg,rgba(3,10,8,.92) 0%,rgba(3,10,8,.5
 .tabs-inner{grid-template-columns:repeat(6,1fr)}
 @media(max-width:420px){.ice-current{display:none}.ice-nav-grid{grid-template-columns:repeat(2,1fr)}.tab{font-size:9px}.tab b{font-size:19px}}
 
+
+/* ICE 4.0 — dashboard architecture */
+body{background:radial-gradient(circle at 50% -10%,rgba(54,101,79,.28),transparent 38%),var(--bg)}
+#today{padding-bottom:34px}
+#today.dashboard-ready>.dashboard-hidden{display:none!important}
+#today .hq-welcome{margin-top:6px;padding:4px 2px 2px}
+#today .hq-welcome .eyebrow{color:var(--gold);letter-spacing:.16em}
+#today .hq-welcome h2{font-size:30px;line-height:1.05;margin:6px 0}
+#today .section-title{margin-top:20px}
+#today .ice-today{border-color:rgba(222,178,72,.62);box-shadow:0 18px 50px rgba(0,0,0,.22);background:linear-gradient(145deg,rgba(89,68,22,.28),rgba(14,42,32,.96))}
+#today .focus-card{border-color:rgba(91,203,144,.38);background:linear-gradient(145deg,rgba(18,64,45,.92),rgba(10,28,23,.98))}
+#today .start-today{min-height:54px;font-size:16px;border-radius:16px;margin-top:16px}
+#today .command-center{padding:14px}.command-primary{padding:2px}.command-stats{margin-top:12px}
+#today .skill-card{padding:12px;border-radius:15px}
+#today #skillGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+#today .coach{padding:16px}
+.ice-global{box-shadow:0 10px 35px rgba(0,0,0,.28)}
+.ice-home{font-size:23px;letter-spacing:.04em}
+.ice-drawer-card{max-height:calc(100vh - 100px);overflow:auto}
+.ice-nav-item{min-height:76px;transition:transform .16s ease,border-color .16s ease}.ice-nav-item:active{transform:scale(.97)}
+@media(max-width:390px){#today #skillGrid{grid-template-columns:1fr}.command-stats{grid-template-columns:repeat(3,1fr)}}
+
 </style>
 </head>
 <body>
@@ -135,7 +157,7 @@ header:after{background:linear-gradient(90deg,rgba(3,10,8,.92) 0%,rgba(3,10,8,.5
 <img src="ice-hero-dark.jpg" alt="Ice i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">VERSION 3.3 · CORE BUILD 16</span>
+<span class="version">ICE 4.0 · DASHBOARD</span>
 <h1>ICE</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -143,7 +165,7 @@ header:after{background:linear-gradient(90deg,rgba(3,10,8,.92) 0%,rgba(3,10,8,.5
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Version 3.3 Build 16 är installerad.</div>
+<div id="updateNotice" class="notice">ICE 4.0 är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">ICE HQ</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -396,7 +418,7 @@ header:after{background:linear-gradient(90deg,rgba(3,10,8,.92) 0%,rgba(3,10,8,.5
 <div class="card"><label>Födelsedatum</label><input type="date" id="birthDate"><label>Hämtningsdatum</label><input type="date" id="pickupDate"><button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button></div>
 <div class="card" style="margin-top:14px"><h3>Säkerhetskopia</h3><p>Exportera all data. Bilder gör filen större.</p><div class="row"><button class="button secondary" id="exportData">Exportera</button><button class="button secondary" id="importButton">Importera</button><input type="file" id="importData" accept="application/json" hidden></div></div>
 <div class="card" style="margin-top:14px"><h3>Appuppdatering</h3><button class="button secondary block" id="forceUpdate">Sök efter ny version</button></div>
-<div class="card" style="margin-top:14px"><h3>Om</h3><p>Version 3.3 Build 16. Träningspass-läget guidar steg för steg och ICE-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och ICE idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
+<div class="card" style="margin-top:14px"><h3>Om</h3><p>ICE 4.0 Dashboard Edition. Träningspass-läget guidar steg för steg och ICE-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och ICE idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
 </section>
 </main>
 </div>
@@ -770,6 +792,26 @@ function openScreen(id,push=true){
  document.querySelector('#iceDrawer').classList.remove('open');scrollTo(0,0);
 }
 function goBackScreen(){if(screenHistory.length>1){screenHistory.pop();openScreen(screenHistory[screenHistory.length-1],false)}else openScreen('today',false)}
+
+function configureIce40Dashboard(){
+ const today=document.querySelector('#today'); if(!today||today.classList.contains('dashboard-ready'))return;
+ const keepTitles=['ICE idag','Idag med Ice','Färdighetsmotor','Smart coach','Dagens lägesbild'];
+ const children=[...today.children];
+ children.forEach(el=>el.classList.add('dashboard-hidden'));
+ const welcome=today.querySelector('.hq-welcome'); if(welcome)welcome.classList.remove('dashboard-hidden');
+ const notice=today.querySelector('#updateNotice'); if(notice)notice.classList.remove('dashboard-hidden');
+ const ordered=[];
+ keepTitles.forEach(name=>{
+   const title=[...today.querySelectorAll(':scope > .section-title')].find(x=>x.querySelector('h2')?.textContent.trim()===name);
+   if(title){title.classList.remove('dashboard-hidden');ordered.push(title);const content=title.nextElementSibling;if(content){content.classList.remove('dashboard-hidden');ordered.push(content)}}
+ });
+ // Put the concise dashboard modules in a deliberate action-first order.
+ ordered.forEach(el=>today.appendChild(el));
+ today.classList.add('dashboard-ready');
+ const sub=document.querySelector('#greetingSubtitle'); if(sub)sub.textContent='Dagens läge, nästa steg och snabbstart.';
+ const current=document.querySelector('#iceCurrentView'); if(current)current.textContent='Översikt';
+}
+
 function updateIceTopProfile(){const p=state.profiles.find(x=>x.id===state.activeProfile)||state.profiles[0];const initials=p.name.split(/[- ]/).map(x=>x[0]).join('').slice(0,2).toUpperCase();document.querySelector('#iceTopProfile').textContent=initials}
 document.querySelector('#iceHome').addEventListener('click',()=>openScreen('today'));
 document.querySelector('#iceMenuButton').addEventListener('click',()=>document.querySelector('#iceDrawer').classList.add('open'));
@@ -846,7 +888,7 @@ document.querySelector("#journalPhoto").addEventListener("change",async e=>{if(!
 document.querySelector("#importData").addEventListener("change",async e=>{try{const j=JSON.parse(await e.target.files[0].text());state={...clone(defaults),...(j.data||j)};save();alert("Importerad.")}catch(err){alert("Filen kunde inte läsas.")}});
 document.querySelector("#journalDate").value=isoToday();document.querySelector("#taskDate").value=isoToday();document.querySelector("#lifeDate").value=isoToday();clearShift();seedFamilyTasks();
 if(localStorage.getItem("iceAppVersion")!==VERSION){localStorage.setItem("iceAppVersion",VERSION);document.querySelector("#updateNotice").style.display="block";setTimeout(()=>document.querySelector("#updateNotice").style.display="none",5000)}
-renderAll();updateIceTopProfile();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();checkReminders();setInterval(checkReminders,60000);setInterval(refreshLiveGreeting,60000);window.addEventListener('focus',refreshLiveGreeting);window.addEventListener('pageshow',refreshLiveGreeting);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshLiveGreeting()});if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
+configureIce40Dashboard();renderAll();updateIceTopProfile();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();checkReminders();setInterval(checkReminders,60000);setInterval(refreshLiveGreeting,60000);window.addEventListener('focus',refreshLiveGreeting);window.addEventListener('pageshow',refreshLiveGreeting);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshLiveGreeting()});if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
 </script>
 </body>
 </html>

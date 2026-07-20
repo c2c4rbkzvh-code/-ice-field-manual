@@ -1,11 +1,10 @@
-ICE Field Manual v3.3 · Core Build 16
+ICE 4.0 — Dashboard Edition
 
-Build 16 – Visual Upgrade
-- Ny mörk taktisk HQ-header baserad på ICE-appikonen.
-- Aktiv enhetsprofil visas direkt i headern och kan bytas med ett tryck.
-- Tydlig knapp för att starta dagens guidande träningspass från HQ.
-- Uppdaterad versionsmärkning, manifest och PWA-cache.
-- Befintliga profiler, journaler och lokalt sparade data bevaras.
+Ny huvudarkitektur:
+- Ren översikt på hemsidan
+- ICE idag, dagens pass, färdighetsmotor, coach och lägesbild
+- Övriga moduler nås via den globala ICE-menyn
+- Global ICE-rad och svep-tillbaka bevaras
+- Lokal data från tidigare versioner bevaras
 
-
-Build 16: Globalt ICE-nav högst upp, Utrustning i nedersta menyn, snabbpanel samt vänsterkantssvep och tillbaka-knapp på Utrustning.
+Installation: ersätt filerna i GitHub Pages-repot och öppna appen igen. På iPhone kan PWA:n behöva stängas helt en gång för att den nya cachen ska aktiveras.
