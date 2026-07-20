@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="ICE">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>ICE – Field Manual 3.3 Build 9</title>
+<title>ICE – Field Manual 3.3 Build 14</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -94,6 +94,8 @@ textarea{min-height:100px;resize:vertical}
 .profile-modal-card h2{font-size:28px;margin:5px 0 8px}.profile-modal-card>p{color:var(--muted);margin:0 0 18px;line-height:1.45}.profile-picker{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.profile-pick{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:17px;padding:16px 10px;text-align:center}.profile-pick b{display:block;font-size:30px;margin-bottom:7px}.profile-pick strong{display:block;font-size:16px}.profile-pick small{display:block;color:var(--muted);margin-top:4px}.profile-pick.driver{grid-column:1/-1;border-color:#79642e;background:linear-gradient(145deg,#302818,#11231b)}
 .device-badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 9px;background:#173a2b;color:#c9f1d7;font-size:11px;font-weight:850}.family-mode .driver-only{display:none!important}
 @media(min-width:700px){.profile-modal{align-items:center}.profile-modal-card{border-radius:25px}}
+
+.equipment-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.equipment-summary div{background:#0a1a15;border:1px solid var(--line);border-radius:15px;padding:12px;text-align:center}.equipment-summary b{display:block;font-size:22px}.equipment-summary small{color:var(--muted)}.equipment-item{border-top:1px solid var(--line);padding:15px 0}.equipment-item:first-child{border-top:0}.equipment-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.equipment-title{font-size:18px;font-weight:850}.equipment-meta{color:var(--muted);font-size:12px;margin-top:5px;line-height:1.4}.equipment-status{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:11px;padding:8px;min-width:105px}.equipment-recommended{border-left:3px solid var(--gold);padding-left:12px}.equipment-phase{display:inline-block;color:#ffe2a1;background:#4d3d16;border-radius:999px;padding:5px 8px;font-size:11px;font-weight:800;margin-top:8px}.equipment-note{background:#173126;border-radius:12px;padding:10px 12px;margin-top:10px;color:#dbe7e0;line-height:1.4}.equipment-filter{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}@media(max-width:460px){.equipment-summary{grid-template-columns:1fr}.equipment-filter{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -101,7 +103,7 @@ textarea{min-height:100px;resize:vertical}
 <header>
 <img src="ice-photo.jpg" alt="Ice">
 <div class="hero">
-<span class="version">VERSION 3.3 · CORE BUILD 12</span>
+<span class="version">VERSION 3.3 · CORE BUILD 14</span>
 <h1>ICE</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -109,7 +111,7 @@ textarea{min-height:100px;resize:vertical}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Version 3.3 Build 12 är installerad.</div>
+<div id="updateNotice" class="notice">Version 3.3 Build 14 är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">ICE HQ</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -156,7 +158,7 @@ textarea{min-height:100px;resize:vertical}
 <div class="card">
 <div class="hq-status"><div><strong id="hqTasks">0</strong><small>uppgifter kvar</small></div><div><strong id="hqMinutes">0</strong><small>minuter / 7 dagar</small></div><div><strong id="hqStreak">0</strong><small>aktiva dagar</small></div></div>
 <div class="quick-grid" style="margin-top:16px">
-<button class="quick-action" data-goto="journal"><b>✎</b>Logga</button><button class="quick-action driver-only" data-goto="sar"><b>🎯</b>Aktivitet</button><button class="quick-action" data-goto="family"><b>⌂</b>Uppgift</button><button class="quick-action driver-only" data-goto="progress"><b>↗</b>Statistik</button>
+<button class="quick-action" data-goto="journal"><b>✎</b>Logga</button><button class="quick-action driver-only" data-goto="sar"><b>🎯</b>Aktivitet</button><button class="quick-action" data-goto="family"><b>⌂</b>Uppgift</button><button class="quick-action" data-goto="equipment"><b>🎒</b>Utrustning</button><button class="quick-action driver-only" data-goto="progress"><b>↗</b>Statistik</button>
 </div></div>
 
 <div class="section-title"><h2>Mina uppgifter idag</h2><span id="myTaskCount"></span></div>
@@ -306,6 +308,23 @@ textarea{min-height:100px;resize:vertical}
 </section>
 
 
+
+<section id="equipment" class="screen">
+<div class="section-title"><h2>Utrustning</h2><span>från valp till SAR</span></div>
+<div class="card">
+<div class="eyebrow">ICE UTRUSTNINGSCENTRAL</div><h3 style="font-size:25px;margin:7px 0">Rätt utrustning vid rätt tid</h3><p>Planera inköp efter Ice ålder och utbildningsnivå. Status sparas på enheten och följer med i backupen.</p>
+<div class="equipment-summary"><div><b id="equipmentOwned">0</b><small>inköpta</small></div><div><b id="equipmentPlanned">0</b><small>planerade</small></div><div><b id="equipmentBudget">0 kr</b><small>kvar i plan</small></div></div>
+</div>
+<div class="section-title"><h2>Selar för Ice</h2><span>jämförelse och rekommendation</span></div>
+<div class="card">
+<div class="equipment-item equipment-recommended"><div class="equipment-top"><div><div class="equipment-title">Non-stop Line Harness 5.0</div><div class="equipment-meta">Lätt vardags- och träningssele · ca 500–600 kr</div><span class="equipment-phase">VALP TILL CIRKA 12 MÅNADER</span></div><span class="badge driver">ICE rekommenderar</span></div><div class="equipment-note">För socialisering, miljöträning och tidigt sökarbete. Kontrollera passformen regelbundet när Ice växer.</div></div>
+<div class="equipment-item equipment-recommended"><div class="equipment-top"><div><div class="equipment-title">Non-stop Line Harness Grip WD</div><div class="equipment-meta">Arbetssele med handtag och metallspännen · ca 900–1 100 kr</div><span class="equipment-phase">VUXEN / OPERATIV HUND</span></div><span class="badge">Senare</span></div><div class="equipment-note">Planerad uppgradering för krävande terräng och operativt arbete. Köp först när Ice är färdigväxt och korrekt storlek kan provas ut.</div></div>
+<div class="equipment-item"><div class="equipment-top"><div><div class="equipment-title">Ruffwear Web Master</div><div class="equipment-meta">Allroundsele med handtag · ca 800–900 kr</div></div><span class="badge">Alternativ</span></div><div class="equipment-note">Beprövat alternativ för terräng, assistans och räddningsarbete, men saknar dedikerat spårlinefäste under bröstet.</div></div>
+</div>
+<div class="section-title"><h2>Inköpsplan</h2><span>status och budget</span></div>
+<div class="card"><div class="equipment-filter"><select id="equipmentCategoryFilter"><option value="all">Alla kategorier</option></select><select id="equipmentStatusFilter"><option value="all">Alla statusar</option><option value="needed">Behövs</option><option value="planned">Planerad</option><option value="ordered">Beställd</option><option value="owned">Inköpt</option></select></div><div id="equipmentList"></div></div>
+</section>
+
 <section id="family" class="screen">
 <div class="section-title"><h2>Familjecentral</h2><span>vardag, ansvar och livsbok</span></div>
 <div class="card"><div id="familyProfiles" class="profile-row"></div><div id="familyRoleText" class="good"></div></div>
@@ -367,8 +386,20 @@ const defaults={
  birthDate:"2026-06-04",pickupDate:"2026-07-30",currentWorkMode:"ledig",
  shifts:[{date:"2026-08-25",type:"dag",start:"08:00",end:"17:30",note:""},{date:"2026-08-26",type:"natt",start:"17:30",end:"08:00",note:""},{date:"2026-08-31",type:"natt",start:"17:30",end:"08:00",note:""}],
  journal:[],completedMissions:{},milestones:{},environments:{},sarCompleted:{},
- favoriteExercises:[],commandProgress:{},activeProfile:"marcus",profiles:[{id:"marcus",name:"Marcus",role:"driver",icon:"👨"},{id:"anna-lena",name:"Anna-Lena",role:"family",icon:"👩"},{id:"elliot",name:"Elliot",role:"family",icon:"👤"},{id:"rasmus",name:"Rasmus",role:"family",icon:"👤"},{id:"benjamin",name:"Benjamin",role:"family",icon:"👤"}],familyTasks:[],lifeEvents:[],notificationPermissionAsked:false,activeTrainingSession:null
+ favoriteExercises:[],commandProgress:{},activeProfile:"marcus",profiles:[{id:"marcus",name:"Marcus",role:"driver",icon:"👨"},{id:"anna-lena",name:"Anna-Lena",role:"family",icon:"👩"},{id:"elliot",name:"Elliot",role:"family",icon:"👤"},{id:"rasmus",name:"Rasmus",role:"family",icon:"👤"},{id:"benjamin",name:"Benjamin",role:"family",icon:"👤"}],familyTasks:[],lifeEvents:[],notificationPermissionAsked:false,activeTrainingSession:null,equipmentStatus:{}
 };
+const equipmentLibrary=[
+{id:"line5",name:"Non-stop Line Harness 5.0",category:"Sele",phase:"Valp",price:550,priority:1,note:"Lätt sele för vardag, miljö och tidigt sökarbete."},
+{id:"treatpouch",name:"Belöningspouch",category:"Belöning",phase:"Nu",price:300,priority:1,note:"Snabb åtkomst till godis och liten leksak."},
+{id:"longline5",name:"Långlina 5–10 meter",category:"Lina",phase:"Valp",price:350,priority:1,note:"För inkallning, miljöträning och kontrollerad frihet."},
+{id:"toy",name:"Kamptrasa eller mjuk belöningsleksak",category:"Belöning",phase:"Nu",price:200,priority:1,note:"Bygger lek, relation och framtida sökbelöning."},
+{id:"water",name:"Vattenflaska och hopfällbar skål",category:"Bas",phase:"Nu",price:250,priority:1,note:"Alltid med under miljö- och träningspass."},
+{id:"firstaid",name:"Första hjälpen-kit för hund",category:"Säkerhet",phase:"Valp",price:500,priority:2,note:"Kompress, självhäftande linda, tasskydd och fästingverktyg."},
+{id:"trackingline",name:"Spårlina 10 meter",category:"Lina",phase:"Senare valp",price:450,priority:2,note:"För mer strukturerat spår- och nosarbete."},
+{id:"headlamp",name:"Pannlampa",category:"Förare",phase:"Höst/vinter",price:700,priority:2,note:"För mörkerträning och sök i terräng."},
+{id:"gps",name:"GPS-halsband",category:"Teknik",phase:"Unghund",price:3500,priority:3,note:"Aktuellt när sökområden och avstånd ökar."},
+{id:"linewd",name:"Non-stop Line Harness Grip WD",category:"Sele",phase:"Vuxen",price:1000,priority:3,note:"Operativ arbetssele när Ice är färdigväxt."}
+];
 let state=load(), pendingPhoto="";
 const storedDeviceProfile=localStorage.getItem(DEVICE_PROFILE_KEY);if(storedDeviceProfile&&state.profiles.some(p=>p.id===storedDeviceProfile))state.activeProfile=storedDeviceProfile;
 function clone(x){return JSON.parse(JSON.stringify(x))}
@@ -676,7 +707,19 @@ function completeTrainingStep(skipped=false){clearInterval(sessionTimer);session
 function finalizeTrainingSession(){const ss=state.activeTrainingSession,done=ss.results.filter(r=>!r.skipped);if(done.length){const created=new Date().toISOString(),total=done.reduce((a,r)=>a+r.minutes,0),titles=done.map(r=>r.title).join(', ');done.forEach(r=>state.journal.push({date:ss.date,type:r.cat==='nos'?'Nosarbete':r.cat==='miljo'?'Miljö':r.cat==='inkallning'?'Inkallning':r.cat==='sar'?'Sök':r.cat==='aterhamtning'?'Vila/återhämtning':'Relation & lek',rating:5,minutes:r.minutes,note:`Guidat pass: ${r.title}`,weight:'',photo:'',exerciseId:r.id,exerciseCategory:r.cat,created}));state.lifeEvents.push({date:ss.date,category:'Träning',title:`Guidat träningspass · ${done.length} moment`,note:`${titles}. Totalt ${total} minuter.`,rating:5,person:state.activeProfile,created,source:`guided-session-${ss.startedAt}`})}localStorage.setItem(STORE,JSON.stringify(state));renderTrainingSession();renderAll()}
 
 function renderSettings(){document.querySelector("#birthDate").value=state.birthDate;document.querySelector("#pickupDate").value=state.pickupDate}
-function renderAll(){renderToday();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderWeeklyTraining();renderExerciseLibrary();renderProgress();renderSettings();renderFamily()}
+
+function renderEquipment(){
+ state.equipmentStatus=state.equipmentStatus||{};
+ const cat=document.querySelector('#equipmentCategoryFilter');if(!cat)return;
+ const categories=[...new Set(equipmentLibrary.map(x=>x.category))];const selected=cat.value||'all';cat.innerHTML='<option value="all">Alla kategorier</option>'+categories.map(x=>`<option value="${x}" ${selected===x?'selected':''}>${x}</option>`).join('');
+ const sf=document.querySelector('#equipmentStatusFilter'),status=sf.value||'all',category=cat.value||'all';
+ const list=equipmentLibrary.filter(x=>(category==='all'||x.category===category)&&(status==='all'||(state.equipmentStatus[x.id]||'needed')===status));
+ document.querySelector('#equipmentList').innerHTML=list.length?list.map(x=>{const st=state.equipmentStatus[x.id]||'needed';return `<div class="equipment-item ${x.priority===1?'equipment-recommended':''}"><div class="equipment-top"><div><div class="equipment-title">${escapeHtml(x.name)}</div><div class="equipment-meta">${escapeHtml(x.category)} · ${escapeHtml(x.phase)} · cirka ${x.price.toLocaleString('sv-SE')} kr</div></div><select class="equipment-status" data-equipment-status="${x.id}"><option value="needed" ${st==='needed'?'selected':''}>Behövs</option><option value="planned" ${st==='planned'?'selected':''}>Planerad</option><option value="ordered" ${st==='ordered'?'selected':''}>Beställd</option><option value="owned" ${st==='owned'?'selected':''}>Inköpt</option></select></div><div class="equipment-note">${escapeHtml(x.note)}</div></div>`}).join(''):'<div class="empty">Ingen utrustning matchar filtret.</div>';
+ const owned=equipmentLibrary.filter(x=>(state.equipmentStatus[x.id]||'needed')==='owned').length;const planned=equipmentLibrary.filter(x=>['planned','ordered'].includes(state.equipmentStatus[x.id]||'needed')).length;const budget=equipmentLibrary.filter(x=>(state.equipmentStatus[x.id]||'needed')!=='owned').reduce((a,x)=>a+x.price,0);
+ document.querySelector('#equipmentOwned').textContent=owned;document.querySelector('#equipmentPlanned').textContent=planned;document.querySelector('#equipmentBudget').textContent=budget.toLocaleString('sv-SE')+' kr';
+}
+function refreshLiveGreeting(){if(document.querySelector('#greetingTitle'))renderToday()}
+function renderAll(){renderToday();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderWeeklyTraining();renderExerciseLibrary();renderProgress();renderSettings();renderFamily();renderEquipment()}
 function defaultsForShift(t){return{ledig:["",""],dag:["08:00","17:30"],natt:["17:30","08:00"],dygn:["08:00","08:00"],annat:["",""]}[t]||["",""]}
 function clearShift(){document.querySelector("#shiftEditIndex").value="";document.querySelector("#shiftDate").value=isoToday();document.querySelector("#shiftType").value="dag";const p=defaultsForShift("dag");document.querySelector("#shiftStart").value=p[0];document.querySelector("#shiftEnd").value=p[1];document.querySelector("#shiftNote").value="";document.querySelector("#cancelShiftEdit").style.display="none";document.querySelector("#saveShift").textContent="Spara pass"}
 function editShift(i){const s=state.shifts[i];document.querySelector("#shiftEditIndex").value=i;document.querySelector("#shiftDate").value=s.date;document.querySelector("#shiftType").value=s.type;document.querySelector("#shiftStart").value=s.start||"";document.querySelector("#shiftEnd").value=s.end||"";document.querySelector("#shiftNote").value=s.note||"";document.querySelector("#cancelShiftEdit").style.display="inline-block";document.querySelector("#saveShift").textContent="Spara ändring"}
@@ -690,6 +733,7 @@ document.addEventListener("click",async e=>{
  if(e.target.id==='finishSession'){closeTrainingSession();state.activeTrainingSession=null;localStorage.setItem(STORE,JSON.stringify(state));renderAll();document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));document.querySelector('[data-screen="today"]').classList.add('active');document.querySelector('#today').classList.add('active');scrollTo(0,0);return}
  const tab=e.target.closest(".tab");if(tab){document.querySelectorAll(".tab,.screen").forEach(x=>x.classList.remove("active"));tab.classList.add("active");document.querySelector("#"+tab.dataset.screen).classList.add("active");scrollTo(0,0)}
  const go=e.target.closest("[data-goto]");if(go){document.querySelectorAll(".tab,.screen").forEach(x=>x.classList.remove("active"));document.querySelector(`[data-screen="${go.dataset.goto}"]`)?.classList.add("active");document.querySelector(`#${go.dataset.goto}`)?.classList.add("active");scrollTo(0,0)}
+ if(e.target.dataset.equipmentStatus){state.equipmentStatus=state.equipmentStatus||{};state.equipmentStatus[e.target.dataset.equipmentStatus]=e.target.value;save();return}
  if(e.target.dataset.favorite){state.favoriteExercises=state.favoriteExercises||[];const id=e.target.dataset.favorite;state.favoriteExercises=state.favoriteExercises.includes(id)?state.favoriteExercises.filter(x=>x!==id):[...state.favoriteExercises,id];save()}
  if(e.target.id==="randomActivity"){const weeks=ageParts().weeks,pool=exerciseLibrary.filter(x=>weeks>=x.minWeeks&&weeks<=x.maxWeeks);const x=pool[Math.floor(Math.random()*pool.length)]||exerciseLibrary[0];alert(`${x.title} · ${x.duration} min\n\n${x.goal}\n\n${x.steps.join(" → ")}`)}
  const profileChoice=e.target.closest('[data-profile]');if(profileChoice){setDeviceProfile(profileChoice.dataset.profile)}
@@ -734,6 +778,7 @@ document.addEventListener("click",async e=>{
  if(e.target.id==="forceUpdate"){navigator.serviceWorker?.getRegistrations().then(rs=>Promise.all(rs.map(r=>r.update()))).finally(()=>location.reload(true))}
  if(e.target.id==="resetData"&&confirm("Nollställa all lokal data?")){localStorage.removeItem(STORE);localStorage.removeItem(DEVICE_PROFILE_KEY);state=clone(defaults);save();showProfileSetup()}
 });
+document.querySelector('#equipmentCategoryFilter').addEventListener('change',renderEquipment);document.querySelector('#equipmentStatusFilter').addEventListener('change',renderEquipment);
 document.querySelector("#exerciseFilter").addEventListener("change",renderExerciseLibrary);
 document.querySelector("#durationFilter").addEventListener("change",renderExerciseLibrary);
 document.querySelector("#favoriteFilter").addEventListener("change",renderExerciseLibrary);
@@ -747,7 +792,7 @@ document.querySelector("#journalPhoto").addEventListener("change",async e=>{if(!
 document.querySelector("#importData").addEventListener("change",async e=>{try{const j=JSON.parse(await e.target.files[0].text());state={...clone(defaults),...(j.data||j)};save();alert("Importerad.")}catch(err){alert("Filen kunde inte läsas.")}});
 document.querySelector("#journalDate").value=isoToday();document.querySelector("#taskDate").value=isoToday();document.querySelector("#lifeDate").value=isoToday();clearShift();seedFamilyTasks();
 if(localStorage.getItem("iceAppVersion")!==VERSION){localStorage.setItem("iceAppVersion",VERSION);document.querySelector("#updateNotice").style.display="block";setTimeout(()=>document.querySelector("#updateNotice").style.display="none",5000)}
-renderAll();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();checkReminders();setInterval(checkReminders,60000);if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
+renderAll();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();checkReminders();setInterval(checkReminders,60000);setInterval(refreshLiveGreeting,60000);window.addEventListener('focus',refreshLiveGreeting);window.addEventListener('pageshow',refreshLiveGreeting);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshLiveGreeting()});if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
 </script>
 </body>
 </html>

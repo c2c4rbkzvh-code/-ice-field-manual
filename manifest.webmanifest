@@ -1,7 +1,7 @@
 {
-  "name": "ICE Field Manual 3.3 Build 12",
+  "name": "ICE Field Manual 3.3 Build 14",
   "short_name": "ICE",
-  "description": "ICE Field Manual – enhetsbaserade familjeprofiler, guidat träningspass och datadrivet HQ.",
+  "description": "ICE Field Manual – familjeprofiler, träningsplanering, utrustning och datadrivet HQ.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
