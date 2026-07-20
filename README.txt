@@ -1,3 +1,2 @@
-ICE 5.0 Command Edition
-
-Ny kompakt kommandovy, kortare startsida, panelbaserad ICE-meny, direktstart av dagens pass och bevarad lokal data från tidigare versioner.
+ICE 6.0 Intelligence Edition
+Adaptiv lokal coach, daglig check-in och belastningsstyrd träningsplan.

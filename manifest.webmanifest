@@ -1,8 +1,8 @@
 {
-  "name": "ICE 5.0 — Field Manual",
+  "name": "ICE 6.0 — Intelligence Edition",
   "short_name": "ICE",
-  "description": "Command Edition för daglig träning, SAR-utveckling och familjens gemensamma arbete med Ice.",
-  "start_url": "./?v=5.0",
+  "description": "Adaptiv lokal coach med daglig check-in, belastningsstyrd träningsplan och SAR-utveckling.",
+  "start_url": "./?v=6.0",
   "scope": "./",
   "display": "standalone",
   "background_color": "#06100d",

@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="ICE">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>ICE 5.0 – Field Manual</title>
+<title>ICE 6.0 – Field Manual</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -210,6 +210,17 @@ body:not(.home-view) main{padding-top:18px}
 .tabs{box-shadow:0 -12px 38px rgba(0,0,0,.32)}
 @media(max-width:390px){.command-chips{grid-template-columns:1fr 1fr}.command-chip.primary{grid-column:1/-1}.command-chip{font-size:11px}body.home-view header{min-height:165px}body.home-view .hero{min-height:165px}}
 
+
+/* ICE 6.0 — Intelligence Edition */
+.intelligence-card{border-color:#4a765f;background:linear-gradient(145deg,#153a2b,#0b2119);padding:16px}
+.intelligence-head{display:flex;align-items:center;gap:13px}.intel-score{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;background:#071812;border:1px solid #4f8268;font-size:23px;font-weight:900;color:var(--green)}
+.intelligence-card h3{margin:2px 0 0;font-size:22px}.intel-directive{font-size:17px;line-height:1.45;margin:14px 0;color:var(--text)}
+.checkin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}.checkin-group small{display:block;margin-bottom:6px;color:var(--muted);font-weight:750}.checkin-options{display:flex;gap:5px}.checkin-btn{flex:1;border:1px solid var(--line);background:#071913;color:var(--muted);border-radius:10px;padding:9px 3px;font-size:11px;font-weight:800}.checkin-btn.on{background:rgba(233,185,70,.18);border-color:var(--gold);color:var(--gold)}
+.intel-reasons{display:grid;gap:7px}.intel-reason{display:flex;gap:9px;align-items:flex-start;background:rgba(255,255,255,.045);border-radius:11px;padding:9px 10px;color:var(--muted);font-size:13px}.intel-reason b{color:var(--text)}
+.plan-decision{margin-top:12px;border-left:3px solid var(--gold);padding:10px 12px;background:rgba(233,185,70,.08);border-radius:0 11px 11px 0;font-size:13px}
+#today .intelligence-card{padding:15px}#today .checkin-grid{margin:11px 0}.intelligence-card .button{margin-top:12px}
+@media(max-width:390px){.checkin-grid{grid-template-columns:1fr}.checkin-group{display:grid;grid-template-columns:70px 1fr;align-items:center}.checkin-group small{margin:0}.intel-score{width:52px;height:52px;font-size:20px}}
+
 </style>
 </head>
 <body class="home-view">
@@ -220,7 +231,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="Ice i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">ICE 5.0 · COMMAND</span>
+<span class="version">ICE 6.0 · INTELLIGENCE</span>
 <h1>ICE</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -299,6 +310,20 @@ body:not(.home-view) main{padding-top:18px}
   <p id="dailyRecommendText"></p>
   <div class="recommendation-action"><b id="dailyRecommendIcon">🐾</b><div><strong id="dailyRecommendAction">–</strong><div class="task-meta" id="dailyRecommendDose">–</div></div></div>
 </div>
+
+<div class="section-title"><h2>ICE Intelligence</h2><span>dagens beslut</span></div>
+<div class="card intelligence-card">
+  <div class="intelligence-head"><div class="intel-score" id="intelScore">–</div><div><div class="eyebrow">ADAPTIV COACH</div><h3 id="intelTitle">Analyserar dagen…</h3></div></div>
+  <p class="intel-directive" id="intelDirective"></p>
+  <div class="checkin-grid">
+    <div class="checkin-group"><small>Sömn</small><div class="checkin-options"><button class="checkin-btn" data-checkin="sleep" data-value="low">Låg</button><button class="checkin-btn" data-checkin="sleep" data-value="normal">Normal</button><button class="checkin-btn" data-checkin="sleep" data-value="good">Bra</button></div></div>
+    <div class="checkin-group"><small>Energi</small><div class="checkin-options"><button class="checkin-btn" data-checkin="energy" data-value="low">Låg</button><button class="checkin-btn" data-checkin="energy" data-value="normal">Normal</button><button class="checkin-btn" data-checkin="energy" data-value="high">Hög</button></div></div>
+    <div class="checkin-group"><small>Aptit</small><div class="checkin-options"><button class="checkin-btn" data-checkin="appetite" data-value="low">Låg</button><button class="checkin-btn" data-checkin="appetite" data-value="normal">Normal</button><button class="checkin-btn" data-checkin="appetite" data-value="good">Bra</button></div></div>
+  </div>
+  <div class="intel-reasons" id="intelReasons"></div>
+  <div class="plan-decision" id="intelPlanDecision"></div>
+</div>
+
 <div class="section-title"><h2>Smart coach</h2><span>lokal analys</span></div>
 <div class="card coach">
 <div class="coach-score"><div class="score" id="coachScore">–</div><div><div class="eyebrow">Dagens rekommendation</div><h3 id="coachTitle">Analyserar…</h3></div></div>
@@ -503,12 +528,12 @@ body:not(.home-view) main{padding-top:18px}
 </div></nav>
 
 <script>
-const VERSION="5.0.0", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
+const VERSION="6.0.0", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
 const defaults={
  birthDate:"2026-06-04",pickupDate:"2026-07-30",currentWorkMode:"ledig",
  shifts:[{date:"2026-08-25",type:"dag",start:"08:00",end:"17:30",note:""},{date:"2026-08-26",type:"natt",start:"17:30",end:"08:00",note:""},{date:"2026-08-31",type:"natt",start:"17:30",end:"08:00",note:""}],
  journal:[],completedMissions:{},milestones:{},environments:{},sarCompleted:{},
- favoriteExercises:[],commandProgress:{},activeProfile:"marcus",profiles:[{id:"marcus",name:"Marcus",role:"driver",icon:"👨"},{id:"anna-lena",name:"Anna-Lena",role:"family",icon:"👩"},{id:"elliot",name:"Elliot",role:"family",icon:"👤"},{id:"rasmus",name:"Rasmus",role:"family",icon:"👤"},{id:"benjamin",name:"Benjamin",role:"family",icon:"👤"}],familyTasks:[],lifeEvents:[],notificationPermissionAsked:false,activeTrainingSession:null,equipmentStatus:{}
+ favoriteExercises:[],commandProgress:{},activeProfile:"marcus",profiles:[{id:"marcus",name:"Marcus",role:"driver",icon:"👨"},{id:"anna-lena",name:"Anna-Lena",role:"family",icon:"👩"},{id:"elliot",name:"Elliot",role:"family",icon:"👤"},{id:"rasmus",name:"Rasmus",role:"family",icon:"👤"},{id:"benjamin",name:"Benjamin",role:"family",icon:"👤"}],familyTasks:[],lifeEvents:[],notificationPermissionAsked:false,activeTrainingSession:null,equipmentStatus:{},dailyCheckins:{}
 };
 const equipmentLibrary=[
 {id:"line5",name:"Non-stop Line Harness 5.0",category:"Sele",phase:"Valp",price:550,priority:1,note:"Lätt sele för vardag, miljö och tidigt sökarbete."},
@@ -582,6 +607,7 @@ function completedExerciseIds(days=5){
 function selectDailyExercises(forceSeed=0){
  const weeks=ageParts().weeks,mode=effectiveMode(),recent=completedExerciseIds(4);
  let maxLoad=mode==="dygn"?2:mode==="natt"?3:mode==="dag"?4:6;
+ const intel=intelligenceAnalysis();if(intel.load==="low")maxLoad=Math.min(maxLoad,2);
  const eligible=exerciseLibrary.filter(x=>weeks>=x.minWeeks&&weeks<=x.maxWeeks&&!recent.includes(x.id));
  const categories=["relation","inkallning","nos","miljo","sar","aterhamtning"];
  const selected=[];
@@ -598,6 +624,10 @@ function selectDailyExercises(forceSeed=0){
    }
    if(selected.length>=3||maxLoad<=1)break;
  }
+ if(intel.load==="low"){
+   const recovery=exerciseLibrary.find(x=>x.id==="recovery_mat");
+   selected.splice(0,selected.length);if(recovery)selected.push(recovery);
+ }
  if(!selected.length) selected.push(exerciseLibrary[0],exerciseLibrary[9]);
  return selected.slice(0,3);
 }
@@ -609,13 +639,48 @@ function getDailyPlan(){
 
 const weekly=[["Förbered tryggheten","Sovplats, rastningsrutin och familjens ansvar."],["Relation och vila","Mikropass, sömn och spontan kontakt."],["Namn och följsamhet","Namnlek, kort inkallning och följsamhet."],["Nos och miljö","Godissök och lugna nya underlag."]]
 function weekIndex(){if(new Date()<dateOnly(state.pickupDate))return 0;return Math.max(1,Math.floor((new Date()-dateOnly(state.pickupDate))/604800000)+1)}
+
+function todayCheckin(){
+ state.dailyCheckins=state.dailyCheckins||{};
+ return state.dailyCheckins[isoToday()]||{sleep:"normal",energy:"normal",appetite:"normal"};
+}
+function intelligenceAnalysis(){
+ const c=todayCheckin(),w=ageParts().weeks,mode=effectiveMode(),wl=workload(),recent=recentJournal(4);
+ let score=90,reasons=[],load="normal",directive="Ett kort kvalitetspass passar idag.";
+ if(c.sleep==="low"){score-=22;load="low";reasons.push(["Sömn","Låg sömn rapporterad – sänk krav och prioritera återhämtning."])}
+ else if(c.sleep==="good"){score+=3;reasons.push(["Sömn","Bra sömn ger utrymme för ett kort fokuserat pass."])}
+ if(c.energy==="low"){score-=18;load="low";reasons.push(["Energi","Låg energi – välj relation eller lugn på filt."])}
+ else if(c.energy==="high"){reasons.push(["Energi","Hög energi – använd kort lek, inte ett längre pass."])}
+ if(c.appetite==="low"){score-=20;load="low";reasons.push(["Aptit","Låg aptit – träning är sekundärt och hälsa ska följas upp."])}
+ if(["natt","dygn"].includes(mode)){score-=12;load="low";reasons.push(["Arbetsschema",mode==="natt"?"Nattpass idag – bara ett mikropass före arbetet.":"Dygnspass – tillsyn och trygghet går före träning."])}
+ if(w<12){reasons.push(["Ålder",`Ice är ${w} veckor – relation, sömn och trygghet prioriteras.`])}
+ if(wl.level==="Hög"){score-=18;load="low";reasons.push(["Historik","Belastningen de senaste dagarna är hög."])}
+ const cats={};recent.forEach(j=>cats[j.exerciseCategory||j.type]=(cats[j.exerciseCategory||j.type]||0)+1);
+ const repeated=Object.entries(cats).sort((a,b)=>b[1]-a[1])[0];if(repeated&&repeated[1]>=2)reasons.push(["Variation",`${repeated[0]} har tränats flera gånger – byt fokus eller vila.`]);
+ score=Math.max(25,Math.min(98,score));
+ if(score<50)directive="Återhämtningsdag. Hoppa över planerad träning och välj bara lugn relation.";
+ else if(score<70)directive="Sänk belastningen. Ett enda mikropass på 2–4 minuter räcker.";
+ else if(score>90)directive="Bra förutsättningar. Genomför dagens korta plan men avsluta tidigt.";
+ const title=score<50?"Återhämtning först":score<70?"Mikropass idag":score>90?"Redo för kvalitet":"Relation före prestation";
+ const decision=load==="low"?"Planen anpassas till låg belastning och prioriterar återhämtning.":"Planen behåller normal låg valpbelastning.";
+ return{score,title,directive,reasons:reasons.slice(0,4),load,decision,checkin:c};
+}
+function renderIntelligence(){
+ const a=intelligenceAnalysis();
+ const score=document.querySelector('#intelScore');if(!score)return;
+ score.textContent=a.score;document.querySelector('#intelTitle').textContent=a.title;document.querySelector('#intelDirective').textContent=a.directive;
+ document.querySelector('#intelReasons').innerHTML=a.reasons.map(r=>`<div class="intel-reason"><span>◆</span><div><b>${escapeHtml(r[0])}</b><br>${escapeHtml(r[1])}</div></div>`).join('');
+ document.querySelector('#intelPlanDecision').innerHTML=`<b>Dagens planbeslut:</b> ${escapeHtml(a.decision)}`;
+ document.querySelectorAll('[data-checkin]').forEach(b=>b.classList.toggle('on',a.checkin[b.dataset.checkin]===b.dataset.value));
+}
+
 function coach(){
  const w=ageParts().weeks,mode=effectiveMode(),r=recentJournal(5),cats={};r.forEach(j=>cats[j.type]=(cats[j.type]||0)+1);
  let title="Relation före prestation",text="Fokusera på trygghet, lek och korta positiva erfarenheter.";
  if(w>=12){const least=["Relation & lek","Inkallning","Miljö","Nosarbete"].sort((a,b)=>(cats[a]||0)-(cats[b]||0))[0];title="Balansera veckan";text=`Den minst tränade kategorin senaste dagarna är ${least}. Välj ett kort pass där idag.`}
  if(mode==="natt"){title="Låg belastning före natt";text="Gör ett enda kort kvalitetspass och prioritera sömn och lugn före arbetet."}
  if(mode==="dygn"){title="Återhämtning och tillsyn";text="Dagens huvuduppgift är en trygg tillsynsplan. Träning är sekundärt."}
- const wl=workload();return{title,text,score:wl.score,warning:wl.level==="Hög"?wl.text:""}
+ const wl=workload(),intel=intelligenceAnalysis();if(intel.score<70){title=intel.title;text=intel.directive}return{title,text,score:intel.score,warning:intel.score<50?intel.directive:(wl.level==="Hög"?wl.text:"")}
 }
 function mission(){
  const pre=new Date()<dateOnly(state.pickupDate),modes=effectiveMode(),base=pre?
@@ -629,7 +694,8 @@ function mission(){
 
 function renderDailyPlan(){
  const plan=getDailyPlan(),mode=effectiveMode(),total=plan.reduce((a,x)=>a+x.duration,0);
- document.querySelector("#dailyPlanSummary").innerHTML=`<div class="good"><strong>${plan.length} övningar · cirka ${total} minuter</strong><br>${workAdvice(mode)}</div>${plan.length?`<button class="button block start-session" id="startTrainingSession">▶ Starta dagens pass</button>`:''}`;
+ const intel=intelligenceAnalysis();
+ document.querySelector("#dailyPlanSummary").innerHTML=`<div class="good"><strong>${plan.length} övningar · cirka ${total} minuter</strong><br>${workAdvice(mode)}</div><div class="plan-decision"><b>Varför denna plan:</b> ${escapeHtml(intel.decision)}</div>${plan.length?`<button class="button block start-session" id="startTrainingSession">▶ Starta dagens pass</button>`:''}`;
  document.querySelector("#dailyExerciseList").innerHTML=plan.length?plan.map((x,i)=>`<div class="item"><strong>${i+1}. ${x.title}</strong><small>${x.cat} · ${x.duration} min · belastning ${x.load}/3</small><p><b>Mål:</b> ${x.goal}</p><details><summary>Visa steg för steg</summary><ol>${x.steps.map(v=>`<li>${v}</li>`).join('')}</ol><p><b>Vanligt misstag:</b> ${x.mistake}</p><p><b>Gå vidare när:</b> ${x.progress}</p></details><button class="button secondary" data-logexercise="${x.id}">Logga separat</button></div>`).join(''):'<div class="empty">Inga aktiva övningar ännu. Appen prioriterar trygghet, hemförberedelser och vila fram till vecka 8.</div>';
 }
 function exerciseSessions(id){return state.journal.filter(j=>j.exerciseId===id).length}
@@ -841,7 +907,7 @@ function renderEquipment(){
  document.querySelector('#equipmentOwned').textContent=owned;document.querySelector('#equipmentPlanned').textContent=planned;document.querySelector('#equipmentBudget').textContent=budget.toLocaleString('sv-SE')+' kr';
 }
 function refreshLiveGreeting(){if(document.querySelector('#greetingTitle'))renderToday()}
-function renderAll(){updateIceTopProfile();renderToday();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderWeeklyTraining();renderExerciseLibrary();renderProgress();renderSettings();renderFamily();renderEquipment()}
+function renderAll(){updateIceTopProfile();renderToday();renderIntelligence();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderWeeklyTraining();renderExerciseLibrary();renderProgress();renderSettings();renderFamily();renderEquipment()}
 function defaultsForShift(t){return{ledig:["",""],dag:["08:00","17:30"],natt:["17:30","08:00"],dygn:["08:00","08:00"],annat:["",""]}[t]||["",""]}
 function clearShift(){document.querySelector("#shiftEditIndex").value="";document.querySelector("#shiftDate").value=isoToday();document.querySelector("#shiftType").value="dag";const p=defaultsForShift("dag");document.querySelector("#shiftStart").value=p[0];document.querySelector("#shiftEnd").value=p[1];document.querySelector("#shiftNote").value="";document.querySelector("#cancelShiftEdit").style.display="none";document.querySelector("#saveShift").textContent="Spara pass"}
 function editShift(i){const s=state.shifts[i];document.querySelector("#shiftEditIndex").value=i;document.querySelector("#shiftDate").value=s.date;document.querySelector("#shiftType").value=s.type;document.querySelector("#shiftStart").value=s.start||"";document.querySelector("#shiftEnd").value=s.end||"";document.querySelector("#shiftNote").value=s.note||"";document.querySelector("#cancelShiftEdit").style.display="inline-block";document.querySelector("#saveShift").textContent="Spara ändring"}
@@ -864,7 +930,7 @@ function goBackScreen(){if(screenHistory.length>1){screenHistory.pop();openScree
 
 function configureIce40Dashboard(){
  const today=document.querySelector('#today'); if(!today||today.classList.contains('dashboard-ready'))return;
- const keepTitles=['ICE idag','Smart coach','Idag med Ice','Färdighetsmotor'];
+ const keepTitles=['ICE idag','ICE Intelligence','Smart coach','Idag med Ice','Färdighetsmotor'];
  [...today.children].forEach(el=>el.classList.add('dashboard-hidden'));
  const welcome=today.querySelector('.hq-welcome'); if(welcome)welcome.classList.remove('dashboard-hidden');
  const notice=today.querySelector('#updateNotice'); if(notice)notice.classList.remove('dashboard-hidden');
@@ -875,7 +941,7 @@ function configureIce40Dashboard(){
  });
  ordered.forEach(el=>today.appendChild(el));
  today.classList.add('dashboard-ready');
- const sub=document.querySelector('#greetingSubtitle'); if(sub)sub.textContent='Dagens beslutstöd, pass och progression.';
+ const sub=document.querySelector('#greetingSubtitle'); if(sub)sub.textContent='Dagens analys, beslut och nästa bästa steg.';
  const current=document.querySelector('#iceCurrentView'); if(current)current.textContent='ICE';
  const skillTitle=[...today.querySelectorAll(':scope > .section-title')].find(x=>x.querySelector('h2')?.textContent.trim()==='Färdighetsmotor');
  if(skillTitle){skillTitle.classList.add('click-card');skillTitle.dataset.goto='progress'}
@@ -892,6 +958,7 @@ document.querySelector('#homeOpenIce')?.addEventListener('click',()=>document.qu
 let edgeStart=null;document.addEventListener('touchstart',e=>{const t=e.touches[0];if(t.clientX<28)edgeStart={x:t.clientX,y:t.clientY}}, {passive:true});document.addEventListener('touchend',e=>{if(!edgeStart)return;const t=e.changedTouches[0],dx=t.clientX-edgeStart.x,dy=Math.abs(t.clientY-edgeStart.y);edgeStart=null;if(dx>75&&dy<70&&activeScreenId()!=='today')goBackScreen()},{passive:true});
 
 document.addEventListener("click",async e=>{
+ const checkin=e.target.closest('[data-checkin]');if(checkin){state.dailyCheckins=state.dailyCheckins||{};const current=todayCheckin();state.dailyCheckins[isoToday()]={...current,[checkin.dataset.checkin]:checkin.dataset.value};delete state['dailyPlan_'+isoToday()];save();return}
  if(e.target.id==='startTrainingSession'||e.target.closest('#startTrainingFromHQ')){openTrainingSession();return}
  if(e.target.id==='closeSession'){closeTrainingSession();return}
  if(e.target.id==='toggleTimer'){startStepTimer();return}
