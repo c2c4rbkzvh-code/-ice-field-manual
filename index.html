@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="ICE">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>ICE – Field Manual 3.3 Build 14</title>
+<title>ICE – Field Manual 3.3 Build 15</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -96,14 +96,28 @@ textarea{min-height:100px;resize:vertical}
 @media(min-width:700px){.profile-modal{align-items:center}.profile-modal-card{border-radius:25px}}
 
 .equipment-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.equipment-summary div{background:#0a1a15;border:1px solid var(--line);border-radius:15px;padding:12px;text-align:center}.equipment-summary b{display:block;font-size:22px}.equipment-summary small{color:var(--muted)}.equipment-item{border-top:1px solid var(--line);padding:15px 0}.equipment-item:first-child{border-top:0}.equipment-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.equipment-title{font-size:18px;font-weight:850}.equipment-meta{color:var(--muted);font-size:12px;margin-top:5px;line-height:1.4}.equipment-status{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:11px;padding:8px;min-width:105px}.equipment-recommended{border-left:3px solid var(--gold);padding-left:12px}.equipment-phase{display:inline-block;color:#ffe2a1;background:#4d3d16;border-radius:999px;padding:5px 8px;font-size:11px;font-weight:800;margin-top:8px}.equipment-note{background:#173126;border-radius:12px;padding:10px 12px;margin-top:10px;color:#dbe7e0;line-height:1.4}.equipment-filter{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}@media(max-width:460px){.equipment-summary{grid-template-columns:1fr}.equipment-filter{grid-template-columns:1fr}}
+
+/* Build 15 · Visual Upgrade */
+header{min-height:310px;background:#030a08}
+header img{filter:brightness(.72) saturate(.88);object-position:center}
+header:after{background:linear-gradient(90deg,rgba(3,10,8,.92) 0%,rgba(3,10,8,.58) 48%,rgba(3,10,8,.08) 100%),linear-gradient(180deg,rgba(3,8,6,.04),#06100d 98%)}
+.hero{min-height:310px;padding-bottom:30px}
+.hero h1{font-size:44px;text-shadow:0 4px 24px rgba(0,0,0,.55)}
+.hero-profile{position:absolute;z-index:3;top:calc(16px + env(safe-area-inset-top));right:16px;display:flex;align-items:center;gap:9px;border:1px solid rgba(226,180,78,.38);background:rgba(6,16,13,.8);color:var(--text);border-radius:999px;padding:7px 11px 7px 7px;backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.hero-profile img{position:static;width:32px;height:32px;border-radius:50%;object-fit:cover;filter:none;border:1px solid rgba(255,255,255,.18)}
+.hero-profile span{font-size:12px;color:var(--muted);display:block;line-height:1}.hero-profile strong{font-size:14px;display:block;margin-top:3px}.hero-profile i{font-style:normal;color:var(--gold);font-size:12px}
+.start-today{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:9px;box-shadow:0 10px 26px rgba(226,180,78,.16)}
+.start-today b{font-size:18px}.focus-card{overflow:hidden;position:relative}.focus-card:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-65px;top:-80px;background:rgba(226,180,78,.08);pointer-events:none}
+@media(max-width:420px){.hero-profile span{display:none}.hero-profile{padding-right:8px}.hero{padding-left:20px}.hero h1{font-size:40px}}
 </style>
 </head>
 <body>
 <div class="app">
 <header>
-<img src="ice-photo.jpg" alt="Ice">
+<img src="ice-hero-dark.jpg" alt="Ice i mörk taktisk stil">
+<button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">VERSION 3.3 · CORE BUILD 14</span>
+<span class="version">VERSION 3.3 · CORE BUILD 15</span>
 <h1>ICE</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -111,7 +125,7 @@ textarea{min-height:100px;resize:vertical}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Version 3.3 Build 14 är installerad.</div>
+<div id="updateNotice" class="notice">Version 3.3 Build 15 är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">ICE HQ</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -146,6 +160,7 @@ textarea{min-height:100px;resize:vertical}
 <div class="card focus-card click-card" data-goto="sar">
 <div class="eyebrow">DAGENS FOKUS</div><div class="focus-title" id="ageFocusTitle">–</div><p id="ageFocusText">–</p>
 <div class="focus-list" id="ageFocusList"></div>
+<button class="button block start-today driver-only" id="startTrainingFromHQ"><b>▶</b> Starta dagens pass</button>
 </div>
 <div class="section-title"><h2>Snabböversikt</h2><span>det viktigaste just nu</span></div>
 <div class="today-overview">
@@ -674,7 +689,7 @@ function taskVisible(t,p){return t.assignee==='all'||t.assignee===p.id||p.id==='
 function renderTask(t,index,compact=false){const who=t.completedBy?profileById(t.completedBy).name:'';return `<div class="task-card ${t.done?'done':''}"><input type="checkbox" data-familydone="${index}" ${t.done?'checked':''} ${!canProfileDoTask(t,activeProfile())&&!t.done?'disabled':''}><div><strong>${escapeHtml(t.title)}</strong><div class="task-meta">${t.date}${t.time?' · '+t.time:''} · ${t.assignee==='all'?'Alla':escapeHtml(profileById(t.assignee).name)} ${t.reminder?' · 🔔':' · 🔕'}</div>${t.note?`<div class="task-meta">${escapeHtml(t.note)}</div>`:''}<div style="margin-top:6px">${accessBadge(t.access)} ${t.done?`<span class="badge">Klar av ${escapeHtml(who)}</span>`:''}</div></div>${compact?'':`<button class="icon-btn" data-delfamily="${index}" aria-label="Ta bort">×</button>`}</div>`}
 function renderFamily(){
  applyProfileMode();
- const p=activeProfile();profileButtons(document.querySelector('#todayProfiles'));profileButtons(document.querySelector('#familyProfiles'));
+ const p=activeProfile();const heroProfile=document.querySelector('#heroProfileName');if(heroProfile)heroProfile.textContent=p.name;profileButtons(document.querySelector('#todayProfiles'));profileButtons(document.querySelector('#familyProfiles'));
  document.querySelector('#activeProfileNote').innerHTML=p.role==='driver'?`<strong>${p.name} · hundförare</strong><br>Du ser hela planen och de förarunika momenten.`:`<strong>${p.name} · familjeläge</strong><br>Du ser vardagsuppgifter och invigda moment som hjälper Ice utan att störa förararbetet.`;
  document.querySelector('#familyRoleText').innerHTML=p.role==='driver'?'<strong>Förarläge</strong><br>Full åtkomst till uppgifter, livsbok och planering.':'<strong>Familjeläge</strong><br>Promenad, mat, vatten, skötsel, social samvaro och tilldelade aktiviteter.';
  const today=isoToday(),mine=state.familyTasks.map((t,i)=>({t,i})).filter(x=>x.t.date===today&&taskVisible(x.t,p));
@@ -725,7 +740,7 @@ function clearShift(){document.querySelector("#shiftEditIndex").value="";documen
 function editShift(i){const s=state.shifts[i];document.querySelector("#shiftEditIndex").value=i;document.querySelector("#shiftDate").value=s.date;document.querySelector("#shiftType").value=s.type;document.querySelector("#shiftStart").value=s.start||"";document.querySelector("#shiftEnd").value=s.end||"";document.querySelector("#shiftNote").value=s.note||"";document.querySelector("#cancelShiftEdit").style.display="inline-block";document.querySelector("#saveShift").textContent="Spara ändring"}
 async function compressImage(file){return new Promise((resolve,reject)=>{const img=new Image(),r=new FileReader();r.onload=e=>img.src=e.target.result;img.onload=()=>{const max=900,scale=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement("canvas");c.width=img.width*scale;c.height=img.height*scale;c.getContext("2d").drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL("image/jpeg",.7))};r.onerror=reject;r.readAsDataURL(file)})}
 document.addEventListener("click",async e=>{
- if(e.target.id==='startTrainingSession'){openTrainingSession();return}
+ if(e.target.id==='startTrainingSession'||e.target.closest('#startTrainingFromHQ')){openTrainingSession();return}
  if(e.target.id==='closeSession'){closeTrainingSession();return}
  if(e.target.id==='toggleTimer'){startStepTimer();return}
  if(e.target.id==='completeSessionStep'){completeTrainingStep(false);return}
