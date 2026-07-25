@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="ICE">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>ICE 10.1 – Adaptive Foundation</title>
+<title>ICE 10.5 – One-Hand Home</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -238,18 +238,43 @@ body:not(.home-view) main{padding-top:18px}
 /* ICE 10.2 — Decision Engine */
 .decision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.decision-cell{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:14px;padding:11px}.decision-cell small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em}.decision-cell b{display:block;margin-top:4px;font-size:14px}.why-list{display:grid;gap:8px;margin-top:12px}.why-item{display:grid;grid-template-columns:24px 1fr;gap:9px;align-items:start;padding:10px;border-radius:12px;background:rgba(255,255,255,.04)}.why-item span{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#17352a;color:var(--gold);font-weight:900;font-size:12px}.gate{margin-top:12px;border-left:3px solid var(--gold);background:rgba(226,180,78,.08);padding:11px 12px;border-radius:0 12px 12px 0}.gate.ready{border-left-color:var(--green);background:rgba(99,197,140,.08)}.evidence-badge{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:999px;padding:5px 8px;font-size:10px;font-weight:800;color:var(--muted);margin:4px 5px 0 0}.evidence-badge.research{border-color:#397e68;color:#9de2c4}.evidence-badge.practice{border-color:#8b7134;color:#f0cf79}.evidence-badge.experience{border-color:#49637a;color:#a9c8df}.locked-message{padding:12px;border-radius:12px;background:rgba(255,255,255,.035);color:var(--muted);margin-top:10px}.recommendation-reason{border-top:1px solid var(--line);margin-top:12px;padding-top:12px}.recommendation-reason b{color:var(--gold)}@media(max-width:390px){.decision-grid{grid-template-columns:1fr}}
 
-/* ICE 10.4 — Operational Home */
+/* ICE 10.5 — One-Hand Home */
 #today .operational-home{display:grid;gap:15px}
 #today .today-mission-card{padding:18px;border-color:rgba(226,180,78,.62);background:linear-gradient(145deg,rgba(53,68,28,.78),rgba(10,42,31,.98))}
 .today-mission-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.today-mission-head h2{font-size:28px;margin:5px 0 6px}.today-dose{min-width:78px;text-align:center;border:1px solid rgba(226,180,78,.55);border-radius:16px;padding:10px 8px;background:rgba(226,180,78,.08)}.today-dose b{display:block;font-size:22px;color:var(--gold)}.today-dose small{font-size:10px;color:var(--muted)}
 .today-context{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0}.context-box{background:rgba(5,23,17,.7);border:1px solid var(--line);border-radius:14px;padding:11px}.context-box small{display:block;color:var(--gold);font-weight:850;text-transform:uppercase;letter-spacing:.08em;font-size:9px;margin-bottom:4px}.context-box b{font-size:14px}.today-exercises{display:grid;gap:8px;margin:14px 0}.today-exercise{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;padding:11px;background:rgba(255,255,255,.045);border-radius:13px}.today-exercise i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:rgba(226,180,78,.16);color:var(--gold);font-style:normal;font-weight:900}.today-exercise strong{display:block;font-size:14px}.today-exercise small{color:var(--muted)}.today-exercise span{font-size:11px;color:var(--muted)}
 .home-reason{border-left:3px solid var(--gold);padding:10px 11px;background:rgba(226,180,78,.07);border-radius:0 11px 11px 0;font-size:13px;color:var(--muted);margin-bottom:12px}.home-reason b{color:var(--text)}
-.week-strip{display:grid;grid-template-columns:repeat(7,minmax(68px,1fr));gap:8px;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x mandatory}.week-day{min-width:72px;scroll-snap-align:start;border:1px solid var(--line);background:#091b15;border-radius:14px;padding:11px 8px;text-align:center}.week-day.today{border-color:var(--gold);background:rgba(226,180,78,.1)}.week-day small{display:block;color:var(--muted);font-size:10px}.week-day b{display:block;margin:5px 0;font-size:12px}.week-day span{font-size:9px;color:var(--gold)}
+.week-strip{display:grid;grid-template-columns:1fr;gap:8px;width:100%;overflow:visible}.week-day{min-width:0;width:100%;display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:10px;align-items:center;border:1px solid var(--line);background:#091b15;border-radius:14px;padding:11px 12px;text-align:left}.week-day.today{border-color:var(--gold);background:rgba(226,180,78,.1)}.week-day small{display:block;color:var(--muted);font-size:11px}.week-day b{display:block;margin:0;font-size:13px;min-width:0;overflow-wrap:anywhere}.week-day span{font-size:10px;color:var(--gold);text-align:right;white-space:normal}
 .home-progress-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.home-progress-item{border:1px solid var(--line);background:#091b15;border-radius:14px;padding:12px}.home-progress-item header{display:flex!important;min-height:0!important;margin:0!important;justify-content:space-between;align-items:center}.home-progress-item header b{font-size:13px}.home-progress-item header span{font-weight:900;color:var(--gold);font-size:13px}.home-progress-item .bar{margin-top:9px}.home-progress-foot{display:flex;justify-content:space-between;gap:10px;margin-top:12px;color:var(--muted);font-size:12px}.home-progress-foot b{color:var(--text)}
 .home-section-title{display:flex;justify-content:space-between;align-items:end;margin:2px 3px -4px}.home-section-title h2{margin:0;font-size:22px}.home-section-title span{color:var(--muted);font-size:12px}
 #today.dashboard-ready > :not(.hq-welcome):not(#updateNotice):not(.operational-home){display:none!important}
 #today .hq-welcome{display:none!important}
 @media(max-width:390px){.today-context{grid-template-columns:1fr}.today-mission-head h2{font-size:25px}.home-progress-grid{grid-template-columns:1fr 1fr}}
+
+/* Build 30: strict one-hand, vertical-only layout */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+.app,main,.screen,.operational-home,.card{width:100%;max-width:100%;min-width:0}
+#today *{min-width:0}
+.today-mission-head>div:first-child{min-width:0}
+.today-mission-head h2,.today-mission-head p,.context-box b,.today-exercise strong,.today-exercise small,.home-reason,.home-progress-foot b{overflow-wrap:anywhere;word-break:normal}
+.today-context{grid-template-columns:1fr}
+.today-mission-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start}
+.today-exercise{grid-template-columns:30px minmax(0,1fr) auto}
+.home-progress-grid{grid-template-columns:1fr}
+.tabs-inner{min-width:0}
+@media(max-width:520px){
+  main{padding:14px}
+  #today .today-mission-card{padding:15px}
+  .today-mission-head{grid-template-columns:1fr}
+  .today-dose{min-width:0;width:max-content;display:flex;align-items:baseline;gap:6px;padding:7px 11px}
+  .today-dose b{font-size:18px}.today-dose small{font-size:9px}
+  .today-mission-head h2{font-size:25px}
+  .today-exercise{grid-template-columns:28px minmax(0,1fr);padding:10px}
+  .today-exercise span{grid-column:2;text-align:left}
+  .week-day{grid-template-columns:64px minmax(0,1fr);}
+  .week-day span{grid-column:2;text-align:left;margin-top:-3px}
+  .home-progress-foot{display:grid;grid-template-columns:1fr;gap:4px}
+}
 
 </style>
 </head>
@@ -261,7 +286,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="Ice i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">ICE 10.4 · OPERATIONAL HOME</span>
+<span class="version">ICE 10.5 · ONE-HAND HOME</span>
 <h1>ICE</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -269,7 +294,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">ICE 10.4 Operational Home – Build 29 är installerad.</div>
+<div id="updateNotice" class="notice">ICE 10.5 One-Hand Home – Build 30 är installerad.</div>
 <div class="operational-home" id="operationalHome">
   <div class="card today-mission-card">
     <div class="today-mission-head"><div><div class="eyebrow">DAGENS UPPDRAG</div><h2 id="homeMissionTitle">Förbereder dagens pass…</h2><p id="homeMissionIntro" style="margin:0;color:var(--muted)"></p></div><div class="today-dose"><b id="homeMissionMinutes">–</b><small>MINUTER</small></div></div>

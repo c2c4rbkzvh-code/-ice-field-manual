@@ -1,7 +1,7 @@
 {
-  "name": "ICE 10.4 Operational Home",
-  "short_name": "ICE 10.4",
-  "description": "Adaptiva missioner, 25 Academy-lektioner, kompetensmotor och återhämtningsstyrd träningsplan för Ice.",
+  "name": "ICE 10.5 One-Hand Home",
+  "short_name": "ICE",
+  "description": "ICE Field Manual – Build 30, vertical one-hand layout",
   "start_url": "./?v=10.1.0",
   "scope": "./",
   "display": "standalone",

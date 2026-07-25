@@ -1,15 +1,12 @@
-ICE 10.4 Operational Home – Build 29
+ICE 10.5 One-Hand Home – Build 30
 
-Ny startsida med fokus på det som ska göras, inte på all bakomliggande analys.
+Ändringar:
+- Ingen horisontell scroll på startsidan.
+- Miljö och Utvecklar staplas vertikalt.
+- Dagens pass anpassas till smal iPhone-skärm.
+- Veckan framför oss visas som vertikal lista.
+- Utvecklingskort visas i en kolumn.
+- Text och kort bryts inom skärmens bredd.
+- Uppdaterad PWA-cache för Build 30.
 
-Innehåller:
-- Dagens kompletta pass direkt på startsidan
-- Rekommenderad miljö och vad passet utvecklar
-- Kort motivering till dagens val
-- Sjudagars översikt
-- Kompakt utvecklingsstatus och nästa milstolpe
-- Intelligence, Coach och detaljerad statistik finns kvar i övriga vyer
-- Open Academy: alla lektioner kan fortfarande öppnas när som helst
-- Lokal data och tidigare journal behålls
-
-PWA / offline-first / iPhone-prioriterad.
+Befintlig lokal data och lagringsnycklar är oförändrade.
