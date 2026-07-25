@@ -1,7 +1,7 @@
 {
-  "name": "ICE 10.5 One-Hand Home",
+  "name": "ICE 10.6 Adaptive Sequence",
   "short_name": "ICE",
-  "description": "ICE Field Manual – Build 30, vertical one-hand layout",
+  "description": "ICE Field Manual – Build 31, adaptive sequential training plan",
   "start_url": "./?v=10.1.0",
   "scope": "./",
   "display": "standalone",
