@@ -1,8 +1,8 @@
-ICE 10.7 Strict Mobile Width – Build 32
+ICE 11.0 Core Engines – Build 33
 
-- Tar bort horisontell scroll på startsidan.
-- Dagens uppdrag, tid, miljö och utveckling ligger i en kolumn.
-- Veckoplanen visas vertikalt och ryms inom iPhone-skärmen.
-- Övningskort och längre texter bryts inom skärmbredden.
-- Alla startsidans element har maxbredd 100 % och minbredd 0.
-- Lokal lagring och tidigare journaldata behålls.
+- Academy Engine repaired: lessons always load, all lessons remain open, age is advisory.
+- Guided Mission Engine retained and connected to progression.
+- Progression Engine advances only after a guided pass is completed.
+- Upcoming plan is sequence-based rather than calendar-based.
+- Strict iPhone width contract prevents horizontal page scrolling.
+- Existing local data storage key is preserved.

@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="ICE">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>ICE 10.7 – Strict Mobile Width</title>
+<title>ICE 11.0 – Core Engines</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -279,6 +279,19 @@ main{overflow-x:hidden}
   .today-mission-head h2{font-size:25px}
   .week-day{grid-template-columns:minmax(92px,.65fr) minmax(0,1fr)}
 }
+
+/* ICE 11.0 strict viewport contract */
+html,body{width:100%;max-width:100%;overflow-x:clip}
+*,*:before,*:after{box-sizing:border-box;min-width:0}
+.app,.screen,#today,#today>*{width:100%;max-width:100%}
+#today .card,#today .section-title,#today .today-mission-card{margin-left:auto;margin-right:auto;max-width:calc(100vw - 28px)}
+.today-context{display:grid!important;grid-template-columns:1fr!important}
+.home-mission-step{grid-template-columns:34px minmax(0,1fr) auto!important}
+.week-strip{display:grid!important;grid-template-columns:1fr!important;overflow:visible!important;width:100%!important}
+.week-day{width:100%!important;max-width:100%!important}
+.today-mission-card p,.today-mission-card b,.today-mission-card small,.today-mission-card div{overflow-wrap:anywhere;word-break:normal}
+@supports not (overflow-x:clip){html,body{overflow-x:hidden}}
+
 </style>
 </head>
 <body class="home-view">
@@ -633,7 +646,7 @@ main{overflow-x:hidden}
 </div></nav>
 
 <script>
-const VERSION="10.1.0", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
+const VERSION="11.0.0", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
 const defaults={
  birthDate:"2026-06-04",pickupDate:"2026-07-30",currentWorkMode:"ledig",
  shifts:[{date:"2026-08-25",type:"dag",start:"08:00",end:"17:30",note:""},{date:"2026-08-26",type:"natt",start:"17:30",end:"08:00",note:""},{date:"2026-08-31",type:"natt",start:"17:30",end:"08:00",note:""}],
@@ -1286,6 +1299,100 @@ document.querySelector("#journalPhoto").addEventListener("change",async e=>{if(!
 document.querySelector("#importData").addEventListener("change",async e=>{try{const j=JSON.parse(await e.target.files[0].text());state={...clone(defaults),...(j.data||j)};save();alert("Importerad.")}catch(err){alert("Filen kunde inte läsas.")}});
 document.querySelector("#journalDate").value=isoToday();document.querySelector("#taskDate").value=isoToday();document.querySelector("#lifeDate").value=isoToday();clearShift();seedFamilyTasks();
 if(localStorage.getItem("iceAppVersion")!==VERSION){localStorage.setItem("iceAppVersion",VERSION);document.querySelector("#updateNotice").style.display="block";setTimeout(()=>document.querySelector("#updateNotice").style.display="none",5000)}
+
+/* ICE 11.0 — Core Engines: Academy, Mission Session, Progression */
+(function prepareAcademyCatalog(){
+  const seen={};
+  academyLessons.forEach((lesson,index)=>{
+    const base=lesson.id||('lesson_'+index);
+    seen[base]=(seen[base]||0)+1;
+    if(seen[base]>1) lesson.id=base+'_'+seen[base];
+  });
+})();
+
+const ICE_SEQUENCE=[
+ ['rel_name','recovery_mat'],
+ ['env_surface','rel_follow'],
+ ['recovery_mat'],
+ ['recall_short','rel_name'],
+ ['rel_follow','recovery_mat'],
+ ['nose_food'],
+ ['env_surface','recovery_mat'],
+ ['recall_short','rel_follow'],
+ ['nose_boxes'],
+ ['env_sound','recovery_mat'],
+ ['sar_runner'],
+ ['sar_hidden']
+];
+function completedGuidedPasses(){
+ return (state.lifeEvents||[]).filter(x=>String(x.source||'').startsWith('guided-session-')).length;
+}
+function progressionStep(){
+ const stored=Number(state.trainingSequenceStep);
+ return Number.isFinite(stored)?stored:completedGuidedPasses();
+}
+function getDailyPlan(){
+ const step=Math.max(0,progressionStep());
+ const ids=ICE_SEQUENCE[Math.min(step,ICE_SEQUENCE.length-1)]||ICE_SEQUENCE[0];
+ return ids.map(id=>exerciseLibrary.find(x=>x.id===id)).filter(Boolean);
+}
+function currentAcademyPhase(){
+ const step=progressionStep(), w=ageParts().weeks;
+ if(step<3)return {title:'Trygg start',directive:'Trygghet, relation, vila och frivillig kontakt.'};
+ if(step<7)return {title:'Grundfärdigheter',directive:'Kontakt, miljö, inkallning och nosarbete i korta pass.'};
+ if(step<10)return {title:'Generalisering',directive:'Samma färdigheter i varsamt varierade miljöer.'};
+ return {title:'SAR-grund',directive:'Figurantintresse, söklust och markeringsförberedelser.'};
+}
+function academyProgress(){
+ const total=academyLessons.length;
+ const done=academyLessons.filter(x=>!!state.academyCompleted?.[x.id]);
+ const open=[...academyLessons];
+ return {total,done,open,pct:total?Math.round(done.length/total*100):0};
+}
+function renderAcademy(){
+ const host=document.querySelector('#academyLessons'); if(!host)return;
+ const a=academyProgress(), phase=currentAcademyPhase();
+ const recommended=academyLessons
+   .filter(x=>!state.academyCompleted?.[x.id])
+   .sort((x,y)=>Math.abs(x.minWeeks-ageParts().weeks)-Math.abs(y.minWeeks-ageParts().weeks))[0];
+ document.querySelector('#academyAge').textContent=`vecka ${ageParts().weeks} · rekommendation, inte låsning`;
+ document.querySelector('#academyPhase').textContent=phase.title;
+ document.querySelector('#academyDirective').textContent=recommended?`${phase.directive} Nästa rekommenderade lektion: ${recommended.title}.`:'Alla lektioner är markerade klara. Repetera och generalisera.';
+ document.querySelector('#academyPercent').textContent=a.pct+'%';
+ document.querySelector('#academyRing').style.setProperty('--p',a.pct);
+ document.querySelector('#academyPath').innerHTML=['Trygg start','Grundfärdigheter','Generalisering','SAR-grund','Operativ'].map((v,i)=>`${i?'<i>→</i>':''}<span>${v}</span>`).join('');
+ document.querySelector('#academyRecommended').innerHTML=recommended?lessonCard(recommended):'<div class="good">Alla lektioner är tillgängliga och genomförda.</div>';
+ document.querySelector('#academyCount').textContent=`${academyLessons.length} lektioner`;
+ host.innerHTML=academyLessons.map(lessonCard).join('');
+}
+const _finalizeTrainingSession=finalizeTrainingSession;
+finalizeTrainingSession=function(){
+ const before=progressionStep();
+ _finalizeTrainingSession();
+ const completed=(state.activeTrainingSession?.results||[]).some(r=>!r.skipped);
+ if(completed){state.trainingSequenceStep=before+1;localStorage.setItem(STORE,JSON.stringify(state));}
+};
+function renderOperationalHome(){
+ const plan=getDailyPlan(), total=plan.reduce((n,x)=>n+(+x.duration||0),0), step=progressionStep();
+ const title=step===0?'Trygg start':(plan[0]?.title||'Dagens pass');
+ const titleEl=document.querySelector('#homeMissionTitle'); if(!titleEl)return;
+ titleEl.textContent=title;
+ document.querySelector('#homeMissionIntro').textContent=step===0?'Första passet startar när Ice är hemma. Därefter styr genomförda pass nästa steg.':'Nästa pass i Ice utbildningssekvens. Planen går vidare först när föregående pass är genomfört.';
+ document.querySelector('#homeMissionMinutes').textContent=total||'–';
+ document.querySelector('#homeMissionEnvironment').textContent=step<3?'Hemma och trädgård · trygg, välkänd miljö':step<7?'Lugn vardagsmiljö med låg störning':'Anpassad träningsmiljö';
+ document.querySelector('#homeMissionDevelops').textContent=[...new Set(plan.map(x=>x.cat))].join(' · ')||'relation';
+ document.querySelector('#homeMissionSteps').innerHTML=plan.map((x,i)=>`<div class="home-mission-step"><span>${i+1}</span><div><b>${escapeHtml(x.title)}</b><small>${escapeHtml(x.goal)}</small></div><em>${x.duration} min</em></div>`).join('');
+ document.querySelector('#homeMissionWhy').innerHTML=`<b>Varför nu:</b> Pass ${step+1} bygger vidare på den dokumenterade progressionen. Inget senare pass aktiveras innan detta är loggat.`;
+ const labels=['Nästa pass','Därefter','Efter nästa','Fortsättning','Senare','Kommande','Framåt'];
+ document.querySelector('#homeWeekStrip').innerHTML=Array.from({length:7},(_,i)=>{
+   const seq=ICE_SEQUENCE[Math.min(step+i,ICE_SEQUENCE.length-1)]||[];
+   const ex=seq.map(id=>exerciseLibrary.find(x=>x.id===id)).filter(Boolean);
+   return `<div class="week-day ${i===0?'today':''}"><small>${labels[i]}</small><b>${escapeHtml(ex.map(x=>x.title).join(' + ')||'Repetition')}</b><span>${ex.reduce((a,x)=>a+x.duration,0)} min</span></div>`;
+ }).join('');
+ const nextMilestone=document.querySelector('#homeNextMilestone'); if(nextMilestone)nextMilestone.textContent=step<3?'Tre genomförda trygghets- och relationspass':step<7?'Stabila grundfärdigheter i hemmiljö':'Första enkla SAR-missionen';
+ if(typeof renderHomeProgress==='function')renderHomeProgress();
+}
+
 configureIce40Dashboard();renderAll();updateIceTopProfile();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();checkReminders();setInterval(checkReminders,60000);setInterval(refreshLiveGreeting,60000);window.addEventListener('focus',refreshLiveGreeting);window.addEventListener('pageshow',refreshLiveGreeting);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshLiveGreeting()});if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
 </script>
 

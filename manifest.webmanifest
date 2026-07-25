@@ -1,6 +1,6 @@
 {
-  "name": "ICE 10.7 Strict Mobile Width",
-  "short_name": "ICE",
+  "name": "ICE 11.0 Core Engines",
+  "short_name": "ICE 11.0",
   "description": "ICE Field Manual – Build 31, adaptive sequential training plan",
   "start_url": "./?v=10.1.0",
   "scope": "./",
