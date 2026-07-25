@@ -237,6 +237,20 @@ body:not(.home-view) main{padding-top:18px}
 
 /* ICE 10.2 — Decision Engine */
 .decision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.decision-cell{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:14px;padding:11px}.decision-cell small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em}.decision-cell b{display:block;margin-top:4px;font-size:14px}.why-list{display:grid;gap:8px;margin-top:12px}.why-item{display:grid;grid-template-columns:24px 1fr;gap:9px;align-items:start;padding:10px;border-radius:12px;background:rgba(255,255,255,.04)}.why-item span{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#17352a;color:var(--gold);font-weight:900;font-size:12px}.gate{margin-top:12px;border-left:3px solid var(--gold);background:rgba(226,180,78,.08);padding:11px 12px;border-radius:0 12px 12px 0}.gate.ready{border-left-color:var(--green);background:rgba(99,197,140,.08)}.evidence-badge{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:999px;padding:5px 8px;font-size:10px;font-weight:800;color:var(--muted);margin:4px 5px 0 0}.evidence-badge.research{border-color:#397e68;color:#9de2c4}.evidence-badge.practice{border-color:#8b7134;color:#f0cf79}.evidence-badge.experience{border-color:#49637a;color:#a9c8df}.locked-message{padding:12px;border-radius:12px;background:rgba(255,255,255,.035);color:var(--muted);margin-top:10px}.recommendation-reason{border-top:1px solid var(--line);margin-top:12px;padding-top:12px}.recommendation-reason b{color:var(--gold)}@media(max-width:390px){.decision-grid{grid-template-columns:1fr}}
+
+/* ICE 10.4 — Operational Home */
+#today .operational-home{display:grid;gap:15px}
+#today .today-mission-card{padding:18px;border-color:rgba(226,180,78,.62);background:linear-gradient(145deg,rgba(53,68,28,.78),rgba(10,42,31,.98))}
+.today-mission-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.today-mission-head h2{font-size:28px;margin:5px 0 6px}.today-dose{min-width:78px;text-align:center;border:1px solid rgba(226,180,78,.55);border-radius:16px;padding:10px 8px;background:rgba(226,180,78,.08)}.today-dose b{display:block;font-size:22px;color:var(--gold)}.today-dose small{font-size:10px;color:var(--muted)}
+.today-context{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0}.context-box{background:rgba(5,23,17,.7);border:1px solid var(--line);border-radius:14px;padding:11px}.context-box small{display:block;color:var(--gold);font-weight:850;text-transform:uppercase;letter-spacing:.08em;font-size:9px;margin-bottom:4px}.context-box b{font-size:14px}.today-exercises{display:grid;gap:8px;margin:14px 0}.today-exercise{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;padding:11px;background:rgba(255,255,255,.045);border-radius:13px}.today-exercise i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:rgba(226,180,78,.16);color:var(--gold);font-style:normal;font-weight:900}.today-exercise strong{display:block;font-size:14px}.today-exercise small{color:var(--muted)}.today-exercise span{font-size:11px;color:var(--muted)}
+.home-reason{border-left:3px solid var(--gold);padding:10px 11px;background:rgba(226,180,78,.07);border-radius:0 11px 11px 0;font-size:13px;color:var(--muted);margin-bottom:12px}.home-reason b{color:var(--text)}
+.week-strip{display:grid;grid-template-columns:repeat(7,minmax(68px,1fr));gap:8px;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x mandatory}.week-day{min-width:72px;scroll-snap-align:start;border:1px solid var(--line);background:#091b15;border-radius:14px;padding:11px 8px;text-align:center}.week-day.today{border-color:var(--gold);background:rgba(226,180,78,.1)}.week-day small{display:block;color:var(--muted);font-size:10px}.week-day b{display:block;margin:5px 0;font-size:12px}.week-day span{font-size:9px;color:var(--gold)}
+.home-progress-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.home-progress-item{border:1px solid var(--line);background:#091b15;border-radius:14px;padding:12px}.home-progress-item header{display:flex!important;min-height:0!important;margin:0!important;justify-content:space-between;align-items:center}.home-progress-item header b{font-size:13px}.home-progress-item header span{font-weight:900;color:var(--gold);font-size:13px}.home-progress-item .bar{margin-top:9px}.home-progress-foot{display:flex;justify-content:space-between;gap:10px;margin-top:12px;color:var(--muted);font-size:12px}.home-progress-foot b{color:var(--text)}
+.home-section-title{display:flex;justify-content:space-between;align-items:end;margin:2px 3px -4px}.home-section-title h2{margin:0;font-size:22px}.home-section-title span{color:var(--muted);font-size:12px}
+#today.dashboard-ready > :not(.hq-welcome):not(#updateNotice):not(.operational-home){display:none!important}
+#today .hq-welcome{display:none!important}
+@media(max-width:390px){.today-context{grid-template-columns:1fr}.today-mission-head h2{font-size:25px}.home-progress-grid{grid-template-columns:1fr 1fr}}
+
 </style>
 </head>
 <body class="home-view">
@@ -247,7 +261,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="Ice i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">ICE 10.3 · OPEN ACADEMY</span>
+<span class="version">ICE 10.4 · OPERATIONAL HOME</span>
 <h1>ICE</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -255,7 +269,21 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">ICE 10.1 Adaptive Foundation – Build 26 är installerad.</div>
+<div id="updateNotice" class="notice">ICE 10.4 Operational Home – Build 29 är installerad.</div>
+<div class="operational-home" id="operationalHome">
+  <div class="card today-mission-card">
+    <div class="today-mission-head"><div><div class="eyebrow">DAGENS UPPDRAG</div><h2 id="homeMissionTitle">Förbereder dagens pass…</h2><p id="homeMissionIntro" style="margin:0;color:var(--muted)"></p></div><div class="today-dose"><b id="homeMissionMinutes">–</b><small>MINUTER</small></div></div>
+    <div class="today-context"><div class="context-box"><small>Miljö</small><b id="homeEnvironment">–</b></div><div class="context-box"><small>Utvecklar</small><b id="homeDevelopment">–</b></div></div>
+    <div class="today-exercises" id="homeExerciseList"></div>
+    <div class="home-reason" id="homeWhyToday"></div>
+    <button class="button block" id="homeOperationalStart">▶ Starta dagens pass</button>
+  </div>
+  <div class="home-section-title"><h2>Veckan framför oss</h2><span>översikt</span></div>
+  <div class="card"><div class="week-strip" id="homeWeekStrip"></div></div>
+  <div class="home-section-title"><h2>Hur vi ligger till</h2><span>utveckling</span></div>
+  <div class="card"><div class="home-progress-grid" id="homeProgressGrid"></div><div class="home-progress-foot"><span>Nästa milstolpe</span><b id="homeNextMilestone">–</b></div></div>
+</div>
+
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -1075,7 +1103,7 @@ function renderMissions(){
 function startFoundationMission(id){
  const m=foundationMissions.find(x=>x.id===id);if(!m)return;const rating=prompt(`Mission: ${m.title}\n\nGenomför stegen och ange sedan helhetsbetyg 1–5.`,"4");if(rating===null)return;const n=Math.max(1,Math.min(5,parseInt(rating)||4));const note=prompt('Kort anteckning (valfritt):','')||'';state.missionHistory=state.missionHistory||[];state.missionHistory.push({id,date:isoToday(),rating:n,minutes:m.duration,note,profile:state.activeProfile,created:new Date().toISOString()});state.journal.push({date:isoToday(),type:'Mission',rating:n,minutes:m.duration,note:m.title+(note?' – '+note:''),exerciseId:m.id,exerciseCategory:Object.keys(m.skills)[0],created:new Date().toISOString()});save();openScreen('missions');}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-startmission]');if(b)startFoundationMission(b.dataset.startmission)});
-function renderAll(){updateIceTopProfile();renderToday();renderOperationalDashboard();renderWeeklyReport();renderIntelligence();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderWeeklyTraining();renderExerciseLibrary();renderProgress();renderSettings();renderFamily();renderEquipment();renderAcademy();renderPhysical();renderMissions()}
+function renderAll(){updateIceTopProfile();renderToday();renderOperationalHome();renderOperationalDashboard();renderWeeklyReport();renderIntelligence();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderWeeklyTraining();renderExerciseLibrary();renderProgress();renderSettings();renderFamily();renderEquipment();renderAcademy();renderPhysical();renderMissions()}
 function defaultsForShift(t){return{ledig:["",""],dag:["08:00","17:30"],natt:["17:30","08:00"],dygn:["08:00","08:00"],annat:["",""]}[t]||["",""]}
 function clearShift(){document.querySelector("#shiftEditIndex").value="";document.querySelector("#shiftDate").value=isoToday();document.querySelector("#shiftType").value="dag";const p=defaultsForShift("dag");document.querySelector("#shiftStart").value=p[0];document.querySelector("#shiftEnd").value=p[1];document.querySelector("#shiftNote").value="";document.querySelector("#cancelShiftEdit").style.display="none";document.querySelector("#saveShift").textContent="Spara pass"}
 function editShift(i){const s=state.shifts[i];document.querySelector("#shiftEditIndex").value=i;document.querySelector("#shiftDate").value=s.date;document.querySelector("#shiftType").value=s.type;document.querySelector("#shiftStart").value=s.start||"";document.querySelector("#shiftEnd").value=s.end||"";document.querySelector("#shiftNote").value=s.note||"";document.querySelector("#cancelShiftEdit").style.display="inline-block";document.querySelector("#saveShift").textContent="Spara ändring"}
@@ -1097,23 +1125,41 @@ function openScreen(id,push=true){
 function goBackScreen(){if(screenHistory.length>1){screenHistory.pop();openScreen(screenHistory[screenHistory.length-1],false)}else openScreen('today',false)}
 
 function configureIce40Dashboard(){
- const today=document.querySelector('#today'); if(!today||today.classList.contains('dashboard-ready'))return;
- const keepTitles=['ICE idag','ICE Intelligence','Smart coach','Idag med Ice','Färdighetsmotor'];
- [...today.children].forEach(el=>el.classList.add('dashboard-hidden'));
- const welcome=today.querySelector('.hq-welcome'); if(welcome)welcome.classList.remove('dashboard-hidden');
- const notice=today.querySelector('#updateNotice'); if(notice)notice.classList.remove('dashboard-hidden');
- const ordered=[];
- keepTitles.forEach(name=>{
-   const title=[...today.querySelectorAll(':scope > .section-title')].find(x=>x.querySelector('h2')?.textContent.trim()===name);
-   if(title){title.classList.remove('dashboard-hidden');ordered.push(title);const content=title.nextElementSibling;if(content){content.classList.remove('dashboard-hidden');ordered.push(content)}}
- });
- ordered.forEach(el=>today.appendChild(el));
+ const today=document.querySelector('#today');if(!today)return;
  today.classList.add('dashboard-ready');
- const sub=document.querySelector('#greetingSubtitle'); if(sub)sub.textContent='Dagens analys, beslut och nästa bästa steg.';
- const current=document.querySelector('#iceCurrentView'); if(current)current.textContent='ICE';
- const skillTitle=[...today.querySelectorAll(':scope > .section-title')].find(x=>x.querySelector('h2')?.textContent.trim()==='Färdighetsmotor');
- if(skillTitle){skillTitle.classList.add('click-card');skillTitle.dataset.goto='progress'}
+ const sub=document.querySelector('#greetingSubtitle');if(sub)sub.textContent='Dagens uppdrag, veckan framför oss och aktuell utveckling.';
+ const current=document.querySelector('#iceCurrentView');if(current)current.textContent='ICE idag';
 }
+
+function homeEnvironmentFor(plan){
+ const cats=plan.map(x=>(x.cat||'').toLowerCase());
+ if(cats.some(x=>x.includes('miljö')))return 'Lugn ny plats · möjlighet att backa undan';
+ if(cats.some(x=>x.includes('nos')))return 'Hemma eller trädgård · låg störning';
+ if(cats.some(x=>x.includes('inkall')))return 'Inhägnad yta eller långlina';
+ return ageParts().weeks<12?'Hemma och trädgård · trygg, välkänd miljö':'Lugn vardagsmiljö med kontrollerade störningar';
+}
+function homeDevelopmentFor(plan){
+ const labels=[];plan.forEach(x=>{const c=x.cat||'';if(c&&!labels.includes(c))labels.push(c)});
+ return labels.slice(0,3).join(' · ')||ageFocus().title;
+}
+function renderOperationalHome(){
+ const root=document.querySelector('#operationalHome');if(!root)return;
+ const plan=getDailyPlan(),intel=intelligenceAnalysis(),af=ageFocus(),total=plan.reduce((n,x)=>n+(+x.duration||0),0);
+ document.querySelector('#homeMissionTitle').textContent=af.title;
+ document.querySelector('#homeMissionIntro').textContent=af.text;
+ document.querySelector('#homeMissionMinutes').textContent=total||'5–10';
+ document.querySelector('#homeEnvironment').textContent=homeEnvironmentFor(plan);
+ document.querySelector('#homeDevelopment').textContent=homeDevelopmentFor(plan);
+ document.querySelector('#homeExerciseList').innerHTML=plan.length?plan.slice(0,4).map((x,i)=>`<div class="today-exercise"><i>${i+1}</i><div><strong>${escapeHtml(x.title)}</strong><small>${escapeHtml(x.goal)}</small></div><span>${x.duration} min</span></div>`).join(''):`<div class="empty">Idag prioriteras trygghet, vila och korta positiva kontaktstunder.</div>`;
+ document.querySelector('#homeWhyToday').innerHTML=`<b>Varför idag:</b> ${escapeHtml(intel.decision)}`;
+ const dayNames=['Sön','Mån','Tis','Ons','Tor','Fre','Lör'];
+ const themes=[af.title,'Miljö','Relation','Vila','Nos','Inkallning','Ny miljö'];
+ const d=new Date();document.querySelector('#homeWeekStrip').innerHTML=Array.from({length:7},(_,i)=>{const x=new Date(d);x.setDate(d.getDate()+i);const theme=i===0?af.title:themes[(x.getDay()+i)%themes.length];const dose=i===3?'Återhämtning':(ageParts().weeks<12?'5–10 min':'10–20 min');return `<div class="week-day ${i===0?'today':''}"><small>${dayNames[x.getDay()]} ${x.getDate()}/${x.getMonth()+1}</small><b>${escapeHtml(theme)}</b><span>${dose}</span></div>`}).join('');
+ const eng=skillEngine(),top=(eng.skills||[]).slice().sort((a,b)=>b.points-a.points).slice(0,4);
+ document.querySelector('#homeProgressGrid').innerHTML=top.length?top.map(x=>`<div class="home-progress-item"><header><b>${escapeHtml(x.name)}</b><span>${x.percent}%</span></header><div class="bar"><i style="width:${x.percent}%"></i></div><small>${x.sessions?x.sessions+' loggade pass':'Inte påbörjad'}</small></div>`).join(''):'<div class="empty">Utvecklingen visas när de första passen är loggade.</div>';
+ const next=sarSteps.find(x=>!state.sarCompleted[x[0]]);document.querySelector('#homeNextMilestone').textContent=next?next[1]:'Fortsatt kvalitetssäkring';
+}
+
 
 function updateIceTopProfile(){const p=state.profiles.find(x=>x.id===state.activeProfile)||state.profiles[0];const initials=p.name.split(/[- ]/).map(x=>x[0]).join('').slice(0,2).toUpperCase();document.querySelector('#iceTopProfile').textContent=initials}
 document.querySelector('#iceHome').addEventListener('click',()=>openScreen('today'));
@@ -1122,6 +1168,7 @@ document.querySelector('#iceDrawerClose').addEventListener('click',()=>document.
 document.querySelector('#iceDrawer').addEventListener('click',e=>{if(e.target.id==='iceDrawer')e.currentTarget.classList.remove('open')});
 document.querySelector('#iceStartPass').addEventListener('click',()=>{document.querySelector('#iceDrawer').classList.remove('open');document.querySelector('#startTrainingFromHQ')?.click()});
 document.querySelector('#homeStartPass')?.addEventListener('click',()=>document.querySelector('#startTrainingFromHQ')?.click());
+document.querySelector('#homeOperationalStart')?.addEventListener('click',()=>openTrainingSession());
 document.querySelector('#homeOpenIce')?.addEventListener('click',()=>document.querySelector('#iceDrawer').classList.add('open'));
 let edgeStart=null;document.addEventListener('touchstart',e=>{const t=e.touches[0];if(t.clientX<28)edgeStart={x:t.clientX,y:t.clientY}}, {passive:true});document.addEventListener('touchend',e=>{if(!edgeStart)return;const t=e.changedTouches[0],dx=t.clientX-edgeStart.x,dy=Math.abs(t.clientY-edgeStart.y);edgeStart=null;if(dx>75&&dy<70&&activeScreenId()!=='today')goBackScreen()},{passive:true});
 

@@ -1,6 +1,6 @@
 {
-  "name": "ICE 10.3 Open Academy",
-  "short_name": "ICE",
+  "name": "ICE 10.4 Operational Home",
+  "short_name": "ICE 10.4",
   "description": "Adaptiva missioner, 25 Academy-lektioner, kompetensmotor och återhämtningsstyrd träningsplan för Ice.",
   "start_url": "./?v=10.1.0",
   "scope": "./",
@@ -9,8 +9,20 @@
   "theme_color": "#0d211a",
   "orientation": "portrait",
   "icons": [
-    {"src":"icon-180.png","sizes":"180x180","type":"image/png"},
-    {"src":"icon-192.png","sizes":"192x192","type":"image/png"},
-    {"src":"icon-512.png","sizes":"512x512","type":"image/png"}
+    {
+      "src": "icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
   ]
 }

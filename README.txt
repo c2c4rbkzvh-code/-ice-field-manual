@@ -1,14 +1,15 @@
-ICE 10.3 Open Academy — Build 28
+ICE 10.4 Operational Home – Build 29
 
-Nyheter
-- Transparent beslutsmotivering för rekommenderad mission.
-- Progressionsgrind som väger ålder, återhämtning och senaste belastning.
-- Academy-lektioner märks med evidensnivå: forskningsstöd, etablerad praxis eller praktisk erfarenhet.
-- Låsta lektioner kan inte längre öppnas innan rätt ålder.
-- Rekommendationer visar prioriterad kompetens, senaste träning och dagens belastning.
-- Samma lokala lagringsnyckel används, så tidigare data bevaras.
+Ny startsida med fokus på det som ska göras, inte på all bakomliggande analys.
 
-PWA: offline-first, iPhone prioriterad.
+Innehåller:
+- Dagens kompletta pass direkt på startsidan
+- Rekommenderad miljö och vad passet utvecklar
+- Kort motivering till dagens val
+- Sjudagars översikt
+- Kompakt utvecklingsstatus och nästa milstolpe
+- Intelligence, Coach och detaljerad statistik finns kvar i övriga vyer
+- Open Academy: alla lektioner kan fortfarande öppnas när som helst
+- Lokal data och tidigare journal behålls
 
-
-Build 28: Alla Academy-lektioner kan öppnas, genomföras och loggas när som helst. Ålder visas som rekommendation, inte som låsning.
+PWA / offline-first / iPhone-prioriterad.
