@@ -1,11 +1,11 @@
-ICE 9.1 Operational Intelligence — Build 24
+ICE 10.0 FOUNDATION — BUILD 25
 
 Nyheter:
-- Operativ kompetensprofil på startsidan och i Utveckling
-- Automatisk veckorapport med styrka och nästa fokus
-- Återhämtningskontroll efter guidade pass
-- 12 nya kompletta Academy-lektioner i Volume 1
-- Uppdaterad PWA-manifest och offline-cache
-- Roadmap-placeholder borttagen; funktionerna är nu integrerade
+- Mission System med 8 kompletta missioner
+- Kompetensmotor för relation, kontakt, inkallning, miljö, nos, fysisk utveckling och SAR
+- Adaptiv rekommendation utifrån hundens ålder, historik och svagaste kompetens
+- Missionhistorik och automatisk koppling till journalen
+- Ny Mission-vy och uppdaterad navigation
+- PWA-cache och manifest uppdaterade till 10.0
 
-Data från tidigare versioner behålls i samma lokala datalager.
+Data sparas lokalt i webbläsaren. Exportera backup före större uppdateringar.

@@ -1,8 +1,8 @@
 {
-  "name": "ICE 9.1 Operational Intelligence",
+  "name": "ICE 10.0 Foundation",
   "short_name": "ICE",
-  "description": "Operativ kompetensprofil, återhämtningsstyrning, Academy Volume 1 och adaptiv SAR-coach.",
-  "start_url": "./?v=9.1",
+  "description": "Missioner, kompetensmotor, Academy och adaptiv träningsplan för Ice.",
+  "start_url": "./?v=10.0",
   "scope": "./",
   "display": "standalone",
   "background_color": "#06100d",

@@ -1,4 +1,4 @@
-const CACHE = "ice-9-1-operational";
+const CACHE = "ice-10-0-foundation";
 const ASSETS = ["./","./index.html","./manifest.webmanifest","./ice-photo.jpg","./icon-180.png","./icon-192.png","./icon-512.png","./ice-app-icon.png","./ice-hero-dark.jpg"];
 
 self.addEventListener("install", event => {
