@@ -1,16 +1,11 @@
-ICE 10.1 ADAPTIVE FOUNDATION — BUILD 26
+ICE 10.2 Decision Engine — Build 27
 
-Byggd vidare från ICE 10.0 Foundation Build 25.
+Nyheter
+- Transparent beslutsmotivering för rekommenderad mission.
+- Progressionsgrind som väger ålder, återhämtning och senaste belastning.
+- Academy-lektioner märks med evidensnivå: forskningsstöd, etablerad praxis eller praktisk erfarenhet.
+- Låsta lektioner kan inte längre öppnas innan rätt ålder.
+- Rekommendationer visar prioriterad kompetens, senaste träning och dagens belastning.
+- Samma lokala lagringsnyckel används, så tidigare data bevaras.
 
-Nyheter:
-- Academy utökad från 19 till 25 fullständiga lektioner
-- Nya lektioner: koppel, kooperativ hantering, vila i bil, föremålsintresse, mörker och markeringsgrund
-- Missionbibliotek utökat från 8 till 12 missioner
-- Nya missioner: passivitet, kontrollerad väntan i bilbur, enkel dold figurant och aktiv återhämtningsdag
-- Kompetensmotorn använder automatiskt de nya missionerna
-- Rekommendationsmotorn kan välja återhämtningsmission vid svagare belastningsläge
-- Versionsnummer, manifest och service-worker-cache uppdaterade
-- Navigationsförfrågningar använder nätverksförst för att minska problem med gamla PWA-versioner
-
-Data sparas lokalt under samma lagringsnyckel som tidigare, så Build 25-data följer med.
-Exportera gärna en säkerhetskopia före installation av större framtida versioner.
+PWA: offline-first, iPhone prioriterad.
