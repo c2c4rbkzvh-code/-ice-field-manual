@@ -1,4 +1,4 @@
-ICE 10.2 Decision Engine — Build 27
+ICE 10.3 Open Academy — Build 28
 
 Nyheter
 - Transparent beslutsmotivering för rekommenderad mission.
@@ -9,3 +9,6 @@ Nyheter
 - Samma lokala lagringsnyckel används, så tidigare data bevaras.
 
 PWA: offline-first, iPhone prioriterad.
+
+
+Build 28: Alla Academy-lektioner kan öppnas, genomföras och loggas när som helst. Ålder visas som rekommendation, inte som låsning.
