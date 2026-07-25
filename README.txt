@@ -1,8 +1,11 @@
-ICE 7.0 – Intelligence Academy
+ICE 9.1 Operational Intelligence — Build 24
 
 Nyheter:
-- ICE Academy med kompetensstyrda lektioner
-- Fysisk utveckling för bog, lår, bakdel, bål, balans och koordination
-- Ålderslåsning och säkerhetsråd för växande hund
-- Loggning kopplad till Academy och fysisk profil
-- Befintlig data från ICE 6.0 bevaras i samma lokala lagring
+- Operativ kompetensprofil på startsidan och i Utveckling
+- Automatisk veckorapport med styrka och nästa fokus
+- Återhämtningskontroll efter guidade pass
+- 12 nya kompletta Academy-lektioner i Volume 1
+- Uppdaterad PWA-manifest och offline-cache
+- Roadmap-placeholder borttagen; funktionerna är nu integrerade
+
+Data från tidigare versioner behålls i samma lokala datalager.
