@@ -1,5 +1,5 @@
 {
-  "name": "ICE 10.6 Adaptive Sequence",
+  "name": "ICE 10.7 Strict Mobile Width",
   "short_name": "ICE",
   "description": "ICE Field Manual – Build 31, adaptive sequential training plan",
   "start_url": "./?v=10.1.0",
@@ -24,5 +24,6 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "version": "10.7.32"
 }

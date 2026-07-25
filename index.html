@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="ICE">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>ICE 10.1 – Adaptive Foundation</title>
+<title>ICE 10.7 – Strict Mobile Width</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -251,6 +251,34 @@ body:not(.home-view) main{padding-top:18px}
 #today .hq-welcome{display:none!important}
 @media(max-width:390px){.today-context{grid-template-columns:1fr}.today-mission-head h2{font-size:25px}.home-progress-grid{grid-template-columns:1fr 1fr}}
 
+
+/* ICE 10.7 — Strict Mobile Width Fix */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body{position:relative}
+.app,main,.screen,#today,.operational-home,.card{width:100%;max-width:100%;min-width:0}
+main{overflow-x:hidden}
+#today *{min-width:0;max-width:100%}
+#today .today-mission-card{overflow:hidden}
+.today-mission-head{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.today-dose{min-width:0;width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px 12px}
+.today-dose b{font-size:18px}.today-dose small{font-size:10px}
+.today-context{grid-template-columns:minmax(0,1fr)!important}
+.context-box,.today-exercise,.home-reason{width:100%;max-width:100%;overflow:hidden}
+.context-box b,.today-exercise strong,.today-exercise small,.home-reason{overflow-wrap:anywhere;word-break:normal}
+.today-exercise{grid-template-columns:30px minmax(0,1fr);align-items:start}
+.today-exercise span{grid-column:2;justify-self:start;margin-top:3px}
+.week-strip{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:9px;overflow:visible!important;padding-bottom:0;scroll-snap-type:none}
+.week-day{width:100%;min-width:0!important;display:grid;grid-template-columns:minmax(105px,.7fr) minmax(0,1fr);column-gap:12px;text-align:left;align-items:center;padding:12px 14px}
+.week-day small{grid-row:1/3;font-size:11px;line-height:1.35}.week-day b{margin:0;font-size:14px}.week-day span{font-size:11px;margin-top:4px}
+.home-progress-grid{grid-template-columns:minmax(0,1fr)!important}
+.home-progress-foot{display:grid;grid-template-columns:1fr;gap:4px}
+.home-section-title{gap:8px}.home-section-title h2{font-size:21px;overflow-wrap:anywhere}.home-section-title span{flex:0 0 auto}
+@media(max-width:430px){
+  main{padding-left:14px;padding-right:14px}
+  .card{padding:15px}
+  .today-mission-head h2{font-size:25px}
+  .week-day{grid-template-columns:minmax(92px,.65fr) minmax(0,1fr)}
+}
 </style>
 </head>
 <body class="home-view">
