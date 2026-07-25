@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="ICE">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>ICE 10.0 – Foundation</title>
+<title>ICE 10.1 – Adaptive Foundation</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -244,7 +244,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="Ice i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">ICE 9.1 · OPERATIONAL</span>
+<span class="version">ICE 10.1 · ADAPTIVE FOUNDATION</span>
 <h1>ICE</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -252,7 +252,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">ICE 10.0 Foundation är installerad.</div>
+<div id="updateNotice" class="notice">ICE 10.1 Adaptive Foundation – Build 26 är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -572,7 +572,7 @@ body:not(.home-view) main{padding-top:18px}
 </div></nav>
 
 <script>
-const VERSION="10.0.0", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
+const VERSION="10.1.0", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
 const defaults={
  birthDate:"2026-06-04",pickupDate:"2026-07-30",currentWorkMode:"ledig",
  shifts:[{date:"2026-08-25",type:"dag",start:"08:00",end:"17:30",note:""},{date:"2026-08-26",type:"natt",start:"17:30",end:"08:00",note:""},{date:"2026-08-31",type:"natt",start:"17:30",end:"08:00",note:""}],
@@ -657,6 +657,15 @@ academyLessons.push(
 {id:"a_person",phase:"12–18 veckor",minWeeks:12,title:"Första springfiguranten",cat:"SAR",minutes:8,goal:"Skapa maximal glädje i att hitta en människa.",why:"En tydlig synlig flykt bygger sökmotivation utan att kräva avancerad problemlösning.",steps:["Figuranten leker kort och visar belöningen.","Figuranten springer 15–25 meter och gömmer sig lätt.","Släpp Ice och låt figuranten belöna direkt."],mistakes:["För svår gömma","För många repetitioner","Krav på markering"],test:"Springer självständigt och engagerar sig hos figuranten.",path:["Figurantintresse","Springfigurant","Dold figurant","Personsök"],sources:["Räddningshundspraktik","Motivationssök"]},
 {id:"a_generalize",phase:"14–20 veckor",minWeeks:14,title:"Generalisera utan att försvåra",cat:"Inlärning",minutes:6,goal:"Flytta kända färdigheter till nya lätta miljöer.",why:"Hundar generaliserar inte automatiskt; samma beteende måste tränas i flera sammanhang.",steps:["Välj en välkänd övning.","Byt endast plats, inte svårighetsnivå.","Sänk kriteriet och belöna tidigt."],mistakes:["Ny plats och hög störning samtidigt","Förvänta samma precision","Långa pass"],test:"Klarar färdigheten i tre olika lätta miljöer.",path:["Färdighet","Generalisering","Stabilitet","Operativ användning"],sources:["Stimulus generalization","Inlärningsteori"]}
 );
+academyLessons.push(
+{id:"a_leash",phase:"10–18 veckor",minWeeks:10,title:"Koppel utan konflikt",cat:"Vardag",minutes:5,goal:"Skapa följsamhet och mjuk kontakt i koppel.",why:"Tidigt koppelarbete ska bygga samarbete, inte motstånd eller fysisk korrigering.",steps:["Belöna när kopplet är mjukt.","Byt riktning innan linan blir sträckt.","Gå 5–10 steg och pausa."],mistakes:["Ryck i kopplet","För långa sträckor","Träning när valpen är övertrött"],test:"Kan gå 15–20 meter med huvudsakligen mjukt koppel i lugn miljö.",path:["Kontakt","Följsamhet","Miljö","Operativ transport"],sources:["Belöningsbaserad träning","Valputveckling"]},
+{id:"a_handling",phase:"10–18 veckor",minWeeks:10,title:"Kooperativ hantering",cat:"Hantering",minutes:4,goal:"Lära Ice att frivilligt medverka vid kontroll av tassar, öron och mun.",why:"Kooperativ hantering minskar stress vid vård, veterinärbesök och utrustning.",steps:["Presentera handen och belöna kvarstannande.","Rör en tass eller ett öra mycket kort.","Avsluta före undanvikande."],mistakes:["Hålla fast","Gå för snabbt fram","Träna flera kroppsdelar i samma pass"],test:"Kan acceptera 3–5 sekunders lugn kontroll av varje tass.",path:["Frivillighet","Hantering","Veterinär","Operativ kontroll"],sources:["Cooperative care","Desensitisering"]},
+{id:"a_settle_car",phase:"12–20 veckor",minWeeks:12,title:"Vila i parkerad bil",cat:"Återhämtning",minutes:8,goal:"Utveckla lugn väntan i buren när bilen står still.",why:"En räddningshund behöver kunna växla från aktivitet till vila i bilen utan att bygga stress.",steps:["Gör en kort rastning först.","Låt Ice gå in frivilligt med tugg eller lugn belöning.","Sitt nära bilen 1–3 minuter och avsluta medan han är lugn."],mistakes:["Öka både tid och avstånd samtidigt","Träna i varm bil","Släppa ut vid skall eller kraftig oro"],test:"Kan ligga eller sitta lugnt 5 minuter i parkerad, säker bil.",path:["Burtrygghet","Vila i bil","Väntan","Operativ beredskap"],sources:["Gradvis burträning","Stressreglering"]},
+{id:"a_object",phase:"12–22 veckor",minWeeks:12,title:"Föremålsintresse",cat:"Nos",minutes:5,goal:"Skapa nyfikenhet och uthållighet kring ett enkelt föremål.",why:"Föremålsintresse kan senare användas i sök, markering och belöningsutveckling.",steps:["Lek kort med ett mjukt föremål.","Lägg det synligt 2–3 meter bort.","Belöna allt aktivt intresse och återgång."],mistakes:["Krav på apportering","Ta föremålet direkt","För många kast"],test:"Söker upp föremålet och engagerar sig frivilligt tre gånger.",path:["Lek","Föremålsintresse","Sök","Markering"],sources:["Working dog foundations","Belöningsutveckling"]},
+{id:"a_dark",phase:"16–28 veckor",minWeeks:16,title:"Mörker i mikrodos",cat:"Miljö",minutes:6,goal:"Bygga trygg orientering i svagt ljus tillsammans med föraren.",why:"Mörker förändrar både synintryck och ljudbild och bör introduceras gradvis.",steps:["Välj en välkänd plats i skymning.","Gå en mycket kort sträcka med pannlampa tillgänglig.","Belöna kontakt och låt Ice undersöka i egen takt."],mistakes:["Ny plats och totalt mörker samtidigt","Starka bländande lampor","För långt pass"],test:"Kan äta, utforska och återhämta sig under en kort mörkerpromenad.",path:["Skymning","Mörker","Terräng","Nattlig SAR"],sources:["Miljögeneralisering","Räddningshundspraktik"]},
+{id:"a_indication_base",phase:"20–36 veckor",minWeeks:20,title:"Markeringsgrund – återgång",cat:"SAR",minutes:7,goal:"Bygga frivillig växling mellan figurant och förare utan sökkrav.",why:"En stabil kedja bör byggas i små delar innan den kopplas till ett riktigt personsök.",steps:["Figuranten belönar kort.","Föraren lockar tillbaka och belönar vid kroppen.","Skicka omedelbart tillbaka till figuranten för ny belöning."],mistakes:["Lägga på rulle för tidigt","Kräva perfekt position","För långa kedjor"],test:"Växlar figurant–förare–figurant tre gånger med hög motivation.",path:["Figurantbelöning","Återgång","Rulle","Påvisning"],sources:["Räddningshundspraktik","Baklängeskedjning"]}
+);
+
 const physicalExercises=[
 {id:"p_surfaces",area:"Balans",title:"Olika underlag",minWeeks:8,load:1,dose:"2–4 minuter",goal:"Stabiliserande muskulatur och proprioception.",steps:["Gå långsamt över gräs, matta och låg presenning.","Låt Ice välja tempo.","Avsluta efter några lugna passager."],avoid:"Hala eller höga underlag."},
 {id:"p_poles",area:"Koordination",title:"Låga markbommar",minWeeks:10,load:1,dose:"2 × 4 passager",goal:"Kontrollerad tassplacering och rörelsekvalitet.",steps:["Lägg 3–4 bommar direkt på marken.","Gå i skritt med gott avstånd.","Belöna framåt och lågt."],avoid:"Höga bommar eller trav i fart."},
@@ -1023,7 +1032,11 @@ const foundationMissions=[
  {id:"m_environment",title:"Ny miljö med kontroll",phase:"Grundperiod",minWeeks:10,maxWeeks:28,duration:15,load:2,summary:"Bygg miljösäkerhet genom kort exponering och egen återhämtning.",skills:{miljo:5,relation:2,balans:2},steps:["Välj en lugn ny plats med reträttväg.","Låt Ice observera och röra sig i eget tempo.","Belöna utforskande och lämna innan han blir trött."],done:"Kan äta, utforska och återgå till föraren på platsen."},
  {id:"m_body",title:"Kroppskontroll – underlag",phase:"Grundperiod",minWeeks:10,maxWeeks:32,duration:8,load:2,summary:"Utveckla balans och koordination utan hopp eller tung belastning.",skills:{balans:5,bakdel:2,bog:2},steps:["Lägg ut matta, gräs, grus och låg mjuk kudde.","Locka inte över – låt Ice välja att kliva på.","Gör 2–3 lugna varv och avsluta."],done:"Rör sig avslappnat över fyra säkra underlag."},
  {id:"m_recall",title:"Inkallning som lek",phase:"Grundperiod",minWeeks:10,maxWeeks:30,duration:8,load:2,summary:"Skapa hög fart och stark förväntan hela vägen in till föraren.",skills:{inkallning:5,kontakt:3,relation:2},steps:["En familjemedlem håller Ice lätt medan du går 3–5 meter.","Säg Hit en gång och rör dig bakåt.","Belöna nära kroppen med lek eller flera godbitar."],done:"Kommer direkt 8 av 10 gånger i lätt miljö."},
- {id:"m_runner",title:"Första springfiguranten",phase:"Upptäckarperiod",minWeeks:16,maxWeeks:40,duration:15,load:3,summary:"Bygg maximal motivation för att hitta människa – utan krav på markering.",skills:{sar:5,nos:3,sjalvstandighet:3,relation:1},steps:["Figuranten leker kort och visar belöningen.","Figuranten springer synligt 15–25 meter och gömmer sig lätt.","Släpp på Sök och låt belöningen ske direkt hos figuranten."],done:"Springer självsäkert till figuranten och stannar för belöning."}
+ {id:"m_runner",title:"Första springfiguranten",phase:"Upptäckarperiod",minWeeks:16,maxWeeks:40,duration:15,load:3,summary:"Bygg maximal motivation för att hitta människa – utan krav på markering.",skills:{sar:5,nos:3,sjalvstandighet:3,relation:1},steps:["Figuranten leker kort och visar belöningen.","Figuranten springer synligt 15–25 meter och gömmer sig lätt.","Släpp på Sök och låt belöningen ske direkt hos figuranten."],done:"Springer självsäkert till figuranten och stannar för belöning."},
+ {id:"m_passive",title:"Passivitet vid aktivitet",phase:"Grundperiod",minWeeks:12,maxWeeks:32,duration:12,load:1,summary:"Lär Ice att vila medan människor eller hundar rör sig på avstånd.",skills:{aterhamtning:5,miljo:3,kontakt:2},steps:["Välj stort avstånd till låg aktivitet.","Sätt dig stilla och belöna spontant lugn.","Avsluta efter 3–5 lugna minuter."],done:"Kan ligga eller sitta lugnt och ta belöning trots rörelse på avstånd."},
+ {id:"m_car_wait",title:"Bilbur – kontrollerad väntan",phase:"Upptäckarperiod",minWeeks:14,maxWeeks:40,duration:15,load:1,summary:"Bygg trygg väntan i bilen som en egen färdighet, skild från bilkörning.",skills:{aterhamtning:5,miljo:2,sjalvstandighet:2},steps:["Rasta och ge vatten före passet.","Låt Ice gå in frivilligt och stäng buren.","Stå först nära, öka sedan avståndet några meter och återvänd innan oro."],done:"Kan vila lugnt 10 minuter i säker temperatur med föraren kort utom synhåll."},
+ {id:"m_hidden_person",title:"Enkel dold figurant",phase:"Upptäckarperiod",minWeeks:18,maxWeeks:44,duration:18,load:3,summary:"Överför springfiguranten till ett enkelt dolt fynd med stor chans att lyckas.",skills:{sar:5,nos:4,sjalvstandighet:3},steps:["Låt Ice se figuranten gå ut men inte exakt gömställe.","Använd kort avstånd och gynnsam vind.","Skicka på Sök och låt figuranten belöna omedelbart vid fynd."],done:"Löser tre enkla dolda fynd med bibehållen fart och motivation."},
+ {id:"m_recovery_day",title:"Aktiv återhämtningsdag",phase:"Alla faser",minWeeks:8,maxWeeks:104,duration:20,load:1,summary:"Sänk total belastning men behåll relation, nos och lugn rörelse.",skills:{aterhamtning:5,relation:2,nos:2},steps:["Gör en lugn sniffpromenad utan prestationskrav.","Lägg in 2–3 minuter enkelt godissök.","Avsluta med ostörd vila och registrera återhämtningen."],done:"Ice är mjuk i kroppen, normal i rörelse och varvar ned snabbt efteråt."}
 ];
 function foundationCompetence(){
  const keys={relation:"Relation",kontakt:"Kontakt",inkallning:"Inkallning",miljo:"Miljö",nos:"Nos",balans:"Balans",bog:"Bog",bakdel:"Bakdel",aterhamtning:"Återhämtning",sjalvstandighet:"Självständighet",sar:"SAR"};
