@@ -292,6 +292,25 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 .today-mission-card p,.today-mission-card b,.today-mission-card small,.today-mission-card div{overflow-wrap:anywhere;word-break:normal}
 @supports not (overflow-x:clip){html,body{overflow-x:hidden}}
 
+
+/* ICE 11.0 RC1 — final iPhone width guard */
+:root{overflow-x:hidden}
+html,body{position:relative;min-width:0;width:100%;max-width:100vw;overflow-x:hidden!important}
+img,svg,video,canvas{max-width:100%;height:auto}
+main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-width:100%}
+.profile-row,.engine-impact,.pathway{max-width:100%;overscroll-behavior-x:contain}
+#today #skillGrid{display:grid!important;grid-template-columns:1fr!important;overflow:visible!important}
+@media(max-width:430px){
+ .app{width:100%;padding-left:0;padding-right:0}
+ main{padding-left:14px!important;padding-right:14px!important}
+ #today .card,#today .section-title,#today .today-mission-card{max-width:100%!important}
+ .today-mission-head{grid-template-columns:minmax(0,1fr) auto!important}
+ .today-dose{min-width:62px}
+ .home-mission-step{grid-template-columns:30px minmax(0,1fr)!important}
+ .home-mission-step em{grid-column:2;justify-self:start;margin-top:3px}
+ .command-stats,.skill-grid,.physical-grid,.academy-actions,.session-actions{grid-template-columns:1fr!important}
+}
+
 </style>
 </head>
 <body class="home-view">
@@ -302,7 +321,7 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 <img src="ice-hero-dark.jpg" alt="Ice i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">ICE 10.6 · ADAPTIVE SEQUENCE</span>
+<span class="version">ICE 11.0 · RELEASE CANDIDATE 1</span>
 <h1>ICE</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -310,7 +329,7 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">ICE 10.6 Adaptive Sequence – Build 31 är installerad.</div>
+<div id="updateNotice" class="notice">ICE 11.0 RC1 – Build 34 är installerad.</div>
 <div class="operational-home" id="operationalHome">
   <div class="card today-mission-card">
     <div class="today-mission-head"><div><div class="eyebrow">DAGENS UPPDRAG</div><h2 id="homeMissionTitle">Förbereder dagens pass…</h2><p id="homeMissionIntro" style="margin:0;color:var(--muted)"></p></div><div class="today-dose"><b id="homeMissionMinutes">–</b><small>MINUTER</small></div></div>
@@ -319,7 +338,7 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
     <div class="home-reason" id="homeWhyToday"></div>
     <button class="button block" id="homeOperationalStart">▶ Starta dagens pass</button>
   </div>
-  <div class="home-section-title"><h2>Veckan framför oss</h2><span>översikt</span></div>
+  <div class="home-section-title"><h2>Träningsföljden</h2><span>nästa steg</span></div>
   <div class="card"><div class="week-strip" id="homeWeekStrip"></div></div>
   <div class="home-section-title"><h2>Hur vi ligger till</h2><span>utveckling</span></div>
   <div class="card"><div class="home-progress-grid" id="homeProgressGrid"></div><div class="home-progress-foot"><span>Nästa milstolpe</span><b id="homeNextMilestone">–</b></div></div>
@@ -619,7 +638,7 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 <div class="card"><label>Födelsedatum</label><input type="date" id="birthDate"><label>Hämtningsdatum</label><input type="date" id="pickupDate"><button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button></div>
 <div class="card" style="margin-top:14px"><h3>Säkerhetskopia</h3><p>Exportera all data. Bilder gör filen större.</p><div class="row"><button class="button secondary" id="exportData">Exportera</button><button class="button secondary" id="importButton">Importera</button><input type="file" id="importData" accept="application/json" hidden></div></div>
 <div class="card" style="margin-top:14px"><h3>Appuppdatering</h3><button class="button secondary block" id="forceUpdate">Sök efter ny version</button></div>
-<div class="card" style="margin-top:14px"><h3>Om</h3><p>ICE 10.6 Adaptive Sequence. Veckoplanen är nu en dynamisk träningsföljd där nästa pass och framtida datum flyttas efter genomförda pass och hämtningsdatum. Mission-systemet och kompetensmotorn kopplar nu ihop Academy, journal och fysisk utveckling. Träningspass-läget guidar steg för steg och ICE-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och ICE idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
+<div class="card" style="margin-top:14px"><h3>Om</h3><p>ICE 11.0 RC1. Startsidan visar dagens nästa träningspass, Academy är alltid tillgänglig och progressionen styrs av genomförda guidade pass i stället för kalenderdatum. Missioner, journal och kompetensområden använder samma lokalt sparade data. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
 </section>
 
 <section id="missions" class="screen"><button class="screen-back" data-back="1">‹ Tillbaka</button>
@@ -1300,7 +1319,7 @@ document.querySelector("#importData").addEventListener("change",async e=>{try{co
 document.querySelector("#journalDate").value=isoToday();document.querySelector("#taskDate").value=isoToday();document.querySelector("#lifeDate").value=isoToday();clearShift();seedFamilyTasks();
 if(localStorage.getItem("iceAppVersion")!==VERSION){localStorage.setItem("iceAppVersion",VERSION);document.querySelector("#updateNotice").style.display="block";setTimeout(()=>document.querySelector("#updateNotice").style.display="none",5000)}
 
-/* ICE 11.0 — Core Engines: Academy, Mission Session, Progression */
+/* ICE 11.0 RC1 Build 34 — Core Engines: Academy, Mission Session, Progression */
 (function prepareAcademyCatalog(){
   const seen={};
   academyLessons.forEach((lesson,index)=>{
@@ -1368,9 +1387,13 @@ function renderAcademy(){
 const _finalizeTrainingSession=finalizeTrainingSession;
 finalizeTrainingSession=function(){
  const before=progressionStep();
- _finalizeTrainingSession();
  const completed=(state.activeTrainingSession?.results||[]).some(r=>!r.skipped);
- if(completed){state.trainingSequenceStep=before+1;localStorage.setItem(STORE,JSON.stringify(state));}
+ _finalizeTrainingSession();
+ if(completed){
+   state.trainingSequenceStep=before+1;
+   localStorage.setItem(STORE,JSON.stringify(state));
+   renderAll();
+ }
 };
 function renderOperationalHome(){
  const plan=getDailyPlan(), total=plan.reduce((n,x)=>n+(+x.duration||0),0), step=progressionStep();

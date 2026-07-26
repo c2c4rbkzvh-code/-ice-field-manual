@@ -1,8 +1,8 @@
 {
-  "name": "ICE 11.0 Core Engines",
+  "name": "ICE 11.0 Release Candidate 1",
   "short_name": "ICE 11.0",
-  "description": "ICE Field Manual – Build 31, adaptive sequential training plan",
-  "start_url": "./?v=10.1.0",
+  "description": "ICE Field Manual 11.0 RC1 – sequential guided training, Academy and journal",
+  "start_url": "./?v=11.0.0-rc1-build34",
   "scope": "./",
   "display": "standalone",
   "background_color": "#06100d",
@@ -25,5 +25,5 @@
       "type": "image/png"
     }
   ],
-  "version": "10.7.32"
+  "version": "11.0.0-rc1-build34"
 }
