@@ -1,10 +1,7 @@
-ICE 11.0 Release Candidate 1 – Build 34
+FIELD MANUAL 1.0 · ILO HOMECOMING
 
-Stabiliserad bas från Build 33:
-- Alla synliga versionsangivelser, manifest och service worker använder ICE 11.0 RC1 Build 34.
-- Gammal 10.x-information är borttagen från användargränssnittet.
-- Academy visar hela lektionskatalogen; ålder är rekommendation och inte låsning.
-- Guidade pass flyttar progressionen först efter ett faktiskt genomfört moment.
-- Startsidan visar en sekvens av kommande pass, inte en kalendervecka.
-- Förstärkt iPhone-layout för att förhindra horisontell sidscroll.
-- Befintlig lokal data och lagringsnyckel bevaras.
+Ny identitet: appen heter Field Manual och hundprofilen heter ILO.
+Ny bild och appikon baserad på ILO:s första dag hemma.
+Ny hemkomstfas 0–21 dagar.
+Ny modul Foder & vikt med 100 g x 3 Standardt Original Normal, måltidslogg, aptit, veckovägning, BCS och planerat foderbyte.
+Befintlig lokal lagring behålls för migrering från tidigare builds.

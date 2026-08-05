@@ -1,8 +1,8 @@
 {
-  "name": "ICE 11.0 Release Candidate 1",
-  "short_name": "ICE 11.0",
-  "description": "ICE Field Manual 11.0 RC1 – sequential guided training, Academy and journal",
-  "start_url": "./?v=11.0.0-rc1-build34",
+  "name": "Field Manual",
+  "short_name": "Field Manual",
+  "description": "ILO:s kompletta fältmanual för vardag, tillväxt, träning och räddningshundsutveckling.",
+  "start_url": "./?v=1.0.0",
   "scope": "./",
   "display": "standalone",
   "background_color": "#06100d",
@@ -24,6 +24,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "version": "11.0.0-rc1-build34"
+  ]
 }

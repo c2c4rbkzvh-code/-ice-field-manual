@@ -6,10 +6,10 @@
 <meta name="theme-color" content="#0d211a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="ICE">
+<meta name="apple-mobile-web-app-title" content="Field Manual">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>ICE 11.0 – Core Engines</title>
+<title>Field Manual 1.0 – ILO</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -110,7 +110,7 @@ header:after{background:linear-gradient(90deg,rgba(3,10,8,.92) 0%,rgba(3,10,8,.5
 .start-today b{font-size:18px}.focus-card{overflow:hidden;position:relative}.focus-card:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-65px;top:-80px;background:rgba(226,180,78,.08);pointer-events:none}
 @media(max-width:420px){.hero-profile span{display:none}.hero-profile{padding-right:8px}.hero{padding-left:20px}.hero h1{font-size:40px}}
 
-/* Build 16 · Global ICE navigation */
+/* Build 16 · Global FIELD MANUAL navigation */
 .app{padding-top:calc(62px + env(safe-area-inset-top));}
 .ice-global{position:fixed;z-index:60;left:0;right:0;top:0;height:calc(58px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 14px 0;background:rgba(4,14,11,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center}
 .ice-global-inner{max-width:780px;width:100%;display:flex;align-items:center;gap:10px}
@@ -126,7 +126,7 @@ header:after{background:linear-gradient(90deg,rgba(3,10,8,.92) 0%,rgba(3,10,8,.5
 @media(max-width:420px){.ice-current{display:none}.ice-nav-grid{grid-template-columns:repeat(2,1fr)}.tab{font-size:9px}.tab b{font-size:19px}}
 
 
-/* ICE 4.0 — dashboard architecture */
+/* FIELD MANUAL 4.0 — dashboard architecture */
 body{background:radial-gradient(circle at 50% -10%,rgba(54,101,79,.28),transparent 38%),var(--bg)}
 #today{padding-bottom:34px}
 #today.dashboard-ready>.dashboard-hidden{display:none!important}
@@ -147,7 +147,7 @@ body{background:radial-gradient(circle at 50% -10%,rgba(54,101,79,.28),transpare
 .ice-nav-item{min-height:76px;transition:transform .16s ease,border-color .16s ease}.ice-nav-item:active{transform:scale(.97)}
 @media(max-width:390px){#today #skillGrid{grid-template-columns:1fr}.command-stats{grid-template-columns:repeat(3,1fr)}}
 
-/* ICE 4.1 — focused home */
+/* FIELD MANUAL 4.1 — focused home */
 #today .hq-welcome{padding:16px 4px 4px;margin-top:0}
 #today .hq-welcome h2{font-size:31px;line-height:1.12;margin:5px 0 7px}
 #today .hq-welcome p{margin:0;color:var(--muted);font-size:15px}
@@ -167,7 +167,7 @@ body{background:radial-gradient(circle at 50% -10%,rgba(54,101,79,.28),transpare
 @media(max-width:390px){#today #skillGrid{grid-template-columns:repeat(2,minmax(0,1fr))}#today .skill-card strong{font-size:13px}#today .skill-card small{font-size:11px}}
 
 
-/* ICE 5.0 — Command Edition */
+/* FIELD MANUAL 5.0 — Command Edition */
 header{display:none}
 body.home-view header{display:block;min-height:178px;margin-top:0}
 body.home-view header img{object-position:68% 36%;filter:brightness(.38) saturate(.85)}
@@ -211,7 +211,7 @@ body:not(.home-view) main{padding-top:18px}
 @media(max-width:390px){.command-chips{grid-template-columns:1fr 1fr}.command-chip.primary{grid-column:1/-1}.command-chip{font-size:11px}body.home-view header{min-height:165px}body.home-view .hero{min-height:165px}}
 
 
-/* ICE 7.0 — Intelligence Academy */
+/* FIELD MANUAL 7.0 — Intelligence Academy */
 .intelligence-card{border-color:#4a765f;background:linear-gradient(145deg,#153a2b,#0b2119);padding:16px}
 .intelligence-head{display:flex;align-items:center;gap:13px}.intel-score{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;background:#071812;border:1px solid #4f8268;font-size:23px;font-weight:900;color:var(--green)}
 .intelligence-card h3{margin:2px 0 0;font-size:22px}.intel-directive{font-size:17px;line-height:1.45;margin:14px 0;color:var(--text)}
@@ -222,139 +222,60 @@ body:not(.home-view) main{padding-top:18px}
 @media(max-width:390px){.checkin-grid{grid-template-columns:1fr}.checkin-group{display:grid;grid-template-columns:70px 1fr;align-items:center}.checkin-group small{margin:0}.intel-score{width:52px;height:52px;font-size:20px}}
 
 
-/* ICE 7.0 — Intelligence Academy */
+/* FIELD MANUAL 7.0 — Intelligence Academy */
 .academy-hero{border-color:rgba(226,180,78,.6);background:linear-gradient(145deg,rgba(91,69,22,.4),rgba(12,43,31,.96))}.academy-progress{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center}.ring{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold) calc(var(--p)*1%),#173429 0);position:relative;font-weight:900}.ring:after{content:"";position:absolute;inset:7px;border-radius:50%;background:#0b2119}.ring span{position:relative;z-index:1}.lesson-card{border-left:4px solid var(--line)}.lesson-card.done{border-left-color:var(--green)}.lesson-card.active{border-left-color:var(--gold)}.lesson-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.lesson-status{font-size:11px;font-weight:850;border-radius:999px;padding:5px 8px;background:#203f33;color:var(--muted)}.lesson-status.done{background:#173a2b;color:#a9efc3}.lesson-section{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}.pathway{display:flex;gap:6px;align-items:center;overflow:auto;padding:8px 0}.pathway span{white-space:nowrap;border:1px solid var(--line);padding:7px 9px;border-radius:999px;font-size:11px;color:var(--muted)}.pathway i{color:var(--gold);font-style:normal}.physical-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.physical-metric{background:#0a1a15;border:1px solid var(--line);border-radius:16px;padding:13px}.physical-metric b{display:flex;justify-content:space-between}.safety-note{background:#3b2c16;border:1px solid #795f2b;color:#ffe2a6;border-radius:15px;padding:13px;line-height:1.45}.coach-priority{display:grid;gap:9px;margin-top:12px}.priority-row{display:grid;grid-template-columns:95px 1fr 42px;gap:9px;align-items:center}.priority-row small{text-align:right;color:var(--muted)}.source-chip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 8px;margin:3px 3px 0 0;color:var(--muted);font-size:10px}.academy-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.physical-card.locked{opacity:.58}.physical-card .dose{color:var(--gold);font-weight:800}.test-box{background:rgba(255,255,255,.045);border-radius:12px;padding:11px;margin-top:10px}.screen-lead{color:var(--muted);margin-top:-4px}.mini-score{font-size:12px;color:var(--muted);margin-top:6px}
 @media(max-width:390px){.physical-grid{grid-template-columns:1fr}.academy-actions{grid-template-columns:1fr}.priority-row{grid-template-columns:82px 1fr 38px}}
 
-/* ICE 9.1 — Operational Intelligence */
+/* FIELD MANUAL 9.1 — Operational Intelligence */
 .op-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.op-metric{background:#091b15;border:1px solid var(--line);border-radius:16px;padding:13px}.op-metric-head{display:flex;justify-content:space-between;gap:8px;align-items:center}.op-metric-head strong{font-size:14px}.op-metric-head span{font-size:15px;font-weight:900;color:var(--gold)}.op-state{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.op-state div{background:rgba(255,255,255,.045);border-radius:13px;padding:10px;text-align:center}.op-state b{display:block;font-size:16px}.op-state small{font-size:10px;color:var(--muted)}.weekly-report{border-color:#5a7049;background:linear-gradient(145deg,#203622,#10231a)}.report-focus{display:grid;grid-template-columns:1fr 1fr;gap:10px}.report-focus>div{background:#091b15;border-radius:14px;padding:12px}.report-focus small{color:var(--muted)}.recovery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:12px}.recovery-grid button{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:12px;padding:10px 5px;font-size:11px;font-weight:800}.recovery-grid button.on{border-color:var(--gold);color:var(--gold);background:rgba(226,180,78,.12)}.recovery-alert{border-left:3px solid var(--orange);padding:10px 12px;background:rgba(232,163,75,.1);border-radius:0 12px 12px 0;margin-top:12px}.competence-note{font-size:12px;color:var(--muted);margin-top:10px}@media(max-width:390px){.op-grid{grid-template-columns:1fr}.report-focus{grid-template-columns:1fr}}
 
-/* ICE 10.0 — Foundation */
+/* FIELD MANUAL 10.0 — Foundation */
 .foundation-hero{border-color:rgba(226,180,78,.62);background:linear-gradient(145deg,rgba(84,64,20,.38),rgba(11,45,33,.97))}
 .foundation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.foundation-metric{background:#091b15;border:1px solid var(--line);border-radius:16px;padding:13px}.foundation-metric b{display:flex;justify-content:space-between;gap:8px}.foundation-metric small{color:var(--muted)}
 .mission-card{border-left:4px solid var(--line)}.mission-card.recommended{border-left-color:var(--gold);box-shadow:0 0 0 1px rgba(226,180,78,.14) inset}.mission-card.complete{border-left-color:var(--green)}.mission-steps{display:grid;gap:8px;margin:12px 0}.mission-step{display:grid;grid-template-columns:24px 1fr;gap:9px;align-items:start;background:rgba(255,255,255,.04);border-radius:12px;padding:10px}.mission-step span{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#18352a;color:var(--gold);font-size:12px;font-weight:900}.competence-chip{display:inline-flex;gap:5px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:5px 8px;margin:3px 3px 0 0;color:var(--muted);font-size:11px}.mission-log{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}.foundation-note{border-left:3px solid var(--green);padding:10px 12px;background:rgba(99,197,140,.08);border-radius:0 12px 12px 0;color:#d7f6df}.target-row{display:grid;grid-template-columns:95px 1fr 42px;gap:8px;align-items:center;margin-top:10px}.target-row small{text-align:right;color:var(--muted)}
 @media(max-width:420px){.foundation-grid{grid-template-columns:1fr}.target-row{grid-template-columns:82px 1fr 38px}}
 
-/* ICE 10.2 — Decision Engine */
-.decision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.decision-cell{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:14px;padding:11px}.decision-cell small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em}.decision-cell b{display:block;margin-top:4px;font-size:14px}.why-list{display:grid;gap:8px;margin-top:12px}.why-item{display:grid;grid-template-columns:24px 1fr;gap:9px;align-items:start;padding:10px;border-radius:12px;background:rgba(255,255,255,.04)}.why-item span{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#17352a;color:var(--gold);font-weight:900;font-size:12px}.gate{margin-top:12px;border-left:3px solid var(--gold);background:rgba(226,180,78,.08);padding:11px 12px;border-radius:0 12px 12px 0}.gate.ready{border-left-color:var(--green);background:rgba(99,197,140,.08)}.evidence-badge{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:999px;padding:5px 8px;font-size:10px;font-weight:800;color:var(--muted);margin:4px 5px 0 0}.evidence-badge.research{border-color:#397e68;color:#9de2c4}.evidence-badge.practice{border-color:#8b7134;color:#f0cf79}.evidence-badge.experience{border-color:#49637a;color:#a9c8df}.locked-message{padding:12px;border-radius:12px;background:rgba(255,255,255,.035);color:var(--muted);margin-top:10px}.recommendation-reason{border-top:1px solid var(--line);margin-top:12px;padding-top:12px}.recommendation-reason b{color:var(--gold)}@media(max-width:390px){.decision-grid{grid-template-columns:1fr}}
-
-/* ICE 10.6 — Adaptive Sequence */
-#today .operational-home{display:grid;gap:15px}
-#today .today-mission-card{padding:18px;border-color:rgba(226,180,78,.62);background:linear-gradient(145deg,rgba(53,68,28,.78),rgba(10,42,31,.98))}
-.today-mission-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.today-mission-head h2{font-size:28px;margin:5px 0 6px}.today-dose{min-width:78px;text-align:center;border:1px solid rgba(226,180,78,.55);border-radius:16px;padding:10px 8px;background:rgba(226,180,78,.08)}.today-dose b{display:block;font-size:22px;color:var(--gold)}.today-dose small{font-size:10px;color:var(--muted)}
-.today-context{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0}.context-box{background:rgba(5,23,17,.7);border:1px solid var(--line);border-radius:14px;padding:11px}.context-box small{display:block;color:var(--gold);font-weight:850;text-transform:uppercase;letter-spacing:.08em;font-size:9px;margin-bottom:4px}.context-box b{font-size:14px}.today-exercises{display:grid;gap:8px;margin:14px 0}.today-exercise{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;padding:11px;background:rgba(255,255,255,.045);border-radius:13px}.today-exercise i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:rgba(226,180,78,.16);color:var(--gold);font-style:normal;font-weight:900}.today-exercise strong{display:block;font-size:14px}.today-exercise small{color:var(--muted)}.today-exercise span{font-size:11px;color:var(--muted)}
-.home-reason{border-left:3px solid var(--gold);padding:10px 11px;background:rgba(226,180,78,.07);border-radius:0 11px 11px 0;font-size:13px;color:var(--muted);margin-bottom:12px}.home-reason b{color:var(--text)}
-.week-strip{display:grid;grid-template-columns:repeat(7,minmax(68px,1fr));gap:8px;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x mandatory}.week-day{min-width:72px;scroll-snap-align:start;border:1px solid var(--line);background:#091b15;border-radius:14px;padding:11px 8px;text-align:center}.week-day.today{border-color:var(--gold);background:rgba(226,180,78,.1)}.week-day small{display:block;color:var(--muted);font-size:10px}.week-day b{display:block;margin:5px 0;font-size:12px}.week-day span{font-size:9px;color:var(--gold)}
-.home-progress-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.home-progress-item{border:1px solid var(--line);background:#091b15;border-radius:14px;padding:12px}.home-progress-item header{display:flex!important;min-height:0!important;margin:0!important;justify-content:space-between;align-items:center}.home-progress-item header b{font-size:13px}.home-progress-item header span{font-weight:900;color:var(--gold);font-size:13px}.home-progress-item .bar{margin-top:9px}.home-progress-foot{display:flex;justify-content:space-between;gap:10px;margin-top:12px;color:var(--muted);font-size:12px}.home-progress-foot b{color:var(--text)}
-.home-section-title{display:flex;justify-content:space-between;align-items:end;margin:2px 3px -4px}.home-section-title h2{margin:0;font-size:22px}.home-section-title span{color:var(--muted);font-size:12px}
-#today.dashboard-ready > :not(.hq-welcome):not(#updateNotice):not(.operational-home){display:none!important}
-#today .hq-welcome{display:none!important}
-@media(max-width:390px){.today-context{grid-template-columns:1fr}.today-mission-head h2{font-size:25px}.home-progress-grid{grid-template-columns:1fr 1fr}}
-
-
-/* ICE 10.7 — Strict Mobile Width Fix */
-html,body{width:100%;max-width:100%;overflow-x:hidden}
-body{position:relative}
-.app,main,.screen,#today,.operational-home,.card{width:100%;max-width:100%;min-width:0}
-main{overflow-x:hidden}
-#today *{min-width:0;max-width:100%}
-#today .today-mission-card{overflow:hidden}
-.today-mission-head{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
-.today-dose{min-width:0;width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px 12px}
-.today-dose b{font-size:18px}.today-dose small{font-size:10px}
-.today-context{grid-template-columns:minmax(0,1fr)!important}
-.context-box,.today-exercise,.home-reason{width:100%;max-width:100%;overflow:hidden}
-.context-box b,.today-exercise strong,.today-exercise small,.home-reason{overflow-wrap:anywhere;word-break:normal}
-.today-exercise{grid-template-columns:30px minmax(0,1fr);align-items:start}
-.today-exercise span{grid-column:2;justify-self:start;margin-top:3px}
-.week-strip{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:9px;overflow:visible!important;padding-bottom:0;scroll-snap-type:none}
-.week-day{width:100%;min-width:0!important;display:grid;grid-template-columns:minmax(105px,.7fr) minmax(0,1fr);column-gap:12px;text-align:left;align-items:center;padding:12px 14px}
-.week-day small{grid-row:1/3;font-size:11px;line-height:1.35}.week-day b{margin:0;font-size:14px}.week-day span{font-size:11px;margin-top:4px}
-.home-progress-grid{grid-template-columns:minmax(0,1fr)!important}
-.home-progress-foot{display:grid;grid-template-columns:1fr;gap:4px}
-.home-section-title{gap:8px}.home-section-title h2{font-size:21px;overflow-wrap:anywhere}.home-section-title span{flex:0 0 auto}
-@media(max-width:430px){
-  main{padding-left:14px;padding-right:14px}
-  .card{padding:15px}
-  .today-mission-head h2{font-size:25px}
-  .week-day{grid-template-columns:minmax(92px,.65fr) minmax(0,1fr)}
-}
-
-/* ICE 11.0 strict viewport contract */
-html,body{width:100%;max-width:100%;overflow-x:clip}
-*,*:before,*:after{box-sizing:border-box;min-width:0}
-.app,.screen,#today,#today>*{width:100%;max-width:100%}
-#today .card,#today .section-title,#today .today-mission-card{margin-left:auto;margin-right:auto;max-width:calc(100vw - 28px)}
-.today-context{display:grid!important;grid-template-columns:1fr!important}
-.home-mission-step{grid-template-columns:34px minmax(0,1fr) auto!important}
-.week-strip{display:grid!important;grid-template-columns:1fr!important;overflow:visible!important;width:100%!important}
-.week-day{width:100%!important;max-width:100%!important}
-.today-mission-card p,.today-mission-card b,.today-mission-card small,.today-mission-card div{overflow-wrap:anywhere;word-break:normal}
-@supports not (overflow-x:clip){html,body{overflow-x:hidden}}
-
-
-/* ICE 11.0 RC1 — final iPhone width guard */
-:root{overflow-x:hidden}
-html,body{position:relative;min-width:0;width:100%;max-width:100vw;overflow-x:hidden!important}
-img,svg,video,canvas{max-width:100%;height:auto}
-main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-width:100%}
-.profile-row,.engine-impact,.pathway{max-width:100%;overscroll-behavior-x:contain}
-#today #skillGrid{display:grid!important;grid-template-columns:1fr!important;overflow:visible!important}
-@media(max-width:430px){
- .app{width:100%;padding-left:0;padding-right:0}
- main{padding-left:14px!important;padding-right:14px!important}
- #today .card,#today .section-title,#today .today-mission-card{max-width:100%!important}
- .today-mission-head{grid-template-columns:minmax(0,1fr) auto!important}
- .today-dose{min-width:62px}
- .home-mission-step{grid-template-columns:30px minmax(0,1fr)!important}
- .home-mission-step em{grid-column:2;justify-self:start;margin-top:3px}
- .command-stats,.skill-grid,.physical-grid,.academy-actions,.session-actions{grid-template-columns:1fr!important}
-}
-
+/* Field Manual 1.0 · ILO Homecoming */
+.homecoming-card{background:linear-gradient(145deg,#172c24,#0b1713);border:1px solid rgba(219,175,69,.28);box-shadow:0 12px 35px rgba(0,0,0,.28)}
+.homecoming-grid,.nutrition-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.homecoming-stat,.nutrition-stat{padding:12px;border-radius:15px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07)}
+.homecoming-stat b,.nutrition-stat b{display:block;font-size:18px;color:#f0c75e;margin-top:3px}.homecoming-stat small,.nutrition-stat small{color:#aebdb6}
+.meal-list{display:grid;gap:10px}.meal-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;padding:13px;border-radius:15px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)}
+.meal-row.done{opacity:.62}.meal-row strong{display:block}.meal-row small{color:#aebdb6}.meal-check{min-width:86px}
+.weight-entry{display:grid;grid-template-columns:1fr 1fr;gap:10px}.weight-history{display:grid;gap:8px;margin-top:12px}.weight-item{display:flex;justify-content:space-between;padding:10px 12px;background:rgba(255,255,255,.04);border-radius:12px}
+.feed-switch{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.feed-switch div{padding:10px 5px;text-align:center;border-radius:12px;background:rgba(255,255,255,.04);font-size:12px}.feed-switch b{display:block;color:#f0c75e;font-size:15px}
+.quick-health{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.quick-health button{padding:12px 7px;font-size:12px}
+@media(max-width:420px){.homecoming-grid,.nutrition-stats{grid-template-columns:1fr 1fr}.weight-entry{grid-template-columns:1fr}.feed-switch{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body class="home-view">
-<div class="ice-global"><div class="ice-global-inner"><button class="ice-home" id="iceHome">ICE<small>FIELD MANUAL</small></button><div class="ice-current"><span>Aktuell vy</span><strong id="iceCurrentView">ICE idag</strong></div><button class="ice-menu-btn" id="iceMenuButton" aria-label="Öppna ICE">☰</button><button class="ice-profile-btn" id="iceTopProfile" data-change-device-profile="1" aria-label="Byt profil">MK</button></div></div>
-<div class="ice-drawer" id="iceDrawer"><div class="ice-drawer-card"><div class="ice-drawer-head"><div><div class="eyebrow">ALLT VIA ICE</div><h2>ICE</h2></div><button class="ice-close" id="iceDrawerClose">×</button></div><div class="ice-nav-grid"><button class="ice-nav-item primary" data-goto="today"><b>⌂</b>ICE</button><button class="ice-nav-item" id="iceStartPass"><b>▶</b>Dagens pass</button><button class="ice-nav-item" data-goto="academy"><b>🎓</b>Academy</button><button class="ice-nav-item" data-goto="missions"><b>🎯</b>Missioner</button><button class="ice-nav-item" data-goto="physical"><b>💪</b>Fysik</button><button class="ice-nav-item" data-goto="journal"><b>✎</b>Journal</button><button class="ice-nav-item" data-goto="equipment"><b>🎒</b>Utrustning</button><button class="ice-nav-item" data-goto="sar"><b>◎</b>SAR</button><button class="ice-nav-item" data-goto="family"><b>👥</b>Familj</button><button class="ice-nav-item" data-open-family="1"><b>▤</b>Livsbok</button><button class="ice-nav-item" data-goto="environment"><b>⌖</b>Miljö</button><button class="ice-nav-item" data-goto="progress"><b>↗</b>Utveckling</button><button class="ice-nav-item" data-open-settings="1"><b>⚙</b>Inställningar</button></div><p class="ice-nav-note">ICE är appens kommandocentral. Hemvyn visar bara dagens beslutstöd; hela manualen finns ett tryck bort här.</p></div></div>
+<div class="ice-global"><div class="ice-global-inner"><button class="ice-home" id="iceHome">FIELD MANUAL<small>FIELD MANUAL</small></button><div class="ice-current"><span>Aktuell vy</span><strong id="iceCurrentView">FIELD MANUAL idag</strong></div><button class="ice-menu-btn" id="iceMenuButton" aria-label="Öppna FIELD MANUAL">☰</button><button class="ice-profile-btn" id="iceTopProfile" data-change-device-profile="1" aria-label="Byt profil">MK</button></div></div>
+<div class="ice-drawer" id="iceDrawer"><div class="ice-drawer-card"><div class="ice-drawer-head"><div><div class="eyebrow">ALLT VIA FIELD MANUAL</div><h2>FIELD MANUAL</h2></div><button class="ice-close" id="iceDrawerClose">×</button></div><div class="ice-nav-grid"><button class="ice-nav-item primary" data-goto="today"><b>⌂</b>FIELD MANUAL</button><button class="ice-nav-item" id="iceStartPass"><b>▶</b>Dagens pass</button><button class="ice-nav-item" data-goto="academy"><b>🎓</b>Academy</button><button class="ice-nav-item" data-goto="missions"><b>🎯</b>Missioner</button><button class="ice-nav-item" data-goto="physical"><b>💪</b>Fysik</button><button class="ice-nav-item" data-goto="journal"><b>✎</b>Journal</button><button class="ice-nav-item" data-goto="equipment"><b>🎒</b>Utrustning</button><button class="ice-nav-item" data-goto="nutrition"><b>🥣</b>Foder & vikt</button><button class="ice-nav-item" data-goto="sar"><b>◎</b>SAR</button><button class="ice-nav-item" data-goto="family"><b>👥</b>Familj</button><button class="ice-nav-item" data-open-family="1"><b>▤</b>Livsbok</button><button class="ice-nav-item" data-goto="environment"><b>⌖</b>Miljö</button><button class="ice-nav-item" data-goto="progress"><b>↗</b>Utveckling</button><button class="ice-nav-item" data-open-settings="1"><b>⚙</b>Inställningar</button></div><p class="ice-nav-note">FIELD MANUAL är appens kommandocentral. Hemvyn visar bara dagens beslutstöd; hela manualen finns ett tryck bort här.</p></div></div>
 <div class="app">
 <header>
-<img src="ice-hero-dark.jpg" alt="Ice i mörk taktisk stil">
+<img src="ice-hero-dark.jpg" alt="ILO i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">ICE 11.0 · RELEASE CANDIDATE 1</span>
-<h1>ICE</h1>
+<span class="version">FIELD MANUAL 9.1 · OPERATIONAL</span>
+<h1>FIELD MANUAL</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
 </header>
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">ICE 11.0 RC1 – Build 34 är installerad.</div>
-<div class="operational-home" id="operationalHome">
-  <div class="card today-mission-card">
-    <div class="today-mission-head"><div><div class="eyebrow">DAGENS UPPDRAG</div><h2 id="homeMissionTitle">Förbereder dagens pass…</h2><p id="homeMissionIntro" style="margin:0;color:var(--muted)"></p></div><div class="today-dose"><b id="homeMissionMinutes">–</b><small>MINUTER</small></div></div>
-    <div class="today-context"><div class="context-box"><small>Miljö</small><b id="homeEnvironment">–</b></div><div class="context-box"><small>Utvecklar</small><b id="homeDevelopment">–</b></div></div>
-    <div class="today-exercises" id="homeExerciseList"></div>
-    <div class="home-reason" id="homeWhyToday"></div>
-    <button class="button block" id="homeOperationalStart">▶ Starta dagens pass</button>
-  </div>
-  <div class="home-section-title"><h2>Träningsföljden</h2><span>nästa steg</span></div>
-  <div class="card"><div class="week-strip" id="homeWeekStrip"></div></div>
-  <div class="home-section-title"><h2>Hur vi ligger till</h2><span>utveckling</span></div>
-  <div class="card"><div class="home-progress-grid" id="homeProgressGrid"></div><div class="home-progress-foot"><span>Nästa milstolpe</span><b id="homeNextMilestone">–</b></div></div>
-</div>
-
+<div id="updateNotice" class="notice">Field Manual 1.0 · ILO Homecoming är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
-  <p id="greetingSubtitle">Här är läget med Ice just nu.</p>
+  <p id="greetingSubtitle">Här är läget med ILO just nu.</p>
   <div class="command-chips">
     <button id="homeStartPass" class="command-chip primary">▶ <span>Starta pass</span></button>
     <button class="command-chip" data-goto="journal">✎ <span>Logga</span></button>
-    <button class="command-chip" id="homeOpenIce">☰ <span>Öppna ICE</span></button>
+    <button class="command-chip" id="homeOpenILO">☰ <span>Öppna FIELD MANUAL</span></button>
   </div>
 </div>
-<div class="section-title"><h2>ICE idag</h2><span>datadriven plan</span></div>
+<div class="section-title"><h2>FIELD MANUAL idag</h2><span>datadriven plan</span></div>
 <div class="card ice-today">
   <div class="ice-today-head"><div><div class="eyebrow">DAGENS BRIEF</div><h3 id="iceTodayTitle" style="font-size:25px;margin:6px 0">–</h3><p id="iceTodayText" style="margin:0"></p></div><div class="ice-level"><small>NIVÅ</small><b id="iceLevel">1</b><small id="iceLevelName">Start</small></div></div>
   <div class="xp-line"><span id="iceXpText">0 XP</span><span id="iceNextXp">nästa nivå</span></div><div class="bar"><i id="iceXpBar" style="width:0%"></i></div>
@@ -385,7 +306,7 @@ main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-widt
 
 <div class="section-title"><h2>Aktiv profil</h2><span>personligt läge</span></div>
 <div class="card"><div id="todayProfiles" class="profile-row"></div><div id="activeProfileNote" class="good profile-card-note"></div><div class="profile-device-row"><div><strong><span class="device-badge">📱 Den här telefonen</span></strong><small id="deviceProfileText">Profilen sparas bara på denna enhet.</small></div><button class="profile-switch" data-change-device-profile="1">Byt profil</button></div></div>
-<div class="section-title"><h2>Idag med Ice</h2><span id="ageStageLabel">åldersanpassat</span></div>
+<div class="section-title"><h2>Idag med ILO</h2><span id="ageStageLabel">åldersanpassat</span></div>
 <div class="card focus-card click-card" data-goto="sar">
 <div class="eyebrow">DAGENS FOKUS</div><div class="focus-title" id="ageFocusTitle">–</div><p id="ageFocusText">–</p>
 <div class="focus-list" id="ageFocusList"></div>
@@ -398,7 +319,7 @@ main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-widt
 <div class="overview-card click-card" data-goto="family"><b id="overviewTasks">0</b><small>uppgifter kvar idag</small></div>
 <div class="overview-card click-card" data-goto="journal"><b id="overviewJournal">0</b><small>loggade pass senaste 7 dagarna</small></div>
 </div>
-<div class="section-title"><h2>ICE HQ</h2><span>snabbåtkomst</span></div>
+<div class="section-title"><h2>FIELD MANUAL HQ</h2><span>snabbåtkomst</span></div>
 <div class="card">
 <div class="hq-status"><div><strong id="hqTasks">0</strong><small>uppgifter kvar</small></div><div><strong id="hqMinutes">0</strong><small>minuter / 7 dagar</small></div><div><strong id="hqStreak">0</strong><small>aktiva dagar</small></div></div>
 <div class="quick-grid" style="margin-top:16px">
@@ -421,7 +342,21 @@ main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-widt
   <div class="recommendation-action"><b id="dailyRecommendIcon">🐾</b><div><strong id="dailyRecommendAction">–</strong><div class="task-meta" id="dailyRecommendDose">–</div></div></div>
 </div>
 
-<div class="section-title"><h2>ICE Intelligence</h2><span>dagens beslut</span></div>
+
+<div class="section-title"><h2>ILO hemma</h2><span id="homecomingDayLabel">dag 1</span></div>
+<div class="card homecoming-card">
+  <div class="eyebrow">HEMKOMSTFAS · 0–21 DAGAR</div>
+  <h3 style="font-size:23px;margin:7px 0">Trygghet före prestation</h3>
+  <p id="homecomingAdvice">Fasta rutiner, mycket sömn, lugn familjekontakt och korta frivilliga övningar.</p>
+  <div class="homecoming-grid">
+    <div class="homecoming-stat"><small>Nästa måltid</small><b id="homeNextMeal">–</b></div>
+    <div class="homecoming-stat"><small>Dagens mat</small><b id="homeMealsDone">0 / 3</b></div>
+    <div class="homecoming-stat"><small>Senaste vikt</small><b id="homeLastWeight">Ej vägd</b></div>
+    <div class="homecoming-stat"><small>Nästa vägning</small><b id="homeNextWeigh">–</b></div>
+  </div>
+  <button class="button secondary block" data-goto="nutrition" style="margin-top:12px">Öppna foder & vikt</button>
+</div>
+<div class="section-title"><h2>FIELD MANUAL Intelligence</h2><span>dagens beslut</span></div>
 <div class="card intelligence-card">
   <div class="intelligence-head"><div class="intel-score" id="intelScore">–</div><div><div class="eyebrow">ADAPTIV COACH</div><h3 id="intelTitle">Analyserar dagen…</h3></div></div>
   <p class="intel-directive" id="intelDirective"></p>
@@ -466,8 +401,8 @@ main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-widt
 <div class="section-title"><h2>Färdighetsmotor</h2><span>uppdateras automatiskt</span></div>
 <div class="card"><div class="skill-grid" id="skillGrid"></div><div class="system-note">Ett loggat pass räknas bara en gång men kan bidra till flera vyer: HQ, statistik, färdighetsområde, XP och livsbok.</div></div>
 
-<div class="section-title"><h2>Senaste från Ice</h2><span>livsbok och journal</span></div>
-<div class="card latest-feed click-card" data-open-family="1"><div id="latestIceTimeline"></div></div>
+<div class="section-title"><h2>Senaste från ILO</h2><span>livsbok och journal</span></div>
+<div class="card latest-feed click-card" data-open-family="1"><div id="latestILOTimeline"></div></div>
 <div class="section-title"><h2>Dagens schema</h2><span>dynamiskt</span></div>
 <div class="card">
 <div id="todayShiftSummary" class="item"></div>
@@ -492,7 +427,7 @@ main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-widt
 <label>Typ av pass</label>
 <select id="shiftType"><option value="ledig">Ledig</option><option value="dag">Dag 08:00–17:30</option><option value="natt">Natt 17:30–08:00</option><option value="dygn">Dygn 08:00–08:00</option><option value="annat">Annat pass</option></select>
 <div class="grid two"><div><label>Start</label><input type="time" id="shiftStart"></div><div><label>Slut</label><input type="time" id="shiftEnd"></div></div>
-<label>Anteckning</label><input id="shiftNote" placeholder="t.ex. Ice med till jobbet">
+<label>Anteckning</label><input id="shiftNote" placeholder="t.ex. ILO med till jobbet">
 <div class="row" style="margin-top:12px"><button class="button" id="saveShift">Spara pass</button><button class="button secondary" id="cancelShiftEdit" style="display:none">Avbryt</button></div>
 </div>
 <div id="shiftList"></div>
@@ -518,7 +453,7 @@ main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-widt
 
 <section id="environment" class="screen">
 <div class="section-title"><h2>Miljöbank</h2><span id="envProgress"></span></div>
-<div class="card"><p>Bocka av när Ice har upplevt miljön lugnt och kunnat återhämta sig. Ett besök är inte automatiskt ett godkänt moment.</p><div id="envGrid" class="env-grid"></div></div>
+<div class="card"><p>Bocka av när ILO har upplevt miljön lugnt och kunnat återhämta sig. Ett besök är inte automatiskt ett godkänt moment.</p><div id="envGrid" class="env-grid"></div></div>
 <div class="section-title"><h2>Milstolpar</h2><span>valp till SAR</span></div>
 <div class="card"><div id="milestoneList"></div></div>
 </section>
@@ -526,7 +461,7 @@ main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-widt
 <section id="sar" class="screen">
 <div class="section-title"><h2>Smart veckoplan</h2><span id="weekPlanLabel"></span></div>
 <div class="smart-week-card">
-  <div class="eyebrow">ANPASSAD FÖR ICE</div>
+  <div class="eyebrow">ANPASSAD FÖR FIELD MANUAL</div>
   <h3 id="weekPlanTitle">Denna veckas fokus</h3>
   <p id="weekPlanText"></p>
   <div id="weekPlanStats"></div>
@@ -541,7 +476,7 @@ main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-widt
    <div><label>Sök</label><input id="activitySearch" placeholder="Namn eller mål"></div>
    <div><label>Kategori</label><select id="exerciseFilter"><option value="alla">Alla</option><option value="relation">Relation</option><option value="inkallning">Inkallning</option><option value="nos">Nosarbete</option><option value="miljo">Miljö</option><option value="sar">SAR</option><option value="aterhamtning">Återhämtning</option></select></div>
    <div><label>Tid</label><select id="durationFilter"><option value="alla">Alla tider</option><option value="5">Högst 5 min</option><option value="10">Högst 10 min</option></select></div>
-   <div><label>Visa</label><select id="favoriteFilter"><option value="alla">Alla</option><option value="favoriter">Favoriter</option><option value="alder">Passar Ices ålder</option></select></div>
+   <div><label>Visa</label><select id="favoriteFilter"><option value="alla">Alla</option><option value="favoriter">Favoriter</option><option value="alder">Passar ILOs ålder</option></select></div>
   </div>
   <button class="button secondary block" id="randomActivity" style="margin-top:12px">🎲 Föreslå en aktivitet nu</button>
   <div id="exerciseLibrary"></div>
@@ -549,7 +484,7 @@ main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-widt
 <div class="section-title"><h2>Kommandobibliotek</h2><span id="commandCount"></span></div>
 <div class="card"><label>Sök kommando</label><input id="commandSearch" placeholder="t.ex. hit, loss eller sök"><div id="commandLibrary"></div></div>
 <div class="section-title"><h2>SAR-program</h2><span>progression, inte kalenderkrav</span></div>
-<div class="card"><p>Gå vidare när kriterierna är stabila, inte enbart för att Ice har uppnått en viss ålder.</p><div id="sarList"></div></div>
+<div class="card"><p>Gå vidare när kriterierna är stabila, inte enbart för att ILO har uppnått en viss ålder.</p><div id="sarList"></div></div>
 </section>
 
 <section id="progress" class="screen">
@@ -572,13 +507,13 @@ main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-widt
 <section id="equipment" class="screen"><button class="screen-back" data-back="1">‹ Tillbaka</button>
 <div class="section-title"><h2>Utrustning</h2><span>från valp till SAR</span></div>
 <div class="card">
-<div class="eyebrow">ICE UTRUSTNINGSCENTRAL</div><h3 style="font-size:25px;margin:7px 0">Rätt utrustning vid rätt tid</h3><p>Planera inköp efter Ice ålder och utbildningsnivå. Status sparas på enheten och följer med i backupen.</p>
+<div class="eyebrow">FIELD MANUAL UTRUSTNINGSCENTRAL</div><h3 style="font-size:25px;margin:7px 0">Rätt utrustning vid rätt tid</h3><p>Planera inköp efter ILO ålder och utbildningsnivå. Status sparas på enheten och följer med i backupen.</p>
 <div class="equipment-summary"><div><b id="equipmentOwned">0</b><small>inköpta</small></div><div><b id="equipmentPlanned">0</b><small>planerade</small></div><div><b id="equipmentBudget">0 kr</b><small>kvar i plan</small></div></div>
 </div>
-<div class="section-title"><h2>Selar för Ice</h2><span>jämförelse och rekommendation</span></div>
+<div class="section-title"><h2>Selar för ILO</h2><span>jämförelse och rekommendation</span></div>
 <div class="card">
-<div class="equipment-item equipment-recommended"><div class="equipment-top"><div><div class="equipment-title">Non-stop Line Harness 5.0</div><div class="equipment-meta">Lätt vardags- och träningssele · ca 500–600 kr</div><span class="equipment-phase">VALP TILL CIRKA 12 MÅNADER</span></div><span class="badge driver">ICE rekommenderar</span></div><div class="equipment-note">För socialisering, miljöträning och tidigt sökarbete. Kontrollera passformen regelbundet när Ice växer.</div></div>
-<div class="equipment-item equipment-recommended"><div class="equipment-top"><div><div class="equipment-title">Non-stop Line Harness Grip WD</div><div class="equipment-meta">Arbetssele med handtag och metallspännen · ca 900–1 100 kr</div><span class="equipment-phase">VUXEN / OPERATIV HUND</span></div><span class="badge">Senare</span></div><div class="equipment-note">Planerad uppgradering för krävande terräng och operativt arbete. Köp först när Ice är färdigväxt och korrekt storlek kan provas ut.</div></div>
+<div class="equipment-item equipment-recommended"><div class="equipment-top"><div><div class="equipment-title">Non-stop Line Harness 5.0</div><div class="equipment-meta">Lätt vardags- och träningssele · ca 500–600 kr</div><span class="equipment-phase">VALP TILL CIRKA 12 MÅNADER</span></div><span class="badge driver">FIELD MANUAL rekommenderar</span></div><div class="equipment-note">För socialisering, miljöträning och tidigt sökarbete. Kontrollera passformen regelbundet när ILO växer.</div></div>
+<div class="equipment-item equipment-recommended"><div class="equipment-top"><div><div class="equipment-title">Non-stop Line Harness Grip WD</div><div class="equipment-meta">Arbetssele med handtag och metallspännen · ca 900–1 100 kr</div><span class="equipment-phase">VUXEN / OPERATIV HUND</span></div><span class="badge">Senare</span></div><div class="equipment-note">Planerad uppgradering för krävande terräng och operativt arbete. Köp först när ILO är färdigväxt och korrekt storlek kan provas ut.</div></div>
 <div class="equipment-item"><div class="equipment-top"><div><div class="equipment-title">Ruffwear Web Master</div><div class="equipment-meta">Allroundsele med handtag · ca 800–900 kr</div></div><span class="badge">Alternativ</span></div><div class="equipment-note">Beprövat alternativ för terräng, assistans och räddningsarbete, men saknar dedikerat spårlinefäste under bröstet.</div></div>
 </div>
 <div class="section-title"><h2>Inköpsplan</h2><span>status och budget</span></div>
@@ -605,12 +540,12 @@ main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-widt
 <button class="button block" id="saveFamilyTask" style="margin-top:12px">Lägg till uppgift</button>
 </div>
 
-<div class="section-title"><h2>Registrera händelse</h2><span>Ices livsbok</span></div>
+<div class="section-title"><h2>Registrera händelse</h2><span>ILOs livsbok</span></div>
 <div class="card">
 <div class="grid two"><div><label>Datum</label><input type="date" id="lifeDate"></div><div><label>Kategori</label><select id="lifeCategory"><option>Socialisering</option><option>Hundmöte</option><option>Veterinär</option><option>Vaccination</option><option>Hälsa</option><option>Vardag</option><option>Milstolpe</option><option>Kurs</option><option>Övrigt</option></select></div></div>
 <label>Rubrik</label><input id="lifeTitle" placeholder="t.ex. Lekte med grannens labrador">
 <label>Hur gick det?</label><select id="lifeRating"><option value="5">Mycket trygg / mycket bra</option><option value="4">Trygg / bra</option><option value="3">Neutral</option><option value="2">Lite osäker</option><option value="1">Rädd eller stressad</option></select>
-<label>Anteckning</label><textarea id="lifeNote" placeholder="Vad hände, hur reagerade Ice och vad bör följas upp?"></textarea>
+<label>Anteckning</label><textarea id="lifeNote" placeholder="Vad hände, hur reagerade ILO och vad bör följas upp?"></textarea>
 <label>Registrerad av</label><select id="lifePerson"></select>
 <button class="button block" id="saveLifeEvent" style="margin-top:12px">Spara i livsboken</button>
 </div>
@@ -620,8 +555,8 @@ main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-widt
 
 
 <section id="academy" class="screen"><button class="screen-back" data-back="1">‹ Tillbaka</button>
-<div class="section-title"><div><div class="eyebrow">ICE ACADEMY</div><h2>Utbildningsvägen</h2></div><span id="academyAge">–</span></div>
-<p class="screen-lead">Lektioner som anpassas efter Ice ålder och dokumenterade progression. Ålder öppnar en lektion – kompetens avgör när ni går vidare.</p>
+<div class="section-title"><div><div class="eyebrow">FIELD MANUAL ACADEMY</div><h2>Utbildningsvägen</h2></div><span id="academyAge">–</span></div>
+<p class="screen-lead">Lektioner som anpassas efter ILO ålder och dokumenterade progression. Ålder öppnar en lektion – kompetens avgör när ni går vidare.</p>
 <div class="card academy-hero"><div class="academy-progress"><div><div class="eyebrow">AKTUELL FAS</div><h2 id="academyPhase">–</h2><p id="academyDirective">–</p></div><div class="ring" id="academyRing" style="--p:0"><span id="academyPercent">0%</span></div></div><div id="academyPath" class="pathway"></div></div>
 <div class="section-title"><h2>Rekommenderad nu</h2><span>kompetensstyrt</span></div><div id="academyRecommended"></div>
 <div class="section-title"><h2>Alla lektioner</h2><span id="academyCount">0 lektioner</span></div><div id="academyLessons"></div>
@@ -633,19 +568,34 @@ main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-widt
 <div class="section-title"><h2>Dagens rekommendation</h2><span id="physicalLoad">låg belastning</span></div><div id="physicalRecommended"></div>
 <div class="section-title"><h2>Övningsbank</h2><span>åldersstyrd säkerhet</span></div><div id="physicalExercises"></div>
 </section>
+
+<section id="nutrition" class="screen"><button class="screen-back" data-back="1">‹ Tillbaka</button>
+<div class="section-title"><div><div class="eyebrow">FIELD MANUAL NUTRITION</div><h2>Foder & tillväxt</h2></div><span id="nutritionAge">–</span></div>
+<p class="screen-lead">Följ ILOs måltider, vikt, hull och planerade foderbyte. Rekommendationer är stöd och ersätter inte veterinärbedömning.</p>
+<div class="card">
+ <div class="eyebrow">AKTUELL PLAN</div><h3 style="font-size:22px;margin:7px 0">Standardt Original Normal</h3>
+ <div class="nutrition-stats"><div class="nutrition-stat"><small>Per mål</small><b>100 g</b></div><div class="nutrition-stat"><small>Per dag</small><b>300 g</b></div><div class="nutrition-stat"><small>Måltider</small><b>3</b></div><div class="nutrition-stat"><small>Status</small><b>Övergång</b></div></div>
+ <p style="margin-top:12px">Behåll uppfödarens foder medan ILO landar hemma. Planera byte till ett komplett valpfoder anpassat för växande, atletisk hund när mage och vardag är stabila.</p>
+</div>
+<div class="section-title"><h2>Dagens måltider</h2><span id="mealDateLabel">idag</span></div>
+<div class="card"><div id="mealList" class="meal-list"></div><div class="quick-health" style="margin-top:12px"><button class="button secondary" data-appetite="good">Aptit bra</button><button class="button secondary" data-appetite="partial">Åt delvis</button><button class="button secondary" data-appetite="poor">Åt dåligt</button></div><div id="appetiteStatus" class="good" style="margin-top:10px">Ingen aptitnotering idag.</div></div>
+<div class="section-title"><h2>Vikt & hull</h2><span>veckovis under valptiden</span></div>
+<div class="card"><div class="weight-entry"><div><label>Vikt (kg)</label><input id="weightInput" type="number" inputmode="decimal" step="0.1" min="0" placeholder="t.ex. 8,4"></div><div><label>Hull BCS (1–9)</label><select id="bcsInput"><option value="">Välj</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option></select></div></div><label>Kommentar</label><input id="weightNote" placeholder="t.ex. pigg, foderbyte, lös mage"><button class="button block" id="saveWeight">Spara vägning</button><div id="weightHistory" class="weight-history"></div></div>
+<div class="section-title"><h2>Planerat foderbyte</h2><span>7–10 dagar</span></div>
+<div class="card"><p>Starta först när ILO är trygg hemma och magen är stabil. Ändra endast en sak i taget.</p><div class="feed-switch"><div><b>Dag 1–2</b>75 % nuvarande<br>25 % nytt</div><div><b>Dag 3–4</b>50 % / 50 %</div><div><b>Dag 5–6</b>25 % nuvarande<br>75 % nytt</div><div><b>Dag 7+</b>100 % nytt</div></div><label style="margin-top:12px">Planerat valpfoder</label><input id="plannedFood" placeholder="t.ex. Pro Plan Large Athletic Puppy"><label>Planerat startdatum</label><input id="foodSwitchDate" type="date"><button class="button secondary block" id="saveFoodPlan">Spara plan</button><div id="foodPlanStatus" class="good" style="margin-top:10px"></div></div>
+<div class="card"><div class="eyebrow">VIKTIGT</div><h3>Inga rutinmässiga kalciumtillskott</h3><p>Ett komplett valpfoder ska redan ha balanserade mineraler. Tillskott ska lösa ett identifierat behov, inte ges för säkerhets skull.</p></div>
+</section>
 <section id="settings" class="screen">
 <div class="section-title"><h2>Inställningar</h2><span>ändringsbart</span></div>
 <div class="card"><label>Födelsedatum</label><input type="date" id="birthDate"><label>Hämtningsdatum</label><input type="date" id="pickupDate"><button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button></div>
 <div class="card" style="margin-top:14px"><h3>Säkerhetskopia</h3><p>Exportera all data. Bilder gör filen större.</p><div class="row"><button class="button secondary" id="exportData">Exportera</button><button class="button secondary" id="importButton">Importera</button><input type="file" id="importData" accept="application/json" hidden></div></div>
 <div class="card" style="margin-top:14px"><h3>Appuppdatering</h3><button class="button secondary block" id="forceUpdate">Sök efter ny version</button></div>
-<div class="card" style="margin-top:14px"><h3>Om</h3><p>ICE 11.0 RC1. Startsidan visar dagens nästa träningspass, Academy är alltid tillgänglig och progressionen styrs av genomförda guidade pass i stället för kalenderdatum. Missioner, journal och kompetensområden använder samma lokalt sparade data. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
+<div class="card" style="margin-top:14px"><h3>Om</h3><p>Field Manual 1.0 · ILO Homecoming. Mission-systemet och kompetensmotorn kopplar nu ihop Academy, journal och fysisk utveckling. Träningspass-läget guidar steg för steg och FIELD MANUAL-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och FIELD MANUAL idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
 </section>
 
 <section id="missions" class="screen"><button class="screen-back" data-back="1">‹ Tillbaka</button>
-<div class="section-title"><div><div class="eyebrow">ICE FOUNDATION</div><h2>Missioner</h2></div><span id="missionPhaseLabel">–</span></div>
+<div class="section-title"><div><div class="eyebrow">FIELD MANUAL FOUNDATION</div><h2>Missioner</h2></div><span id="missionPhaseLabel">–</span></div>
 <div class="card foundation-hero"><div class="eyebrow">REKOMMENDERAD MISSION</div><h2 id="missionRecommendedTitle">–</h2><p id="missionRecommendedText">–</p><div id="missionRecommendedSkills"></div><button class="button block" id="startRecommendedMission" style="margin-top:14px">Starta mission</button></div>
-<div class="section-title"><h2>Varför just detta?</h2><span>transparent beslut</span></div>
-<div class="card"><div class="decision-grid"><div class="decision-cell"><small>Prioriterad kompetens</small><b id="decisionPriority">–</b></div><div class="decision-cell"><small>Senast tränad</small><b id="decisionLast">–</b></div><div class="decision-cell"><small>Belastning idag</small><b id="decisionLoad">–</b></div></div><div id="decisionWhy" class="why-list"></div><div id="decisionGate" class="gate">–</div></div>
 <div class="section-title"><h2>Kompetensmotor</h2><span>baserad på loggad träning</span></div><div class="card"><div id="foundationCompetenceGrid" class="foundation-grid"></div><div class="foundation-note" id="foundationDecision" style="margin-top:14px">–</div></div>
 <div class="section-title"><h2>Missionbibliotek</h2><span id="missionCount">0 missioner</span></div><div id="missionLibrary"></div>
 <div class="section-title"><h2>Genomförda</h2><span>historik</span></div><div id="missionHistory"></div>
@@ -653,10 +603,10 @@ main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-widt
 </main>
 </div>
 
-<div id="profileSetup" class="profile-modal hidden" role="dialog" aria-modal="true" aria-labelledby="profileSetupTitle"><div class="profile-modal-card"><div class="eyebrow">ENHETSPROFIL</div><h2 id="profileSetupTitle">Vem använder den här telefonen?</h2><p>Välj en gång. ICE kommer sedan ihåg profilen på just den här enheten och öppnar direkt i rätt läge.</p><div id="deviceProfilePicker" class="profile-picker"></div></div></div>
-<div id="trainingSession" class="session-overlay" aria-hidden="true"><div class="session-shell"><div class="session-top"><div><div class="eyebrow">ICE TRÄNINGSPASS</div><strong id="sessionHeader">Dagens pass</strong></div><button class="session-close" id="closeSession" aria-label="Stäng">×</button></div><div id="sessionContent"></div></div></div>
+<div id="profileSetup" class="profile-modal hidden" role="dialog" aria-modal="true" aria-labelledby="profileSetupTitle"><div class="profile-modal-card"><div class="eyebrow">ENHETSPROFIL</div><h2 id="profileSetupTitle">Vem använder den här telefonen?</h2><p>Välj en gång. FIELD MANUAL kommer sedan ihåg profilen på just den här enheten och öppnar direkt i rätt läge.</p><div id="deviceProfilePicker" class="profile-picker"></div></div></div>
+<div id="trainingSession" class="session-overlay" aria-hidden="true"><div class="session-shell"><div class="session-top"><div><div class="eyebrow">FIELD MANUAL TRÄNINGSPASS</div><strong id="sessionHeader">Dagens pass</strong></div><button class="session-close" id="closeSession" aria-label="Stäng">×</button></div><div id="sessionContent"></div></div></div>
 <nav class="tabs"><div class="tabs-inner">
-<button class="tab active" data-screen="today"><b>ICE</b>ICE</button>
+<button class="tab active" data-screen="today"><b>FM</b>Hem</button>
 <button class="tab driver-only" data-screen="plan"><b>▦</b>Plan</button>
 <button class="tab" data-screen="journal"><b>✎</b>Journal</button>
 <button class="tab" data-screen="equipment"><b>🎒</b>Utrustning</button>
@@ -665,12 +615,13 @@ main,.app,.screen,.card,.operational-home,.ice-global-inner{min-width:0;max-widt
 </div></nav>
 
 <script>
-const VERSION="11.0.0", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
+const VERSION="1.0.0", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
 const defaults={
+ dog:{name:"ILO",breed:"Belgisk Malinois",sex:"Hane",photo:"ice-photo.jpg"},
  birthDate:"2026-06-04",pickupDate:"2026-07-30",currentWorkMode:"ledig",
  shifts:[{date:"2026-08-25",type:"dag",start:"08:00",end:"17:30",note:""},{date:"2026-08-26",type:"natt",start:"17:30",end:"08:00",note:""},{date:"2026-08-31",type:"natt",start:"17:30",end:"08:00",note:""}],
  journal:[],completedMissions:{},milestones:{},environments:{},sarCompleted:{},
- favoriteExercises:[],commandProgress:{},activeProfile:"marcus",profiles:[{id:"marcus",name:"Marcus",role:"driver",icon:"👨"},{id:"anna-lena",name:"Anna-Lena",role:"family",icon:"👩"},{id:"elliot",name:"Elliot",role:"family",icon:"👤"},{id:"rasmus",name:"Rasmus",role:"family",icon:"👤"},{id:"benjamin",name:"Benjamin",role:"family",icon:"👤"}],familyTasks:[],lifeEvents:[],notificationPermissionAsked:false,activeTrainingSession:null,equipmentStatus:{},dailyCheckins:{},academyCompleted:{},physicalProgress:{},recoveryLogs:[],missionHistory:[],competenceTargets:{}
+ favoriteExercises:[],commandProgress:{},activeProfile:"marcus",profiles:[{id:"marcus",name:"Marcus",role:"driver",icon:"👨"},{id:"anna-lena",name:"Anna-Lena",role:"family",icon:"👩"},{id:"elliot",name:"Elliot",role:"family",icon:"👤"},{id:"rasmus",name:"Rasmus",role:"family",icon:"👤"},{id:"benjamin",name:"Benjamin",role:"family",icon:"👤"}],familyTasks:[],lifeEvents:[],notificationPermissionAsked:false,activeTrainingSession:null,equipmentStatus:{},dailyCheckins:{},academyCompleted:{},physicalProgress:{},recoveryLogs:[],missionHistory:[],competenceTargets:{},nutrition:{currentFood:"Standardt Original Normal",gramsPerMeal:100,mealsPerDay:3,mealTimes:["07:00","12:00","18:00"],mealLog:{},appetiteLog:{},weights:[],plannedFood:"",switchDate:""}
 };
 const equipmentLibrary=[
 {id:"line5",name:"Non-stop Line Harness 5.0",category:"Sele",phase:"Valp",price:550,priority:1,note:"Lätt sele för vardag, miljö och tidigt sökarbete."},
@@ -682,7 +633,7 @@ const equipmentLibrary=[
 {id:"trackingline",name:"Spårlina 10 meter",category:"Lina",phase:"Senare valp",price:450,priority:2,note:"För mer strukturerat spår- och nosarbete."},
 {id:"headlamp",name:"Pannlampa",category:"Förare",phase:"Höst/vinter",price:700,priority:2,note:"För mörkerträning och sök i terräng."},
 {id:"gps",name:"GPS-halsband",category:"Teknik",phase:"Unghund",price:3500,priority:3,note:"Aktuellt när sökområden och avstånd ökar."},
-{id:"linewd",name:"Non-stop Line Harness Grip WD",category:"Sele",phase:"Vuxen",price:1000,priority:3,note:"Operativ arbetssele när Ice är färdigväxt."}
+{id:"linewd",name:"Non-stop Line Harness Grip WD",category:"Sele",phase:"Vuxen",price:1000,priority:3,note:"Operativ arbetssele när ILO är färdigväxt."}
 ];
 let state=load(), pendingPhoto="";
 const storedDeviceProfile=localStorage.getItem(DEVICE_PROFILE_KEY);if(storedDeviceProfile&&state.profiles.some(p=>p.id===storedDeviceProfile))state.activeProfile=storedDeviceProfile;
@@ -704,73 +655,64 @@ function workload(){const r=recentJournal(3),mins=r.reduce((a,j)=>a+(+j.minutes|
 const environments=["Trädgård","Bil","Skog","Grus","Asfalt","Trapphus","Hiss","Bro","Tågstation","Centrum","Butiksmiljö","Hamnområde","Vattenkant","Mörker","Höga ljud","Brandstation","Veterinär","Nya vuxna hundar"];
 const milestones=[["home","Trygg hemma","Äter, sover och återhämtar sig."],["name","Namnet fungerar","Orienterar sig snabbt mot föraren."],["recall","Första säkra inkallningen","Kommer glatt i lätt miljö."],["play","Aktiv förarlek","Leker och stannar i relationen."],["nose","Första nosuppgiften","Söker självständigt efter foder eller föremål."],["person","Första personsöket","Hittar en lätt gömd figurant."],["mark","Tydlig markering","Visar konsekvent beteende vid fynd."]];
 const sarSteps=[
- ["foundation","1. Relation och belöning","Ice väljer föraren, kan leka och återhämta sig."],
+ ["foundation","1. Relation och belöning","ILO väljer föraren, kan leka och återhämta sig."],
  ["nose","2. Nosintresse","Självständiga godissök och enkla föremålssök."],
  ["runner","3. Springfigurant","Synlig figurant springer bort och belönar kraftigt."],
  ["hidden","4. Enkel dold figurant","Kort avstånd, lätt vind och tydlig belöning."],
  ["indication","5. Markering","Utveckla skall, återgång eller annan vald markering."],
- ["wind","6. Vindarbete","Förstå vindriktning och låt Ice lösa vittringen."],
+ ["wind","6. Vindarbete","Förstå vindriktning och låt ILO lösa vittringen."],
  ["search","7. Söksystem","Korta systematiska sök med hög lyckandefrekvens."],
  ["duration","8. Uthållighet","Öka tid, terräng och svårighet gradvis."],
  ["operational","9. Operativ generalisering","Mörker, buller, ruiner och realistiska figuranter."]
 ];
 const exerciseLibrary=[
- {id:"rel_name",cat:"relation",title:"Namnleken",minWeeks:8,maxWeeks:20,duration:2,load:1,goal:"Snabb orientering mot föraren.",steps:["Säg Ice en gång.","Belöna omedelbart när han vänder huvudet.","Avsluta efter 4–6 lyckade repetitioner."],mistake:"Upprepa inte namnet flera gånger.",progress:"Respons inom en sekund i lugn miljö."},
- {id:"rel_follow",cat:"relation",title:"Följ mig",minWeeks:8,maxWeeks:24,duration:3,load:1,goal:"Bygga frivillig följsamhet.",steps:["Backa några steg.","Belöna när Ice följer.","Byt riktning mjukt."],mistake:"Dra inte i kopplet.",progress:"Följer 5–10 meter frivilligt."},
+ {id:"rel_name",cat:"relation",title:"Namnleken",minWeeks:8,maxWeeks:20,duration:2,load:1,goal:"Snabb orientering mot föraren.",steps:["Säg ILO en gång.","Belöna omedelbart när han vänder huvudet.","Avsluta efter 4–6 lyckade repetitioner."],mistake:"Upprepa inte namnet flera gånger.",progress:"Respons inom en sekund i lugn miljö."},
+ {id:"rel_follow",cat:"relation",title:"Följ mig",minWeeks:8,maxWeeks:24,duration:3,load:1,goal:"Bygga frivillig följsamhet.",steps:["Backa några steg.","Belöna när ILO följer.","Byt riktning mjukt."],mistake:"Dra inte i kopplet.",progress:"Följer 5–10 meter frivilligt."},
  {id:"recall_short",cat:"inkallning",title:"Kort inkallning",minWeeks:8,maxWeeks:40,duration:3,load:1,goal:"Skapa hög fart mot föraren.",steps:["Låt en hjälpare hålla lätt.","Backa och kalla en gång.","Belöna nära kroppen."],mistake:"Kalla inte när du tror att han kommer misslyckas.",progress:"Fem säkra repetitioner i lätt miljö."},
- {id:"nose_food",cat:"nos",title:"Godissök i gräs",minWeeks:8,maxWeeks:52,duration:5,load:1,goal:"Utveckla självständigt nosarbete.",steps:["Strö 5–10 små bitar.","Säg ett konsekvent sökord.","Låt Ice lösa uppgiften utan hjälp."],mistake:"Peka inte ut varje bit.",progress:"Söker lugnt och systematiskt."},
- {id:"nose_boxes",cat:"nos",title:"Kartongsök",minWeeks:10,maxWeeks:80,duration:5,load:2,goal:"Söka bland enkla behållare.",steps:["Placera tre kartonger.","Göm belöning i en.","Låt Ice undersöka fritt."],mistake:"Öka inte antalet för snabbt.",progress:"Söker alla kartonger utan stress."},
- {id:"env_surface",cat:"miljo",title:"Nytt underlag",minWeeks:8,maxWeeks:60,duration:4,load:1,goal:"Trygghet på olika underlag.",steps:["Låt Ice närma sig frivilligt.","Belöna nyfikenhet.","Gå av innan osäkerhet växer."],mistake:"Locka inte över vid tydlig rädsla.",progress:"Kan stanna, äta och återhämta sig."},
+ {id:"nose_food",cat:"nos",title:"Godissök i gräs",minWeeks:8,maxWeeks:52,duration:5,load:1,goal:"Utveckla självständigt nosarbete.",steps:["Strö 5–10 små bitar.","Säg ett konsekvent sökord.","Låt ILO lösa uppgiften utan hjälp."],mistake:"Peka inte ut varje bit.",progress:"Söker lugnt och systematiskt."},
+ {id:"nose_boxes",cat:"nos",title:"Kartongsök",minWeeks:10,maxWeeks:80,duration:5,load:2,goal:"Söka bland enkla behållare.",steps:["Placera tre kartonger.","Göm belöning i en.","Låt ILO undersöka fritt."],mistake:"Öka inte antalet för snabbt.",progress:"Söker alla kartonger utan stress."},
+ {id:"env_surface",cat:"miljo",title:"Nytt underlag",minWeeks:8,maxWeeks:60,duration:4,load:1,goal:"Trygghet på olika underlag.",steps:["Låt ILO närma sig frivilligt.","Belöna nyfikenhet.","Gå av innan osäkerhet växer."],mistake:"Locka inte över vid tydlig rädsla.",progress:"Kan stanna, äta och återhämta sig."},
  {id:"env_sound",cat:"miljo",title:"Ljud på avstånd",minWeeks:10,maxWeeks:70,duration:4,load:2,goal:"Neutralitet till vardagsljud.",steps:["Starta på långt avstånd.","Belöna lugn orientering.","Avsluta tidigt."],mistake:"Gå inte närmare bara för att han är tyst.",progress:"Kan ta belöning och återgå till kontakt."},
- {id:"sar_runner",cat:"sar",title:"Springfigurant",minWeeks:14,maxWeeks:120,duration:6,load:2,goal:"Skapa stark motivation att hitta människa.",steps:["Figurant leker kort.","Figuranten springer synligt 20–30 meter.","Släpp Ice och låt figuranten belöna."],mistake:"Försvåra inte gömman för tidigt.",progress:"Springer direkt och stannar engagerad hos figuranten."},
- {id:"sar_hidden",cat:"sar",title:"Enkel dold figurant",minWeeks:20,maxWeeks:160,duration:8,load:3,goal:"Första självständiga personsöket.",steps:["Låt figuranten försvinna bakom enkel skärm.","Vänta kort.","Skicka Ice mot vinden."],mistake:"Undvik långa söktider.",progress:"Hittar snabbt och förblir engagerad."},
+ {id:"sar_runner",cat:"sar",title:"Springfigurant",minWeeks:14,maxWeeks:120,duration:6,load:2,goal:"Skapa stark motivation att hitta människa.",steps:["Figurant leker kort.","Figuranten springer synligt 20–30 meter.","Släpp ILO och låt figuranten belöna."],mistake:"Försvåra inte gömman för tidigt.",progress:"Springer direkt och stannar engagerad hos figuranten."},
+ {id:"sar_hidden",cat:"sar",title:"Enkel dold figurant",minWeeks:20,maxWeeks:160,duration:8,load:3,goal:"Första självständiga personsöket.",steps:["Låt figuranten försvinna bakom enkel skärm.","Vänta kort.","Skicka ILO mot vinden."],mistake:"Undvik långa söktider.",progress:"Hittar snabbt och förblir engagerad."},
  {id:"recovery_mat",cat:"aterhamtning",title:"Lugn på filt",minWeeks:8,maxWeeks:200,duration:5,load:1,goal:"Träna aktiv återhämtning.",steps:["Lägg ut filten.","Belöna lugna beteenden.","Ge något att tugga på och avsluta utan signal."],mistake:"Kräv inte lång liggtid.",progress:"Kan varva ner inom några minuter."}
 ];
 
 const academyLessons=[
-{id:"a_home",phase:"8–10 veckor",minWeeks:8,title:"Trygg hemkomst",cat:"Relation",minutes:8,goal:"Ice kan äta, vila och söka stöd i den nya miljön.",why:"Trygghet och återhämtning är förutsättningar för inlärning.",steps:["Skapa en fast sovplats och lugn rastningsväg.","Låt Ice själv initiera kontakt.","Håll besök och nya intryck korta."],mistakes:["För många besök första dagarna","Att väcka valpen för träning","Att pressa fram kontakt"],test:"Ice kan somna, äta och återhämta sig efter ett milt nytt intryck.",path:["Trygghet","Relation","Förarförtroende","Operativ återhämtning"],sources:["AVSAB socialisering","SKK valputveckling"]},
-{id:"a_reward",phase:"8–12 veckor",minWeeks:8,title:"Belöningssystem",cat:"Motivation",minutes:6,goal:"Bygga värde i mat, lek och social belöning.",why:"En arbetshund behöver flera fungerande belöningar som kan användas i olika miljöer.",steps:["Testa små mjuka matbitar.","Lek kort med trasa nära kroppen.","Avsluta medan intresset är högt."],mistakes:["För långa kamppass","Att ta leksaken utan byte","Samma belöning i alla situationer"],test:"Ice väljer minst två belöningstyper och återgår snabbt till föraren.",path:["Belöning","Engagemang","Träningsuthållighet","Sökbelöning"],sources:["Positiv förstärkning","Arbetshundspraktik"]},
-{id:"a_name",phase:"8–12 veckor",minWeeks:8,title:"Namn och orientering",cat:"Kontakt",minutes:4,goal:"Snabb frivillig orientering mot föraren.",why:"Orientering är grunden för inkallning, följsamhet och säkerhet.",steps:["Säg Ice en gång.","Belöna direkt när huvudet vänds.","Gör 4–6 repetitioner och sluta."],mistakes:["Upprepa namnet","Använda namnet som tillsägelse","Träna i för svår miljö"],test:"8 av 10 responser inom en sekund i lugn miljö.",path:["Orientering","Kontakt","Inkallning","Operativ styrbarhet"],sources:["Inlärningsteori","Belöningsbaserad träning"]},
-{id:"a_crate",phase:"8–16 veckor",minWeeks:8,title:"Bur och bilvila",cat:"Återhämtning",minutes:8,goal:"Frivillig trygghet i buren hemma och i bilen.",why:"Räddningshundar behöver kunna vänta och återhämta sig mellan arbetspass.",steps:["Mata nära och sedan inne i öppen bur.","Stäng luckan en sekund och öppna innan oro.","Öka tid före avstånd och störning."],mistakes:["Långa första pass","Bara använda buren när ni lämnar","Släppa ut mitt i panik utan att backa planen"],test:"Ice går in frivilligt och kan vila lugnt 10 minuter med förare nära.",path:["Bustrygghet","Passivitet","Återhämtning","Operativ väntan"],sources:["Gradvis desensitisering","Veterinär beteendemedicin"]},
-{id:"a_env",phase:"8–16 veckor",minWeeks:8,title:"Miljökompetens",cat:"Miljö",minutes:10,goal:"Nyfiken och återhämtningsbar i nya miljöer.",why:"Kvaliteten på socialisering är viktigare än antal exponeringar.",steps:["Välj en mild ny miljö.","Ge valpen valmöjlighet och avstånd.","Belöna undersökande och avsluta tidigt."],mistakes:["Tvinga över underlag","Stanna tills valpen ger upp","Flera svåra miljöer samma dag"],test:"Ice kan ta belöning, undersöka och återgå till kontakt.",path:["Nyfikenhet","Miljöstabilitet","Terrängarbete","Ruin- och skogsök"],sources:["AVSAB","Fear Free-principer"]},
-{id:"a_nose",phase:"10–20 veckor",minWeeks:10,title:"Nosens självständighet",cat:"Nos",minutes:8,goal:"Lösa enkla doftproblem utan handhjälp.",why:"Självständigt nosarbete bygger problemlösning utan att minska förarsamarbetet.",steps:["Strö foder i kort gräs.","Ge en konsekvent startsignal.","Stå still och låt Ice lösa uppgiften."],mistakes:["Peka ut fynd","För stora sökområden","För lång tid utan framgång"],test:"Systematiskt sök i 1–2 minuter med lugn intensitet.",path:["Nosintresse","Självständighet","Vindarbete","Personsök"],sources:["Detection dog development","Bruksprovstradition"]},
+{id:"a_home",phase:"8–10 veckor",minWeeks:8,title:"Trygg hemkomst",cat:"Relation",minutes:8,goal:"ILO kan äta, vila och söka stöd i den nya miljön.",why:"Trygghet och återhämtning är förutsättningar för inlärning.",steps:["Skapa en fast sovplats och lugn rastningsväg.","Låt ILO själv initiera kontakt.","Håll besök och nya intryck korta."],mistakes:["För många besök första dagarna","Att väcka valpen för träning","Att pressa fram kontakt"],test:"ILO kan somna, äta och återhämta sig efter ett milt nytt intryck.",path:["Trygghet","Relation","Förarförtroende","Operativ återhämtning"],sources:["AVSAB socialisering","SKK valputveckling"]},
+{id:"a_reward",phase:"8–12 veckor",minWeeks:8,title:"Belöningssystem",cat:"Motivation",minutes:6,goal:"Bygga värde i mat, lek och social belöning.",why:"En arbetshund behöver flera fungerande belöningar som kan användas i olika miljöer.",steps:["Testa små mjuka matbitar.","Lek kort med trasa nära kroppen.","Avsluta medan intresset är högt."],mistakes:["För långa kamppass","Att ta leksaken utan byte","Samma belöning i alla situationer"],test:"ILO väljer minst två belöningstyper och återgår snabbt till föraren.",path:["Belöning","Engagemang","Träningsuthållighet","Sökbelöning"],sources:["Positiv förstärkning","Arbetshundspraktik"]},
+{id:"a_name",phase:"8–12 veckor",minWeeks:8,title:"Namn och orientering",cat:"Kontakt",minutes:4,goal:"Snabb frivillig orientering mot föraren.",why:"Orientering är grunden för inkallning, följsamhet och säkerhet.",steps:["Säg ILO en gång.","Belöna direkt när huvudet vänds.","Gör 4–6 repetitioner och sluta."],mistakes:["Upprepa namnet","Använda namnet som tillsägelse","Träna i för svår miljö"],test:"8 av 10 responser inom en sekund i lugn miljö.",path:["Orientering","Kontakt","Inkallning","Operativ styrbarhet"],sources:["Inlärningsteori","Belöningsbaserad träning"]},
+{id:"a_crate",phase:"8–16 veckor",minWeeks:8,title:"Bur och bilvila",cat:"Återhämtning",minutes:8,goal:"Frivillig trygghet i buren hemma och i bilen.",why:"Räddningshundar behöver kunna vänta och återhämta sig mellan arbetspass.",steps:["Mata nära och sedan inne i öppen bur.","Stäng luckan en sekund och öppna innan oro.","Öka tid före avstånd och störning."],mistakes:["Långa första pass","Bara använda buren när ni lämnar","Släppa ut mitt i panik utan att backa planen"],test:"ILO går in frivilligt och kan vila lugnt 10 minuter med förare nära.",path:["Bustrygghet","Passivitet","Återhämtning","Operativ väntan"],sources:["Gradvis desensitisering","Veterinär beteendemedicin"]},
+{id:"a_env",phase:"8–16 veckor",minWeeks:8,title:"Miljökompetens",cat:"Miljö",minutes:10,goal:"Nyfiken och återhämtningsbar i nya miljöer.",why:"Kvaliteten på socialisering är viktigare än antal exponeringar.",steps:["Välj en mild ny miljö.","Ge valpen valmöjlighet och avstånd.","Belöna undersökande och avsluta tidigt."],mistakes:["Tvinga över underlag","Stanna tills valpen ger upp","Flera svåra miljöer samma dag"],test:"ILO kan ta belöning, undersöka och återgå till kontakt.",path:["Nyfikenhet","Miljöstabilitet","Terrängarbete","Ruin- och skogsök"],sources:["AVSAB","Fear Free-principer"]},
+{id:"a_nose",phase:"10–20 veckor",minWeeks:10,title:"Nosens självständighet",cat:"Nos",minutes:8,goal:"Lösa enkla doftproblem utan handhjälp.",why:"Självständigt nosarbete bygger problemlösning utan att minska förarsamarbetet.",steps:["Strö foder i kort gräs.","Ge en konsekvent startsignal.","Stå still och låt ILO lösa uppgiften."],mistakes:["Peka ut fynd","För stora sökområden","För lång tid utan framgång"],test:"Systematiskt sök i 1–2 minuter med lugn intensitet.",path:["Nosintresse","Självständighet","Vindarbete","Personsök"],sources:["Detection dog development","Bruksprovstradition"]},
 {id:"a_mark",phase:"5–9 månader",minWeeks:20,title:"Markeringsgrund – rulle",cat:"SAR",minutes:8,goal:"Frivilligt gripa och bära rulle tillbaka till föraren.",why:"Markeringen byggs som en separat beteendekedja innan den kopplas till figurant.",steps:["Belöna blick och gripande av rullen.","Bygg kort bärande mot föraren.","Byt mot belöning och skicka tillbaka till lek."],mistakes:["Koppla figurant för tidigt","Kräva långt bärande","Korrigera tappad rulle"],test:"Tar rullen och kommer 3–5 meter till föraren i lätt miljö.",path:["Gripa","Bära tillbaka","Påvisning","Räddningshundsmarkering"],sources:["Beteendekedjor","SBK räddningshund"]}
 ];
 academyLessons.push(
-{id:"a_home",phase:"8–9 veckor",minWeeks:8,title:"Hemkomsten – första 72 timmarna",cat:"Trygghet",minutes:5,goal:"Skapa förutsägbarhet, vila och trygg anknytning.",why:"En lugn start minskar onödig belastning och gör det lättare för valpen att knyta an till familjen.",steps:["Visa sovplats, vatten och rastningsväg.","Håll besök och utflykter mycket begränsade.","Belöna frivillig kontakt och låt Ice sova ostört."],mistakes:["För många besök","För långa vakna perioder","Krav på lydnad första dygnen"],test:"Ice kan äta, sova och söka kontakt i hemmet utan ihållande stress.",path:["Trygghet","Relation","Inlärning","Arbetshund"],sources:["Valputveckling","Etablerad praktik"]},
-{id:"a_reward",phase:"8–10 veckor",minWeeks:8,title:"Belöningssystemet",cat:"Relation",minutes:4,goal:"Kartlägga mat, lek och social belöning.",why:"En arbetshund behöver flera belöningar som fungerar i olika situationer.",steps:["Testa tre mjuka godbitar separat.","Testa kort kamp eller jaktlek.","Notera vad som ger högst och lugnast engagemang."],mistakes:["För lång lek","Samma belöning överallt","Belöning efter att fokus tappats"],test:"Ice väljer tydligt minst två belöningstyper och återgår snabbt till föraren.",path:["Belöning","Motivation","Samarbete","Sök"],sources:["Inlärningsteori","Working dog practice"]},
-{id:"a_crate",phase:"8–12 veckor",minWeeks:8,title:"Bur och bil – frivillig vila",cat:"Vardag",minutes:5,goal:"Bygga lugn och trygghet i buren utan isolering.",why:"Frivillig burvila är en viktig säkerhets- och återhämtningsfärdighet för framtida resor och insatser.",steps:["Servera delar av måltiden i öppen bur.","Belöna att Ice går in och lägger sig.","Stäng kort när han redan är lugn och öppna innan oro."],mistakes:["Lång tid för tidigt","Bara använda buren när ni lämnar","Öppna mitt i kraftig aktivitet"],test:"Vilar lugnt 5–10 minuter med föraren nära.",path:["Burtrygghet","Bilvila","Väntan","Operativ återhämtning"],sources:["Gradvis tillvänjning","Etablerad praktik"]},
-{id:"a_handling",phase:"8–12 veckor",minWeeks:8,title:"Kooperativ hantering",cat:"Hälsa",minutes:3,goal:"Ice deltar frivilligt i kontroll av tassar, öron och mun.",why:"Kooperativ hantering minskar konflikt och underlättar veterinärvård och skadebedömning.",steps:["Rör en tass kort och belöna.","Låt Ice lämna och återkomma frivilligt.","Bygg en kroppsdel i taget."],mistakes:["Hålla fast","Träna när valpen är övertrött","Gå vidare trots undanmanöver"],test:"Accepterar 3–5 sekunders lugn kontroll av varje tass.",path:["Hantering","Hälsokontroll","Första hjälpen","Operativ säkerhet"],sources:["Kooperativ vård","Fear Free principles"]},
+{id:"a_home",phase:"8–9 veckor",minWeeks:8,title:"Hemkomsten – första 72 timmarna",cat:"Trygghet",minutes:5,goal:"Skapa förutsägbarhet, vila och trygg anknytning.",why:"En lugn start minskar onödig belastning och gör det lättare för valpen att knyta an till familjen.",steps:["Visa sovplats, vatten och rastningsväg.","Håll besök och utflykter mycket begränsade.","Belöna frivillig kontakt och låt ILO sova ostört."],mistakes:["För många besök","För långa vakna perioder","Krav på lydnad första dygnen"],test:"ILO kan äta, sova och söka kontakt i hemmet utan ihållande stress.",path:["Trygghet","Relation","Inlärning","Arbetshund"],sources:["Valputveckling","Etablerad praktik"]},
+{id:"a_reward",phase:"8–10 veckor",minWeeks:8,title:"Belöningssystemet",cat:"Relation",minutes:4,goal:"Kartlägga mat, lek och social belöning.",why:"En arbetshund behöver flera belöningar som fungerar i olika situationer.",steps:["Testa tre mjuka godbitar separat.","Testa kort kamp eller jaktlek.","Notera vad som ger högst och lugnast engagemang."],mistakes:["För lång lek","Samma belöning överallt","Belöning efter att fokus tappats"],test:"ILO väljer tydligt minst två belöningstyper och återgår snabbt till föraren.",path:["Belöning","Motivation","Samarbete","Sök"],sources:["Inlärningsteori","Working dog practice"]},
+{id:"a_crate",phase:"8–12 veckor",minWeeks:8,title:"Bur och bil – frivillig vila",cat:"Vardag",minutes:5,goal:"Bygga lugn och trygghet i buren utan isolering.",why:"Frivillig burvila är en viktig säkerhets- och återhämtningsfärdighet för framtida resor och insatser.",steps:["Servera delar av måltiden i öppen bur.","Belöna att ILO går in och lägger sig.","Stäng kort när han redan är lugn och öppna innan oro."],mistakes:["Lång tid för tidigt","Bara använda buren när ni lämnar","Öppna mitt i kraftig aktivitet"],test:"Vilar lugnt 5–10 minuter med föraren nära.",path:["Burtrygghet","Bilvila","Väntan","Operativ återhämtning"],sources:["Gradvis tillvänjning","Etablerad praktik"]},
+{id:"a_handling",phase:"8–12 veckor",minWeeks:8,title:"Kooperativ hantering",cat:"Hälsa",minutes:3,goal:"ILO deltar frivilligt i kontroll av tassar, öron och mun.",why:"Kooperativ hantering minskar konflikt och underlättar veterinärvård och skadebedömning.",steps:["Rör en tass kort och belöna.","Låt ILO lämna och återkomma frivilligt.","Bygg en kroppsdel i taget."],mistakes:["Hålla fast","Träna när valpen är övertrött","Gå vidare trots undanmanöver"],test:"Accepterar 3–5 sekunders lugn kontroll av varje tass.",path:["Hantering","Hälsokontroll","Första hjälpen","Operativ säkerhet"],sources:["Kooperativ vård","Fear Free principles"]},
 {id:"a_recall_game",phase:"9–12 veckor",minWeeks:9,title:"Inkallning som lek",cat:"Inkallning",minutes:4,goal:"Skapa reflexmässig rörelse mot föraren.",why:"Tidiga lyckade inkallningar bygger fart och känslomässigt värde innan störningarna ökar.",steps:["Två personer sitter nära varandra.","Kalla en gång och belöna nära kroppen.","Skicka tillbaka till nästa person som en lek."],mistakes:["Kalla från svår störning","Fånga och avsluta varje gång","Upprepa signalen"],test:"Fem snabba raka inkallningar på 3–5 meter.",path:["Namnrespons","Inkallning","Följsamhet","Säkerhet"],sources:["Positiv förstärkning","Brukshundsträning"]},
 {id:"a_settle",phase:"9–14 veckor",minWeeks:9,title:"Av-knapp på filt",cat:"Återhämtning",minutes:5,goal:"Lära kroppen växla från aktivitet till vila.",why:"Förmågan att återhämta sig är central för hållbar träning och framtida väntan mellan arbetsuppgifter.",steps:["Placera en filt i lugn miljö.","Belöna spontant liggande och mjuka rörelser.","Minska belöningsfrekvensen när andningen blir lugn."],mistakes:["Kommendera plats upprepade gånger","Träna efter överstimulering","Kräva lång tid"],test:"Ligger avslappnat 2 minuter med föraren stilla.",path:["Passivitet","Återhämtning","Väntan","Operativ uthållighet"],sources:["Arousal regulation","Etablerad praktik"]},
-{id:"a_environment",phase:"10–14 veckor",minWeeks:10,title:"Miljötriangeln",cat:"Miljö",minutes:8,goal:"Träna underlag, ljud och social miljö utan att överbelasta.",why:"Kontrollerad variation bygger generalisering bättre än många intensiva exponeringar.",steps:["Välj endast en ny huvudfaktor.","Börja på avstånd där Ice kan äta och tänka.","Avsluta efter en tydlig återhämtning."],mistakes:["Tre svåra faktorer samtidigt","Locka förbi rädsla","Stanna tills valpen vänjer sig"],test:"Kan orientera, ta belöning och återgå till normal aktivitet.",path:["Miljötrygghet","Generalisering","Terräng","SAR"],sources:["Habituering","Valpsocialisering"]},
+{id:"a_environment",phase:"10–14 veckor",minWeeks:10,title:"Miljötriangeln",cat:"Miljö",minutes:8,goal:"Träna underlag, ljud och social miljö utan att överbelasta.",why:"Kontrollerad variation bygger generalisering bättre än många intensiva exponeringar.",steps:["Välj endast en ny huvudfaktor.","Börja på avstånd där ILO kan äta och tänka.","Avsluta efter en tydlig återhämtning."],mistakes:["Tre svåra faktorer samtidigt","Locka förbi rädsla","Stanna tills valpen vänjer sig"],test:"Kan orientera, ta belöning och återgå till normal aktivitet.",path:["Miljötrygghet","Generalisering","Terräng","SAR"],sources:["Habituering","Valpsocialisering"]},
 {id:"a_play_return",phase:"10–16 veckor",minWeeks:10,title:"Lek och återgång",cat:"Relation",minutes:4,goal:"Bygga intensiv lek som kan avslutas och startas om.",why:"Kontrollerbar lek blir senare en kraftfull belöning i sök och markering.",steps:["Starta 5–10 sekunders kamp.","Byt lugnt mot godis eller ny leksak.","Starta om leken som belöning för återgång."],mistakes:["Rycka högt i valpens nacke","Ta leksaken och avsluta alltid","För långa kamper"],test:"Kan leka, släppa och direkt återengagera tre gånger.",path:["Lek","Belöningskontroll","Figurantbelöning","Personsök"],sources:["Belöningsutveckling","Working dog play"]},
-{id:"a_body",phase:"10–16 veckor",minWeeks:10,title:"Kroppsmedvetenhet",cat:"Fysik",minutes:4,goal:"Utveckla tassplacering, balans och lugn rörelsekvalitet.",why:"Tidigt fokus på kontroll snarare än styrka skapar en bättre grund för ojämn terräng.",steps:["Gå över tre markbommar på marken.","Pausa på en stabil låg matta.","Låt Ice gå i egen takt."],mistakes:["Höga hinder","Fart","Många repetitioner"],test:"Fyra lugna passager utan att rusa eller snubbla upprepade gånger.",path:["Koordination","Balans","Terräng","Framkomlighet"],sources:["Canine conditioning","Valpsäker träning"]},
-{id:"a_alone",phase:"10–16 veckor",minWeeks:10,title:"Ensamhet i mikrodoser",cat:"Vardag",minutes:4,goal:"Bygga trygghet när människor kort lämnar synfältet.",why:"Gradvis ensamhetsträning förebygger att frånvaro först blir en stor och svår händelse.",steps:["Lämna rummet 1–3 sekunder när Ice är lugn.","Kom tillbaka innan oro.","Variera tid mycket långsamt."],mistakes:["Träna när Ice är uppvarvad","Öka efter ett enda lyckat försök","Låta honom skrika sig trött"],test:"Kan vara lugn 30–60 sekunder med trygg aktivitet.",path:["Trygg frånvaro","Vardag","Familjelogistik","Arbetsliv"],sources:["Gradvis desensitisering","Separation prevention"]},
-{id:"a_person",phase:"12–18 veckor",minWeeks:12,title:"Första springfiguranten",cat:"SAR",minutes:8,goal:"Skapa maximal glädje i att hitta en människa.",why:"En tydlig synlig flykt bygger sökmotivation utan att kräva avancerad problemlösning.",steps:["Figuranten leker kort och visar belöningen.","Figuranten springer 15–25 meter och gömmer sig lätt.","Släpp Ice och låt figuranten belöna direkt."],mistakes:["För svår gömma","För många repetitioner","Krav på markering"],test:"Springer självständigt och engagerar sig hos figuranten.",path:["Figurantintresse","Springfigurant","Dold figurant","Personsök"],sources:["Räddningshundspraktik","Motivationssök"]},
+{id:"a_body",phase:"10–16 veckor",minWeeks:10,title:"Kroppsmedvetenhet",cat:"Fysik",minutes:4,goal:"Utveckla tassplacering, balans och lugn rörelsekvalitet.",why:"Tidigt fokus på kontroll snarare än styrka skapar en bättre grund för ojämn terräng.",steps:["Gå över tre markbommar på marken.","Pausa på en stabil låg matta.","Låt ILO gå i egen takt."],mistakes:["Höga hinder","Fart","Många repetitioner"],test:"Fyra lugna passager utan att rusa eller snubbla upprepade gånger.",path:["Koordination","Balans","Terräng","Framkomlighet"],sources:["Canine conditioning","Valpsäker träning"]},
+{id:"a_alone",phase:"10–16 veckor",minWeeks:10,title:"Ensamhet i mikrodoser",cat:"Vardag",minutes:4,goal:"Bygga trygghet när människor kort lämnar synfältet.",why:"Gradvis ensamhetsträning förebygger att frånvaro först blir en stor och svår händelse.",steps:["Lämna rummet 1–3 sekunder när ILO är lugn.","Kom tillbaka innan oro.","Variera tid mycket långsamt."],mistakes:["Träna när ILO är uppvarvad","Öka efter ett enda lyckat försök","Låta honom skrika sig trött"],test:"Kan vara lugn 30–60 sekunder med trygg aktivitet.",path:["Trygg frånvaro","Vardag","Familjelogistik","Arbetsliv"],sources:["Gradvis desensitisering","Separation prevention"]},
+{id:"a_person",phase:"12–18 veckor",minWeeks:12,title:"Första springfiguranten",cat:"SAR",minutes:8,goal:"Skapa maximal glädje i att hitta en människa.",why:"En tydlig synlig flykt bygger sökmotivation utan att kräva avancerad problemlösning.",steps:["Figuranten leker kort och visar belöningen.","Figuranten springer 15–25 meter och gömmer sig lätt.","Släpp ILO och låt figuranten belöna direkt."],mistakes:["För svår gömma","För många repetitioner","Krav på markering"],test:"Springer självständigt och engagerar sig hos figuranten.",path:["Figurantintresse","Springfigurant","Dold figurant","Personsök"],sources:["Räddningshundspraktik","Motivationssök"]},
 {id:"a_generalize",phase:"14–20 veckor",minWeeks:14,title:"Generalisera utan att försvåra",cat:"Inlärning",minutes:6,goal:"Flytta kända färdigheter till nya lätta miljöer.",why:"Hundar generaliserar inte automatiskt; samma beteende måste tränas i flera sammanhang.",steps:["Välj en välkänd övning.","Byt endast plats, inte svårighetsnivå.","Sänk kriteriet och belöna tidigt."],mistakes:["Ny plats och hög störning samtidigt","Förvänta samma precision","Långa pass"],test:"Klarar färdigheten i tre olika lätta miljöer.",path:["Färdighet","Generalisering","Stabilitet","Operativ användning"],sources:["Stimulus generalization","Inlärningsteori"]}
 );
-academyLessons.push(
-{id:"a_leash",phase:"10–18 veckor",minWeeks:10,title:"Koppel utan konflikt",cat:"Vardag",minutes:5,goal:"Skapa följsamhet och mjuk kontakt i koppel.",why:"Tidigt koppelarbete ska bygga samarbete, inte motstånd eller fysisk korrigering.",steps:["Belöna när kopplet är mjukt.","Byt riktning innan linan blir sträckt.","Gå 5–10 steg och pausa."],mistakes:["Ryck i kopplet","För långa sträckor","Träning när valpen är övertrött"],test:"Kan gå 15–20 meter med huvudsakligen mjukt koppel i lugn miljö.",path:["Kontakt","Följsamhet","Miljö","Operativ transport"],sources:["Belöningsbaserad träning","Valputveckling"]},
-{id:"a_handling",phase:"10–18 veckor",minWeeks:10,title:"Kooperativ hantering",cat:"Hantering",minutes:4,goal:"Lära Ice att frivilligt medverka vid kontroll av tassar, öron och mun.",why:"Kooperativ hantering minskar stress vid vård, veterinärbesök och utrustning.",steps:["Presentera handen och belöna kvarstannande.","Rör en tass eller ett öra mycket kort.","Avsluta före undanvikande."],mistakes:["Hålla fast","Gå för snabbt fram","Träna flera kroppsdelar i samma pass"],test:"Kan acceptera 3–5 sekunders lugn kontroll av varje tass.",path:["Frivillighet","Hantering","Veterinär","Operativ kontroll"],sources:["Cooperative care","Desensitisering"]},
-{id:"a_settle_car",phase:"12–20 veckor",minWeeks:12,title:"Vila i parkerad bil",cat:"Återhämtning",minutes:8,goal:"Utveckla lugn väntan i buren när bilen står still.",why:"En räddningshund behöver kunna växla från aktivitet till vila i bilen utan att bygga stress.",steps:["Gör en kort rastning först.","Låt Ice gå in frivilligt med tugg eller lugn belöning.","Sitt nära bilen 1–3 minuter och avsluta medan han är lugn."],mistakes:["Öka både tid och avstånd samtidigt","Träna i varm bil","Släppa ut vid skall eller kraftig oro"],test:"Kan ligga eller sitta lugnt 5 minuter i parkerad, säker bil.",path:["Burtrygghet","Vila i bil","Väntan","Operativ beredskap"],sources:["Gradvis burträning","Stressreglering"]},
-{id:"a_object",phase:"12–22 veckor",minWeeks:12,title:"Föremålsintresse",cat:"Nos",minutes:5,goal:"Skapa nyfikenhet och uthållighet kring ett enkelt föremål.",why:"Föremålsintresse kan senare användas i sök, markering och belöningsutveckling.",steps:["Lek kort med ett mjukt föremål.","Lägg det synligt 2–3 meter bort.","Belöna allt aktivt intresse och återgång."],mistakes:["Krav på apportering","Ta föremålet direkt","För många kast"],test:"Söker upp föremålet och engagerar sig frivilligt tre gånger.",path:["Lek","Föremålsintresse","Sök","Markering"],sources:["Working dog foundations","Belöningsutveckling"]},
-{id:"a_dark",phase:"16–28 veckor",minWeeks:16,title:"Mörker i mikrodos",cat:"Miljö",minutes:6,goal:"Bygga trygg orientering i svagt ljus tillsammans med föraren.",why:"Mörker förändrar både synintryck och ljudbild och bör introduceras gradvis.",steps:["Välj en välkänd plats i skymning.","Gå en mycket kort sträcka med pannlampa tillgänglig.","Belöna kontakt och låt Ice undersöka i egen takt."],mistakes:["Ny plats och totalt mörker samtidigt","Starka bländande lampor","För långt pass"],test:"Kan äta, utforska och återhämta sig under en kort mörkerpromenad.",path:["Skymning","Mörker","Terräng","Nattlig SAR"],sources:["Miljögeneralisering","Räddningshundspraktik"]},
-{id:"a_indication_base",phase:"20–36 veckor",minWeeks:20,title:"Markeringsgrund – återgång",cat:"SAR",minutes:7,goal:"Bygga frivillig växling mellan figurant och förare utan sökkrav.",why:"En stabil kedja bör byggas i små delar innan den kopplas till ett riktigt personsök.",steps:["Figuranten belönar kort.","Föraren lockar tillbaka och belönar vid kroppen.","Skicka omedelbart tillbaka till figuranten för ny belöning."],mistakes:["Lägga på rulle för tidigt","Kräva perfekt position","För långa kedjor"],test:"Växlar figurant–förare–figurant tre gånger med hög motivation.",path:["Figurantbelöning","Återgång","Rulle","Påvisning"],sources:["Räddningshundspraktik","Baklängeskedjning"]}
-);
-
 const physicalExercises=[
-{id:"p_surfaces",area:"Balans",title:"Olika underlag",minWeeks:8,load:1,dose:"2–4 minuter",goal:"Stabiliserande muskulatur och proprioception.",steps:["Gå långsamt över gräs, matta och låg presenning.","Låt Ice välja tempo.","Avsluta efter några lugna passager."],avoid:"Hala eller höga underlag."},
+{id:"p_surfaces",area:"Balans",title:"Olika underlag",minWeeks:8,load:1,dose:"2–4 minuter",goal:"Stabiliserande muskulatur och proprioception.",steps:["Gå långsamt över gräs, matta och låg presenning.","Låt ILO välja tempo.","Avsluta efter några lugna passager."],avoid:"Hala eller höga underlag."},
 {id:"p_poles",area:"Koordination",title:"Låga markbommar",minWeeks:10,load:1,dose:"2 × 4 passager",goal:"Kontrollerad tassplacering och rörelsekvalitet.",steps:["Lägg 3–4 bommar direkt på marken.","Gå i skritt med gott avstånd.","Belöna framåt och lågt."],avoid:"Höga bommar eller trav i fart."},
 {id:"p_hill",area:"Bakdel",title:"Lugn uppförsbacke",minWeeks:12,load:1,dose:"2–3 korta backar",goal:"Aktivera lår, höftsträckare och bål naturligt.",steps:["Välj svag lutning och fast underlag.","Gå i lugn skritt.","Vänd eller vila före trötthet."],avoid:"Brant backe, drag eller långa repetitioner."},
 {id:"p_stand",area:"Bål",title:"Stå stabilt",minWeeks:12,load:1,dose:"3 × 5–10 sek",goal:"Postural kontroll genom bål och bog.",steps:["Locka till jämnt stående.","Belöna mellan framtassarna.","Håll bara några sekunder."],avoid:"Instabil utrustning eller lång statisk tid."},
-{id:"p_reverse",area:"Bakdel",title:"Ett steg bakåt",minWeeks:16,load:1,dose:"3–5 repetitioner",goal:"Medveten bakbensanvändning och lårkontroll.",steps:["Stå nära framför Ice.","Flytta dig mjukt mot honom.","Belöna första frivilliga baksteget."],avoid:"Press, många steg eller halt golv."},
+{id:"p_reverse",area:"Bakdel",title:"Ett steg bakåt",minWeeks:16,load:1,dose:"3–5 repetitioner",goal:"Medveten bakbensanvändning och lårkontroll.",steps:["Stå nära framför ILO.","Flytta dig mjukt mot honom.","Belöna första frivilliga baksteget."],avoid:"Press, många steg eller halt golv."},
 {id:"p_cavaletti",area:"Bog",title:"Cavaletti i skritt",minWeeks:24,load:2,dose:"2 × 4 passager",goal:"Kontrollerad bogrörlighet, bål och diagonal koordination.",steps:["Använd låga jämna bommar.","Skritta rakt och långsamt.","Filma gärna från sidan för rörelsekvalitet."],avoid:"Fart, hopp eller trött hund."},
 {id:"p_sitstand",area:"Lår",title:"Sitt–stå med kvalitet",minWeeks:32,load:2,dose:"2 × 3 repetitioner",goal:"Funktionell styrka i lår och höft.",steps:["Sitt rakt på halkfritt underlag.","Locka fram till ett kontrollerat stå.","Pausa mellan repetitionerna."],avoid:"Sneda sitt, många repetitioner eller smärta."},
 {id:"p_hill_adult",area:"Bog & lår",title:"Backintervaller i skritt",minWeeks:52,load:3,dose:"3–5 × 30–60 sek",goal:"Arbetsstyrka i bog, bål och bakdel.",steps:["Värm upp 10 minuter.","Gå kontrollerat uppför.","Vila helt på vägen ned."],avoid:"Tung dragbelastning utan professionell bedömning."}
 ];
 const commandLibrary=[
- {id:"name",name:"Ice",cat:"kontakt",meaning:"Vänd uppmärksamheten mot föraren.",signal:"Ingen fast handgest.",who:"Alla",steps:["Säg namnet en gång.","Belöna omedelbar orientering.","Använd inte namnet som tillsägelse."],activities:["Namnleken","Följ mig"]},
+ {id:"name",name:"ILO",cat:"kontakt",meaning:"Vänd uppmärksamheten mot föraren.",signal:"Ingen fast handgest.",who:"Alla",steps:["Säg namnet en gång.","Belöna omedelbar orientering.","Använd inte namnet som tillsägelse."],activities:["Namnleken","Följ mig"]},
  {id:"hit",name:"Hit",cat:"inkallning",meaning:"Kom snabbt hela vägen till föraren.",signal:"Öppna armar eller hand nära kroppen.",who:"Alla",steps:["Träna först på mycket kort avstånd.","Belöna nära kroppen.","Säkra situationen så signalen lyckas."],activities:["Kort inkallning"]},
  {id:"sitt",name:"Sitt",cat:"position",meaning:"Sätt dig och behåll positionen kort.",signal:"Handflata uppåt.",who:"Alla",steps:["Fånga frivilliga sitt.","Lägg på ordet när beteendet är tydligt.","Öka tid före störning."],activities:["Lugn på filt"]},
  {id:"ligg",name:"Ligg",cat:"position",meaning:"Lägg dig ner.",signal:"Handen förs lugnt nedåt.",who:"Alla",steps:["Belöna lågt mellan framtassarna.","Undvik att trycka hunden ner.","Träna på flera underlag."],activities:["Lugn på filt"]},
@@ -778,7 +720,7 @@ const commandLibrary=[
  {id:"varsa",name:"Varsågod",cat:"frikommando",meaning:"Du får lämna positionen eller ta belöningen.",signal:"Mjuk handrörelse framåt.",who:"Alla",steps:["Använd alltid samma ord.","Säg det innan hunden bryter.","Gör skillnad mot söksignal."],activities:["Godissök i gräs"]},
  {id:"loss",name:"Loss",cat:"vardag",meaning:"Släpp föremålet i munnen.",signal:"Öppen hand under föremålet.",who:"Alla",steps:["Byt mot likvärdig eller bättre belöning.","Belöna släppandet.","Ge ibland tillbaka föremålet."],activities:["Följ mig"]},
  {id:"av",name:"Av",cat:"grans",meaning:"Avsluta kontakt med person eller föremål.",signal:"Lugn handrörelse bort från objektet.",who:"Alla",steps:["Lär in med låg störning.","Belöna för att vända bort.","Använd inte som allmän utskällning."],activities:["Ljud på avstånd"]},
- {id:"sok",name:"Sök",cat:"sar",meaning:"Starta ett definierat sökarbete.",signal:"Riktningsvisning med armen.",who:"Marcus",steps:["Koppla ordet till enkla säkra fynd.","Låt Ice lösa med nosen.","Använd signalen sparsamt och konsekvent."],activities:["Godissök i gräs","Kartongsök","Springfigurant"]}
+ {id:"sok",name:"Sök",cat:"sar",meaning:"Starta ett definierat sökarbete.",signal:"Riktningsvisning med armen.",who:"Marcus",steps:["Koppla ordet till enkla säkra fynd.","Låt ILO lösa med nosen.","Använd signalen sparsamt och konsekvent."],activities:["Godissök i gräs","Kartongsök","Springfigurant"]}
 ];
 function completedExerciseIds(days=5){
  const cut=new Date();cut.setDate(cut.getDate()-days);
@@ -833,7 +775,7 @@ function intelligenceAnalysis(){
  else if(c.energy==="high"){reasons.push(["Energi","Hög energi – använd kort lek, inte ett längre pass."])}
  if(c.appetite==="low"){score-=20;load="low";reasons.push(["Aptit","Låg aptit – träning är sekundärt och hälsa ska följas upp."])}
  if(["natt","dygn"].includes(mode)){score-=12;load="low";reasons.push(["Arbetsschema",mode==="natt"?"Nattpass idag – bara ett mikropass före arbetet.":"Dygnspass – tillsyn och trygghet går före träning."])}
- if(w<12){reasons.push(["Ålder",`Ice är ${w} veckor – relation, sömn och trygghet prioriteras.`])}
+ if(w<12){reasons.push(["Ålder",`ILO är ${w} veckor – relation, sömn och trygghet prioriteras.`])}
  if(wl.level==="Hög"){score-=18;load="low";reasons.push(["Historik","Belastningen de senaste dagarna är hög."])}
  const cats={};recent.forEach(j=>cats[j.exerciseCategory||j.type]=(cats[j.exerciseCategory||j.type]||0)+1);
  const repeated=Object.entries(cats).sort((a,b)=>b[1]-a[1])[0];if(repeated&&repeated[1]>=2)reasons.push(["Variation",`${repeated[0]} har tränats flera gånger – byt fokus eller vila.`]);
@@ -926,7 +868,7 @@ function renderCommandLibrary(){
 function ageFocus(){
  const w=ageParts().weeks;
  if(w<8)return {label:"6–8 veckor",title:"Trygg start",text:"Korta, positiva stunder där relation, sömn och trygghet går före prestation.",items:["Namnrespons och följsamhet i hemmet","Mjuk miljöintroduktion utan press","Lek, vila och hantering i mycket små doser"]};
- if(w<12)return {label:"8–12 veckor",title:"Socialisering & lek",text:"Bygg nyfikenhet, trygghet och stark belöningskänsla. Avsluta alltid medan Ice vill fortsätta.",items:["Nya underlag, ljud och platser","Inkallningslek och kontakt","Kroppshantering, vila och återhämtning"]};
+ if(w<12)return {label:"8–12 veckor",title:"Socialisering & lek",text:"Bygg nyfikenhet, trygghet och stark belöningskänsla. Avsluta alltid medan ILO vill fortsätta.",items:["Nya underlag, ljud och platser","Inkallningslek och kontakt","Kroppshantering, vila och återhämtning"]};
  if(w<26)return {label:"3–6 månader",title:"Kontakt & grunder",text:"Skapa enkla vanor och tydliga regler utan att göra passen långa eller monotona.",items:["Följsamhet och frivillig kontakt","Inkallning och loss i lek","Enkla nosövningar och miljöbanor"]};
  if(w<52)return {label:"6–12 månader",title:"Sökgrund & uthållighet",text:"Utveckla arbetslust och självförtroende, men anpassa belastningen till unghundens kropp och mognad.",items:["Figurantintresse och enkla sök","Markeringens första byggstenar","Balans mellan arbete, lek och vila"]};
  return {label:"Vuxen hund",title:"Mission Control",text:"Knyt ihop vardagslydnad, sökarbete, markering och fysisk hållbarhet mot ekipagets långsiktiga mål.",items:["Systematiska sökövningar","Stabil markering i varierad miljö","Dokumentation, tester och ekipageutveckling"]};
@@ -936,10 +878,10 @@ function ageFocus(){
 function timeGreeting(){const h=new Date().getHours();return h<5?'God natt':h<10?'God morgon':h<17?'God dag':h<22?'God kväll':'God natt'}
 function dailyRecommendation(){
  const w=ageParts().weeks,wl=workload(),mode=effectiveMode(),recent=recentJournal(3),envCount=Object.values(state.environments).filter(Boolean).length;
- if(new Date()<dateOnly(state.pickupDate))return{title:'Förbered en lugn start',text:'Gör hemmet valpsäkert och bestäm familjens gemensamma ord innan Ice flyttar hem.',icon:'🏠',action:'Kontrollera sovplats, grindar och belöningar',dose:'10 minuter planering'};
- if(w<12){if(wl.level==='Hög')return{title:'Välj återhämtning idag',text:'Ice behöver främst sömn, trygghet och kort positiv kontakt. Skippa nya svåra miljöer.',icon:'💤',action:'Lugn på filt och mjuk förarlek',dose:'2–4 minuter, sedan vila'};return{title:'En ny trygg erfarenhet',text:'Låt Ice möta en ny plats, människa eller ett nytt underlag utan krav. Avsluta medan han fortfarande är nyfiken.',icon:'🌱',action:envCount<4?'Prova ett nytt underlag':'Gör ett kort miljöbesök',dose:'5–10 minuter inklusive pauser'};}
+ if(new Date()<dateOnly(state.pickupDate))return{title:'Förbered en lugn start',text:'Gör hemmet valpsäkert och bestäm familjens gemensamma ord innan ILO flyttar hem.',icon:'🏠',action:'Kontrollera sovplats, grindar och belöningar',dose:'10 minuter planering'};
+ if(w<12){if(wl.level==='Hög')return{title:'Välj återhämtning idag',text:'ILO behöver främst sömn, trygghet och kort positiv kontakt. Skippa nya svåra miljöer.',icon:'💤',action:'Lugn på filt och mjuk förarlek',dose:'2–4 minuter, sedan vila'};return{title:'En ny trygg erfarenhet',text:'Låt ILO möta en ny plats, människa eller ett nytt underlag utan krav. Avsluta medan han fortfarande är nyfiken.',icon:'🌱',action:envCount<4?'Prova ett nytt underlag':'Gör ett kort miljöbesök',dose:'5–10 minuter inklusive pauser'};}
  if(w<24)return{title:'Bygg kontakt före kontroll',text:'Prioritera frivillig följsamhet, inkallning och lek framför långa lydnadskedjor.',icon:'🤝',action:'Namnlek + kort inkallning',dose:'2 pass à 2–3 minuter'};
- if(w<52)return{title:'Låt nosen lösa uppgiften',text:'Välj ett enkelt sök där Ice får arbeta självständigt och lyckas snabbt.',icon:'👃',action:'Kartongsök eller enkel springfigurant',dose:'1–3 lyckade repetitioner'};
+ if(w<52)return{title:'Låt nosen lösa uppgiften',text:'Välj ett enkelt sök där ILO får arbeta självständigt och lyckas snabbt.',icon:'👃',action:'Kartongsök eller enkel springfigurant',dose:'1–3 lyckade repetitioner'};
  return{title:'Kvalitet före mängd',text:'Välj ett definierat SAR-moment och dokumentera både resultat och återhämtning.',icon:'🎯',action:'Ett fokuserat sökpass',dose:'Avsluta med tydlig lek och nedvarvning'};
 }
 function latestFeed(){
@@ -981,7 +923,7 @@ function renderToday(){
  const weekEntries=recentJournal(7).length+state.lifeEvents.filter(e=>daysBetween(e.date,today)<=7&&daysBetween(e.date,today)>=0).length;const weekPct=Math.min(100,Math.round(weekEntries/7*100));document.querySelector('#hqWeekPercent').textContent=weekPct+'%';
  const rec=dailyRecommendation();document.querySelector('#dailyRecommendTitle').textContent=rec.title;document.querySelector('#dailyRecommendText').textContent=rec.text;document.querySelector('#dailyRecommendIcon').textContent=rec.icon;document.querySelector('#dailyRecommendAction').textContent=rec.action;document.querySelector('#dailyRecommendDose').textContent=rec.dose;
  const sarDone=sarSteps.filter(x=>state.sarCompleted[x[0]]).length,sarPct=Math.round(sarDone/sarSteps.length*100),nextSar=sarSteps.find(x=>!state.sarCompleted[x[0]]);document.querySelector('#sarPercent').textContent=sarPct+'%';document.querySelector('#sarProgressBar').style.width=sarPct+'%';document.querySelector('#sarNextTitle').textContent=nextSar?nextSar[1]:'Alla grundsteg genomförda';document.querySelector('#sarNextText').textContent=nextSar?nextSar[2]:'Fortsätt kvalitetssäkra momenten i varierade miljöer.';document.querySelector('#sarRoadmap').innerHTML=sarSteps.slice(0,5).map((step,i)=>{const isDone=!!state.sarCompleted[step[0]],isCurrent=!isDone&&(i===0||state.sarCompleted[sarSteps[i-1][0]]),cls=isDone?'done':isCurrent?'current':'locked';return `<div class="sar-roadmap-row ${cls}"><span class="roadmap-mark">${isDone?'✓':i+1}</span><div><strong>${escapeHtml(step[1])}</strong><div class="task-meta">${escapeHtml(step[2])}</div></div><span class="roadmap-state">${isDone?'KLAR':isCurrent?'PÅGÅR':'LÅST'}</span></div>`}).join('');
- const feed=latestFeed();document.querySelector('#latestIceTimeline').innerHTML=feed.length?feed.map(x=>`<div class="feed-row"><span class="feed-icon">${x.icon}</span><div><strong>${escapeHtml(x.title)}</strong><div><small>${svDate(x.date)} · ${escapeHtml(x.meta)}</small></div></div><span class="feed-chevron">›</span></div>`).join(''):'<div class="empty"><strong>Livsboken väntar på första minnet</strong><p>Logga ett träningspass, en vikt, en hälsokontroll eller en milstolpe. Då visas den automatiskt här.</p><span class="pill">Tryck för att öppna livsboken</span></div>';
+ const feed=latestFeed();document.querySelector('#latestILOTimeline').innerHTML=feed.length?feed.map(x=>`<div class="feed-row"><span class="feed-icon">${x.icon}</span><div><strong>${escapeHtml(x.title)}</strong><div><small>${svDate(x.date)} · ${escapeHtml(x.meta)}</small></div></div><span class="feed-chevron">›</span></div>`).join(''):'<div class="empty"><strong>Livsboken väntar på första minnet</strong><p>Logga ett träningspass, en vikt, en hälsokontroll eller en milstolpe. Då visas den automatiskt här.</p><span class="pill">Tryck för att öppna livsboken</span></div>';
 
  document.querySelector("#heroAge").textContent=`${a.weeks} veckor och ${a.rest} dagar · född ${svDate(state.birthDate)}`;
  const af=ageFocus();document.querySelector("#ageStageLabel").textContent=af.label;document.querySelector("#ageFocusTitle").textContent=af.title;document.querySelector("#ageFocusText").textContent=af.text;document.querySelector("#ageFocusList").innerHTML=af.items.map(x=>`<div>✓ ${escapeHtml(x)}</div>`).join("");
@@ -989,10 +931,10 @@ function renderToday(){
  const todays=state.familyTasks.filter(t=>t.date===today&&!t.done);document.querySelector("#hqTasks").textContent=todays.length;document.querySelector("#overviewTasks").textContent=todays.length;document.querySelector("#hqMinutes").textContent=recentJournal(7).reduce((n,j)=>n+(+j.minutes||0),0);const activeDays=new Set(recentJournal(14).map(j=>j.date));let streak=0,d=new Date();while(activeDays.has(d.toISOString().slice(0,10))){streak++;d.setDate(d.getDate()-1)}document.querySelector("#hqStreak").textContent=streak;
  document.querySelector("#phaseMetric").textContent=p[0];document.querySelector("#phaseText").textContent=p[1];
  document.querySelector("#loadMetric").textContent=wl.level;document.querySelector("#loadText").textContent=wl.text;
- document.querySelector("#coachScore").textContent=c.score;document.querySelector("#coachTitle").textContent=c.title;document.querySelector("#coachText").textContent=`Ice är fortfarande ${a.weeks} veckor. ${c.text} Håll passen korta och avsluta medan han fortfarande vill fortsätta.`;
+ document.querySelector("#coachScore").textContent=c.score;document.querySelector("#coachTitle").textContent=c.title;document.querySelector("#coachText").textContent=`ILO är fortfarande ${a.weeks} veckor. ${c.text} Håll passen korta och avsluta medan han fortfarande vill fortsätta.`;
  document.querySelector("#coachWarning").innerHTML=c.warning?`<div class="warning">${c.warning}</div>`:`<div class="good">Ingen tydlig överbelastningssignal i de senaste loggarna.</div>`;
  document.querySelector("#todayDate").textContent=new Date().toLocaleDateString("sv-SE",{weekday:"long",day:"numeric",month:"long"});
- document.querySelector("#missionNumber").textContent=`MISSION #${m.number}`;document.querySelector("#missionTitle").textContent=m.title;document.querySelector("#missionIntro").textContent="Avsluta medan Ice fortfarande vill fortsätta.";
+ document.querySelector("#missionNumber").textContent=`MISSION #${m.number}`;document.querySelector("#missionTitle").textContent=m.title;document.querySelector("#missionIntro").textContent="Avsluta medan ILO fortfarande vill fortsätta.";
  document.querySelector("#missionDose").textContent=new Date()<dateOnly(state.pickupDate)?"10–20 min planering":ageParts().weeks<12?"8–15 min aktiv träning utspritt":"12–25 min aktiv träning utspritt";
  document.querySelector("#missionTasks").innerHTML=m.tasks.map((t,i)=>`<label class="task ${done.includes(i)?"done":""}"><input type="checkbox" data-mtask="${i}" ${done.includes(i)?"checked":""}><span>${t}</span></label>`).join("");
  document.querySelector("#completeMission").textContent=state.completedMissions[today]?.complete?"Uppdraget är klart ✓":"Markera uppdraget klart";
@@ -1043,7 +985,7 @@ function renderTask(t,index,compact=false){const who=t.completedBy?profileById(t
 function renderFamily(){
  applyProfileMode();
  const p=activeProfile();const heroProfile=document.querySelector('#heroProfileName');if(heroProfile)heroProfile.textContent=p.name;profileButtons(document.querySelector('#todayProfiles'));profileButtons(document.querySelector('#familyProfiles'));
- document.querySelector('#activeProfileNote').innerHTML=p.role==='driver'?`<strong>${p.name} · hundförare</strong><br>Du ser hela planen och de förarunika momenten.`:`<strong>${p.name} · familjeläge</strong><br>Du ser vardagsuppgifter och invigda moment som hjälper Ice utan att störa förararbetet.`;
+ document.querySelector('#activeProfileNote').innerHTML=p.role==='driver'?`<strong>${p.name} · hundförare</strong><br>Du ser hela planen och de förarunika momenten.`:`<strong>${p.name} · familjeläge</strong><br>Du ser vardagsuppgifter och invigda moment som hjälper ILO utan att störa förararbetet.`;
  document.querySelector('#familyRoleText').innerHTML=p.role==='driver'?'<strong>Förarläge</strong><br>Full åtkomst till uppgifter, livsbok och planering.':'<strong>Familjeläge</strong><br>Promenad, mat, vatten, skötsel, social samvaro och tilldelade aktiviteter.';
  const today=isoToday(),mine=state.familyTasks.map((t,i)=>({t,i})).filter(x=>x.t.date===today&&taskVisible(x.t,p));
  document.querySelector('#myTaskCount').textContent=`${mine.filter(x=>!x.t.done).length} kvar`;
@@ -1058,10 +1000,10 @@ function renderFamily(){
 }
 async function requestNotifications(){if(!('Notification' in window)){alert('Den här webbläsaren stöder inte systemnotiser. Uppgiften sparas ändå i appen.');return false}if(Notification.permission==='granted')return true;const r=await Notification.requestPermission();return r==='granted'}
 function reminderMoment(t){if(!t.reminder||!t.time||t.done)return null;const d=new Date(`${t.date}T${t.time}:00`);d.setMinutes(d.getMinutes()-(+t.reminderOffset||0));return d}
-function checkReminders(){const now=Date.now();state.familyTasks.forEach((t,i)=>{const when=reminderMoment(t);if(!when)return;const key=`${t.date}-${t.time}-${t.reminderOffset||0}`;const repeat=t.repeatReminder?30*60000:86400000;const last=t.lastNotified||0;if(now>=when.getTime()&&now-last>=repeat&&now-when.getTime()<86400000){const p=activeProfile();if(t.reminderAudience==='all'||t.assignee==='all'||t.assignee===p.id){if(Notification.permission==='granted')new Notification(`ICE · ${t.title}`,{body:t.note||`Ansvarig: ${t.assignee==='all'?'Alla':profileById(t.assignee).name}`,icon:'icon-192.png'});t.lastNotified=now;localStorage.setItem(STORE,JSON.stringify(state));}}})}
+function checkReminders(){const now=Date.now();state.familyTasks.forEach((t,i)=>{const when=reminderMoment(t);if(!when)return;const key=`${t.date}-${t.time}-${t.reminderOffset||0}`;const repeat=t.repeatReminder?30*60000:86400000;const last=t.lastNotified||0;if(now>=when.getTime()&&now-last>=repeat&&now-when.getTime()<86400000){const p=activeProfile();if(t.reminderAudience==='all'||t.assignee==='all'||t.assignee===p.id){if(Notification.permission==='granted')new Notification(`FIELD MANUAL · ${t.title}`,{body:t.note||`Ansvarig: ${t.assignee==='all'?'Alla':profileById(t.assignee).name}`,icon:'icon-192.png'});t.lastNotified=now;localStorage.setItem(STORE,JSON.stringify(state));}}})}
 function seedFamilyTasks(){if(state.familyTasks.length)return;const d=isoToday();state.familyTasks=[
  {title:'Kontrollera och fyll vatten',date:d,time:'08:00',assignee:'all',access:'family',note:'Se till att skålen är ren och har friskt vatten.',reminder:false,done:false},
- {title:'Gå en lugn promenad',date:d,time:'',assignee:'anna-lena',access:'family',note:'Låt Ice nosa och håll tempot lugnt.',reminder:false,done:false},
+ {title:'Gå en lugn promenad',date:d,time:'',assignee:'anna-lena',access:'family',note:'Låt ILO nosa och håll tempot lugnt.',reminder:false,done:false},
  {title:'Kort förarpass',date:d,time:'',assignee:'marcus',access:'driver',note:'Följ dagens automatiska träningsplan.',reminder:false,done:false}
  ];localStorage.setItem(STORE,JSON.stringify(state))}
 
@@ -1069,7 +1011,7 @@ let sessionTimer=null;
 function trainingSessionPlan(){const ids=(state.activeTrainingSession&&state.activeTrainingSession.exerciseIds)||getDailyPlan().map(x=>x.id);return ids.map(id=>exerciseLibrary.find(x=>x.id===id)).filter(Boolean)}
 function openTrainingSession(){const plan=getDailyPlan();if(!plan.length)return alert('Det finns inga aktiva övningar i dagens pass ännu.');if(!state.activeTrainingSession||state.activeTrainingSession.date!==isoToday()||state.activeTrainingSession.finished){state.activeTrainingSession={date:isoToday(),exerciseIds:plan.map(x=>x.id),index:0,results:[],startedAt:new Date().toISOString(),finished:false}}document.querySelector('#trainingSession').classList.add('open');document.querySelector('#trainingSession').setAttribute('aria-hidden','false');renderTrainingSession()}
 function closeTrainingSession(){clearInterval(sessionTimer);sessionTimer=null;document.querySelector('#trainingSession').classList.remove('open');document.querySelector('#trainingSession').setAttribute('aria-hidden','true')}
-function renderTrainingSession(){clearInterval(sessionTimer);sessionTimer=null;const box=document.querySelector('#sessionContent'),ss=state.activeTrainingSession,plan=trainingSessionPlan();if(!ss||!plan.length){box.innerHTML='<div class="card">Passet kunde inte läsas.</div>';return}if(ss.finished){const done=ss.results.filter(r=>!r.skipped),mins=done.reduce((a,r)=>a+r.minutes,0);document.querySelector('#sessionHeader').textContent='Passet klart';box.innerHTML=`<div class="session-card session-summary"><div class="eyebrow">PASSET ÄR SPARAT</div><h2>Bra jobbat tillsammans</h2><div class="metric">${mins} min</div><p>${done.length} moment registrerades i journalen, livsboken, XP och statistik.</p><div class="lesson-section"><b>Snabb återhämtningskontroll</b><small>Detta justerar nästa pass.</small><label>Trötthet</label><div class="recovery-grid"><button data-recovery-field="tired" data-recovery-value="low">Låg</button><button data-recovery-field="tired" data-recovery-value="normal">Normal</button><button data-recovery-field="tired" data-recovery-value="high">Hög</button></div><label>Ville fortsätta?</label><div class="recovery-grid"><button data-recovery-field="continue" data-recovery-value="yes">Ja</button><button data-recovery-field="continue" data-recovery-value="neutral">Neutral</button><button data-recovery-field="continue" data-recovery-value="no">Nej</button></div><label>Rörelser</label><div class="recovery-grid"><button data-recovery-field="movement" data-recovery-value="normal">Normala</button><button data-recovery-field="movement" data-recovery-value="uncertain">Osäker</button><button data-recovery-field="movement" data-recovery-value="abnormal">Avvikande</button></div><div id="recoverySaved" class="good" style="margin-top:10px">Välj ett svar på varje rad.</div></div><button class="button block" id="finishSession">Tillbaka till ICE HQ</button></div>`;return}const i=Math.min(ss.index,plan.length-1),x=plan[i];document.querySelector('#sessionHeader').textContent=`Steg ${i+1} av ${plan.length}`;box.innerHTML=`<div class="session-card"><div class="session-counter">MOMENT ${i+1} AV ${plan.length}</div><div class="session-progress"><i style="width:${Math.round(i/plan.length*100)}%"></i></div><div class="session-meta"><span>${x.duration} min</span><span>${escapeHtml(x.cat||'Grund')}</span><span>belastning ${x.load||1}/3</span></div><h2 class="session-title">${x.title}</h2><p>${x.goal}</p><div class="session-timer" id="sessionTimer">${String(x.duration).padStart(2,'0')}:00</div><div class="session-step"><b>Gör så här</b>${x.steps.map((v,n)=>`<div>${n+1}. ${v}</div>`).join('')}</div><div class="session-step"><b>Observera</b>${x.progress}</div><div class="session-step"><b>Undvik</b>${x.mistake}</div><div class="session-actions"><button class="button secondary" id="toggleTimer">Starta timer</button><button class="button" id="completeSessionStep">Moment klart</button></div><button class="button secondary block" id="skipSessionStep" style="margin-top:10px">Hoppa över idag</button></div>`}
+function renderTrainingSession(){clearInterval(sessionTimer);sessionTimer=null;const box=document.querySelector('#sessionContent'),ss=state.activeTrainingSession,plan=trainingSessionPlan();if(!ss||!plan.length){box.innerHTML='<div class="card">Passet kunde inte läsas.</div>';return}if(ss.finished){const done=ss.results.filter(r=>!r.skipped),mins=done.reduce((a,r)=>a+r.minutes,0);document.querySelector('#sessionHeader').textContent='Passet klart';box.innerHTML=`<div class="session-card session-summary"><div class="eyebrow">PASSET ÄR SPARAT</div><h2>Bra jobbat tillsammans</h2><div class="metric">${mins} min</div><p>${done.length} moment registrerades i journalen, livsboken, XP och statistik.</p><div class="lesson-section"><b>Snabb återhämtningskontroll</b><small>Detta justerar nästa pass.</small><label>Trötthet</label><div class="recovery-grid"><button data-recovery-field="tired" data-recovery-value="low">Låg</button><button data-recovery-field="tired" data-recovery-value="normal">Normal</button><button data-recovery-field="tired" data-recovery-value="high">Hög</button></div><label>Ville fortsätta?</label><div class="recovery-grid"><button data-recovery-field="continue" data-recovery-value="yes">Ja</button><button data-recovery-field="continue" data-recovery-value="neutral">Neutral</button><button data-recovery-field="continue" data-recovery-value="no">Nej</button></div><label>Rörelser</label><div class="recovery-grid"><button data-recovery-field="movement" data-recovery-value="normal">Normala</button><button data-recovery-field="movement" data-recovery-value="uncertain">Osäker</button><button data-recovery-field="movement" data-recovery-value="abnormal">Avvikande</button></div><div id="recoverySaved" class="good" style="margin-top:10px">Välj ett svar på varje rad.</div></div><button class="button block" id="finishSession">Tillbaka till FIELD MANUAL HQ</button></div>`;return}const i=Math.min(ss.index,plan.length-1),x=plan[i];document.querySelector('#sessionHeader').textContent=`Steg ${i+1} av ${plan.length}`;box.innerHTML=`<div class="session-card"><div class="session-counter">MOMENT ${i+1} AV ${plan.length}</div><div class="session-progress"><i style="width:${Math.round(i/plan.length*100)}%"></i></div><div class="session-meta"><span>${x.duration} min</span><span>${escapeHtml(x.cat||'Grund')}</span><span>belastning ${x.load||1}/3</span></div><h2 class="session-title">${x.title}</h2><p>${x.goal}</p><div class="session-timer" id="sessionTimer">${String(x.duration).padStart(2,'0')}:00</div><div class="session-step"><b>Gör så här</b>${x.steps.map((v,n)=>`<div>${n+1}. ${v}</div>`).join('')}</div><div class="session-step"><b>Observera</b>${x.progress}</div><div class="session-step"><b>Undvik</b>${x.mistake}</div><div class="session-actions"><button class="button secondary" id="toggleTimer">Starta timer</button><button class="button" id="completeSessionStep">Moment klart</button></div><button class="button secondary block" id="skipSessionStep" style="margin-top:10px">Hoppa över idag</button></div>`}
 function startStepTimer(){const plan=trainingSessionPlan(),ss=state.activeTrainingSession,x=plan[ss.index];let sec=x.duration*60,out=document.querySelector('#sessionTimer'),btn=document.querySelector('#toggleTimer');if(sessionTimer){clearInterval(sessionTimer);sessionTimer=null;btn.textContent='Fortsätt timer';return}btn.textContent='Pausa timer';sessionTimer=setInterval(()=>{sec--;if(out)out.textContent=`${String(Math.floor(sec/60)).padStart(2,'0')}:${String(sec%60).padStart(2,'0')}`;if(sec<=0){clearInterval(sessionTimer);sessionTimer=null;if(btn)btn.textContent='Tiden är klar'}},1000)}
 function completeTrainingStep(skipped=false){clearInterval(sessionTimer);sessionTimer=null;const ss=state.activeTrainingSession,plan=trainingSessionPlan(),x=plan[ss.index];ss.results.push({id:x.id,title:x.title,cat:x.cat,minutes:skipped?0:x.duration,skipped,completedAt:new Date().toISOString()});ss.index++;if(ss.index>=plan.length){ss.finished=true;finalizeTrainingSession()}else{localStorage.setItem(STORE,JSON.stringify(state));renderTrainingSession()}}
 function finalizeTrainingSession(){const ss=state.activeTrainingSession,done=ss.results.filter(r=>!r.skipped);if(done.length){const created=new Date().toISOString(),total=done.reduce((a,r)=>a+r.minutes,0),titles=done.map(r=>r.title).join(', ');done.forEach(r=>state.journal.push({date:ss.date,type:r.cat==='nos'?'Nosarbete':r.cat==='miljo'?'Miljö':r.cat==='inkallning'?'Inkallning':r.cat==='sar'?'Sök':r.cat==='aterhamtning'?'Vila/återhämtning':'Relation & lek',rating:5,minutes:r.minutes,note:`Guidat pass: ${r.title}`,weight:'',photo:'',exerciseId:r.id,exerciseCategory:r.cat,created}));state.lifeEvents.push({date:ss.date,category:'Träning',title:`Guidat träningspass · ${done.length} moment`,note:`${titles}. Totalt ${total} minuter.`,rating:5,person:state.activeProfile,created,source:`guided-session-${ss.startedAt}`})}localStorage.setItem(STORE,JSON.stringify(state));renderTrainingSession();renderAll()}
@@ -1091,9 +1033,7 @@ function refreshLiveGreeting(){if(document.querySelector('#greetingTitle'))rende
 function academyProgress(){
  state.academyCompleted=state.academyCompleted||{};const open=academyLessons.filter(x=>ageParts().weeks>=x.minWeeks),done=open.filter(x=>state.academyCompleted[x.id]).length;return{open,done,pct:open.length?Math.round(done/open.length*100):0};
 }
-function evidenceLevel(x){const joined=(x.sources||[]).join(' ').toLowerCase();if(joined.includes('forsk')||joined.includes('stud')||joined.includes('veterin'))return{label:'Forskningsstöd',cls:'research',icon:'●'};if(joined.includes('sbk')||joined.includes('msb')||joined.includes('tjänstehund')||joined.includes('working dog'))return{label:'Etablerad praxis',cls:'practice',icon:'◆'};return{label:'Praktisk erfarenhet',cls:'experience',icon:'■'}}
-function missionDecision(m){const comp=foundationCompetence(),low=[...comp].sort((a,b)=>a.score-b.score)[0];const key=Object.keys(m.skills)[0],skill=comp.find(x=>x.id===key)||low;const recent=recentJournal(7);const same=recent.filter(j=>(j.exerciseCategory||'')===key||String(j.note||'').toLowerCase().includes(m.title.toLowerCase())).length;const last=recent.find(j=>(j.exerciseCategory||'')===key);const recovery=(state.recoveryLogs||[]).slice(-1)[0];const highRisk=recovery&&(recovery.tired==='high'||recovery.movement==='abnormal');const ageOk=ageParts().weeks>=m.minWeeks&&ageParts().weeks<=m.maxWeeks;const reasons=[];reasons.push(`${skill.name} är ett av de områden som har störst utvecklingsbehov just nu.`);reasons.push(same?`Området har tränats ${same} gång${same===1?'':'er'} senaste sju dagarna och behöver nu kvalitet eller generalisering.`:'Området saknar färsk träning i journalen.');reasons.push(ageOk?`Missionen är anpassad för Ice nuvarande ålder, vecka ${ageParts().weeks}.`:`Missionens normala åldersfönster är vecka ${m.minWeeks}–${m.maxWeeks}.`);let gate='Redo att genomföra i kort, kontrollerad form.';let ready=true;if(highRisk){gate='Återhämtningen talar för ett lättare pass. Kort ned missionen eller välj vila.';ready=false}else if(!ageOk){gate='Inte upplåst ännu. Arbeta med tidigare grundmoment först.';ready=false}else if(same>=3){gate='Kompetensen är nyligen hårt belastad. Generalisera försiktigt eller välj ett annat område.';ready=false}return{skill,last:last?svDate(last.date):'Ingen färsk logg',load:highRisk?'Låg / återhämtning':same>=2?'Måttlig':'Låg',reasons,gate,ready}}
-function lessonCard(x){const done=!!state.academyCompleted?.[x.id],early=ageParts().weeks<x.minWeeks,ev=evidenceLevel(x);const body=`<details><summary>Öppna lektionen</summary>${early?`<div class="locked-message"><b>Åldersrekommendation:</b> Den här lektionen rekommenderas normalt från vecka ${x.minWeeks}. Du kan läsa och använda den tidigare, men anpassa krav, längd och miljö efter Ice mognad.</div>`:''}<div class="lesson-section"><b>Varför</b><p>${escapeHtml(x.why)}</p></div><div class="lesson-section"><b>Steg för steg</b><ol>${x.steps.map(v=>`<li>${escapeHtml(v)}</li>`).join('')}</ol></div><div class="lesson-section"><b>Vanliga misstag</b><ul>${x.mistakes.map(v=>`<li>${escapeHtml(v)}</li>`).join('')}</ul></div><div class="test-box"><b>Kompetenstest</b><p>${escapeHtml(x.test)}</p></div><div class="pathway">${x.path.map((v,i)=>`${i?'<i>→</i>':''}<span>${escapeHtml(v)}</span>`).join('')}</div><div>${x.sources.map(v=>`<span class="source-chip">${escapeHtml(v)}</span>`).join('')}</div></details>`;return `<div class="item lesson-card ${done?'done':'active'}"><div class="lesson-top"><div><span class="activity-status ${early?'soon':'now'}">${early?'Rekommenderas från vecka '+x.minWeeks:x.phase}</span><strong>${escapeHtml(x.title)}</strong><small>${escapeHtml(x.cat)} · ${x.minutes} min</small><span class="evidence-badge ${ev.cls}">${ev.icon} ${ev.label}</span></div><span class="lesson-status ${done?'done':''}">${done?'Klar ✓':early?'Tillgänglig':'Aktiv'}</span></div><p>${escapeHtml(x.goal)}</p>${body}<div class="academy-actions"><button class="button secondary" data-academy-toggle="${x.id}">${done?'Markera som pågående':'Markera lektion klar'}</button><button class="button" data-academy-log="${x.id}">Logga träning</button></div></div>`}
+function lessonCard(x){const done=!!state.academyCompleted?.[x.id],locked=ageParts().weeks<x.minWeeks;return `<div class="item lesson-card ${done?'done':locked?'':'active'}"><div class="lesson-top"><div><span class="activity-status ${locked?'future':'now'}">${locked?'Från vecka '+x.minWeeks:x.phase}</span><strong>${escapeHtml(x.title)}</strong><small>${escapeHtml(x.cat)} · ${x.minutes} min</small></div><span class="lesson-status ${done?'done':''}">${done?'Klar ✓':locked?'Låst':'Aktiv'}</span></div><p>${escapeHtml(x.goal)}</p><details><summary>Öppna lektionen</summary><div class="lesson-section"><b>Varför</b><p>${escapeHtml(x.why)}</p></div><div class="lesson-section"><b>Steg för steg</b><ol>${x.steps.map(v=>`<li>${escapeHtml(v)}</li>`).join('')}</ol></div><div class="lesson-section"><b>Vanliga misstag</b><ul>${x.mistakes.map(v=>`<li>${escapeHtml(v)}</li>`).join('')}</ul></div><div class="test-box"><b>Kompetenstest</b><p>${escapeHtml(x.test)}</p></div><div class="pathway">${x.path.map((v,i)=>`${i?'<i>→</i>':''}<span>${escapeHtml(v)}</span>`).join('')}</div><div>${x.sources.map(v=>`<span class="source-chip">${escapeHtml(v)}</span>`).join('')}</div></details>${locked?'':`<div class="academy-actions"><button class="button secondary" data-academy-toggle="${x.id}">${done?'Markera som pågående':'Markera lektion klar'}</button><button class="button" data-academy-log="${x.id}">Logga träning</button></div>`}</div>`}
 function renderAcademy(){const a=academyProgress(),f=ageFocus(),next=a.open.find(x=>!state.academyCompleted?.[x.id]);document.querySelector('#academyAge').textContent=`vecka ${ageParts().weeks}`;document.querySelector('#academyPhase').textContent=f.title;document.querySelector('#academyDirective').textContent=next?`Nästa fokus: ${next.title}. ${next.goal}`:'Alla öppna lektioner är genomförda. Generalisera innan nästa fas.';document.querySelector('#academyPercent').textContent=a.pct+'%';document.querySelector('#academyRing').style.setProperty('--p',a.pct);document.querySelector('#academyPath').innerHTML=['Trygg start','Grundfärdigheter','Unghund','SAR-grund','Operativ'].map((v,i)=>`${i?'<i>→</i>':''}<span>${v}</span>`).join('');document.querySelector('#academyRecommended').innerHTML=next?lessonCard(next):'<div class="good">Bra balans. Repetera öppna lektioner i nya, lätta miljöer.</div>';document.querySelector('#academyCount').textContent=`${academyLessons.length} lektioner`;document.querySelector('#academyLessons').innerHTML=academyLessons.map(lessonCard).join('')}
 function physicalScores(){const areas=['Bog','Lår','Bakdel','Bål','Balans','Koordination'];const cut=new Date();cut.setDate(cut.getDate()-30);return areas.map(area=>{const n=state.journal.filter(j=>dateOnly(j.date)>=cut&&j.exerciseCategory==='fysik'&&(j.physicalArea===area||((j.note||'').toLowerCase().includes(area.toLowerCase())))).length;return{name:area,score:Math.min(100,n*20)}})}
 function physicalCard(x){const locked=ageParts().weeks<x.minWeeks;return `<div class="item physical-card ${locked?'locked':''}"><span class="activity-status ${locked?'future':'now'}">${locked?'Från vecka '+x.minWeeks:x.area}</span><strong>${escapeHtml(x.title)}</strong><div class="dose">${escapeHtml(x.dose)} · belastning ${x.load}/3</div><p>${escapeHtml(x.goal)}</p><details><summary>Instruktion och säkerhet</summary><ol>${x.steps.map(v=>`<li>${escapeHtml(v)}</li>`).join('')}</ol><p><b>Undvik:</b> ${escapeHtml(x.avoid)}</p></details>${locked?'':`<button class="button secondary" data-physical-log="${x.id}">Logga övningen</button>`}</div>`}
@@ -1116,22 +1056,18 @@ function competenceProfile(){
 }
 function operationalReadiness(){const p=competenceProfile(),avg=Math.round(p.reduce((a,x)=>a+x.score,0)/p.length),intel=intelligenceAnalysis();const recoveries=(state.recoveryLogs||[]).slice(-5),poor=recoveries.filter(x=>x.movement==='abnormal'||x.tired==='high').length;const readiness=Math.max(20,Math.min(98,Math.round(avg*.55+intel.score*.45-poor*8)));const low=[...p].sort((a,b)=>a.score-b.score)[0];return{p,readiness,recovery:poor?'Följ upp':'Bra',focus:low.name}}
 function renderOperationalDashboard(){const o=operationalReadiness(),box=document.querySelector('#operationalProfile');if(!box)return;box.innerHTML=o.p.slice(0,6).map(x=>`<div class="op-metric"><div class="op-metric-head"><strong>${x.icon} ${x.name}</strong><span>${x.score}%</span></div><div class="bar"><i style="width:${x.score}%"></i></div><small>${x.sessions?x.sessions+' pass / 30 dagar':'Inte påbörjad'}</small></div>`).join('');document.querySelector('#opReadiness').textContent=o.readiness+'%';document.querySelector('#opRecovery').textContent=o.recovery;document.querySelector('#opFocus').textContent=o.focus;const pb=document.querySelector('#progressCompetence');if(pb)pb.innerHTML=box.innerHTML}
-function renderWeeklyReport(){const r=recentJournal(7),mins=r.reduce((a,j)=>a+(+j.minutes||0),0),cats={};r.forEach(j=>{const k=j.exerciseCategory||j.type||'Övrigt';cats[k]=(cats[k]||0)+1});const ranked=Object.entries(cats).sort((a,b)=>b[1]-a[1]);const strength=ranked[0]?.[0]||'Ingen data ännu';const profile=competenceProfile();const focus=[...profile].sort((a,b)=>a.score-b.score)[0]?.name||'Relation';const activeDays=new Set(r.map(j=>j.date)).size;document.querySelector('#weeklyReportTitle').textContent=`Vecka · ${r.length} pass på ${activeDays} dagar`;document.querySelector('#weeklyReportText').textContent=r.length?`${mins} minuter registrerade. ICE väger samman träningsmängd, variation och återhämtning inför nästa vecka.`:'Logga de första passen så skapas en automatisk veckorapport.';document.querySelector('#weeklyStrength').textContent=strength;document.querySelector('#weeklyFocus').textContent=focus}
+function renderWeeklyReport(){const r=recentJournal(7),mins=r.reduce((a,j)=>a+(+j.minutes||0),0),cats={};r.forEach(j=>{const k=j.exerciseCategory||j.type||'Övrigt';cats[k]=(cats[k]||0)+1});const ranked=Object.entries(cats).sort((a,b)=>b[1]-a[1]);const strength=ranked[0]?.[0]||'Ingen data ännu';const profile=competenceProfile();const focus=[...profile].sort((a,b)=>a.score-b.score)[0]?.name||'Relation';const activeDays=new Set(r.map(j=>j.date)).size;document.querySelector('#weeklyReportTitle').textContent=`Vecka · ${r.length} pass på ${activeDays} dagar`;document.querySelector('#weeklyReportText').textContent=r.length?`${mins} minuter registrerade. FIELD MANUAL väger samman träningsmängd, variation och återhämtning inför nästa vecka.`:'Logga de första passen så skapas en automatisk veckorapport.';document.querySelector('#weeklyStrength').textContent=strength;document.querySelector('#weeklyFocus').textContent=focus}
 function saveRecovery(field,value){state._pendingRecovery=state._pendingRecovery||{date:isoToday(),created:new Date().toISOString(),profile:state.activeProfile};state._pendingRecovery[field]=value;document.querySelectorAll(`[data-recovery-field="${field}"]`).forEach(b=>b.classList.toggle('on',b.dataset.recoveryValue===value));if(['tired','continue','movement'].every(k=>state._pendingRecovery[k])){state.recoveryLogs=state.recoveryLogs||[];state.recoveryLogs.push(state._pendingRecovery);state._pendingRecovery=null;localStorage.setItem(STORE,JSON.stringify(state));const m=document.querySelector('#recoverySaved');if(m)m.textContent='Återhämtningen är sparad och påverkar nästa rekommendation.'}}
 
 const foundationMissions=[
- {id:"m_home",title:"Trygg hemkomst",phase:"Trygg start",minWeeks:8,maxWeeks:11,duration:12,load:1,summary:"Skapa trygghet, frivillig kontakt och en lugn avslutning i hemmiljön.",skills:{relation:4,kontakt:3,aterhamtning:3},steps:["Låt Ice undersöka ett avgränsat rum i egen takt.","Belöna frivilliga blickar och närmanden utan att kalla.","Avsluta med vila på den planerade sovplatsen."],done:"Ice kan varva ned och söker självmant kontakt."},
- {id:"m_name",title:"Namn och orientering",phase:"Trygg start",minWeeks:8,maxWeeks:16,duration:8,load:1,summary:"Bygg en snabb, positiv orientering mot föraren.",skills:{kontakt:5,relation:2,inkallning:1},steps:["Säg Ice en gång i lugn miljö.","Markera direkt när han vänder huvudet mot dig.","Gör 5–8 försök och sluta medan han vill fortsätta."],done:"8 av 10 direkta orienteringar i två miljöer."},
- {id:"m_crate",title:"Bur och bil – första lugnet",phase:"Trygg start",minWeeks:8,maxWeeks:20,duration:10,load:1,summary:"Gör buren till en trygg viloplats utan att öka tiden för fort.",skills:{aterhamtning:5,miljo:2,relation:1},steps:["Lägg frivilligt in godis eller tugg i öppen bur.","Stäng dörren 1–3 sekunder och öppna innan oro.","Sitt nära bilen och avsluta efter en lugn repetition."],done:"Ice går frivilligt in och kan vila kort med stängd dörr."},
- {id:"m_nose",title:"Första självständiga nosuppdraget",phase:"Grundperiod",minWeeks:9,maxWeeks:24,duration:10,load:2,summary:"Låt Ice lösa en enkel uppgift med nosen utan hjälp.",skills:{nos:5,sjalvstandighet:3,miljo:1},steps:["Strö 8–12 små godbitar i kort gräs.","Ge startsignal och stå stilla.","Låt honom arbeta färdigt utan pekande eller prat."],done:"Söker fokuserat i 30–60 sekunder och avslutar lugnt."},
- {id:"m_environment",title:"Ny miljö med kontroll",phase:"Grundperiod",minWeeks:10,maxWeeks:28,duration:15,load:2,summary:"Bygg miljösäkerhet genom kort exponering och egen återhämtning.",skills:{miljo:5,relation:2,balans:2},steps:["Välj en lugn ny plats med reträttväg.","Låt Ice observera och röra sig i eget tempo.","Belöna utforskande och lämna innan han blir trött."],done:"Kan äta, utforska och återgå till föraren på platsen."},
- {id:"m_body",title:"Kroppskontroll – underlag",phase:"Grundperiod",minWeeks:10,maxWeeks:32,duration:8,load:2,summary:"Utveckla balans och koordination utan hopp eller tung belastning.",skills:{balans:5,bakdel:2,bog:2},steps:["Lägg ut matta, gräs, grus och låg mjuk kudde.","Locka inte över – låt Ice välja att kliva på.","Gör 2–3 lugna varv och avsluta."],done:"Rör sig avslappnat över fyra säkra underlag."},
- {id:"m_recall",title:"Inkallning som lek",phase:"Grundperiod",minWeeks:10,maxWeeks:30,duration:8,load:2,summary:"Skapa hög fart och stark förväntan hela vägen in till föraren.",skills:{inkallning:5,kontakt:3,relation:2},steps:["En familjemedlem håller Ice lätt medan du går 3–5 meter.","Säg Hit en gång och rör dig bakåt.","Belöna nära kroppen med lek eller flera godbitar."],done:"Kommer direkt 8 av 10 gånger i lätt miljö."},
- {id:"m_runner",title:"Första springfiguranten",phase:"Upptäckarperiod",minWeeks:16,maxWeeks:40,duration:15,load:3,summary:"Bygg maximal motivation för att hitta människa – utan krav på markering.",skills:{sar:5,nos:3,sjalvstandighet:3,relation:1},steps:["Figuranten leker kort och visar belöningen.","Figuranten springer synligt 15–25 meter och gömmer sig lätt.","Släpp på Sök och låt belöningen ske direkt hos figuranten."],done:"Springer självsäkert till figuranten och stannar för belöning."},
- {id:"m_passive",title:"Passivitet vid aktivitet",phase:"Grundperiod",minWeeks:12,maxWeeks:32,duration:12,load:1,summary:"Lär Ice att vila medan människor eller hundar rör sig på avstånd.",skills:{aterhamtning:5,miljo:3,kontakt:2},steps:["Välj stort avstånd till låg aktivitet.","Sätt dig stilla och belöna spontant lugn.","Avsluta efter 3–5 lugna minuter."],done:"Kan ligga eller sitta lugnt och ta belöning trots rörelse på avstånd."},
- {id:"m_car_wait",title:"Bilbur – kontrollerad väntan",phase:"Upptäckarperiod",minWeeks:14,maxWeeks:40,duration:15,load:1,summary:"Bygg trygg väntan i bilen som en egen färdighet, skild från bilkörning.",skills:{aterhamtning:5,miljo:2,sjalvstandighet:2},steps:["Rasta och ge vatten före passet.","Låt Ice gå in frivilligt och stäng buren.","Stå först nära, öka sedan avståndet några meter och återvänd innan oro."],done:"Kan vila lugnt 10 minuter i säker temperatur med föraren kort utom synhåll."},
- {id:"m_hidden_person",title:"Enkel dold figurant",phase:"Upptäckarperiod",minWeeks:18,maxWeeks:44,duration:18,load:3,summary:"Överför springfiguranten till ett enkelt dolt fynd med stor chans att lyckas.",skills:{sar:5,nos:4,sjalvstandighet:3},steps:["Låt Ice se figuranten gå ut men inte exakt gömställe.","Använd kort avstånd och gynnsam vind.","Skicka på Sök och låt figuranten belöna omedelbart vid fynd."],done:"Löser tre enkla dolda fynd med bibehållen fart och motivation."},
- {id:"m_recovery_day",title:"Aktiv återhämtningsdag",phase:"Alla faser",minWeeks:8,maxWeeks:104,duration:20,load:1,summary:"Sänk total belastning men behåll relation, nos och lugn rörelse.",skills:{aterhamtning:5,relation:2,nos:2},steps:["Gör en lugn sniffpromenad utan prestationskrav.","Lägg in 2–3 minuter enkelt godissök.","Avsluta med ostörd vila och registrera återhämtningen."],done:"Ice är mjuk i kroppen, normal i rörelse och varvar ned snabbt efteråt."}
+ {id:"m_home",title:"Trygg hemkomst",phase:"Trygg start",minWeeks:8,maxWeeks:11,duration:12,load:1,summary:"Skapa trygghet, frivillig kontakt och en lugn avslutning i hemmiljön.",skills:{relation:4,kontakt:3,aterhamtning:3},steps:["Låt ILO undersöka ett avgränsat rum i egen takt.","Belöna frivilliga blickar och närmanden utan att kalla.","Avsluta med vila på den planerade sovplatsen."],done:"ILO kan varva ned och söker självmant kontakt."},
+ {id:"m_name",title:"Namn och orientering",phase:"Trygg start",minWeeks:8,maxWeeks:16,duration:8,load:1,summary:"Bygg en snabb, positiv orientering mot föraren.",skills:{kontakt:5,relation:2,inkallning:1},steps:["Säg ILO en gång i lugn miljö.","Markera direkt när han vänder huvudet mot dig.","Gör 5–8 försök och sluta medan han vill fortsätta."],done:"8 av 10 direkta orienteringar i två miljöer."},
+ {id:"m_crate",title:"Bur och bil – första lugnet",phase:"Trygg start",minWeeks:8,maxWeeks:20,duration:10,load:1,summary:"Gör buren till en trygg viloplats utan att öka tiden för fort.",skills:{aterhamtning:5,miljo:2,relation:1},steps:["Lägg frivilligt in godis eller tugg i öppen bur.","Stäng dörren 1–3 sekunder och öppna innan oro.","Sitt nära bilen och avsluta efter en lugn repetition."],done:"ILO går frivilligt in och kan vila kort med stängd dörr."},
+ {id:"m_nose",title:"Första självständiga nosuppdraget",phase:"Grundperiod",minWeeks:9,maxWeeks:24,duration:10,load:2,summary:"Låt ILO lösa en enkel uppgift med nosen utan hjälp.",skills:{nos:5,sjalvstandighet:3,miljo:1},steps:["Strö 8–12 små godbitar i kort gräs.","Ge startsignal och stå stilla.","Låt honom arbeta färdigt utan pekande eller prat."],done:"Söker fokuserat i 30–60 sekunder och avslutar lugnt."},
+ {id:"m_environment",title:"Ny miljö med kontroll",phase:"Grundperiod",minWeeks:10,maxWeeks:28,duration:15,load:2,summary:"Bygg miljösäkerhet genom kort exponering och egen återhämtning.",skills:{miljo:5,relation:2,balans:2},steps:["Välj en lugn ny plats med reträttväg.","Låt ILO observera och röra sig i eget tempo.","Belöna utforskande och lämna innan han blir trött."],done:"Kan äta, utforska och återgå till föraren på platsen."},
+ {id:"m_body",title:"Kroppskontroll – underlag",phase:"Grundperiod",minWeeks:10,maxWeeks:32,duration:8,load:2,summary:"Utveckla balans och koordination utan hopp eller tung belastning.",skills:{balans:5,bakdel:2,bog:2},steps:["Lägg ut matta, gräs, grus och låg mjuk kudde.","Locka inte över – låt ILO välja att kliva på.","Gör 2–3 lugna varv och avsluta."],done:"Rör sig avslappnat över fyra säkra underlag."},
+ {id:"m_recall",title:"Inkallning som lek",phase:"Grundperiod",minWeeks:10,maxWeeks:30,duration:8,load:2,summary:"Skapa hög fart och stark förväntan hela vägen in till föraren.",skills:{inkallning:5,kontakt:3,relation:2},steps:["En familjemedlem håller ILO lätt medan du går 3–5 meter.","Säg Hit en gång och rör dig bakåt.","Belöna nära kroppen med lek eller flera godbitar."],done:"Kommer direkt 8 av 10 gånger i lätt miljö."},
+ {id:"m_runner",title:"Första springfiguranten",phase:"Upptäckarperiod",minWeeks:16,maxWeeks:40,duration:15,load:3,summary:"Bygg maximal motivation för att hitta människa – utan krav på markering.",skills:{sar:5,nos:3,sjalvstandighet:3,relation:1},steps:["Figuranten leker kort och visar belöningen.","Figuranten springer synligt 15–25 meter och gömmer sig lätt.","Släpp på Sök och låt belöningen ske direkt hos figuranten."],done:"Springer självsäkert till figuranten och stannar för belöning."}
 ];
 function foundationCompetence(){
  const keys={relation:"Relation",kontakt:"Kontakt",inkallning:"Inkallning",miljo:"Miljö",nos:"Nos",balans:"Balans",bog:"Bog",bakdel:"Bakdel",aterhamtning:"Återhämtning",sjalvstandighet:"Självständighet",sar:"SAR"};
@@ -1153,23 +1089,53 @@ function recommendedFoundationMission(){
 function renderMissions(){
  const host=document.querySelector('#missionLibrary');if(!host)return;state.missionHistory=state.missionHistory||[];
  const rec=recommendedFoundationMission(),ph=phase()[0],comp=foundationCompetence();
- document.querySelector('#missionPhaseLabel').textContent=ph;document.querySelector('#missionRecommendedTitle').textContent=rec.title;document.querySelector('#missionRecommendedText').textContent=rec.summary;document.querySelector('#missionRecommendedSkills').innerHTML=Object.keys(rec.skills).map(k=>`<span class="competence-chip">${escapeHtml(comp.find(x=>x.id===k)?.name||k)} +${rec.skills[k]}</span>`).join('');document.querySelector('#startRecommendedMission').dataset.startmission=rec.id;const d=missionDecision(rec);document.querySelector('#decisionPriority').textContent=d.skill.name+' · '+d.skill.score+'%';document.querySelector('#decisionLast').textContent=d.last;document.querySelector('#decisionLoad').textContent=d.load;document.querySelector('#decisionWhy').innerHTML=d.reasons.map((x,i)=>`<div class="why-item"><span>${i+1}</span><div>${escapeHtml(x)}</div></div>`).join('');const gate=document.querySelector('#decisionGate');gate.textContent=d.gate;gate.classList.toggle('ready',d.ready);
+ document.querySelector('#missionPhaseLabel').textContent=ph;document.querySelector('#missionRecommendedTitle').textContent=rec.title;document.querySelector('#missionRecommendedText').textContent=rec.summary;document.querySelector('#missionRecommendedSkills').innerHTML=Object.keys(rec.skills).map(k=>`<span class="competence-chip">${escapeHtml(comp.find(x=>x.id===k)?.name||k)} +${rec.skills[k]}</span>`).join('');document.querySelector('#startRecommendedMission').dataset.startmission=rec.id;
  document.querySelector('#foundationCompetenceGrid').innerHTML=comp.slice(0,8).map(c=>`<div class="foundation-metric"><b><span>${escapeHtml(c.name)}</span><span>${c.percent}%</span></b><div class="bar"><i style="width:${c.percent}%"></i></div><small>${c.points} kompetenspoäng</small></div>`).join('');
- const weakest=[...comp].sort((a,b)=>a.percent-b.percent)[0];document.querySelector('#foundationDecision').innerHTML=`<b>ICE-beslut:</b> ${escapeHtml(weakest.name)} är just nu minst utvecklad. Rekommendationen väger därför upp den kompetensen utan att öka belastningen för snabbt.`;
+ const weakest=[...comp].sort((a,b)=>a.percent-b.percent)[0];document.querySelector('#foundationDecision').innerHTML=`<b>FIELD MANUAL-beslut:</b> ${escapeHtml(weakest.name)} är just nu minst utvecklad. Rekommendationen väger därför upp den kompetensen utan att öka belastningen för snabbt.`;
  const done=new Set(state.missionHistory.map(x=>x.id));document.querySelector('#missionCount').textContent=foundationMissions.length+' missioner';
  host.innerHTML=foundationMissions.map(m=>`<div class="card mission-card ${m.id===rec.id?'recommended':''} ${done.has(m.id)?'complete':''}" style="margin-top:12px"><div class="lesson-top"><div><div class="eyebrow">${escapeHtml(m.phase)} · ${m.duration} MIN</div><h3>${escapeHtml(m.title)}</h3></div><span class="lesson-status ${done.has(m.id)?'done':''}">${done.has(m.id)?'KLAR':m.id===rec.id?'REKOMMENDERAD':'ÖPPEN'}</span></div><p>${escapeHtml(m.summary)}</p><div>${Object.keys(m.skills).map(k=>`<span class="competence-chip">${escapeHtml(comp.find(x=>x.id===k)?.name||k)}</span>`).join('')}</div><div class="mission-steps">${m.steps.map((st,i)=>`<div class="mission-step"><span>${i+1}</span><div>${escapeHtml(st)}</div></div>`).join('')}</div><div class="test-box"><b>Klart när</b><br>${escapeHtml(m.done)}</div><button class="button ${done.has(m.id)?'secondary':''} block" data-startmission="${m.id}" style="margin-top:12px">${done.has(m.id)?'Genomför igen':'Starta mission'}</button></div>`).join('');
  const hist=[...state.missionHistory].sort((a,b)=>b.date.localeCompare(a.date));document.querySelector('#missionHistory').innerHTML=hist.length?hist.map(h=>{const m=foundationMissions.find(x=>x.id===h.id);return`<div class="item"><strong>${escapeHtml(m?.title||h.id)}</strong><small>${svDate(h.date)} · ${h.rating}/5 · ${h.minutes} min</small>${h.note?`<p>${escapeHtml(h.note)}</p>`:''}</div>`}).join(''):'<div class="card empty">Ingen mission genomförd ännu.</div>';
 }
 function startFoundationMission(id){
  const m=foundationMissions.find(x=>x.id===id);if(!m)return;const rating=prompt(`Mission: ${m.title}\n\nGenomför stegen och ange sedan helhetsbetyg 1–5.`,"4");if(rating===null)return;const n=Math.max(1,Math.min(5,parseInt(rating)||4));const note=prompt('Kort anteckning (valfritt):','')||'';state.missionHistory=state.missionHistory||[];state.missionHistory.push({id,date:isoToday(),rating:n,minutes:m.duration,note,profile:state.activeProfile,created:new Date().toISOString()});state.journal.push({date:isoToday(),type:'Mission',rating:n,minutes:m.duration,note:m.title+(note?' – '+note:''),exerciseId:m.id,exerciseCategory:Object.keys(m.skills)[0],created:new Date().toISOString()});save();openScreen('missions');}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-startmission]');if(b)startFoundationMission(b.dataset.startmission)});
-function renderAll(){updateIceTopProfile();renderToday();renderOperationalHome();renderOperationalDashboard();renderWeeklyReport();renderIntelligence();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderWeeklyTraining();renderExerciseLibrary();renderProgress();renderSettings();renderFamily();renderEquipment();renderAcademy();renderPhysical();renderMissions()}
+document.addEventListener('click',e=>{
+ if(e.target.closest('[data-meal-index]')){const b=e.target.closest('[data-meal-index]'),i=+b.dataset.mealIndex,n=nutritionState(),k=mealKey(i);if(n.mealLog[k])delete n.mealLog[k];else n.mealLog[k]=new Date().toISOString();save();return}
+ if(e.target.closest('[data-appetite]')){nutritionState().appetiteLog[isoToday()]=e.target.closest('[data-appetite]').dataset.appetite;save();return}
+ if(e.target.id==="saveWeight"){const raw=document.querySelector('#weightInput').value.replace(',','.'),kg=parseFloat(raw),bcs=document.querySelector('#bcsInput').value,note=document.querySelector('#weightNote').value.trim();if(!kg||kg<=0){alert('Ange en giltig vikt.');return}const n=nutritionState();n.weights=n.weights.filter(x=>x.date!==isoToday());n.weights.push({date:isoToday(),kg:+kg.toFixed(1),bcs,note,person:state.activeProfile});state.lifeEvents.push({date:isoToday(),category:'Hälsa',title:`Vikt ${kg.toFixed(1)} kg`,note:`BCS ${bcs||'ej angivet'}${note?' · '+note:''}`,rating:5,person:state.activeProfile,created:new Date().toISOString(),source:`weight-${isoToday()}`});document.querySelector('#weightInput').value='';document.querySelector('#weightNote').value='';save();return}
+ if(e.target.id==="saveFoodPlan"){const n=nutritionState();n.plannedFood=document.querySelector('#plannedFood').value.trim();n.switchDate=document.querySelector('#foodSwitchDate').value;save();return}
+const b=e.target.closest('[data-startmission]');if(b)startFoundationMission(b.dataset.startmission)});
+
+function nutritionState(){
+ state.nutrition=state.nutrition||clone(defaults.nutrition);
+ state.nutrition.mealLog=state.nutrition.mealLog||{};state.nutrition.appetiteLog=state.nutrition.appetiteLog||{};state.nutrition.weights=state.nutrition.weights||[];
+ return state.nutrition;
+}
+function mealKey(i){return `${isoToday()}-${i}`}
+function nextMealInfo(){const n=nutritionState(),now=new Date(),mins=now.getHours()*60+now.getMinutes();for(let i=0;i<n.mealTimes.length;i++){const [h,m]=n.mealTimes[i].split(':').map(Number);if(h*60+m>=mins&&!n.mealLog[mealKey(i)])return `${n.mealTimes[i]} · ${n.gramsPerMeal} g`}return n.mealLog[mealKey(n.mealsPerDay-1)]?'Klart idag':'Nästa mål'}
+function renderHomecoming(){
+ const day=Math.max(1,daysBetween(state.pickupDate,isoToday())+1),n=nutritionState(),done=n.mealTimes.filter((_,i)=>n.mealLog[mealKey(i)]).length,w=n.weights.slice().sort((a,b)=>b.date.localeCompare(a.date))[0];
+ const d=document.querySelector('#homecomingDayLabel');if(d)d.textContent=`dag ${day}`;
+ const nm=document.querySelector('#homeNextMeal');if(nm)nm.textContent=nextMealInfo();
+ const md=document.querySelector('#homeMealsDone');if(md)md.textContent=`${done} / ${n.mealsPerDay}`;
+ const lw=document.querySelector('#homeLastWeight');if(lw)lw.textContent=w?`${String(w.kg).replace('.',',')} kg`:'Ej vägd';
+ const nw=document.querySelector('#homeNextWeigh');if(nw){if(!w)nw.textContent='Väg idag';else{const days=daysBetween(w.date,isoToday());nw.textContent=days>=7?'Dags idag':`om ${7-days} dagar`}}
+ const adv=document.querySelector('#homecomingAdvice');if(adv)adv.textContent=day<=3?'Lugn introduktion. Prioritera sömn, mat, rastning och trygg kontakt med familjen.':day<=21?'Bygg fasta rutiner och korta positiva erfarenheter. Undvik att fylla dagarna med för många intryck.':'Hemkomstfasen är genomförd. Fortsätt följa sömn, aptit, vikt och återhämtning.';
+}
+function renderNutrition(){
+ const n=nutritionState(),a=ageParts();const age=document.querySelector('#nutritionAge');if(age)age.textContent=`${a.weeks} v ${a.rest} d`;
+ const ml=document.querySelector('#mealList');if(ml)ml.innerHTML=n.mealTimes.map((t,i)=>{const done=n.mealLog[mealKey(i)];return `<div class="meal-row ${done?'done':''}"><div><strong>${['Frukost','Lunch','Kväll'][i]||`Mål ${i+1}`} · ${t}</strong><small>${n.gramsPerMeal} g ${escapeHtml(n.currentFood)}</small></div><button class="button ${done?'secondary':''} meal-check" data-meal-index="${i}">${done?'Ångra':'Serverad'}</button></div>`}).join('');
+ const ap=document.querySelector('#appetiteStatus'),av=n.appetiteLog[isoToday()];if(ap)ap.textContent=av?`Dagens aptit: ${{good:'bra',partial:'åt delvis',poor:'åt dåligt'}[av]||av}.`:'Ingen aptitnotering idag.';
+ const wh=document.querySelector('#weightHistory');if(wh){const arr=n.weights.slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,8);wh.innerHTML=arr.length?arr.map(x=>`<div class="weight-item"><span>${svDate(x.date)}${x.bcs?` · BCS ${x.bcs}`:''}</span><strong>${String(x.kg).replace('.',',')} kg</strong></div>`).join(''):'<p>Ingen vikt registrerad ännu. Väg ILO idag för att starta tillväxtkurvan.</p>'}
+ const pf=document.querySelector('#plannedFood');if(pf)pf.value=n.plannedFood||'';const sd=document.querySelector('#foodSwitchDate');if(sd)sd.value=n.switchDate||'';const fs=document.querySelector('#foodPlanStatus');if(fs)fs.textContent=n.plannedFood?`Plan: ${n.plannedFood}${n.switchDate?` från ${svDate(n.switchDate)}`:''}.`:'Ingen ny fodersort planerad ännu.';
+ renderHomecoming();
+}
+function renderAll(){updateILOTopProfile();renderToday();renderOperationalDashboard();renderWeeklyReport();renderIntelligence();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderWeeklyTraining();renderExerciseLibrary();renderProgress();renderSettings();renderFamily();renderEquipment();renderAcademy();renderPhysical();renderMissions()}
 function defaultsForShift(t){return{ledig:["",""],dag:["08:00","17:30"],natt:["17:30","08:00"],dygn:["08:00","08:00"],annat:["",""]}[t]||["",""]}
 function clearShift(){document.querySelector("#shiftEditIndex").value="";document.querySelector("#shiftDate").value=isoToday();document.querySelector("#shiftType").value="dag";const p=defaultsForShift("dag");document.querySelector("#shiftStart").value=p[0];document.querySelector("#shiftEnd").value=p[1];document.querySelector("#shiftNote").value="";document.querySelector("#cancelShiftEdit").style.display="none";document.querySelector("#saveShift").textContent="Spara pass"}
 function editShift(i){const s=state.shifts[i];document.querySelector("#shiftEditIndex").value=i;document.querySelector("#shiftDate").value=s.date;document.querySelector("#shiftType").value=s.type;document.querySelector("#shiftStart").value=s.start||"";document.querySelector("#shiftEnd").value=s.end||"";document.querySelector("#shiftNote").value=s.note||"";document.querySelector("#cancelShiftEdit").style.display="inline-block";document.querySelector("#saveShift").textContent="Spara ändring"}
 async function compressImage(file){return new Promise((resolve,reject)=>{const img=new Image(),r=new FileReader();r.onload=e=>img.src=e.target.result;img.onload=()=>{const max=900,scale=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement("canvas");c.width=img.width*scale;c.height=img.height*scale;c.getContext("2d").drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL("image/jpeg",.7))};r.onerror=reject;r.readAsDataURL(file)})}
 
-const screenNames={today:'ICE',plan:'Plan',journal:'Journal',environment:'Miljö',sar:'SAR-program',progress:'Utveckling',equipment:'Utrustning',family:'Familj',settings:'Inställningar'};
+const screenNames={today:'FIELD MANUAL',plan:'Plan',journal:'Journal',environment:'Miljö',sar:'SAR-program',progress:'Utveckling',equipment:'Utrustning',nutrition:'Foder & vikt',family:'Familj',settings:'Inställningar'};
 let screenHistory=['today'];
 function activeScreenId(){return document.querySelector('.screen.active')?.id||'today'}
 function openScreen(id,push=true){
@@ -1178,71 +1144,39 @@ function openScreen(id,push=true){
  document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));
  document.querySelector(`[data-screen="${id}"]`)?.classList.add('active');target.classList.add('active');
  if(push&&prev!==id)screenHistory.push(id);
- document.querySelector('#iceCurrentView').textContent=screenNames[id]||'ICE';
+ document.querySelector('#iceCurrentView').textContent=screenNames[id]||'FIELD MANUAL';
  document.body.classList.toggle('home-view',id==='today');
  document.querySelector('#iceDrawer').classList.remove('open');scrollTo(0,0);
 }
 function goBackScreen(){if(screenHistory.length>1){screenHistory.pop();openScreen(screenHistory[screenHistory.length-1],false)}else openScreen('today',false)}
 
-function configureIce40Dashboard(){
- const today=document.querySelector('#today');if(!today)return;
+function configureILO40Dashboard(){
+ const today=document.querySelector('#today'); if(!today||today.classList.contains('dashboard-ready'))return;
+ const keepTitles=['FIELD MANUAL idag','FIELD MANUAL Intelligence','Smart coach','Idag med ILO','Färdighetsmotor'];
+ [...today.children].forEach(el=>el.classList.add('dashboard-hidden'));
+ const welcome=today.querySelector('.hq-welcome'); if(welcome)welcome.classList.remove('dashboard-hidden');
+ const notice=today.querySelector('#updateNotice'); if(notice)notice.classList.remove('dashboard-hidden');
+ const ordered=[];
+ keepTitles.forEach(name=>{
+   const title=[...today.querySelectorAll(':scope > .section-title')].find(x=>x.querySelector('h2')?.textContent.trim()===name);
+   if(title){title.classList.remove('dashboard-hidden');ordered.push(title);const content=title.nextElementSibling;if(content){content.classList.remove('dashboard-hidden');ordered.push(content)}}
+ });
+ ordered.forEach(el=>today.appendChild(el));
  today.classList.add('dashboard-ready');
- const sub=document.querySelector('#greetingSubtitle');if(sub)sub.textContent='Dagens uppdrag, veckan framför oss och aktuell utveckling.';
- const current=document.querySelector('#iceCurrentView');if(current)current.textContent='ICE idag';
+ const sub=document.querySelector('#greetingSubtitle'); if(sub)sub.textContent='Dagens analys, beslut och nästa bästa steg.';
+ const current=document.querySelector('#iceCurrentView'); if(current)current.textContent='FIELD MANUAL';
+ const skillTitle=[...today.querySelectorAll(':scope > .section-title')].find(x=>x.querySelector('h2')?.textContent.trim()==='Färdighetsmotor');
+ if(skillTitle){skillTitle.classList.add('click-card');skillTitle.dataset.goto='progress'}
 }
 
-function homeEnvironmentFor(plan){
- const cats=plan.map(x=>(x.cat||'').toLowerCase());
- if(cats.some(x=>x.includes('miljö')))return 'Lugn ny plats · möjlighet att backa undan';
- if(cats.some(x=>x.includes('nos')))return 'Hemma eller trädgård · låg störning';
- if(cats.some(x=>x.includes('inkall')))return 'Inhägnad yta eller långlina';
- return ageParts().weeks<12?'Hemma och trädgård · trygg, välkänd miljö':'Lugn vardagsmiljö med kontrollerade störningar';
-}
-function homeDevelopmentFor(plan){
- const labels=[];plan.forEach(x=>{const c=x.cat||'';if(c&&!labels.includes(c))labels.push(c)});
- return labels.slice(0,3).join(' · ')||ageFocus().title;
-}
-function renderOperationalHome(){
- const root=document.querySelector('#operationalHome');if(!root)return;
- const plan=getDailyPlan(),intel=intelligenceAnalysis(),af=ageFocus(),total=plan.reduce((n,x)=>n+(+x.duration||0),0);
- document.querySelector('#homeMissionTitle').textContent=af.title;
- document.querySelector('#homeMissionIntro').textContent=af.text;
- document.querySelector('#homeMissionMinutes').textContent=total||'5–10';
- document.querySelector('#homeEnvironment').textContent=homeEnvironmentFor(plan);
- document.querySelector('#homeDevelopment').textContent=homeDevelopmentFor(plan);
- document.querySelector('#homeExerciseList').innerHTML=plan.length?plan.slice(0,4).map((x,i)=>`<div class="today-exercise"><i>${i+1}</i><div><strong>${escapeHtml(x.title)}</strong><small>${escapeHtml(x.goal)}</small></div><span>${x.duration} min</span></div>`).join(''):`<div class="empty">Idag prioriteras trygghet, vila och korta positiva kontaktstunder.</div>`;
- document.querySelector('#homeWhyToday').innerHTML=`<b>Varför idag:</b> ${escapeHtml(intel.decision)}`;
- const dayNames=['Sön','Mån','Tis','Ons','Tor','Fre','Lör'];
- const themes=['Trygg start','Miljö','Återhämtning','Inkallning','Relation','Nos','Ny miljö'];
- const pickup=dateOnly(state.pickupDate),todayDate=dateOnly(isoToday());
- const completedDates=[...new Set(state.journal.filter(j=>j.exerciseId&&j.date>=state.pickupDate).map(j=>j.date))].sort();
- const completedCount=completedDates.length;
- let anchor=new Date(Math.max(pickup.getTime(),todayDate.getTime()));
- if(completedDates.length){const last=dateOnly(completedDates[completedDates.length-1]);last.setDate(last.getDate()+1);if(last>anchor)anchor=last}
- const beforePickup=todayDate<pickup;
- document.querySelector('#homeWeekStrip').innerHTML=Array.from({length:7},(_,i)=>{
-   const x=new Date(anchor);x.setDate(anchor.getDate()+i);
-   const theme=themes[(completedCount+i)%themes.length];
-   const recovery=theme==='Återhämtning';
-   const dose=recovery?'Lugn dag':(ageParts().weeks<12?'5–10 min':'10–20 min');
-   const status=i===0?(beforePickup?'Första passet':'Nästa pass'):`Efter pass ${completedCount+i}`;
-   return `<div class="week-day ${i===0?'today':''}"><small>${status} · ${dayNames[x.getDay()]} ${x.getDate()}/${x.getMonth()+1}</small><b>${escapeHtml(theme)}</b><span>${dose}</span></div>`
- }).join('');
- const eng=skillEngine(),top=(eng.skills||[]).slice().sort((a,b)=>b.points-a.points).slice(0,4);
- document.querySelector('#homeProgressGrid').innerHTML=top.length?top.map(x=>`<div class="home-progress-item"><header><b>${escapeHtml(x.name)}</b><span>${x.percent}%</span></header><div class="bar"><i style="width:${x.percent}%"></i></div><small>${x.sessions?x.sessions+' loggade pass':'Inte påbörjad'}</small></div>`).join(''):'<div class="empty">Utvecklingen visas när de första passen är loggade.</div>';
- const next=sarSteps.find(x=>!state.sarCompleted[x[0]]);document.querySelector('#homeNextMilestone').textContent=next?next[1]:'Fortsatt kvalitetssäkring';
-}
-
-
-function updateIceTopProfile(){const p=state.profiles.find(x=>x.id===state.activeProfile)||state.profiles[0];const initials=p.name.split(/[- ]/).map(x=>x[0]).join('').slice(0,2).toUpperCase();document.querySelector('#iceTopProfile').textContent=initials}
+function updateILOTopProfile(){const p=state.profiles.find(x=>x.id===state.activeProfile)||state.profiles[0];const initials=p.name.split(/[- ]/).map(x=>x[0]).join('').slice(0,2).toUpperCase();document.querySelector('#iceTopProfile').textContent=initials}
 document.querySelector('#iceHome').addEventListener('click',()=>openScreen('today'));
 document.querySelector('#iceMenuButton').addEventListener('click',()=>document.querySelector('#iceDrawer').classList.add('open'));
 document.querySelector('#iceDrawerClose').addEventListener('click',()=>document.querySelector('#iceDrawer').classList.remove('open'));
 document.querySelector('#iceDrawer').addEventListener('click',e=>{if(e.target.id==='iceDrawer')e.currentTarget.classList.remove('open')});
 document.querySelector('#iceStartPass').addEventListener('click',()=>{document.querySelector('#iceDrawer').classList.remove('open');document.querySelector('#startTrainingFromHQ')?.click()});
 document.querySelector('#homeStartPass')?.addEventListener('click',()=>document.querySelector('#startTrainingFromHQ')?.click());
-document.querySelector('#homeOperationalStart')?.addEventListener('click',()=>openTrainingSession());
-document.querySelector('#homeOpenIce')?.addEventListener('click',()=>document.querySelector('#iceDrawer').classList.add('open'));
+document.querySelector('#homeOpenILO')?.addEventListener('click',()=>document.querySelector('#iceDrawer').classList.add('open'));
 let edgeStart=null;document.addEventListener('touchstart',e=>{const t=e.touches[0];if(t.clientX<28)edgeStart={x:t.clientX,y:t.clientY}}, {passive:true});document.addEventListener('touchend',e=>{if(!edgeStart)return;const t=e.changedTouches[0],dx=t.clientX-edgeStart.x,dy=Math.abs(t.clientY-edgeStart.y);edgeStart=null;if(dx>75&&dy<70&&activeScreenId()!=='today')goBackScreen()},{passive:true});
 
 document.addEventListener("click",async e=>{
@@ -1275,7 +1209,7 @@ document.addEventListener("click",async e=>{
 
  if(e.target.matches(".shiftQuick")){state.currentWorkMode=e.target.dataset.type;save()}
  if(e.target.dataset.mtask!==undefined){const t=isoToday();state.completedMissions[t]||={tasks:[],complete:false};const i=+e.target.dataset.mtask;state.completedMissions[t].tasks=e.target.checked?[...new Set([...state.completedMissions[t].tasks,i])]:state.completedMissions[t].tasks.filter(x=>x!==i);save()}
- if(e.target.id==="completeMission"){const t=isoToday();state.completedMissions[t]||={tasks:[],complete:false};const becomingComplete=!state.completedMissions[t].complete;state.completedMissions[t].complete=becomingComplete;if(becomingComplete&&!state.lifeEvents.some(x=>x.source===`mission-${t}`)){const mm=mission();state.lifeEvents.push({date:t,category:"Milstolpe",title:`Dagens uppdrag: ${mm.title}`,note:"Uppdraget genomfördes och räknas in i ICE-motorn.",rating:5,person:state.activeProfile,created:new Date().toISOString(),source:`mission-${t}`})}save()}
+ if(e.target.id==="completeMission"){const t=isoToday();state.completedMissions[t]||={tasks:[],complete:false};const becomingComplete=!state.completedMissions[t].complete;state.completedMissions[t].complete=becomingComplete;if(becomingComplete&&!state.lifeEvents.some(x=>x.source===`mission-${t}`)){const mm=mission();state.lifeEvents.push({date:t,category:"Milstolpe",title:`Dagens uppdrag: ${mm.title}`,note:"Uppdraget genomfördes och räknas in i FIELD MANUAL-motorn.",rating:5,person:state.activeProfile,created:new Date().toISOString(),source:`mission-${t}`})}save()}
  if(e.target.id==="refreshDailyPlan"){state["dailyPlan_"+isoToday()]=selectDailyExercises(Date.now()%97).map(x=>x.id);save()}
  if(e.target.dataset.logexercise!==undefined){
    const x=exerciseLibrary.find(v=>v.id===e.target.dataset.logexercise);
@@ -1299,7 +1233,7 @@ document.addEventListener("click",async e=>{
  if(e.target.id==="saveJournal"){const d=document.querySelector("#journalDate").value,n=document.querySelector("#journalNote").value.trim();if(!d||!n)return alert("Fyll i datum och anteckning.");const journalType=document.querySelector("#journalType").value,created=new Date().toISOString();state.journal.push({date:d,type:journalType,rating:+document.querySelector("#journalRating").value,minutes:+document.querySelector("#journalMinutes").value||0,note:n,weight:document.querySelector("#journalWeight").value.trim().replace(",","."),photo:pendingPhoto,exerciseId:document.querySelector("#journalNote").dataset.exerciseId||"",exerciseCategory:document.querySelector("#journalNote").dataset.exerciseCategory||"",physicalArea:document.querySelector("#journalNote").dataset.physicalArea||"",created});state.lifeEvents.push({date:d,category:'Träning',title:journalType,note:n.slice(0,120),rating:+document.querySelector("#journalRating").value,person:state.activeProfile,created,source:'journal'});pendingPhoto="";document.querySelector("#journalNote").dataset.exerciseId="";document.querySelector("#journalNote").dataset.exerciseCategory="";document.querySelector("#journalNote").dataset.physicalArea="";document.querySelector("#journalNote").value="";document.querySelector("#journalMinutes").value="";document.querySelector("#journalWeight").value="";document.querySelector("#journalPhoto").value="";document.querySelector("#photoPreview").style.display="none";save()}
  if(e.target.dataset.deljournal!==undefined&&confirm("Ta bort journalposten?")){state.journal.splice(+e.target.dataset.deljournal,1);save()}
  if(e.target.id==="saveSettings"){state.birthDate=document.querySelector("#birthDate").value;state.pickupDate=document.querySelector("#pickupDate").value;save();alert("Sparat.")}
- if(e.target.id==="exportData"){const b=new Blob([JSON.stringify({version:VERSION,exported:new Date().toISOString(),data:state},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="ICE-backup-"+isoToday()+".json";a.click();URL.revokeObjectURL(a.href)}
+ if(e.target.id==="exportData"){const b=new Blob([JSON.stringify({version:VERSION,exported:new Date().toISOString(),data:state},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="Field-Manual-backup-"+isoToday()+".json";a.click();URL.revokeObjectURL(a.href)}
  if(e.target.id==="importButton")document.querySelector("#importData").click();
  if(e.target.id==="forceUpdate"){navigator.serviceWorker?.getRegistrations().then(rs=>Promise.all(rs.map(r=>r.update()))).finally(()=>location.reload(true))}
  if(e.target.id==="resetData"&&confirm("Nollställa all lokal data?")){localStorage.removeItem(STORE);localStorage.removeItem(DEVICE_PROFILE_KEY);state=clone(defaults);save();showProfileSetup()}
@@ -1318,105 +1252,7 @@ document.querySelector("#journalPhoto").addEventListener("change",async e=>{if(!
 document.querySelector("#importData").addEventListener("change",async e=>{try{const j=JSON.parse(await e.target.files[0].text());state={...clone(defaults),...(j.data||j)};save();alert("Importerad.")}catch(err){alert("Filen kunde inte läsas.")}});
 document.querySelector("#journalDate").value=isoToday();document.querySelector("#taskDate").value=isoToday();document.querySelector("#lifeDate").value=isoToday();clearShift();seedFamilyTasks();
 if(localStorage.getItem("iceAppVersion")!==VERSION){localStorage.setItem("iceAppVersion",VERSION);document.querySelector("#updateNotice").style.display="block";setTimeout(()=>document.querySelector("#updateNotice").style.display="none",5000)}
-
-/* ICE 11.0 RC1 Build 34 — Core Engines: Academy, Mission Session, Progression */
-(function prepareAcademyCatalog(){
-  const seen={};
-  academyLessons.forEach((lesson,index)=>{
-    const base=lesson.id||('lesson_'+index);
-    seen[base]=(seen[base]||0)+1;
-    if(seen[base]>1) lesson.id=base+'_'+seen[base];
-  });
-})();
-
-const ICE_SEQUENCE=[
- ['rel_name','recovery_mat'],
- ['env_surface','rel_follow'],
- ['recovery_mat'],
- ['recall_short','rel_name'],
- ['rel_follow','recovery_mat'],
- ['nose_food'],
- ['env_surface','recovery_mat'],
- ['recall_short','rel_follow'],
- ['nose_boxes'],
- ['env_sound','recovery_mat'],
- ['sar_runner'],
- ['sar_hidden']
-];
-function completedGuidedPasses(){
- return (state.lifeEvents||[]).filter(x=>String(x.source||'').startsWith('guided-session-')).length;
-}
-function progressionStep(){
- const stored=Number(state.trainingSequenceStep);
- return Number.isFinite(stored)?stored:completedGuidedPasses();
-}
-function getDailyPlan(){
- const step=Math.max(0,progressionStep());
- const ids=ICE_SEQUENCE[Math.min(step,ICE_SEQUENCE.length-1)]||ICE_SEQUENCE[0];
- return ids.map(id=>exerciseLibrary.find(x=>x.id===id)).filter(Boolean);
-}
-function currentAcademyPhase(){
- const step=progressionStep(), w=ageParts().weeks;
- if(step<3)return {title:'Trygg start',directive:'Trygghet, relation, vila och frivillig kontakt.'};
- if(step<7)return {title:'Grundfärdigheter',directive:'Kontakt, miljö, inkallning och nosarbete i korta pass.'};
- if(step<10)return {title:'Generalisering',directive:'Samma färdigheter i varsamt varierade miljöer.'};
- return {title:'SAR-grund',directive:'Figurantintresse, söklust och markeringsförberedelser.'};
-}
-function academyProgress(){
- const total=academyLessons.length;
- const done=academyLessons.filter(x=>!!state.academyCompleted?.[x.id]);
- const open=[...academyLessons];
- return {total,done,open,pct:total?Math.round(done.length/total*100):0};
-}
-function renderAcademy(){
- const host=document.querySelector('#academyLessons'); if(!host)return;
- const a=academyProgress(), phase=currentAcademyPhase();
- const recommended=academyLessons
-   .filter(x=>!state.academyCompleted?.[x.id])
-   .sort((x,y)=>Math.abs(x.minWeeks-ageParts().weeks)-Math.abs(y.minWeeks-ageParts().weeks))[0];
- document.querySelector('#academyAge').textContent=`vecka ${ageParts().weeks} · rekommendation, inte låsning`;
- document.querySelector('#academyPhase').textContent=phase.title;
- document.querySelector('#academyDirective').textContent=recommended?`${phase.directive} Nästa rekommenderade lektion: ${recommended.title}.`:'Alla lektioner är markerade klara. Repetera och generalisera.';
- document.querySelector('#academyPercent').textContent=a.pct+'%';
- document.querySelector('#academyRing').style.setProperty('--p',a.pct);
- document.querySelector('#academyPath').innerHTML=['Trygg start','Grundfärdigheter','Generalisering','SAR-grund','Operativ'].map((v,i)=>`${i?'<i>→</i>':''}<span>${v}</span>`).join('');
- document.querySelector('#academyRecommended').innerHTML=recommended?lessonCard(recommended):'<div class="good">Alla lektioner är tillgängliga och genomförda.</div>';
- document.querySelector('#academyCount').textContent=`${academyLessons.length} lektioner`;
- host.innerHTML=academyLessons.map(lessonCard).join('');
-}
-const _finalizeTrainingSession=finalizeTrainingSession;
-finalizeTrainingSession=function(){
- const before=progressionStep();
- const completed=(state.activeTrainingSession?.results||[]).some(r=>!r.skipped);
- _finalizeTrainingSession();
- if(completed){
-   state.trainingSequenceStep=before+1;
-   localStorage.setItem(STORE,JSON.stringify(state));
-   renderAll();
- }
-};
-function renderOperationalHome(){
- const plan=getDailyPlan(), total=plan.reduce((n,x)=>n+(+x.duration||0),0), step=progressionStep();
- const title=step===0?'Trygg start':(plan[0]?.title||'Dagens pass');
- const titleEl=document.querySelector('#homeMissionTitle'); if(!titleEl)return;
- titleEl.textContent=title;
- document.querySelector('#homeMissionIntro').textContent=step===0?'Första passet startar när Ice är hemma. Därefter styr genomförda pass nästa steg.':'Nästa pass i Ice utbildningssekvens. Planen går vidare först när föregående pass är genomfört.';
- document.querySelector('#homeMissionMinutes').textContent=total||'–';
- document.querySelector('#homeMissionEnvironment').textContent=step<3?'Hemma och trädgård · trygg, välkänd miljö':step<7?'Lugn vardagsmiljö med låg störning':'Anpassad träningsmiljö';
- document.querySelector('#homeMissionDevelops').textContent=[...new Set(plan.map(x=>x.cat))].join(' · ')||'relation';
- document.querySelector('#homeMissionSteps').innerHTML=plan.map((x,i)=>`<div class="home-mission-step"><span>${i+1}</span><div><b>${escapeHtml(x.title)}</b><small>${escapeHtml(x.goal)}</small></div><em>${x.duration} min</em></div>`).join('');
- document.querySelector('#homeMissionWhy').innerHTML=`<b>Varför nu:</b> Pass ${step+1} bygger vidare på den dokumenterade progressionen. Inget senare pass aktiveras innan detta är loggat.`;
- const labels=['Nästa pass','Därefter','Efter nästa','Fortsättning','Senare','Kommande','Framåt'];
- document.querySelector('#homeWeekStrip').innerHTML=Array.from({length:7},(_,i)=>{
-   const seq=ICE_SEQUENCE[Math.min(step+i,ICE_SEQUENCE.length-1)]||[];
-   const ex=seq.map(id=>exerciseLibrary.find(x=>x.id===id)).filter(Boolean);
-   return `<div class="week-day ${i===0?'today':''}"><small>${labels[i]}</small><b>${escapeHtml(ex.map(x=>x.title).join(' + ')||'Repetition')}</b><span>${ex.reduce((a,x)=>a+x.duration,0)} min</span></div>`;
- }).join('');
- const nextMilestone=document.querySelector('#homeNextMilestone'); if(nextMilestone)nextMilestone.textContent=step<3?'Tre genomförda trygghets- och relationspass':step<7?'Stabila grundfärdigheter i hemmiljö':'Första enkla SAR-missionen';
- if(typeof renderHomeProgress==='function')renderHomeProgress();
-}
-
-configureIce40Dashboard();renderAll();updateIceTopProfile();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();checkReminders();setInterval(checkReminders,60000);setInterval(refreshLiveGreeting,60000);window.addEventListener('focus',refreshLiveGreeting);window.addEventListener('pageshow',refreshLiveGreeting);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshLiveGreeting()});if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
+configureILO40Dashboard();renderAll();updateILOTopProfile();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();checkReminders();setInterval(checkReminders,60000);setInterval(refreshLiveGreeting,60000);window.addEventListener('focus',refreshLiveGreeting);window.addEventListener('pageshow',refreshLiveGreeting);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshLiveGreeting()});if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js");
 </script>
 
 </body>
