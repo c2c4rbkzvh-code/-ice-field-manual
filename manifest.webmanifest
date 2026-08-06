@@ -1,8 +1,8 @@
 {
   "name": "Field Manual",
   "short_name": "Field Manual",
-  "description": "ILO:s kompletta fältmanual för vardag, tillväxt, träning och räddningshundsutveckling.",
-  "start_url": "./?v=1.0.0",
+  "description": "Komplett vardags-, foder-, hälso- och utbildningssystem för ILO.",
+  "start_url": "./?v=2.0.0",
   "scope": "./",
   "display": "standalone",
   "background_color": "#06100d",
