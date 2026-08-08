@@ -1,8 +1,8 @@
 {
   "name": "Field Manual",
   "short_name": "Field Manual",
-  "description": "Komplett vardags-, foder-, hälso- och utbildningssystem för ILO.",
-  "start_url": "./?v=2.0.0",
+  "description": "Field Manual 1.0 RC1 – dagligt tränings-, foder-, hälso- och utbildningssystem för ILO.",
+  "start_url": "./?v=1.0-rc1",
   "scope": "./",
   "display": "standalone",
   "background_color": "#06100d",
