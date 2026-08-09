@@ -1,8 +1,8 @@
 {
   "name": "Field Manual",
   "short_name": "Field Manual",
-  "description": "Field Manual 1.0 RC1 – dagligt tränings-, foder-, hälso- och utbildningssystem för ILO.",
-  "start_url": "./?v=1.0-rc1",
+  "description": "Field Manual 1.0 RC2 – dagligt system med Road to Rescue Dog och kursplanerare för ILO.",
+  "start_url": "./?v=1.0-rc2",
   "scope": "./",
   "display": "standalone",
   "background_color": "#06100d",
