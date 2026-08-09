@@ -1,3 +1,7 @@
+FIELD MANUAL 1.0 RC2 – ROAD TO RESCUE (FIX 1)
+
+Corrected build: RC2 is now explicit in index.html, Road to Rescue planner is included, and the service worker uses a new cache key with updateViaCache disabled. Existing local app data keys are unchanged.
+
 Field Manual 1.0 RC1 – Daily Use
 
 Release candidate för daglig användning med ILO.
