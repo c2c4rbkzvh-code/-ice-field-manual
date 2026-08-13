@@ -1,11 +1,14 @@
-FIELD MANUAL 1.0 RC2 – ROAD TO RESCUE (FIX 1)
+FIELD MANUAL 1.0 RC3 · SMART FOOD SCAN
 
-Corrected build: RC2 is now explicit in index.html, Road to Rescue planner is included, and the service worker uses a new cache key with updateViaCache disabled. Existing local app data keys are unchanged.
+Bygger vidare på RC2 Road to Rescue.
 
-Field Manual 1.0 RC1 – Daily Use
+Nytt i RC3:
+- Förenklat foderflöde: 3 bilder -> snabbifyllnad -> kontroll -> beräkning.
+- Återanvänder redan sparade foderuppgifter automatiskt.
+- Endast namn + kcal/kg eller tillverkarens g/dag krävs för startberäkning.
+- Protein, fett, kalcium och fosfor ligger under valfria näringsdetaljer.
+- Automatisk status för 0/3, 1/3, 2/3, 3/3 bilder.
+- Säkerhet: planen kan inte aktiveras förrän komplett valpfoder/tillväxt har bekräftats.
+- Ingen falsk OCR: offlineversionen påstår inte att den har läst etiketttext som den inte kan tolka säkert.
 
-Release candidate för daglig användning med ILO.
-
-Field Manual 2.0 – Complete Foundation
-
-Nyheter: ILO-profil och ny bild, Nutrition Intelligence med fotoassisterad foderprofil, energiberäkning och måltidsplan, viktkurva och veckotrend, Bur & Fordon-progression, daglig hälsologg och vårdpåminnelser. Befintlig lokal data migreras via samma lagringsnyckel.
+Befintlig lokal lagring behålls.

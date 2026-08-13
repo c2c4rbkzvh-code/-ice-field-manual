@@ -1,4 +1,4 @@
-const CACHE = "field-manual-1-0-rc2-fix1-road-to-rescue";
+const CACHE = "field-manual-1-0-rc3-smart-food-scan";
 const ASSETS = ["./index.html","./manifest.webmanifest","./ice-photo.jpg","./ilo-photo.jpg","./icon-180.png","./icon-192.png","./icon-512.png","./ice-app-icon.png","./ice-hero-dark.jpg"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)));
