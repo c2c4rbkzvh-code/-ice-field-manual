@@ -7,9 +7,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Field Manual">
-<link rel="apple-touch-icon" href="fm-icon-180-rc4.png">
+<link rel="apple-touch-icon" href="fm-icon-180-rc5.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Field Manual 1.0 RC4 – Development Engine</title>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js" defer></script>
+<title>Field Manual 1.0 RC5 – Smart Scan</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -258,7 +259,7 @@ body:not(.home-view) main{padding-top:18px}
 .requirement-grid{display:grid;gap:8px}.requirement-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:11px;border-radius:13px;background:rgba(255,255,255,.04)}.requirement-row small{display:block;color:var(--muted);margin-top:3px}.source-note{font-size:11px;color:var(--muted);line-height:1.45;margin-top:12px}
 @media(max-width:430px){.course-actions{grid-template-columns:repeat(2,1fr)}}
 
-/* RC4 · Development Engine */
+/* RC5 · Development Engine + real OCR food scan */
 .dev-engine{background:linear-gradient(145deg,rgba(16,58,43,.96),rgba(7,29,23,.98));border:1px solid rgba(226,180,78,.42)}
 .dev-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.dev-score{min-width:72px;text-align:center;border:1px solid rgba(226,180,78,.5);border-radius:18px;padding:10px}.dev-score b{font-size:28px;color:var(--gold);display:block}.dev-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.dev-domain{background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:11px}.dev-domain strong{display:flex;justify-content:space-between;gap:8px}.dev-domain small{display:block;color:var(--muted);margin-top:5px}.dev-bar{height:5px;background:rgba(255,255,255,.1);border-radius:9px;overflow:hidden;margin-top:8px}.dev-bar i{display:block;height:100%;background:var(--gold)}.dev-plan{margin-top:14px;border-top:1px solid rgba(255,255,255,.12);padding-top:13px}.dev-session{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}.dev-session:last-child{border-bottom:0}.evidence-tag{font-size:10px;letter-spacing:.08em;border:1px solid rgba(226,180,78,.45);border-radius:999px;padding:4px 7px;color:var(--gold)}
 .food-photo-grid label small{display:block;font-size:10px;color:var(--muted);margin:3px 0 5px}
@@ -273,7 +274,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="ILO i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">FIELD MANUAL 1.0 RC4 · DEVELOPMENT ENGINE</span>
+<span class="version">FIELD MANUAL 1.0 RC5 · SMART SCAN</span>
 <h1>FIELD MANUAL</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -281,7 +282,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Field Manual 1.0 RC4 · Development Engine är installerad.</div>
+<div id="updateNotice" class="notice">Field Manual 1.0 RC5 · Smart Scan är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -618,8 +619,8 @@ body:not(.home-view) main{padding-top:18px}
 <div class="card"><p><b>Snabbflöde:</b> ta tre bilder. Field Manual återanvänder det den redan vet om fodret och visar bara det som behöver kontrolleras. Full texttolkning av etiketten kräver internet/AI-stöd och används inte i denna offlineversion.</p>
 <div class="food-photo-grid"><label>Framsida<small>kamera eller Bilder</small><input id="foodFrontPhoto" type="file" accept="image/*"></label><label>Tabell<small>kamera eller Bilder</small><input id="foodTablePhoto" type="file" accept="image/*"></label><label>Näring<small>kamera eller Bilder</small><input id="foodNutritionPhoto" type="file" accept="image/*"></label></div><img id="foodScanPreview" class="scanner-preview" alt="Foderfoto">
 <div id="foodPhotoStatus" class="good" style="margin-top:10px">0 av 3 bilder klara.</div>
-<button class="button block" id="assistFoodScan" style="margin-top:10px">Analysera & fyll i automatiskt</button>
-<div id="foodAssistStatus" class="tiny-note" style="margin:10px 0 2px">Ta gärna alla tre bilder först. Du behöver normalt bara kontrollera namn, kcal/kg eller tillverkarens g/dag.</div>
+<button class="button block" id="assistFoodScan" style="margin-top:10px">Läs bilder & fyll i</button><div class="tiny-note" style="margin-top:8px">Automatisk bildläsning kräver internet. Foton och övriga Field Manual fungerar fortfarande offline.</div>
+<div id="foodAssistStatus" class="tiny-note" style="margin:10px 0 2px">Ta gärna alla tre bilder först. Field Manual läser texten i bilderna när internet finns och fyller i det den hittar. Du granskar sedan resultatet.</div>
 <div class="nutrition-form" style="margin-top:12px"><div class="wide"><label>Fodrets namn</label><input id="scanFoodName" placeholder="Exakt märke och sort"></div><div><label>Energi kcal/kg</label><input id="scanFoodKcal" type="number" inputmode="numeric" placeholder="om det står på säcken"></div><div><label>Tillverkarens g/dag</label><input id="scanManufacturerGrams" type="number" inputmode="numeric" placeholder="om tabellen anger det"></div><div class="wide"><label><input id="scanPuppyComplete" type="checkbox"> Komplett helfoder för valp/tillväxt enligt etiketten</label></div></div>
 <details style="margin:10px 0 14px"><summary style="cursor:pointer;color:#c7d1cb">Visa näringsdetaljer (valfritt)</summary><div class="nutrition-form" style="margin-top:12px"><div><label>Protein %</label><input id="scanProtein" type="number" step="0.1"></div><div><label>Fett %</label><input id="scanFat" type="number" step="0.1"></div><div><label>Kalcium %</label><input id="scanCalcium" type="number" step="0.01"></div><div><label>Fosfor %</label><input id="scanPhosphorus" type="number" step="0.01"></div></div></details>
 <button class="button block" id="calculateFood">Beräkna startgiva</button><div id="foodCalcResult" class="calc-result" style="display:none"></div><button class="button secondary block" id="activateScannedFood" style="display:none;margin-top:10px">Använd som aktuell plan</button><p class="tiny-note">Om tillverkarens g/dag finns används den i första hand. Annars görs en försiktig energiberäkning från ILOs senaste vikt. Viktkurva och hull används sedan för justering.</p></div>
@@ -640,7 +641,7 @@ body:not(.home-view) main{padding-top:18px}
 <div class="card"><label>Födelsedatum</label><input type="date" id="birthDate"><label>Hämtningsdatum</label><input type="date" id="pickupDate"><button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button></div>
 <div class="card" style="margin-top:14px"><h3>Säkerhetskopia</h3><p>Exportera all data. Bilder gör filen större.</p><div class="row"><button class="button secondary" id="exportData">Exportera</button><button class="button secondary" id="importButton">Importera</button><input type="file" id="importData" accept="application/json" hidden></div></div>
 <div class="card" style="margin-top:14px"><h3>Appuppdatering</h3><button class="button secondary block" id="forceUpdate">Sök efter ny version</button></div>
-<div class="card" style="margin-top:14px"><h3>Om</h3><p>Field Manual 1.0 RC4 · Development Engine. Träning och utveckling är huvudmotorn. Nutrition Intelligence, viktkurva, hälsologg och Bur & Fordon är integrerade. Mission-systemet och kompetensmotorn kopplar nu ihop Academy, journal och fysisk utveckling. Träningspass-läget guidar steg för steg och FIELD MANUAL-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och FIELD MANUAL idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
+<div class="card" style="margin-top:14px"><h3>Om</h3><p>Field Manual 1.0 RC5 · Smart Scan. Träning och utveckling är huvudmotorn. Nutrition Intelligence, viktkurva, hälsologg och Bur & Fordon är integrerade. Mission-systemet och kompetensmotorn kopplar nu ihop Academy, journal och fysisk utveckling. Träningspass-läget guidar steg för steg och FIELD MANUAL-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och FIELD MANUAL idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
 </section>
 
 <section id="missions" class="screen"><button class="screen-back" data-back="1">‹ Tillbaka</button>
@@ -1217,7 +1218,7 @@ document.addEventListener('click',e=>{
  if(e.target.id==="saveWeight"){const raw=document.querySelector('#weightInput').value.replace(',','.'),kg=parseFloat(raw),bcs=document.querySelector('#bcsInput').value,note=document.querySelector('#weightNote').value.trim();if(!kg||kg<=0){alert('Ange en giltig vikt.');return}const n=nutritionState();n.weights=n.weights.filter(x=>x.date!==isoToday());n.weights.push({date:isoToday(),kg:+kg.toFixed(1),bcs,note,person:state.activeProfile});state.lifeEvents.push({date:isoToday(),category:'Hälsa',title:`Vikt ${kg.toFixed(1)} kg`,note:`BCS ${bcs||'ej angivet'}${note?' · '+note:''}`,rating:5,person:state.activeProfile,created:new Date().toISOString(),source:`weight-${isoToday()}`});document.querySelector('#weightInput').value='';document.querySelector('#weightNote').value='';save();return}
  if(e.target.id==="saveFoodPlan"){const n=nutritionState();n.plannedFood=document.querySelector('#plannedFood').value.trim();n.switchDate=document.querySelector('#foodSwitchDate').value;save();return}
  if(e.target.id==="editMealPlan"){const n=nutritionState(),g=prompt('Gram per måltid',n.gramsPerMeal),count=prompt('Antal måltider per dag',n.mealsPerDay),times=prompt('Tider separerade med kommatecken',n.mealTimes.join(','));if(g!==null&&count!==null&&times!==null){n.gramsPerMeal=Math.max(1,parseInt(g)||n.gramsPerMeal);n.mealsPerDay=Math.max(2,Math.min(4,parseInt(count)||n.mealsPerDay));n.mealTimes=times.split(',').map(x=>x.trim()).filter(Boolean).slice(0,n.mealsPerDay);while(n.mealTimes.length<n.mealsPerDay)n.mealTimes.push(['07:00','12:00','18:00','21:00'][n.mealTimes.length]);n.calculatedDailyGrams=n.gramsPerMeal*n.mealsPerDay;save();}return}
- if(e.target.id==="assistFoodScan"){fillFoodFormFromKnownData();return}
+ if(e.target.id==="assistFoodScan"){runFoodOCR();return}
  if(e.target.id==="calculateFood"){fillFoodFormFromKnownData();const w=latestWeight(),name=document.querySelector('#scanFoodName').value.trim(),kcal=+document.querySelector('#scanFoodKcal').value,mg=+document.querySelector('#scanManufacturerGrams').value;if(!name)return alert('Kontrollera fodrets namn från framsidan.');if(!w)return alert('Registrera ILOs aktuella vikt först.');if(!(kcal>0||mg>0))return alert('Kontrollera kcal/kg eller tillverkarens g/dag från tabellen. Resten kan lämnas tomt.');const daily=calculateDailyFood(w.kg,kcal,mg),meals=ageParts().weeks<16?3:2,per=Math.round(daily/meals/5)*5;scannedFoodDraft={name,kcalPerKg:kcal,manufacturerGrams:mg,protein:+document.querySelector('#scanProtein').value||0,fat:+document.querySelector('#scanFat').value||0,calcium:+document.querySelector('#scanCalcium').value||0,phosphorus:+document.querySelector('#scanPhosphorus').value||0,completePuppy:document.querySelector('#scanPuppyComplete').checked,daily,meals,per};const ratio=scannedFoodDraft.phosphorus?scannedFoodDraft.calcium/scannedFoodDraft.phosphorus:0,flags=[];if(!scannedFoodDraft.completePuppy)flags.push('Bekräfta på etiketten att fodret är ett komplett helfoder för valp/tillväxt innan planen aktiveras.');if(scannedFoodDraft.calcium>0&&!scannedFoodDraft.phosphorus)flags.push('Fosfor saknas – mineralbalansen kan inte bedömas.');const r=document.querySelector('#foodCalcResult');r.style.display='block';r.innerHTML=`<small>STARTGIVA ATT KONTROLLERA</small><br><strong>${daily} g/dag</strong><p>${meals} mål à cirka ${per} g · baserat på ${w.kg} kg${mg?' och tillverkarens tabell':' samt '+kcal+' kcal/kg'}.</p>${ratio?`<p>Ca:P ≈ ${ratio.toFixed(2).replace('.',',')}:1</p>`:''}${flags.length?`<div class="safety-note">${flags.map(escapeHtml).join('<br>')}</div>`:''}`;document.querySelector('#activateScannedFood').style.display='block';return}
  if(e.target.id==="activateScannedFood"&&scannedFoodDraft){if(!scannedFoodDraft.completePuppy)return alert('Bekräfta först att etiketten anger komplett helfoder för valp/tillväxt.');const n=nutritionState();Object.assign(n,{currentFood:scannedFoodDraft.name,kcalPerKg:scannedFoodDraft.kcalPerKg,manufacturerGrams:scannedFoodDraft.manufacturerGrams,protein:scannedFoodDraft.protein,fat:scannedFoodDraft.fat,calcium:scannedFoodDraft.calcium,phosphorus:scannedFoodDraft.phosphorus,completePuppy:scannedFoodDraft.completePuppy,calculatedDailyGrams:scannedFoodDraft.daily,mealsPerDay:scannedFoodDraft.meals,gramsPerMeal:scannedFoodDraft.per});n.mealTimes=scannedFoodDraft.meals===3?['07:00','12:00','18:00']:['07:00','18:00'];save();alert('Ny foderplan aktiverad. Följ vikt och hull varje vecka.');return}
  if(e.target.id==="saveCrateSession"){const c=crateState(),minutes=+document.querySelector('#crateMinutes').value,rating=+document.querySelector('#crateRating').value;if(!(minutes>=0))return;c.sessions.push({date:isoToday(),context:document.querySelector('#crateContext').value,minutes,rating,note:document.querySelector('#crateNote').value.trim(),profile:state.activeProfile,created:new Date().toISOString()});state.lifeEvents.push({date:isoToday(),category:'Bur & fordon',title:`Burpass ${minutes} min`,note:document.querySelector('#crateNote').value.trim(),rating,person:state.activeProfile,created:new Date().toISOString()});save();return}
@@ -1245,9 +1246,67 @@ function fillFoodFormFromKnownData(){
  if(ph&&!ph.value&&n.phosphorus)ph.value=n.phosphorus;
  const nm=(name?.value||'').toLowerCase(); if(complete&&!complete.checked&&(n.completePuppy||/puppy|valp|junior|growth|tillväxt/.test(nm)))complete.checked=true;
  const missing=[];if(!name?.value.trim())missing.push('fodrets namn');if(!(+(kcal?.value||0)>0||+(mg?.value||0)>0))missing.push('kcal/kg eller tillverkarens g/dag');
- if(status)status.innerHTML=missing.length?`Jag fyllde i det som redan finns sparat. Kontrollera <b>${missing.join(' och ')}</b> från bilderna.`:`Grunduppgifterna är ifyllda. Kontrollera dem mot bilderna och tryck sedan <b>Beräkna startgiva</b>.`;
+ if(status)status.innerHTML=missing.length?`Jag fyllde i det som redan finns sparat. Bildläsningen kunde inte säkert hitta <b>${missing.join(' och ')}</b>. Kontrollera bara dessa fält.`:`Grunduppgifterna är ifyllda. Kontrollera dem mot bilderna och tryck sedan <b>Beräkna startgiva</b>.`;
  return missing.length===0;
 }
+
+function normalizeOCRText(t){return (t||'').replace(/\r/g,'\n').replace(/[‐‑–—]/g,'-').replace(/\s+/g,' ').trim()}
+function numFromMatch(v){if(!v)return 0;v=String(v).replace(/\s/g,'').replace(',','.').replace(/[^0-9.]/g,'');const n=parseFloat(v);return Number.isFinite(n)?n:0}
+function pickPercent(text, words){
+ const esc=words.map(w=>w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|');
+ const pats=[new RegExp('(?:'+esc+')\\s*[:\\-]?\\s*(\\d{1,2}(?:[.,]\\d{1,2})?)\\s*%','i'),new RegExp('(\\d{1,2}(?:[.,]\\d{1,2})?)\\s*%\\s*(?:'+esc+')','i')];
+ for(const p of pats){const m=text.match(p);if(m)return numFromMatch(m[1])}return 0
+}
+function parseFoodOCR(front,table,nutrition){
+ const all=normalizeOCRText([front,table,nutrition].join(' '));
+ const lower=all.toLowerCase();
+ let name='';
+ if(/purina\s+pro\s+plan/i.test(all)){
+   name='Purina Pro Plan';
+   if(/large\s+athletic/i.test(all))name+=' Large Athletic';
+   if(/puppy|welpe|junior|valp/i.test(all))name+=' Puppy';
+ } else {
+   const lines=(front||'').split(/\n+/).map(x=>x.trim()).filter(x=>x.length>3&&x.length<70);
+   name=lines.find(x=>/[A-Za-zÅÄÖåäö]{4}/.test(x))||'';
+ }
+ let kcal=0;
+ const kcalPatterns=[/(\d{3,5})\s*kcal\s*\/\s*kg/i,/kcal\s*\/\s*kg\s*[:\-]?\s*(\d{3,5})/i,/metaboli[sz](?:able|able\s+energy|ierbare\s+energie)?[^0-9]{0,30}(\d{3,5})\s*kcal/i];
+ for(const p of kcalPatterns){const m=all.match(p);if(m){const n=numFromMatch(m[1]);if(n>=2500&&n<=6000){kcal=n;break}}}
+ let manufacturer=0;
+ const gPats=[/(?:g\s*\/\s*day|g\s*\/\s*dag|g\s+per\s+day|grams?\s+per\s+day|daily\s+(?:amount|ration))\s*[:\-]?\s*(\d{2,4})/i,/(\d{2,4})\s*(?:g\s*\/\s*day|g\s*\/\s*dag|g\s+per\s+day)/i];
+ for(const p of gPats){const m=all.match(p);if(m){const n=numFromMatch(m[1]);if(n>=40&&n<=1500){manufacturer=n;break}}}
+ const protein=pickPercent(all,['protein','crude protein','råprotein','rohprotein']);
+ const fat=pickPercent(all,['fat','crude fat','råfett','fett','rohfett']);
+ const calcium=pickPercent(all,['calcium','kalcium','kalzium']);
+ const phosphorus=pickPercent(all,['phosphorus','phosphor','fosfor']);
+ const complete=/(complete\s+(?:pet\s+)?food[^.]{0,30}(?:puppy|growth)|complete\s+feed[^.]{0,30}(?:puppy|growth)|helfoder[^.]{0,30}(?:valp|tillväxt))/i.test(all);
+ return {name,kcal,manufacturer,protein,fat,calcium,phosphorus,complete,raw:all}
+}
+async function runFoodOCR(){
+ const n=nutritionState(), status=document.querySelector('#foodAssistStatus'), btn=document.querySelector('#assistFoodScan');
+ const imgs=n.foodPhotos||{}; const ids=['foodFrontPhoto','foodTablePhoto','foodNutritionPhoto'];
+ if(ids.some(id=>!imgs[id])){status.innerHTML='Ta eller välj <b>alla tre bilderna</b> först.';return}
+ if(!navigator.onLine){status.innerHTML='Bildläsningen behöver internet. Bilderna är sparade — prova igen när du är online.';return}
+ if(!window.Tesseract){status.innerHTML='Bildläsaren kunde inte laddas. Kontrollera internetanslutningen och prova igen.';return}
+ btn.disabled=true; const old=btn.textContent; btn.textContent='Läser bilder…';
+ try{
+   const texts=[];
+   for(let i=0;i<ids.length;i++){
+     status.textContent=`Läser bild ${i+1} av 3… första analysen kan ta en stund.`;
+     const r=await Tesseract.recognize(imgs[ids[i]],'eng',{logger:m=>{if(m.status==='recognizing text'&&typeof m.progress==='number')status.textContent=`Läser bild ${i+1} av 3 · ${Math.round(m.progress*100)} %`}});
+     texts.push(r?.data?.text||'');
+   }
+   const d=parseFoodOCR(texts[0],texts[1],texts[2]);
+   const set=(sel,val)=>{const el=document.querySelector(sel);if(el&&val&&!el.value)el.value=val};
+   set('#scanFoodName',d.name);set('#scanFoodKcal',d.kcal);set('#scanManufacturerGrams',d.manufacturer);set('#scanProtein',d.protein);set('#scanFat',d.fat);set('#scanCalcium',d.calcium);set('#scanPhosphorus',d.phosphorus);
+   if(d.complete){const c=document.querySelector('#scanPuppyComplete');if(c)c.checked=true}
+   fillFoodFormFromKnownData();
+   const found=[];if(d.name)found.push('namn');if(d.kcal)found.push('energi');if(d.manufacturer)found.push('g/dag');if(d.protein)found.push('protein');if(d.fat)found.push('fett');if(d.calcium)found.push('kalcium');if(d.phosphorus)found.push('fosfor');if(d.complete)found.push('valp/helfoder');
+   status.innerHTML=found.length?`Bildläsning klar. Hittade: <b>${found.join(', ')}</b>. Kontrollera de ifyllda värdena innan du beräknar.`:'Bilderna gick att läsa men inga säkra foderuppgifter kunde extraheras. Ta närmare, skarpare bilder av tabellen och näringsrutan.';
+ }catch(err){console.error(err);status.textContent='Bildläsningen misslyckades. Ta en rak, skarp närbild av etiketten och prova igen.'}
+ finally{btn.disabled=false;btn.textContent=old}
+}
+
 function calculateDailyFood(kg,kcalPerKg,manufacturerGrams){if(manufacturerGrams>0)return Math.round(manufacturerGrams);if(!(kg>0&&kcalPerKg>0))return 0;const rer=70*Math.pow(kg,.75),kcal=rer*puppyEnergyFactor();return Math.round((kcal/(kcalPerKg/1000))/5)*5}
 function mealNames(count){return count===4?['Frukost','Förmiddag','Eftermiddag','Kväll']:count===2?['Morgon','Kväll']:['Frukost','Lunch','Kväll']}
 function drawWeightChart(){const c=document.querySelector('#weightChart');if(!c)return;const ctx=c.getContext('2d'),arr=nutritionState().weights.slice().sort((a,b)=>a.date.localeCompare(b.date));ctx.clearRect(0,0,c.width,c.height);ctx.fillStyle='#07130f';ctx.fillRect(0,0,c.width,c.height);ctx.strokeStyle='rgba(255,255,255,.09)';ctx.lineWidth=1;for(let i=1;i<5;i++){const y=i*c.height/5;ctx.beginPath();ctx.moveTo(35,y);ctx.lineTo(c.width-15,y);ctx.stroke()}if(arr.length<2){ctx.fillStyle='#9dafA7';ctx.font='24px sans-serif';ctx.fillText('Minst två vägningar behövs för kurvan',55,125);return}const vals=arr.map(x=>x.kg),min=Math.min(...vals)*.92,max=Math.max(...vals)*1.08;ctx.strokeStyle='#f0c75e';ctx.lineWidth=5;ctx.lineJoin='round';ctx.beginPath();arr.forEach((x,i)=>{const px=35+i*(c.width-55)/(arr.length-1),py=c.height-25-(x.kg-min)/(max-min||1)*(c.height-55);i?ctx.lineTo(px,py):ctx.moveTo(px,py)});ctx.stroke();arr.forEach((x,i)=>{const px=35+i*(c.width-55)/(arr.length-1),py=c.height-25-(x.kg-min)/(max-min||1)*(c.height-55);ctx.fillStyle='#f0c75e';ctx.beginPath();ctx.arc(px,py,7,0,Math.PI*2);ctx.fill()})}
@@ -1289,6 +1348,8 @@ function renderAll(){renderCoursePlanner();updateILOTopProfile();renderToday();r
 function defaultsForShift(t){return{ledig:["",""],dag:["08:00","17:30"],natt:["17:30","08:00"],dygn:["08:00","08:00"],annat:["",""]}[t]||["",""]}
 function clearShift(){document.querySelector("#shiftEditIndex").value="";document.querySelector("#shiftDate").value=isoToday();document.querySelector("#shiftType").value="dag";const p=defaultsForShift("dag");document.querySelector("#shiftStart").value=p[0];document.querySelector("#shiftEnd").value=p[1];document.querySelector("#shiftNote").value="";document.querySelector("#cancelShiftEdit").style.display="none";document.querySelector("#saveShift").textContent="Spara pass"}
 function editShift(i){const s=state.shifts[i];document.querySelector("#shiftEditIndex").value=i;document.querySelector("#shiftDate").value=s.date;document.querySelector("#shiftType").value=s.type;document.querySelector("#shiftStart").value=s.start||"";document.querySelector("#shiftEnd").value=s.end||"";document.querySelector("#shiftNote").value=s.note||"";document.querySelector("#cancelShiftEdit").style.display="inline-block";document.querySelector("#saveShift").textContent="Spara ändring"}
+
+async function compressFoodImage(file){return new Promise((resolve,reject)=>{const img=new Image(),r=new FileReader();r.onload=e=>img.src=e.target.result;img.onload=()=>{const max=1800,scale=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement("canvas");c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);c.getContext("2d").drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL("image/jpeg",.86))};r.onerror=reject;r.readAsDataURL(file)})}
 async function compressImage(file){return new Promise((resolve,reject)=>{const img=new Image(),r=new FileReader();r.onload=e=>img.src=e.target.result;img.onload=()=>{const max=900,scale=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement("canvas");c.width=img.width*scale;c.height=img.height*scale;c.getContext("2d").drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL("image/jpeg",.7))};r.onerror=reject;r.readAsDataURL(file)})}
 
 const screenNames={today:'Idag',plan:'Plan',journal:'Journal',environment:'Miljö',sar:'SAR-program',progress:'Utveckling',equipment:'Utrustning',nutrition:'Foder & vikt',crate:'Bur & fordon',health:'Hälsa',family:'Familj',settings:'Inställningar'};
@@ -1407,7 +1468,7 @@ document.querySelector("#taskTemplate").addEventListener("change",e=>{if(e.targe
 document.querySelector("#shiftType").addEventListener("change",e=>{const p=defaultsForShift(e.target.value);document.querySelector("#shiftStart").value=p[0];document.querySelector("#shiftEnd").value=p[1]});
 document.querySelector("#journalPhoto").addEventListener("change",async e=>{if(!e.target.files[0])return;pendingPhoto=await compressImage(e.target.files[0]);const p=document.querySelector("#photoPreview");p.src=pendingPhoto;p.style.display="block"});
 
-['foodFrontPhoto','foodTablePhoto','foodNutritionPhoto'].forEach(id=>{const el=document.querySelector('#'+id);if(el)el.addEventListener('change',async e=>{if(!e.target.files[0])return;const data=await compressImage(e.target.files[0]);nutritionState().foodPhotos[id]=data;const p=document.querySelector('#foodScanPreview');p.src=data;p.style.display='block';save();updateFoodPhotoStatus();if(foodPhotoCount()===3)fillFoodFormFromKnownData()})});
+['foodFrontPhoto','foodTablePhoto','foodNutritionPhoto'].forEach(id=>{const el=document.querySelector('#'+id);if(el)el.addEventListener('change',async e=>{if(!e.target.files[0])return;const data=await compressFoodImage(e.target.files[0]);nutritionState().foodPhotos[id]=data;const p=document.querySelector('#foodScanPreview');p.src=data;p.style.display='block';save();updateFoodPhotoStatus();if(foodPhotoCount()===3)fillFoodFormFromKnownData()})});
 document.querySelector("#importData").addEventListener("change",async e=>{try{const j=JSON.parse(await e.target.files[0].text());state={...clone(defaults),...(j.data||j)};save();alert("Importerad.")}catch(err){alert("Filen kunde inte läsas.")}});
 document.querySelector("#journalDate").value=isoToday();const careDateEl=document.querySelector("#careDate");if(careDateEl)careDateEl.value=isoToday();document.querySelector("#taskDate").value=isoToday();document.querySelector("#lifeDate").value=isoToday();clearShift();seedFamilyTasks();
 if(localStorage.getItem("iceAppVersion")!==VERSION){localStorage.setItem("iceAppVersion",VERSION);document.querySelector("#updateNotice").style.display="block";setTimeout(()=>document.querySelector("#updateNotice").style.display="none",5000)}

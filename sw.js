@@ -1,5 +1,5 @@
-const CACHE = "field-manual-1-0-rc4-development-engine";
-const ASSETS = ["./index.html","./manifest.webmanifest","./ice-photo.jpg","./ilo-photo.jpg","./fm-icon-180-rc4.png","./fm-icon-192-rc4.png","./fm-icon-512-rc4.png","./ice-hero-dark.jpg"];
+const CACHE = "field-manual-1-0-rc5-real-food-ocr";
+const ASSETS = ["./index.html","./manifest.webmanifest","./ice-photo.jpg","./ilo-photo.jpg","./fm-icon-180-rc5.png","./fm-icon-192-rc5.png","./fm-icon-512-rc5.png","./ice-hero-dark.jpg"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)));
   self.skipWaiting();

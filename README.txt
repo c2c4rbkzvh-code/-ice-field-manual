@@ -1,9 +1,9 @@
-Field Manual 1.0 RC4 – Development Engine
+Field Manual 1.0 RC5 – Real Food OCR
 
-Huvudändringar:
-- Träning och utveckling är appens huvudmotor med 8 utvecklingsdomäner.
-- Dagens plan anpassas efter ålder, dokumenterad prestation och återhämtning.
-- Evidensnivå A/B/C används för metodstöd.
-- Smart Food Scan accepterar både kamera och bilder från album.
-- Ny cache-bustad FM-appikon för iPhone hemskärm.
-- Befintlig localStorage-nyckel behålls för datamigrering.
+Nyheter:
+- Foderbilder kan tas med kamera eller väljas från Bilder.
+- Knappen Läs bilder & fyll i kör nu verklig OCR när internet finns.
+- Försöker läsa namn, kcal/kg, g/dag, protein, fett, kalcium och fosfor.
+- Högre upplösning sparas för foderbilder för bättre läsning.
+- Resultatet måste granskas före beräkning/aktivering.
+- Träning och utveckling är fortsatt huvudmotorn.
