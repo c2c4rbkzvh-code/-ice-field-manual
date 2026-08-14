@@ -1,8 +1,8 @@
 {
   "name": "Field Manual",
   "short_name": "Field Manual",
-  "description": "Field Manual 1.0 RC5 – Development Engine med riktig foto-OCR för foder, träning, vikt, hälsa och Road to Rescue.",
-  "start_url": "./?v=1.0-rc5",
+  "description": "Field Manual 1.0 RC6 – Smart Scan Fix: korrigerad bildläsning som ersätter gamla foderuppgifter och visar vad OCR faktiskt hittat.",
+  "start_url": "./?v=1.0-rc6",
   "scope": "./",
   "display": "standalone",
   "background_color": "#06100d",

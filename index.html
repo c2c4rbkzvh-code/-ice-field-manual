@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="fm-icon-180-rc5.png">
 <link rel="manifest" href="manifest.webmanifest">
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js" defer></script>
-<title>Field Manual 1.0 RC5 – Smart Scan</title>
+<title>Field Manual 1.0 RC6 – Smart Scan Fix</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -259,11 +259,19 @@ body:not(.home-view) main{padding-top:18px}
 .requirement-grid{display:grid;gap:8px}.requirement-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:11px;border-radius:13px;background:rgba(255,255,255,.04)}.requirement-row small{display:block;color:var(--muted);margin-top:3px}.source-note{font-size:11px;color:var(--muted);line-height:1.45;margin-top:12px}
 @media(max-width:430px){.course-actions{grid-template-columns:repeat(2,1fr)}}
 
-/* RC5 · Development Engine + real OCR food scan */
+/* RC6 · Development Engine + corrected OCR food scan */
 .dev-engine{background:linear-gradient(145deg,rgba(16,58,43,.96),rgba(7,29,23,.98));border:1px solid rgba(226,180,78,.42)}
 .dev-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.dev-score{min-width:72px;text-align:center;border:1px solid rgba(226,180,78,.5);border-radius:18px;padding:10px}.dev-score b{font-size:28px;color:var(--gold);display:block}.dev-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.dev-domain{background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:11px}.dev-domain strong{display:flex;justify-content:space-between;gap:8px}.dev-domain small{display:block;color:var(--muted);margin-top:5px}.dev-bar{height:5px;background:rgba(255,255,255,.1);border-radius:9px;overflow:hidden;margin-top:8px}.dev-bar i{display:block;height:100%;background:var(--gold)}.dev-plan{margin-top:14px;border-top:1px solid rgba(255,255,255,.12);padding-top:13px}.dev-session{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}.dev-session:last-child{border-bottom:0}.evidence-tag{font-size:10px;letter-spacing:.08em;border:1px solid rgba(226,180,78,.45);border-radius:999px;padding:4px 7px;color:var(--gold)}
 .food-photo-grid label small{display:block;font-size:10px;color:var(--muted);margin:3px 0 5px}
 @media(max-width:430px){.dev-grid{grid-template-columns:1fr 1fr}.dev-session{grid-template-columns:auto 1fr}.dev-session .evidence-tag{grid-column:2}}
+
+.ocr-review{margin:12px 0;padding:14px;border:1px solid rgba(240,199,94,.35);border-radius:14px;background:rgba(7,19,15,.72)}
+.ocr-review h4{margin:0 0 10px;color:#f0c75e;font-size:15px;letter-spacing:.04em}
+.ocr-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ocr-cell{padding:9px 10px;border-radius:10px;background:rgba(255,255,255,.045);font-size:13px}
+.ocr-cell b{display:block;color:#eef4f0;font-size:14px;margin-top:2px;word-break:break-word}
+.ocr-cell.missing b{color:#d6a25e}
+.ocr-changed{outline:2px solid rgba(240,199,94,.75)!important;box-shadow:0 0 0 3px rgba(240,199,94,.08)}
 </style>
 </head>
 <body class="home-view">
@@ -274,7 +282,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="ILO i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">FIELD MANUAL 1.0 RC5 · SMART SCAN</span>
+<span class="version">FIELD MANUAL 1.0 RC6 · SMART SCAN FIX</span>
 <h1>FIELD MANUAL</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -282,7 +290,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Field Manual 1.0 RC5 · Smart Scan är installerad.</div>
+<div id="updateNotice" class="notice">Field Manual 1.0 RC6 · Smart Scan Fix är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -616,11 +624,12 @@ body:not(.home-view) main{padding-top:18px}
 <div class="card"><div class="eyebrow">AKTUELL PLAN</div><h3 id="currentFoodTitle" style="font-size:22px;margin:7px 0">Standardt Original Normal</h3><div id="nutritionPlanStats" class="nutrition-stats"></div><button class="button secondary block" id="editMealPlan">Ändra måltidsplan</button></div>
 
 <div class="section-title"><h2>Skanna nytt foder</h2><span>foto + kontroll</span></div>
-<div class="card"><p><b>Snabbflöde:</b> ta tre bilder. Field Manual återanvänder det den redan vet om fodret och visar bara det som behöver kontrolleras. Full texttolkning av etiketten kräver internet/AI-stöd och används inte i denna offlineversion.</p>
+<div class="card"><p><b>Snabbflöde:</b> ta eller välj tre bilder. När internet finns läser Field Manual bilderna och <b>ersätter gamla foderuppgifter med det som faktiskt hittas på den nya etiketten</b>. Du granskar resultatet innan någon foderplan aktiveras.</p>
 <div class="food-photo-grid"><label>Framsida<small>kamera eller Bilder</small><input id="foodFrontPhoto" type="file" accept="image/*"></label><label>Tabell<small>kamera eller Bilder</small><input id="foodTablePhoto" type="file" accept="image/*"></label><label>Näring<small>kamera eller Bilder</small><input id="foodNutritionPhoto" type="file" accept="image/*"></label></div><img id="foodScanPreview" class="scanner-preview" alt="Foderfoto">
 <div id="foodPhotoStatus" class="good" style="margin-top:10px">0 av 3 bilder klara.</div>
 <button class="button block" id="assistFoodScan" style="margin-top:10px">Läs bilder & fyll i</button><div class="tiny-note" style="margin-top:8px">Automatisk bildläsning kräver internet. Foton och övriga Field Manual fungerar fortfarande offline.</div>
 <div id="foodAssistStatus" class="tiny-note" style="margin:10px 0 2px">Ta gärna alla tre bilder först. Field Manual läser texten i bilderna när internet finns och fyller i det den hittar. Du granskar sedan resultatet.</div>
+<div id="foodOcrReview" class="ocr-review" style="display:none"></div>
 <div class="nutrition-form" style="margin-top:12px"><div class="wide"><label>Fodrets namn</label><input id="scanFoodName" placeholder="Exakt märke och sort"></div><div><label>Energi kcal/kg</label><input id="scanFoodKcal" type="number" inputmode="numeric" placeholder="om det står på säcken"></div><div><label>Tillverkarens g/dag</label><input id="scanManufacturerGrams" type="number" inputmode="numeric" placeholder="om tabellen anger det"></div><div class="wide"><label><input id="scanPuppyComplete" type="checkbox"> Komplett helfoder för valp/tillväxt enligt etiketten</label></div></div>
 <details style="margin:10px 0 14px"><summary style="cursor:pointer;color:#c7d1cb">Visa näringsdetaljer (valfritt)</summary><div class="nutrition-form" style="margin-top:12px"><div><label>Protein %</label><input id="scanProtein" type="number" step="0.1"></div><div><label>Fett %</label><input id="scanFat" type="number" step="0.1"></div><div><label>Kalcium %</label><input id="scanCalcium" type="number" step="0.01"></div><div><label>Fosfor %</label><input id="scanPhosphorus" type="number" step="0.01"></div></div></details>
 <button class="button block" id="calculateFood">Beräkna startgiva</button><div id="foodCalcResult" class="calc-result" style="display:none"></div><button class="button secondary block" id="activateScannedFood" style="display:none;margin-top:10px">Använd som aktuell plan</button><p class="tiny-note">Om tillverkarens g/dag finns används den i första hand. Annars görs en försiktig energiberäkning från ILOs senaste vikt. Viktkurva och hull används sedan för justering.</p></div>
@@ -641,7 +650,7 @@ body:not(.home-view) main{padding-top:18px}
 <div class="card"><label>Födelsedatum</label><input type="date" id="birthDate"><label>Hämtningsdatum</label><input type="date" id="pickupDate"><button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button></div>
 <div class="card" style="margin-top:14px"><h3>Säkerhetskopia</h3><p>Exportera all data. Bilder gör filen större.</p><div class="row"><button class="button secondary" id="exportData">Exportera</button><button class="button secondary" id="importButton">Importera</button><input type="file" id="importData" accept="application/json" hidden></div></div>
 <div class="card" style="margin-top:14px"><h3>Appuppdatering</h3><button class="button secondary block" id="forceUpdate">Sök efter ny version</button></div>
-<div class="card" style="margin-top:14px"><h3>Om</h3><p>Field Manual 1.0 RC5 · Smart Scan. Träning och utveckling är huvudmotorn. Nutrition Intelligence, viktkurva, hälsologg och Bur & Fordon är integrerade. Mission-systemet och kompetensmotorn kopplar nu ihop Academy, journal och fysisk utveckling. Träningspass-läget guidar steg för steg och FIELD MANUAL-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och FIELD MANUAL idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
+<div class="card" style="margin-top:14px"><h3>Om</h3><p>Field Manual 1.0 RC6 · Smart Scan Fix. Träning och utveckling är huvudmotorn. Nutrition Intelligence, viktkurva, hälsologg och Bur & Fordon är integrerade. Mission-systemet och kompetensmotorn kopplar nu ihop Academy, journal och fysisk utveckling. Träningspass-läget guidar steg för steg och FIELD MANUAL-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och FIELD MANUAL idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
 </section>
 
 <section id="missions" class="screen"><button class="screen-back" data-back="1">‹ Tillbaka</button>
@@ -1283,7 +1292,7 @@ function parseFoodOCR(front,table,nutrition){
  return {name,kcal,manufacturer,protein,fat,calcium,phosphorus,complete,raw:all}
 }
 async function runFoodOCR(){
- const n=nutritionState(), status=document.querySelector('#foodAssistStatus'), btn=document.querySelector('#assistFoodScan');
+ const n=nutritionState(), status=document.querySelector('#foodAssistStatus'), btn=document.querySelector('#assistFoodScan'), review=document.querySelector('#foodOcrReview');
  const imgs=n.foodPhotos||{}; const ids=['foodFrontPhoto','foodTablePhoto','foodNutritionPhoto'];
  if(ids.some(id=>!imgs[id])){status.innerHTML='Ta eller välj <b>alla tre bilderna</b> först.';return}
  if(!navigator.onLine){status.innerHTML='Bildläsningen behöver internet. Bilderna är sparade — prova igen när du är online.';return}
@@ -1297,12 +1306,46 @@ async function runFoodOCR(){
      texts.push(r?.data?.text||'');
    }
    const d=parseFoodOCR(texts[0],texts[1],texts[2]);
-   const set=(sel,val)=>{const el=document.querySelector(sel);if(el&&val&&!el.value)el.value=val};
-   set('#scanFoodName',d.name);set('#scanFoodKcal',d.kcal);set('#scanManufacturerGrams',d.manufacturer);set('#scanProtein',d.protein);set('#scanFat',d.fat);set('#scanCalcium',d.calcium);set('#scanPhosphorus',d.phosphorus);
-   if(d.complete){const c=document.querySelector('#scanPuppyComplete');if(c)c.checked=true}
-   fillFoodFormFromKnownData();
+   const fields={
+     name:['#scanFoodName',d.name], kcal:['#scanFoodKcal',d.kcal], manufacturer:['#scanManufacturerGrams',d.manufacturer],
+     protein:['#scanProtein',d.protein], fat:['#scanFat',d.fat], calcium:['#scanCalcium',d.calcium], phosphorus:['#scanPhosphorus',d.phosphorus]
+   };
+   const oldName=(document.querySelector('#scanFoodName')?.value||'').trim();
+   const newProduct=!!(d.name && oldName && d.name.toLowerCase()!==oldName.toLowerCase());
+   // A newly recognised product must never inherit nutrition values from the previous food.
+   if(newProduct){
+     ['#scanFoodKcal','#scanManufacturerGrams','#scanProtein','#scanFat','#scanCalcium','#scanPhosphorus'].forEach(sel=>{const el=document.querySelector(sel);if(el){el.value='';el.classList.remove('ocr-changed')}});
+     const c=document.querySelector('#scanPuppyComplete');if(c)c.checked=false;
+   }
+   const changed=[];
+   Object.entries(fields).forEach(([key,[sel,val]])=>{
+     const el=document.querySelector(sel); if(!el)return;
+     el.classList.remove('ocr-changed');
+     if(val){
+       const before=String(el.value||'').trim();
+       el.value=val;
+       if(String(val)!==before){el.classList.add('ocr-changed');changed.push(key)}
+     }
+   });
+   const completeEl=document.querySelector('#scanPuppyComplete');
+   if(completeEl){
+     if(d.complete){completeEl.checked=true;changed.push('complete')}
+     else if(newProduct)completeEl.checked=false;
+   }
+   // Only use stored data as fallback when OCR did NOT identify a different product.
+   if(!newProduct) fillFoodFormFromKnownData();
    const found=[];if(d.name)found.push('namn');if(d.kcal)found.push('energi');if(d.manufacturer)found.push('g/dag');if(d.protein)found.push('protein');if(d.fat)found.push('fett');if(d.calcium)found.push('kalcium');if(d.phosphorus)found.push('fosfor');if(d.complete)found.push('valp/helfoder');
-   status.innerHTML=found.length?`Bildläsning klar. Hittade: <b>${found.join(', ')}</b>. Kontrollera de ifyllda värdena innan du beräknar.`:'Bilderna gick att läsa men inga säkra foderuppgifter kunde extraheras. Ta närmare, skarpare bilder av tabellen och näringsrutan.';
+   const rows=[
+     ['Foder',d.name||'Inte säkert läst',!!d.name],['Energi',d.kcal?`${d.kcal} kcal/kg`:'Inte säkert läst',!!d.kcal],
+     ['Tillverkarens g/dag',d.manufacturer?`${d.manufacturer} g`:'Inte säkert läst',!!d.manufacturer],['Protein',d.protein?`${d.protein} %`:'Inte säkert läst',!!d.protein],
+     ['Fett',d.fat?`${d.fat} %`:'Inte säkert läst',!!d.fat],['Kalcium',d.calcium?`${d.calcium} %`:'Inte säkert läst',!!d.calcium],
+     ['Fosfor',d.phosphorus?`${d.phosphorus} %`:'Inte säkert läst',!!d.phosphorus],['Komplett valpfoder',d.complete?'Ja, text hittad':'Ej säkert bekräftat',d.complete]
+   ];
+   if(review){
+     review.style.display='block';
+     review.innerHTML=`<h4>Läst från de nya bilderna</h4><div class="ocr-grid">${rows.map(r=>`<div class="ocr-cell ${r[2]?'':'missing'}"><span>${escapeHtml(r[0])}</span><b>${escapeHtml(r[1])}</b></div>`).join('')}</div><p class="tiny-note" style="margin:10px 0 0">Gulmarkerade formulärfält har ändrats av bildläsningen. ”Inte säkert läst” lämnas tomt när ett nytt foder identifierats, så gamla värden inte råkar följa med.</p>`;
+   }
+   status.innerHTML=found.length?`Bildläsning klar. <b>${found.length} uppgifter hittades</b>${changed.length?` och ${changed.length} fält uppdaterades`:''}. Kontrollera resultatet nedan innan du beräknar.`:'Bilderna gick att läsa men inga säkra foderuppgifter kunde extraheras. Ta närmare, skarpare bilder av tabellen och näringsrutan.';
  }catch(err){console.error(err);status.textContent='Bildläsningen misslyckades. Ta en rak, skarp närbild av etiketten och prova igen.'}
  finally{btn.disabled=false;btn.textContent=old}
 }

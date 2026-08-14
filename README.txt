@@ -1,9 +1,8 @@
-Field Manual 1.0 RC5 – Real Food OCR
+FIELD MANUAL 1.0 RC6 – SMART SCAN FIX
 
-Nyheter:
-- Foderbilder kan tas med kamera eller väljas från Bilder.
-- Knappen Läs bilder & fyll i kör nu verklig OCR när internet finns.
-- Försöker läsa namn, kcal/kg, g/dag, protein, fett, kalcium och fosfor.
-- Högre upplösning sparas för foderbilder för bättre läsning.
-- Resultatet måste granskas före beräkning/aktivering.
-- Träning och utveckling är fortsatt huvudmotorn.
+Bugfix för foderbildläsning:
+- OCR-värden ersätter nu gamla formulärvärden när de hittas.
+- När ett nytt foder identifieras rensas gamla näringsvärden som OCR inte kan verifiera.
+- Resultatet visas i en separat kontrollruta före beräkning.
+- Fält som ändrats av OCR markeras tydligt.
+- Befintlig lokal appdata och lagringsnycklar är oförändrade.
