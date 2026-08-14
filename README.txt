@@ -1,14 +1,9 @@
-FIELD MANUAL 1.0 RC3 · SMART FOOD SCAN
+Field Manual 1.0 RC4 – Development Engine
 
-Bygger vidare på RC2 Road to Rescue.
-
-Nytt i RC3:
-- Förenklat foderflöde: 3 bilder -> snabbifyllnad -> kontroll -> beräkning.
-- Återanvänder redan sparade foderuppgifter automatiskt.
-- Endast namn + kcal/kg eller tillverkarens g/dag krävs för startberäkning.
-- Protein, fett, kalcium och fosfor ligger under valfria näringsdetaljer.
-- Automatisk status för 0/3, 1/3, 2/3, 3/3 bilder.
-- Säkerhet: planen kan inte aktiveras förrän komplett valpfoder/tillväxt har bekräftats.
-- Ingen falsk OCR: offlineversionen påstår inte att den har läst etiketttext som den inte kan tolka säkert.
-
-Befintlig lokal lagring behålls.
+Huvudändringar:
+- Träning och utveckling är appens huvudmotor med 8 utvecklingsdomäner.
+- Dagens plan anpassas efter ålder, dokumenterad prestation och återhämtning.
+- Evidensnivå A/B/C används för metodstöd.
+- Smart Food Scan accepterar både kamera och bilder från album.
+- Ny cache-bustad FM-appikon för iPhone hemskärm.
+- Befintlig localStorage-nyckel behålls för datamigrering.

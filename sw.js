@@ -1,5 +1,5 @@
-const CACHE = "field-manual-1-0-rc3-smart-food-scan";
-const ASSETS = ["./index.html","./manifest.webmanifest","./ice-photo.jpg","./ilo-photo.jpg","./icon-180.png","./icon-192.png","./icon-512.png","./ice-app-icon.png","./ice-hero-dark.jpg"];
+const CACHE = "field-manual-1-0-rc4-development-engine";
+const ASSETS = ["./index.html","./manifest.webmanifest","./ice-photo.jpg","./ilo-photo.jpg","./fm-icon-180-rc4.png","./fm-icon-192-rc4.png","./fm-icon-512-rc4.png","./ice-hero-dark.jpg"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)));
   self.skipWaiting();

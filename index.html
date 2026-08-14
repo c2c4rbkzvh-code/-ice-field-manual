@@ -7,9 +7,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Field Manual">
-<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="apple-touch-icon" href="fm-icon-180-rc4.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Field Manual 1.0 RC3 – Smart Food Scan</title>
+<title>Field Manual 1.0 RC4 – Development Engine</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -257,6 +257,12 @@ body:not(.home-view) main{padding-top:18px}
 .course-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.course-age{font-size:11px;color:var(--gold);font-weight:850;letter-spacing:.04em}.course-status{padding:6px 9px;border-radius:999px;border:1px solid var(--line);background:#10261e;color:var(--muted);font-size:11px;font-weight:800}.course-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:12px}.course-actions button{padding:8px 4px;border-radius:10px;border:1px solid var(--line);background:#0a1a15;color:var(--muted);font-size:10px;font-weight:800}.course-actions button.active{border-color:var(--gold);color:var(--gold);background:rgba(240,199,94,.09)}
 .requirement-grid{display:grid;gap:8px}.requirement-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:11px;border-radius:13px;background:rgba(255,255,255,.04)}.requirement-row small{display:block;color:var(--muted);margin-top:3px}.source-note{font-size:11px;color:var(--muted);line-height:1.45;margin-top:12px}
 @media(max-width:430px){.course-actions{grid-template-columns:repeat(2,1fr)}}
+
+/* RC4 · Development Engine */
+.dev-engine{background:linear-gradient(145deg,rgba(16,58,43,.96),rgba(7,29,23,.98));border:1px solid rgba(226,180,78,.42)}
+.dev-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.dev-score{min-width:72px;text-align:center;border:1px solid rgba(226,180,78,.5);border-radius:18px;padding:10px}.dev-score b{font-size:28px;color:var(--gold);display:block}.dev-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.dev-domain{background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:11px}.dev-domain strong{display:flex;justify-content:space-between;gap:8px}.dev-domain small{display:block;color:var(--muted);margin-top:5px}.dev-bar{height:5px;background:rgba(255,255,255,.1);border-radius:9px;overflow:hidden;margin-top:8px}.dev-bar i{display:block;height:100%;background:var(--gold)}.dev-plan{margin-top:14px;border-top:1px solid rgba(255,255,255,.12);padding-top:13px}.dev-session{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}.dev-session:last-child{border-bottom:0}.evidence-tag{font-size:10px;letter-spacing:.08em;border:1px solid rgba(226,180,78,.45);border-radius:999px;padding:4px 7px;color:var(--gold)}
+.food-photo-grid label small{display:block;font-size:10px;color:var(--muted);margin:3px 0 5px}
+@media(max-width:430px){.dev-grid{grid-template-columns:1fr 1fr}.dev-session{grid-template-columns:auto 1fr}.dev-session .evidence-tag{grid-column:2}}
 </style>
 </head>
 <body class="home-view">
@@ -267,7 +273,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="ILO i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">FIELD MANUAL 1.0 RC3 · SMART FOOD SCAN</span>
+<span class="version">FIELD MANUAL 1.0 RC4 · DEVELOPMENT ENGINE</span>
 <h1>FIELD MANUAL</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -275,7 +281,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Field Manual 1.0 RC3 · Smart Food Scan är installerad.</div>
+<div id="updateNotice" class="notice">Field Manual 1.0 RC4 · Development Engine är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -401,6 +407,13 @@ body:not(.home-view) main{padding-top:18px}
   <button class="button secondary block" id="refreshDailyPlan" style="margin-top:12px">Skapa ny kombination</button>
 </div>
 
+<div class="section-title"><h2>Träning & utveckling</h2><span>huvudmotor</span></div>
+<div class="card dev-engine">
+  <div class="dev-head"><div><div class="eyebrow">DEVELOPMENT ENGINE · VALP → ARBETSHUND</div><h3 id="devMainTitle" style="margin:6px 0">Dagens utvecklingsplan</h3><p id="devMainText" style="margin-bottom:0"></p></div><div class="dev-score"><b id="devReadiness">–</b><small>beredskap</small></div></div>
+  <div class="dev-plan" id="devDailyPlan"></div>
+  <div class="dev-grid" id="devDomainGrid"></div>
+  <div class="system-note" style="margin-top:12px">Progression styrs av ålder, dokumenterad prestation, återhämtning och generalisering. Svårigheten höjs först när beteendet är stabilt. Evidens A = forskning och etablerad working-dog-erfarenhet konvergerar; B = rimligt stöd; C = främst beprövad working-dog-praktik.</div>
+</div>
 <div class="section-title"><h2>Dagens uppdrag</h2><span id="todayDate"></span></div>
 <div class="card mission">
 <div class="eyebrow" id="missionNumber">MISSION</div><div class="mission-title" id="missionTitle"></div>
@@ -603,7 +616,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <div class="section-title"><h2>Skanna nytt foder</h2><span>foto + kontroll</span></div>
 <div class="card"><p><b>Snabbflöde:</b> ta tre bilder. Field Manual återanvänder det den redan vet om fodret och visar bara det som behöver kontrolleras. Full texttolkning av etiketten kräver internet/AI-stöd och används inte i denna offlineversion.</p>
-<div class="food-photo-grid"><label>Framsida<input id="foodFrontPhoto" type="file" accept="image/*" capture="environment"></label><label>Tabell<input id="foodTablePhoto" type="file" accept="image/*" capture="environment"></label><label>Näring<input id="foodNutritionPhoto" type="file" accept="image/*" capture="environment"></label></div><img id="foodScanPreview" class="scanner-preview" alt="Foderfoto">
+<div class="food-photo-grid"><label>Framsida<small>kamera eller Bilder</small><input id="foodFrontPhoto" type="file" accept="image/*"></label><label>Tabell<small>kamera eller Bilder</small><input id="foodTablePhoto" type="file" accept="image/*"></label><label>Näring<small>kamera eller Bilder</small><input id="foodNutritionPhoto" type="file" accept="image/*"></label></div><img id="foodScanPreview" class="scanner-preview" alt="Foderfoto">
 <div id="foodPhotoStatus" class="good" style="margin-top:10px">0 av 3 bilder klara.</div>
 <button class="button block" id="assistFoodScan" style="margin-top:10px">Analysera & fyll i automatiskt</button>
 <div id="foodAssistStatus" class="tiny-note" style="margin:10px 0 2px">Ta gärna alla tre bilder först. Du behöver normalt bara kontrollera namn, kcal/kg eller tillverkarens g/dag.</div>
@@ -627,7 +640,7 @@ body:not(.home-view) main{padding-top:18px}
 <div class="card"><label>Födelsedatum</label><input type="date" id="birthDate"><label>Hämtningsdatum</label><input type="date" id="pickupDate"><button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button></div>
 <div class="card" style="margin-top:14px"><h3>Säkerhetskopia</h3><p>Exportera all data. Bilder gör filen större.</p><div class="row"><button class="button secondary" id="exportData">Exportera</button><button class="button secondary" id="importButton">Importera</button><input type="file" id="importData" accept="application/json" hidden></div></div>
 <div class="card" style="margin-top:14px"><h3>Appuppdatering</h3><button class="button secondary block" id="forceUpdate">Sök efter ny version</button></div>
-<div class="card" style="margin-top:14px"><h3>Om</h3><p>Field Manual 2.0 · Complete Foundation. Nutrition Intelligence, viktkurva, hälsologg och Bur & Fordon är integrerade. Mission-systemet och kompetensmotorn kopplar nu ihop Academy, journal och fysisk utveckling. Träningspass-läget guidar steg för steg och FIELD MANUAL-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och FIELD MANUAL idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
+<div class="card" style="margin-top:14px"><h3>Om</h3><p>Field Manual 1.0 RC4 · Development Engine. Träning och utveckling är huvudmotorn. Nutrition Intelligence, viktkurva, hälsologg och Bur & Fordon är integrerade. Mission-systemet och kompetensmotorn kopplar nu ihop Academy, journal och fysisk utveckling. Träningspass-läget guidar steg för steg och FIELD MANUAL-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och FIELD MANUAL idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
 </section>
 
 <section id="missions" class="screen"><button class="screen-back" data-back="1">‹ Tillbaka</button>
@@ -652,7 +665,7 @@ body:not(.home-view) main{padding-top:18px}
 </div></nav>
 
 <script>
-const VERSION="1.0.0-rc2", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
+const VERSION="1.0.0-rc4", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
 const defaults={
  dog:{name:"ILO",breed:"Belgisk Malinois",sex:"Hane",photo:"ice-photo.jpg"},
  birthDate:"2026-06-04",pickupDate:"2026-08-05",currentWorkMode:"ledig",
@@ -955,6 +968,41 @@ const skillDefinitions=[
  {id:'markering',name:'Markering',icon:'📍',types:['Markering'],cats:['markering'],sar:['indication'],milestones:['mark']},
  {id:'aterhamtning',name:'Återhämtning',icon:'💤',types:['Vila/återhämtning'],cats:['aterhamtning'],sar:[],milestones:[]}
 ];
+
+const developmentDomains=[
+ {id:'relation',name:'Relation & lek',icon:'🤝',evidence:'A',types:['Relation & lek'],cats:['relation']},
+ {id:'engagement',name:'Kontakt & check-in',icon:'👀',evidence:'A',types:['Relation & lek','Inkallning'],cats:['relation','inkallning']},
+ {id:'recall',name:'Inkallning',icon:'↩️',evidence:'A',types:['Inkallning'],cats:['inkallning']},
+ {id:'regulation',name:'Av-knapp & reglering',icon:'◐',evidence:'A',types:['Vila/återhämtning'],cats:['aterhamtning']},
+ {id:'environment',name:'Miljösäkerhet',icon:'🌍',evidence:'B',types:['Miljö'],cats:['miljo']},
+ {id:'nose',name:'Nos & problemlösning',icon:'👃',evidence:'A',types:['Nosarbete','Sök'],cats:['nos','sar']},
+ {id:'independence',name:'Självständighet',icon:'◆',evidence:'B',types:['Sök','Nosarbete'],cats:['sar','nos']},
+ {id:'body',name:'Kroppskontroll',icon:'⚙',evidence:'B',types:['Fysik'],cats:['fysik','balans']}
+];
+function developmentSnapshot(){
+ const w=ageParts().weeks,recent=recentJournal(21),wl=workload();
+ const readiness=Math.max(35,Math.min(100,wl.score+(recent.filter(j=>+j.rating>=4).length*2)-recent.filter(j=>+j.rating<=2).length*5));
+ const domains=developmentDomains.map(d=>{const hits=recent.filter(j=>d.types.includes(j.type)||d.cats.includes(j.exerciseCategory));const quality=hits.reduce((n,j)=>n+Math.max(0,(+j.rating||3)-2)*7+Math.min(12,+j.minutes||0),0);const percent=Math.min(100,Math.round(quality/1.7));return {...d,hits:hits.length,percent};});
+ const weakest=[...domains].sort((a,b)=>a.percent-b.percent)[0];
+ let sessions=[];
+ if(w<16){sessions=[
+  {icon:'👀',title:'Frivillig kontakt',dose:'2–3 min',why:'Belöna spontana check-ins; inget tjat med namn.',e:'A'},
+  {icon:'↩️',title:'Inkallning som lek',dose:'3–5 rep',why:'En signal, hög fart in, jackpot nära kroppen och ofta frikommando igen.',e:'A'},
+  {icon:'◐',title:'Växla ned',dose:'3–5 min',why:'Efter aktivitet: lugn plats, låg stimulans och frivillig vila.',e:'A'}
+ ];}else if(w<28){sessions=[
+  {icon:'↩️',title:'Inkallning + lätt störning',dose:'5–8 min',why:'Öka bara en variabel: avstånd, störning eller miljö.',e:'A'},
+  {icon:'🌍',title:'Ny miljö med reträtt',dose:'10–15 min',why:'Utforska utan att pressa; lämna medan kvaliteten är hög.',e:'B'},
+  {icon:'👃',title:'Självständigt nosjobb',dose:'5–10 min',why:'Låt hunden lösa uppgiften utan förarhjälp.',e:'A'}
+ ];}else{sessions=[
+  {icon:'🎯',title:'Generalisera svagaste länken',dose:'8–12 min',why:`Prioritera ${weakest.name.toLowerCase()} i kontrollerad miljö.`,e:weakest.evidence},
+  {icon:'👃',title:'Sök med progression',dose:'10–20 min',why:'Öka en svårighetsdimension i taget och behåll hög motivation.',e:'B'},
+  {icon:'◐',title:'Arbete → av-knapp',dose:'5–10 min',why:'Träna aktiv växling från drift till återhämtning.',e:'B'}
+ ];}
+ if(readiness<60)sessions=sessions.slice(0,2).map(x=>({...x,dose:'kort · '+x.dose,why:x.why+' Håll belastningen låg idag.'}));
+ return{readiness,domains,weakest,sessions};
+}
+function renderDevelopmentEngine(){const d=developmentSnapshot();const a=ageParts();const title=a.weeks<16?'Bygg systemet – inte perfekta moment':a.weeks<28?'Generalisera utan att jaga svårighet':'Kvalitet före belastning';document.querySelector('#devReadiness').textContent=d.readiness;document.querySelector('#devMainTitle').textContent=title;document.querySelector('#devMainText').textContent=`${a.weeks} veckor: dagens plan prioriterar utveckling, motivation och återhämtning. ${d.weakest.hits?'Minst dokumenterat just nu: '+d.weakest.name+'.':'Börja med korta baslinjepass så motorn lär känna Dex/ILO.'}`;document.querySelector('#devDailyPlan').innerHTML=d.sessions.map(x=>`<div class="dev-session"><span style="font-size:22px">${x.icon}</span><div><strong>${escapeHtml(x.title)} · ${escapeHtml(x.dose)}</strong><small>${escapeHtml(x.why)}</small></div><span class="evidence-tag">EVIDENS ${x.e}</span></div>`).join('');document.querySelector('#devDomainGrid').innerHTML=d.domains.map(x=>`<div class="dev-domain"><strong><span>${x.icon} ${escapeHtml(x.name)}</span><span>${x.percent}%</span></strong><div class="dev-bar"><i style="width:${x.percent}%"></i></div><small>${x.hits?x.hits+' dokumenterade pass':'Baslinje saknas'} · ${x.evidence}</small></div>`).join('');}
+
 function iceEngine(){
  const today=isoToday(),completedTasks=state.familyTasks.filter(t=>t.done).length,missions=Object.values(state.completedMissions).filter(x=>x.complete).length,envs=Object.values(state.environments).filter(Boolean).length,miles=Object.values(state.milestones).filter(Boolean).length,sar=Object.values(state.sarCompleted).filter(Boolean).length;
  const journalXp=state.journal.reduce((n,j)=>n+20+Math.min(30,(+j.minutes||0))+Math.max(0,(+j.rating||0)-2)*4+(j.photo?8:0),0);
@@ -970,7 +1018,7 @@ function levelName(level){return level<3?'Grund':level<6?'Relation':level<10?'Ut
 function renderEngine(){const e=iceEngine();document.querySelector('#iceTodayTitle').textContent=e.title;document.querySelector('#iceTodayText').textContent=e.text;document.querySelector('#iceLevel').textContent=e.level;document.querySelector('#iceLevelName').textContent=levelName(e.level);document.querySelector('#iceXpText').textContent=`${e.xp} XP totalt`;document.querySelector('#iceNextXp').textContent=`${Math.max(0,e.levelEnd-e.xp)} XP till nivå ${e.level+1}`;document.querySelector('#iceXpBar').style.width=e.levelPct+'%';document.querySelector('#nextUnlockTitle').textContent=e.nextSar?`Nästa SAR-steg: ${e.nextSar[1]}`:'Grundvägen genomförd';document.querySelector('#nextUnlockText').textContent=e.nextSar?e.nextSar[2]:'Fortsätt generalisera och kvalitetssäkra färdigheterna.';document.querySelector('#skillGrid').innerHTML=e.skills.map(x=>`<div class="skill-card"><div class="skill-card-head"><strong>${x.icon} ${escapeHtml(x.name)}</strong><span class="skill-trend ${x.percent>0?'up':'flat'}">${x.percent>0?'↑':'→'} ${x.percent}%</span></div><div class="bar"><i style="width:${x.percent}%"></i></div><small>${x.sessions?`${x.sessions} pass · ${x.points} p`:'Inte påbörjad'}</small></div>`).join('');const labels=[['journal','Journal'],['mission','Uppdrag'],['family','Familj'],['life','Livsbok'],['environment','Miljö']];document.querySelector('#engineImpact').innerHTML=labels.map(([k,n])=>`<span class="impact-chip ${e.impact[k]?'on':''}">${e.impact[k]?'✓':'○'} ${n}</span>`).join('')}
 
 function renderToday(){
- const a=ageParts(),p=phase(),wl=workload(),c=coach(),m=mission(),today=isoToday(),done=state.completedMissions[today]?.tasks||[];renderEngine();
+ const a=ageParts(),p=phase(),wl=workload(),c=coach(),m=mission(),today=isoToday(),done=state.completedMissions[today]?.tasks||[];renderEngine();renderDevelopmentEngine();
  const active=activeProfile(),g=timeGreeting();document.querySelector('#greetingTitle').textContent=`${g} ${active.name} 👋`;document.querySelector('#greetingSubtitle').textContent=`${a.weeks} veckor och ${a.rest} dagar · dagens fokus på en blick.`;document.querySelector('#hqTodayLabel').textContent=new Date().toLocaleDateString('sv-SE',{weekday:'long',day:'numeric',month:'short'});
  const allToday=state.familyTasks.filter(t=>t.date===today),doneToday=allToday.filter(t=>t.done).length,totalToday=allToday.length,missionDone=state.completedMissions[today]?.complete?1:0,totalUnits=totalToday+1,doneUnits=doneToday+missionDone,dayPct=Math.round(doneUnits/Math.max(1,totalUnits)*100);document.querySelector('#todayProgressText').textContent=`${doneUnits} av ${totalUnits} delar klara`;document.querySelector('#todayProgressBar').style.width=dayPct+'%';
  const upcoming=allToday.filter(t=>!t.done).sort((x,y)=>(x.time||'99:99').localeCompare(y.time||'99:99'))[0];document.querySelector('#nextTaskText').textContent=upcoming?`Nästa: ${upcoming.title}${upcoming.time?' · '+upcoming.time:''}`:(missionDone?'Dagens plan är genomförd.':'Nästa: genomför dagens träningsuppdrag.');document.querySelector('#hqNextTime').textContent=upcoming?.time||'Flex';document.querySelector('#hqNextLabel').textContent=upcoming?upcoming.title:'dagens uppdrag';
@@ -1364,7 +1412,7 @@ document.querySelector("#importData").addEventListener("change",async e=>{try{co
 document.querySelector("#journalDate").value=isoToday();const careDateEl=document.querySelector("#careDate");if(careDateEl)careDateEl.value=isoToday();document.querySelector("#taskDate").value=isoToday();document.querySelector("#lifeDate").value=isoToday();clearShift();seedFamilyTasks();
 if(localStorage.getItem("iceAppVersion")!==VERSION){localStorage.setItem("iceAppVersion",VERSION);document.querySelector("#updateNotice").style.display="block";setTimeout(()=>document.querySelector("#updateNotice").style.display="none",5000)}
 configureILO40Dashboard();renderAll();updateILOTopProfile();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();checkReminders();setInterval(checkReminders,60000);setInterval(refreshLiveGreeting,60000);window.addEventListener('focus',refreshLiveGreeting);window.addEventListener('pageshow',refreshLiveGreeting);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshLiveGreeting()});if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("./sw.js?v=1.0-rc2-fix1",{updateViaCache:"none"}).then(reg=>reg.update()).catch(()=>{});
+  navigator.serviceWorker.register("./sw.js?v=1.0-rc4",{updateViaCache:"none"}).then(reg=>reg.update()).catch(()=>{});
   navigator.serviceWorker.addEventListener("controllerchange",()=>{
     if(!sessionStorage.getItem("fm_rc2_reloaded")){
       sessionStorage.setItem("fm_rc2_reloaded","1");
