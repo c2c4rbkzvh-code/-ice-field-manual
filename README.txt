@@ -6,3 +6,5 @@ Bugfix för foderbildläsning:
 - Resultatet visas i en separat kontrollruta före beräkning.
 - Fält som ändrats av OCR markeras tydligt.
 - Befintlig lokal appdata och lagringsnycklar är oförändrade.
+
+RC9: Att göra idag visas på Hem för aktiv familjeprofil, med tider, ansvarig och vem som checkat av.

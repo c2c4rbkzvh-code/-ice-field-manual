@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Field Manual">
 <link rel="apple-touch-icon" href="fm-icon-180-rc5.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Field Manual 1.0 RC8 – Daily Care</title>
+<title>Field Manual 1.0 RC9 – Family Daily Care</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -57,7 +57,7 @@ textarea{min-height:100px;resize:vertical}
 .tabs{position:fixed;z-index:20;left:0;right:0;bottom:0;background:rgba(6,16,13,.96);backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:7px 6px calc(7px + env(safe-area-inset-bottom));display:flex;justify-content:center}
 .tabs-inner{display:grid;grid-template-columns:repeat(7,1fr);max-width:780px;width:100%}.tab{border:0;background:none;color:var(--muted);padding:7px 1px;font-size:10px;font-weight:750}.tab b{display:block;font-size:21px;line-height:1.1;margin-bottom:3px}.tab.active{color:var(--gold)}
 .empty{text-align:center;color:var(--muted);padding:25px 8px}.notice{display:none;padding:11px 13px;border-radius:13px;background:#26371c;color:#dcf0d1;margin-bottom:12px}
-.profile-row{display:flex;gap:9px;overflow:auto;padding:2px 1px 6px;scroll-snap-type:x proximity}.profile{min-width:104px;border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:16px;padding:12px 8px;text-align:center;scroll-snap-align:start}.profile.active{border-color:var(--gold);box-shadow:0 0 0 2px rgba(226,180,78,.18)}.profile b{display:block;font-size:24px}.profile-name{display:block;font-weight:800;line-height:1.15;margin-top:6px;overflow-wrap:anywhere}.profile-role{display:block;color:var(--muted);font-size:11px;margin-top:4px}.badge{display:inline-block;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:800;background:#203f33;color:#dce5e0}.badge.driver{background:#4d3d16;color:#ffe2a1}.badge.family{background:#173a2b;color:#c9f1d7}.task-card{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}.task-card:first-child{border-top:0}.task-card input[type=checkbox]{width:23px;height:23px;accent-color:var(--gold)}.task-meta{font-size:12px;color:var(--muted);margin-top:4px}.icon-btn{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:11px;padding:7px 9px}.segmented{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.segmented button{border:1px solid var(--line);background:#0a1a15;color:var(--muted);border-radius:12px;padding:10px 5px}.segmented button.active{background:#294b3d;color:var(--text);border-color:#4a7965}.hidden{display:none!important}.timeline-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);margin-top:6px}.timeline-item{display:grid;grid-template-columns:14px 1fr;gap:9px;padding:12px 0;border-top:1px solid var(--line)}
+.profile-row{display:flex;gap:9px;overflow:auto;padding:2px 1px 6px;scroll-snap-type:x proximity}.profile{min-width:104px;border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:16px;padding:12px 8px;text-align:center;scroll-snap-align:start}.profile.active{border-color:var(--gold);box-shadow:0 0 0 2px rgba(226,180,78,.18)}.profile b{display:block;font-size:24px}.profile-name{display:block;font-weight:800;line-height:1.15;margin-top:6px;overflow-wrap:anywhere}.profile-role{display:block;color:var(--muted);font-size:11px;margin-top:4px}.badge{display:inline-block;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:800;background:#203f33;color:#dce5e0}.badge.driver{background:#4d3d16;color:#ffe2a1}.badge.family{background:#173a2b;color:#c9f1d7}.task-card{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}.task-card:first-child{border-top:0}.task-card input[type=checkbox]{width:23px;height:23px;accent-color:var(--gold)}.home-daily-list .task-card{padding:13px 0}.home-daily-list .task-meta{line-height:1.45}.home-daily-list .done strong{text-decoration:line-through;opacity:.65}.home-daily-list .done{opacity:.72}.task-meta{font-size:12px;color:var(--muted);margin-top:4px}.icon-btn{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:11px;padding:7px 9px}.segmented{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.segmented button{border:1px solid var(--line);background:#0a1a15;color:var(--muted);border-radius:12px;padding:10px 5px}.segmented button.active{background:#294b3d;color:var(--text);border-color:#4a7965}.hidden{display:none!important}.timeline-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);margin-top:6px}.timeline-item{display:grid;grid-template-columns:14px 1fr;gap:9px;padding:12px 0;border-top:1px solid var(--line)}
 .quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.quick-action{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:16px;padding:12px 6px;text-align:center;font-weight:750}.quick-action b{display:block;font-size:23px;margin-bottom:5px}.filter-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.activity-card{position:relative}.favorite{position:absolute;right:12px;top:12px;border:0;background:transparent;color:var(--muted);font-size:24px}.favorite.on{color:var(--gold)}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-size:11px;color:var(--muted);margin:3px 3px 0 0}
 .training-group{margin:16px 0}.training-group-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:0 2px 10px}.training-group-head h3{margin:0;font-size:21px}.training-group-head span{color:var(--muted);font-size:12px;text-align:right}.smart-week-card{border:1px solid rgba(222,178,72,.55);background:linear-gradient(145deg,rgba(93,70,24,.34),rgba(19,54,42,.92));border-radius:22px;padding:18px;margin:12px 0}.week-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:var(--muted);font-size:11px;margin:3px 4px 0 0}.activity-card.locked{opacity:.64}.activity-card.soon{border-style:dashed}.activity-card.recommended{border-color:rgba(222,178,72,.62);box-shadow:0 0 0 1px rgba(222,178,72,.12) inset}.activity-status{display:inline-block;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800;margin-bottom:8px}.activity-status.now{background:rgba(91,203,144,.14);color:#8ee0b2}.activity-status.soon{background:rgba(222,178,72,.14);color:var(--gold)}.activity-status.future{background:rgba(255,255,255,.06);color:var(--muted)}.progress-dots{display:flex;gap:6px;margin-top:10px}.progress-dots i{width:8px;height:8px;border-radius:50%;background:#183128}.progress-dots i.on{background:var(--gold)}.section-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;border:0;background:transparent;color:var(--text);font:inherit;padding:0;text-align:left}.section-toggle small{color:var(--muted)}
 .command-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.level-select{width:auto;min-width:112px;padding:8px}.hq-status{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}.hq-status strong{display:block;font-size:22px}.hq-status small{color:var(--muted)}
@@ -258,7 +258,7 @@ body:not(.home-view) main{padding-top:18px}
 .requirement-grid{display:grid;gap:8px}.requirement-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:11px;border-radius:13px;background:rgba(255,255,255,.04)}.requirement-row small{display:block;color:var(--muted);margin-top:3px}.source-note{font-size:11px;color:var(--muted);line-height:1.45;margin-top:12px}
 @media(max-width:430px){.course-actions{grid-template-columns:repeat(2,1fr)}}
 
-/* RC8 · Daily Care + calendar age + cache-safe updates */
+/* RC9 · Family Daily + calendar age + cache-safe updates */
 .dev-engine{background:linear-gradient(145deg,rgba(16,58,43,.96),rgba(7,29,23,.98));border:1px solid rgba(226,180,78,.42)}
 .dev-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.dev-score{min-width:72px;text-align:center;border:1px solid rgba(226,180,78,.5);border-radius:18px;padding:10px}.dev-score b{font-size:28px;color:var(--gold);display:block}.dev-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.dev-domain{background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:11px}.dev-domain strong{display:flex;justify-content:space-between;gap:8px}.dev-domain small{display:block;color:var(--muted);margin-top:5px}.dev-bar{height:5px;background:rgba(255,255,255,.1);border-radius:9px;overflow:hidden;margin-top:8px}.dev-bar i{display:block;height:100%;background:var(--gold)}.dev-plan{margin-top:14px;border-top:1px solid rgba(255,255,255,.12);padding-top:13px}.dev-session{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}.dev-session:last-child{border-bottom:0}.evidence-tag{font-size:10px;letter-spacing:.08em;border:1px solid rgba(226,180,78,.45);border-radius:999px;padding:4px 7px;color:var(--gold)}
 .food-photo-grid label small{display:block;font-size:10px;color:var(--muted);margin:3px 0 5px}
@@ -281,7 +281,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="ILO i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">FIELD MANUAL 1.0 RC8 · DAILY CARE</span>
+<span class="version">FIELD MANUAL 1.0 RC9 · FAMILY DAILY</span>
 <h1>FIELD MANUAL</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -289,7 +289,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Field Manual 1.0 RC8 · Daily Care är installerad.</div>
+<div id="updateNotice" class="notice">Field Manual 1.0 RC9 · Family Daily är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -331,6 +331,11 @@ body:not(.home-view) main{padding-top:18px}
 
 <div class="section-title"><h2>Aktiv profil</h2><span>personligt läge</span></div>
 <div class="card"><div id="todayProfiles" class="profile-row"></div><div id="activeProfileNote" class="good profile-card-note"></div><div class="profile-device-row"><div><strong><span class="device-badge">📱 Den här telefonen</span></strong><small id="deviceProfileText">Profilen sparas bara på denna enhet.</small></div><button class="profile-switch" data-change-device-profile="1">Byt profil</button></div></div>
+<div class="section-title"><h2>Att göra idag</h2><span id="homeDailySummary">hela familjen</span></div>
+<div class="card">
+  <div id="homeDailyTasks" class="home-daily-list"></div>
+  <button class="button secondary block" data-goto="family" style="margin-top:10px">Öppna familj & planering</button>
+</div>
 <div class="section-title"><h2>Idag med ILO</h2><span id="ageStageLabel">åldersanpassat</span></div>
 <div class="card focus-card click-card" data-goto="sar">
 <div class="eyebrow">DAGENS FOKUS</div><div class="focus-title" id="ageFocusTitle">–</div><p id="ageFocusText">–</p>
@@ -645,7 +650,7 @@ body:not(.home-view) main{padding-top:18px}
 <div class="card"><label>Födelsedatum</label><input type="date" id="birthDate"><label>Hämtningsdatum</label><input type="date" id="pickupDate"><button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button></div>
 <div class="card" style="margin-top:14px"><h3>Säkerhetskopia</h3><p>Exportera all data. Bilder gör filen större.</p><div class="row"><button class="button secondary" id="exportData">Exportera</button><button class="button secondary" id="importButton">Importera</button><input type="file" id="importData" accept="application/json" hidden></div></div>
 <div class="card" style="margin-top:14px"><h3>Appuppdatering</h3><button class="button secondary block" id="forceUpdate">Sök efter ny version</button></div>
-<div class="card" style="margin-top:14px"><h3>Om</h3><p>Field Manual 1.0 RC8 · Daily Care. Träning och utveckling är huvudmotorn. Foder registreras manuellt och dagsgiva/måltider beräknas lokalt. Nutrition Intelligence, viktkurva, hälsologg och Bur & Fordon är integrerade. Mission-systemet och kompetensmotorn kopplar nu ihop Academy, journal och fysisk utveckling. Träningspass-läget guidar steg för steg och FIELD MANUAL-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och FIELD MANUAL idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
+<div class="card" style="margin-top:14px"><h3>Om</h3><p>Field Manual 1.0 RC9 · Family Daily. Träning och utveckling är huvudmotorn. Foder registreras manuellt och dagsgiva/måltider beräknas lokalt. Nutrition Intelligence, viktkurva, hälsologg och Bur & Fordon är integrerade. Mission-systemet och kompetensmotorn kopplar nu ihop Academy, journal och fysisk utveckling. Träningspass-läget guidar steg för steg och FIELD MANUAL-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och FIELD MANUAL idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
 </section>
 
 <section id="missions" class="screen"><button class="screen-back" data-back="1">‹ Tillbaka</button>
@@ -1112,6 +1117,15 @@ function accessBadge(a){return a==='driver'?'<span class="badge driver">Endast M
 function canProfileDoTask(t,p){if(t.access==='driver')return p.id==='marcus';if(t.access==='instructor')return false;return t.assignee==='all'||t.assignee===p.id||p.id==='marcus'}
 function taskVisible(t,p){return t.assignee==='all'||t.assignee===p.id||p.id==='marcus'}
 function renderTask(t,index,compact=false){const who=t.completedBy?profileById(t.completedBy).name:'';return `<div class="task-card ${t.done?'done':''}"><input type="checkbox" data-familydone="${index}" ${t.done?'checked':''} ${!canProfileDoTask(t,activeProfile())&&!t.done?'disabled':''}><div><strong>${escapeHtml(t.title)}</strong><div class="task-meta">${t.date}${t.time?' · '+t.time:''} · ${t.assignee==='all'?'Alla':escapeHtml(profileById(t.assignee).name)} ${t.reminder?' · 🔔':' · 🔕'}</div>${t.note?`<div class="task-meta">${escapeHtml(t.note)}</div>`:''}<div style="margin-top:6px">${accessBadge(t.access)} ${t.done?`<span class="badge">Klar av ${escapeHtml(who)}</span>`:''}</div></div>${compact?'':`<button class="icon-btn" data-delfamily="${index}" aria-label="Ta bort">×</button>`}</div>`}
+
+function renderHomeDailyTasks(){
+ const el=document.querySelector('#homeDailyTasks'); if(!el)return;
+ const today=isoToday(), p=activeProfile();
+ const rows=state.familyTasks.map((t,i)=>({t,i})).filter(x=>x.t.date===today&&taskVisible(x.t,p)).sort((a,b)=>(a.t.time||'99:99').localeCompare(b.t.time||'99:99'));
+ const done=rows.filter(x=>x.t.done).length;
+ const sum=document.querySelector('#homeDailySummary'); if(sum)sum.textContent=`${done}/${rows.length} klara · ${p.name}`;
+ el.innerHTML=rows.length?rows.map(x=>renderTask(x.t,x.i,true)).join(''):'<div class="empty">Inga uppgifter registrerade idag.</div>';
+}
 function renderFamily(){
  applyProfileMode();
  const p=activeProfile();const heroProfile=document.querySelector('#heroProfileName');if(heroProfile)heroProfile.textContent=p.name;profileButtons(document.querySelector('#todayProfiles'));profileButtons(document.querySelector('#familyProfiles'));
@@ -1127,13 +1141,19 @@ function renderFamily(){
  document.querySelector('#taskAssignee').innerHTML=opts;document.querySelector('#lifePerson').innerHTML=state.profiles.map(x=>`<option value="${x.id}" ${x.id===state.activeProfile?'selected':''}>${escapeHtml(x.name)}</option>`).join('');
  const events=[...state.lifeEvents].sort((a,b)=>(b.date+b.created).localeCompare(a.date+a.created)).slice(0,20);
  document.querySelector('#lifeTimeline').innerHTML=events.length?events.map((e,i)=>`<div class="timeline-item"><span class="timeline-dot"></span><div><strong>${escapeHtml(e.title)}</strong><div class="task-meta">${svDate(e.date)} · ${escapeHtml(e.category)} · ${escapeHtml(profileById(e.person).name)} · ${'★'.repeat(+e.rating)}</div>${e.note?`<p>${escapeHtml(e.note)}</p>`:''}<button class="icon-btn" data-dellife="${state.lifeEvents.indexOf(e)}">Ta bort</button></div></div>`).join(''):'<div class="empty">Livsboken är tom ännu.</div>';
+ renderHomeDailyTasks();
 }
 async function requestNotifications(){if(!('Notification' in window)){alert('Den här webbläsaren stöder inte systemnotiser. Uppgiften sparas ändå i appen.');return false}if(Notification.permission==='granted')return true;const r=await Notification.requestPermission();return r==='granted'}
 function reminderMoment(t){if(!t.reminder||!t.time||t.done)return null;const d=new Date(`${t.date}T${t.time}:00`);d.setMinutes(d.getMinutes()-(+t.reminderOffset||0));return d}
 function checkReminders(){const now=Date.now();state.familyTasks.forEach((t,i)=>{const when=reminderMoment(t);if(!when)return;const key=`${t.date}-${t.time}-${t.reminderOffset||0}`;const repeat=t.repeatReminder?30*60000:86400000;const last=t.lastNotified||0;if(now>=when.getTime()&&now-last>=repeat&&now-when.getTime()<86400000){const p=activeProfile();if(t.reminderAudience==='all'||t.assignee==='all'||t.assignee===p.id){if(Notification.permission==='granted')new Notification(`FIELD MANUAL · ${t.title}`,{body:t.note||`Ansvarig: ${t.assignee==='all'?'Alla':profileById(t.assignee).name}`,icon:'icon-192.png'});t.lastNotified=now;localStorage.setItem(STORE,JSON.stringify(state));}}})}
 function seedFamilyTasks(){if(state.familyTasks.length)return;const d=isoToday();state.familyTasks=[
- {title:'Kontrollera och fyll vatten',date:d,time:'08:00',assignee:'all',access:'family',note:'Se till att skålen är ren och har friskt vatten.',reminder:false,done:false},
- {title:'Gå en lugn promenad',date:d,time:'',assignee:'anna-lena',access:'family',note:'Låt ILO nosa och håll tempot lugnt.',reminder:false,done:false},
+ {title:'Morgonrastning',date:d,time:'06:30',assignee:'all',access:'family',note:'Ut direkt efter sömn. Markera när det är gjort.',reminder:false,done:false},
+ {title:'Frukost',date:d,time:'07:00',assignee:'all',access:'family',note:'Ge dagens planerade fodergiva.',reminder:false,done:false},
+ {title:'Kontrollera och fyll vatten',date:d,time:'08:00',assignee:'all',access:'family',note:'Ren skål och friskt vatten.',reminder:false,done:false},
+ {title:'Lunch',date:d,time:'12:00',assignee:'all',access:'family',note:'Ge dagens planerade fodergiva.',reminder:false,done:false},
+ {title:'Rastning / utgång',date:d,time:'13:00',assignee:'all',access:'family',note:'Lugn utgång med nosande. Logga avföring i Hälsa vid behov.',reminder:false,done:false},
+ {title:'Kvällsmat',date:d,time:'18:00',assignee:'all',access:'family',note:'Ge dagens planerade fodergiva.',reminder:false,done:false},
+ {title:'Kvällsrastning',date:d,time:'22:00',assignee:'all',access:'family',note:'Sista lugna rastningen före natten.',reminder:false,done:false},
  {title:'Kort förarpass',date:d,time:'',assignee:'marcus',access:'driver',note:'Följ dagens automatiska träningsplan.',reminder:false,done:false}
  ];localStorage.setItem(STORE,JSON.stringify(state))}
 
