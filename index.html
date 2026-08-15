@@ -281,7 +281,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="ILO i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">FIELD MANUAL 1.0 RC9 · FAMILY DAILY</span>
+<span class="version">FIELD MANUAL 1.0 RC10 · DAILY CONTROL</span>
 <h1>FIELD MANUAL</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -289,7 +289,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Field Manual 1.0 RC9 · Family Daily är installerad.</div>
+<div id="updateNotice" class="notice">Field Manual 1.0 RC10 · Daily Control är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -299,6 +299,11 @@ body:not(.home-view) main{padding-top:18px}
     <button class="command-chip" data-goto="journal">✎ <span>Logga</span></button>
     <button class="command-chip" id="homeOpenILO">☰ <span>Öppna FIELD MANUAL</span></button>
   </div>
+</div>
+<div class="section-title"><h2>Att göra idag</h2><span id="homeDailySummary">hela familjen</span></div>
+<div class="card daily-control-card">
+  <div id="homeDailyTasks" class="home-daily-list"></div>
+  <button class="button secondary block" data-goto="family" style="margin-top:10px">Öppna familj & planering</button>
 </div>
 <div class="section-title"><h2>Idag</h2><span>datadriven plan</span></div>
 <div class="card ice-today">
@@ -331,11 +336,6 @@ body:not(.home-view) main{padding-top:18px}
 
 <div class="section-title"><h2>Aktiv profil</h2><span>personligt läge</span></div>
 <div class="card"><div id="todayProfiles" class="profile-row"></div><div id="activeProfileNote" class="good profile-card-note"></div><div class="profile-device-row"><div><strong><span class="device-badge">📱 Den här telefonen</span></strong><small id="deviceProfileText">Profilen sparas bara på denna enhet.</small></div><button class="profile-switch" data-change-device-profile="1">Byt profil</button></div></div>
-<div class="section-title"><h2>Att göra idag</h2><span id="homeDailySummary">hela familjen</span></div>
-<div class="card">
-  <div id="homeDailyTasks" class="home-daily-list"></div>
-  <button class="button secondary block" data-goto="family" style="margin-top:10px">Öppna familj & planering</button>
-</div>
 <div class="section-title"><h2>Idag med ILO</h2><span id="ageStageLabel">åldersanpassat</span></div>
 <div class="card focus-card click-card" data-goto="sar">
 <div class="eyebrow">DAGENS FOKUS</div><div class="focus-title" id="ageFocusTitle">–</div><p id="ageFocusText">–</p>
@@ -1116,14 +1116,14 @@ function profileButtons(target){
 function accessBadge(a){return a==='driver'?'<span class="badge driver">Endast Marcus</span>':a==='instructor'?'<span class="badge">Instruktör</span>':a==='all'?'<span class="badge family">Alla</span>':'<span class="badge family">Familjen</span>'}
 function canProfileDoTask(t,p){if(t.access==='driver')return p.id==='marcus';if(t.access==='instructor')return false;return t.assignee==='all'||t.assignee===p.id||p.id==='marcus'}
 function taskVisible(t,p){return t.assignee==='all'||t.assignee===p.id||p.id==='marcus'}
-function renderTask(t,index,compact=false){const who=t.completedBy?profileById(t.completedBy).name:'';return `<div class="task-card ${t.done?'done':''}"><input type="checkbox" data-familydone="${index}" ${t.done?'checked':''} ${!canProfileDoTask(t,activeProfile())&&!t.done?'disabled':''}><div><strong>${escapeHtml(t.title)}</strong><div class="task-meta">${t.date}${t.time?' · '+t.time:''} · ${t.assignee==='all'?'Alla':escapeHtml(profileById(t.assignee).name)} ${t.reminder?' · 🔔':' · 🔕'}</div>${t.note?`<div class="task-meta">${escapeHtml(t.note)}</div>`:''}<div style="margin-top:6px">${accessBadge(t.access)} ${t.done?`<span class="badge">Klar av ${escapeHtml(who)}</span>`:''}</div></div>${compact?'':`<button class="icon-btn" data-delfamily="${index}" aria-label="Ta bort">×</button>`}</div>`}
+function renderTask(t,index,compact=false){const who=t.completedBy?profileById(t.completedBy).name:'';const doneTime=t.completedAt?new Date(t.completedAt).toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'}):'';const planned=t.time||'Flex';return `<div class="task-card ${t.done?'done':''}"><input type="checkbox" data-familydone="${index}" ${t.done?'checked':''} ${!canProfileDoTask(t,activeProfile())&&!t.done?'disabled':''}><div><strong>${escapeHtml(t.title)}</strong><div class="task-meta">Plan ${planned}${t.done?` · ✓ ${doneTime||'klar'} · ${escapeHtml(who)}`:` · ${t.assignee==='all'?'hela familjen':escapeHtml(profileById(t.assignee).name)}`}</div>${(!compact&&t.note)?`<div class="task-meta">${escapeHtml(t.note)}</div>`:''}${compact?'':`<div style="margin-top:6px">${accessBadge(t.access)}</div>`}</div>${compact?'':`<button class="icon-btn" data-delfamily="${index}" aria-label="Ta bort">×</button>`}</div>`}
 
 function renderHomeDailyTasks(){
  const el=document.querySelector('#homeDailyTasks'); if(!el)return;
  const today=isoToday(), p=activeProfile();
- const rows=state.familyTasks.map((t,i)=>({t,i})).filter(x=>x.t.date===today&&taskVisible(x.t,p)).sort((a,b)=>(a.t.time||'99:99').localeCompare(b.t.time||'99:99'));
+ const rows=state.familyTasks.map((t,i)=>({t,i})).filter(x=>x.t.date===today&&(x.t.access!=='driver'||p.id==='marcus')).sort((a,b)=>(a.t.time||'99:99').localeCompare(b.t.time||'99:99'));
  const done=rows.filter(x=>x.t.done).length;
- const sum=document.querySelector('#homeDailySummary'); if(sum)sum.textContent=`${done}/${rows.length} klara · ${p.name}`;
+ const sum=document.querySelector('#homeDailySummary'); if(sum)sum.textContent=`${done}/${rows.length} klara · gemensam lista`;
  el.innerHTML=rows.length?rows.map(x=>renderTask(x.t,x.i,true)).join(''):'<div class="empty">Inga uppgifter registrerade idag.</div>';
 }
 function renderFamily(){
@@ -1146,16 +1146,23 @@ function renderFamily(){
 async function requestNotifications(){if(!('Notification' in window)){alert('Den här webbläsaren stöder inte systemnotiser. Uppgiften sparas ändå i appen.');return false}if(Notification.permission==='granted')return true;const r=await Notification.requestPermission();return r==='granted'}
 function reminderMoment(t){if(!t.reminder||!t.time||t.done)return null;const d=new Date(`${t.date}T${t.time}:00`);d.setMinutes(d.getMinutes()-(+t.reminderOffset||0));return d}
 function checkReminders(){const now=Date.now();state.familyTasks.forEach((t,i)=>{const when=reminderMoment(t);if(!when)return;const key=`${t.date}-${t.time}-${t.reminderOffset||0}`;const repeat=t.repeatReminder?30*60000:86400000;const last=t.lastNotified||0;if(now>=when.getTime()&&now-last>=repeat&&now-when.getTime()<86400000){const p=activeProfile();if(t.reminderAudience==='all'||t.assignee==='all'||t.assignee===p.id){if(Notification.permission==='granted')new Notification(`FIELD MANUAL · ${t.title}`,{body:t.note||`Ansvarig: ${t.assignee==='all'?'Alla':profileById(t.assignee).name}`,icon:'icon-192.png'});t.lastNotified=now;localStorage.setItem(STORE,JSON.stringify(state));}}})}
-function seedFamilyTasks(){if(state.familyTasks.length)return;const d=isoToday();state.familyTasks=[
- {title:'Morgonrastning',date:d,time:'06:30',assignee:'all',access:'family',note:'Ut direkt efter sömn. Markera när det är gjort.',reminder:false,done:false},
- {title:'Frukost',date:d,time:'07:00',assignee:'all',access:'family',note:'Ge dagens planerade fodergiva.',reminder:false,done:false},
- {title:'Kontrollera och fyll vatten',date:d,time:'08:00',assignee:'all',access:'family',note:'Ren skål och friskt vatten.',reminder:false,done:false},
- {title:'Lunch',date:d,time:'12:00',assignee:'all',access:'family',note:'Ge dagens planerade fodergiva.',reminder:false,done:false},
- {title:'Rastning / utgång',date:d,time:'13:00',assignee:'all',access:'family',note:'Lugn utgång med nosande. Logga avföring i Hälsa vid behov.',reminder:false,done:false},
- {title:'Kvällsmat',date:d,time:'18:00',assignee:'all',access:'family',note:'Ge dagens planerade fodergiva.',reminder:false,done:false},
- {title:'Kvällsrastning',date:d,time:'22:00',assignee:'all',access:'family',note:'Sista lugna rastningen före natten.',reminder:false,done:false},
- {title:'Kort förarpass',date:d,time:'',assignee:'marcus',access:'driver',note:'Följ dagens automatiska träningsplan.',reminder:false,done:false}
- ];localStorage.setItem(STORE,JSON.stringify(state))}
+function seedFamilyTasks(){
+ const d=isoToday();
+ const routine=[
+  ['Morgonrastning','06:30','Ut direkt efter sömn.'],
+  ['Frukost','07:00','Ge dagens planerade fodergiva.'],
+  ['Kontrollera och fyll vatten','08:00','Ren skål och friskt vatten.'],
+  ['Avföring – morgonkoll','08:05','Markera när avföring observerats; avvikelse loggas i Hälsa.'],
+  ['Lunch','12:00','Ge dagens planerade fodergiva.'],
+  ['Rastning / utgång','13:00','Lugn utgång med nosande.'],
+  ['Avföring – eftermiddagskoll','13:05','Markera när avföring observerats; avvikelse loggas i Hälsa.'],
+  ['Kvällsmat','18:00','Ge dagens planerade fodergiva.'],
+  ['Kvällsrastning','22:00','Sista lugna rastningen före natten.']
+ ];
+ routine.forEach(([title,time,note])=>{if(!state.familyTasks.some(t=>t.date===d&&t.title===title))state.familyTasks.push({title,date:d,time,assignee:'all',access:'family',note,reminder:false,done:false,created:new Date().toISOString()})});
+ if(!state.familyTasks.some(t=>t.date===d&&t.title==='Kort förarpass'))state.familyTasks.push({title:'Kort förarpass',date:d,time:'',assignee:'marcus',access:'driver',note:'Följ dagens automatiska träningsplan.',reminder:false,done:false,created:new Date().toISOString()});
+ localStorage.setItem(STORE,JSON.stringify(state))
+}
 
 let sessionTimer=null;
 function trainingSessionPlan(){const ids=(state.activeTrainingSession&&state.activeTrainingSession.exerciseIds)||getDailyPlan().map(x=>x.id);return ids.map(id=>exerciseLibrary.find(x=>x.id===id)).filter(Boolean)}
