@@ -1,4 +1,4 @@
-const CACHE = "field-manual-1-0-rc6-smart-food-scan-fix";
+const CACHE = "field-manual-1-0-rc8-daily-checklist";
 const ASSETS = ["./index.html","./manifest.webmanifest","./ice-photo.jpg","./ilo-photo.jpg","./fm-icon-180-rc5.png","./fm-icon-192-rc5.png","./fm-icon-512-rc5.png","./ice-hero-dark.jpg"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)));

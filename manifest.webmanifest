@@ -1,8 +1,8 @@
 {
   "name": "Field Manual",
   "short_name": "Field Manual",
-  "description": "Field Manual 1.0 RC6 – Smart Scan Fix: korrigerad bildläsning som ersätter gamla foderuppgifter och visar vad OCR faktiskt hittat.",
-  "start_url": "./?v=1.0-rc6",
+  "description": "Field Manual 1.0 RC8 – Dagens checklista och manuell nutrition.",
+  "start_url": "./?v=1.0-rc8",
   "scope": "./",
   "display": "standalone",
   "background_color": "#06100d",
