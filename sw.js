@@ -1,4 +1,4 @@
-const CACHE = "field-manual-1-0-rc11";
+const CACHE = "field-manual-1-0-rc12";
 const ASSETS = ["./index.html","./manifest.webmanifest","./ice-photo.jpg","./ilo-photo.jpg","./fm-icon-180-rc5.png","./fm-icon-192-rc5.png","./fm-icon-512-rc5.png","./ice-hero-dark.jpg"];
 self.addEventListener("install", event => { event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS))); self.skipWaiting(); });
 self.addEventListener("activate", event => { event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))); self.clients.claim(); });

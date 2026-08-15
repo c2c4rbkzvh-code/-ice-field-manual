@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Field Manual">
 <link rel="apple-touch-icon" href="fm-icon-180-rc5.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Field Manual 1.0 RC9 – Family Daily Care</title>
+<title>Field Manual 1.0 RC12 – Family Sync</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -281,7 +281,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="ILO i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">FIELD MANUAL 1.0 RC11 · FAMILY CONTROL</span>
+<span class="version">FIELD MANUAL 1.0 RC12 · FAMILY SYNC</span>
 <h1>FIELD MANUAL</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -289,7 +289,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Field Manual 1.0 RC11 · Family Control är installerad.</div>
+<div id="updateNotice" class="notice">Field Manual 1.0 RC12 · Family Sync är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -300,7 +300,7 @@ body:not(.home-view) main{padding-top:18px}
     <button class="command-chip" id="homeOpenILO">☰ <span>Öppna FIELD MANUAL</span></button>
   </div>
 </div>
-<div class="section-title"><h2>Att göra idag</h2><span id="homeDailySummary">hela familjen</span></div>
+<div class="section-title"><h2>Att göra idag</h2><span id="homeDailySummary">hela familjen</span></div><div id="cloudSyncStatus" class="device-badge" style="margin:0 0 10px">☁️ Ansluter familjesynk…</div>
 <div class="card daily-control-card">
   <div id="homeDailyTasks" class="home-daily-list"></div>
   <button class="button secondary block" data-goto="family" style="margin-top:10px">Öppna familj & planering</button>
@@ -674,8 +674,9 @@ body:not(.home-view) main{padding-top:18px}
 <button class="tab" data-screen="family"><b>⌂</b>Familj</button>
 </div></nav>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const VERSION="1.0.0-rc8", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
+const VERSION="1.0.0-rc12", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
 const defaults={
  dog:{name:"ILO",breed:"Belgisk Malinois",sex:"Hane",photo:"ice-photo.jpg"},
  birthDate:"2026-06-04",pickupDate:"2026-08-05",currentWorkMode:"ledig",
@@ -700,7 +701,7 @@ const storedDeviceProfile=localStorage.getItem(DEVICE_PROFILE_KEY);if(storedDevi
 function clone(x){return JSON.parse(JSON.stringify(x))}
 function load(){try{const p=JSON.parse(localStorage.getItem(STORE)||"null");return p?{...clone(defaults),...p}:clone(defaults)}catch(e){return clone(defaults)}}
 function save(){try{localStorage.setItem(STORE,JSON.stringify(state));renderAll()}catch(e){alert("Lagringen är full. Exportera en backup och ta bort några bilder.")}}
-function dateOnly(s){return new Date(s+"T12:00:00")}function isoToday(){return new Date().toISOString().slice(0,10)}
+function dateOnly(s){return new Date(s+"T12:00:00")}function isoToday(){const d=new Date(),z=new Date(d.getTime()-d.getTimezoneOffset()*60000);return z.toISOString().slice(0,10)}
 function svDate(s){return dateOnly(s).toLocaleDateString("sv-SE",{day:"numeric",month:"long",year:"numeric"})}
 function daysBetween(a,b){return Math.round((dateOnly(b)-dateOnly(a))/86400000)}
 function ageParts(){
@@ -1149,20 +1150,69 @@ function checkReminders(){const now=Date.now();state.familyTasks.forEach((t,i)=>
 function seedFamilyTasks(){
  const d=isoToday();
  const routine=[
-  ['Morgonrastning','06:30','Ut direkt efter sömn.'],
-  ['Frukost','07:00','Ge dagens planerade fodergiva.'],
-  ['Kontrollera och fyll vatten','08:00','Ren skål och friskt vatten.'],
-  ['Avföring – morgonkoll','08:05','Markera när avföring observerats; avvikelse loggas i Hälsa.'],
-  ['Lunch','12:00','Ge dagens planerade fodergiva.'],
-  ['Rastning / utgång','13:00','Lugn utgång med nosande.'],
-  ['Avföring – eftermiddagskoll','13:05','Markera när avföring observerats; avvikelse loggas i Hälsa.'],
-  ['Kvällsmat','18:00','Ge dagens planerade fodergiva.'],
-  ['Kvällsrastning','22:00','Sista lugna rastningen före natten.']
+  ['morning_out','Morgonrastning','06:30','Ut direkt efter sömn.','care'],
+  ['breakfast','Frukost','07:00','Ge dagens planerade fodergiva.','food'],
+  ['water','Kontrollera och fyll vatten','08:00','Ren skål och friskt vatten.','care'],
+  ['stool_am','Avföring – morgonkoll','08:05','Markera när avföring observerats; avvikelse loggas i Hälsa.','stool'],
+  ['lunch','Lunch','12:00','Ge dagens planerade fodergiva.','food'],
+  ['afternoon_out','Rastning / utgång','13:00','Lugn utgång med nosande.','care'],
+  ['stool_pm','Avföring – eftermiddagskoll','13:05','Markera när avföring observerats; avvikelse loggas i Hälsa.','stool'],
+  ['dinner','Kvällsmat','18:00','Ge dagens planerade fodergiva.','food'],
+  ['evening_out','Kvällsrastning','22:00','Sista lugna rastningen före natten.','care']
  ];
- routine.forEach(([title,time,note])=>{if(!state.familyTasks.some(t=>t.date===d&&t.title===title))state.familyTasks.push({title,date:d,time,assignee:'all',access:'family',note,reminder:false,done:false,created:new Date().toISOString()})});
- if(!state.familyTasks.some(t=>t.date===d&&t.title==='Kort förarpass'))state.familyTasks.push({title:'Kort förarpass',date:d,time:'',assignee:'marcus',access:'driver',note:'Följ dagens automatiska träningsplan.',reminder:false,done:false,created:new Date().toISOString()});
+ routine.forEach(([taskKey,title,time,note,category])=>{if(!state.familyTasks.some(t=>t.date===d&&(t.taskKey===taskKey||t.title===title)))state.familyTasks.push({taskKey,title,date:d,time,category,assignee:'all',access:'family',note,reminder:false,done:false,created:new Date().toISOString()})});
+ if(!state.familyTasks.some(t=>t.date===d&&t.title==='Kort förarpass'))state.familyTasks.push({taskKey:'driver_training',title:'Kort förarpass',date:d,time:'',category:'training',assignee:'marcus',access:'driver',note:'Följ dagens automatiska träningsplan.',reminder:false,done:false,created:new Date().toISOString()});
  localStorage.setItem(STORE,JSON.stringify(state))
 }
+
+// RC12 · Supabase family sync. Publishable key is intentionally safe for browser use with RLS.
+const SUPABASE_URL='https://fyvkbnjpgambkbjifnlv.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_aSefGWebIS8-Z2a3CdBwFQ_8s6WR9BV';
+let fmCloud=null, fmDogId=null, fmMemberIds={}, fmRealtimeChannel=null, fmSyncBusy=false;
+const FM_ROUTINE=[
+ ['morning_out','Morgonrastning','06:30','care'],['breakfast','Frukost','07:00','food'],['water','Kontrollera och fyll vatten','08:00','care'],['stool_am','Avföring – morgonkoll','08:05','stool'],['lunch','Lunch','12:00','food'],['afternoon_out','Rastning / utgång','13:00','care'],['stool_pm','Avföring – eftermiddagskoll','13:05','stool'],['dinner','Kvällsmat','18:00','food'],['evening_out','Kvällsrastning','22:00','care']
+];
+function setCloudStatus(text,ok=true){const el=document.querySelector('#cloudSyncStatus');if(!el)return;el.textContent=(ok?'☁️ ':'⚠️ ')+text;el.style.background=ok?'#173a2b':'#472c18';el.style.color=ok?'#c9f1d7':'#ffe0b9'}
+function profileIdByName(name){const n=(name||'').toLowerCase();return state.profiles.find(p=>p.name.toLowerCase()===n)?.id||''}
+async function initFamilySync(){
+ if(!navigator.onLine){setCloudStatus('Offline · visar senast sparade data',false);return}
+ if(!window.supabase?.createClient){setCloudStatus('Molnbiblioteket kunde inte laddas',false);return}
+ try{
+  fmCloud=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:false,autoRefreshToken:false}});
+  const {data:dogs,error:dogErr}=await fmCloud.from('dogs').select('id,kennel_name').eq('kennel_name','Pergites ILO').limit(1);if(dogErr)throw dogErr;if(!dogs?.length)throw new Error('Hundprofil saknas i molnet');fmDogId=dogs[0].id;
+  const {data:members,error:memErr}=await fmCloud.from('family_members').select('id,name').eq('dog_id',fmDogId);if(memErr)throw memErr;fmMemberIds={};(members||[]).forEach(m=>fmMemberIds[profileIdByName(m.name)]=m.id);
+  await ensureCloudDailyTasks();
+  await pullCloudToday();
+  subscribeFamilySync();
+  setCloudStatus('Familjesynk aktiv · ändringar delas direkt');
+ }catch(err){console.error('Family sync init',err);setCloudStatus('Synk kunde inte starta · lokal data används',false)}
+}
+async function ensureCloudDailyTasks(){
+ if(!fmCloud||!fmDogId)return;const d=isoToday();
+ const rows=FM_ROUTINE.map(([task_key,title,planned_time,category])=>({dog_id:fmDogId,task_date:d,task_key,title,planned_time,category}));
+ const {error}=await fmCloud.from('daily_tasks').upsert(rows,{onConflict:'dog_id,task_date,task_key',ignoreDuplicates:false});if(error)throw error;
+}
+async function pullCloudToday(){
+ if(!fmCloud||!fmDogId||fmSyncBusy)return;fmSyncBusy=true;
+ try{
+  const d=isoToday();const {data,error}=await fmCloud.from('daily_tasks').select('*').eq('dog_id',fmDogId).eq('task_date',d).order('planned_time',{ascending:true});if(error)throw error;
+  const cloudKeys=new Set((data||[]).map(r=>r.task_key)),cloudTitles=new Set((data||[]).map(r=>r.title));
+  state.familyTasks=state.familyTasks.filter(t=>!(t.date===d&&(t.cloudId||cloudKeys.has(t.taskKey)||cloudTitles.has(t.title))));
+  (data||[]).forEach(r=>{let localWho='';if(r.completed_by){localWho=Object.keys(fmMemberIds).find(k=>fmMemberIds[k]===r.completed_by)||''}state.familyTasks.push({cloudId:r.id,taskKey:r.task_key,title:r.title,date:r.task_date,time:(r.planned_time||'').slice(0,5),category:r.category||'care',assignee:'all',access:'family',note:r.note||'',done:!!r.completed,completedAt:r.completed_at||'',completedBy:localWho,stoolStatus:r.stool_status||'',created:r.updated_at||new Date().toISOString()})});
+  localStorage.setItem(STORE,JSON.stringify(state));renderAll();setCloudStatus('Synkad nu · hela familjen ser samma lista');
+ }finally{fmSyncBusy=false}
+}
+async function pushCloudCompletion(t){
+ if(!fmCloud||!t?.cloudId){return}
+ const payload={completed:!!t.done,completed_at:t.done?(t.completedAt||new Date().toISOString()):null,completed_by:t.done?(fmMemberIds[state.activeProfile]||null):null};
+ const {error}=await fmCloud.from('daily_tasks').update(payload).eq('id',t.cloudId);if(error){console.error(error);setCloudStatus('Kunde inte spara i molnet',false);return}setCloudStatus('Sparat · familjen uppdateras');
+}
+function subscribeFamilySync(){
+ if(!fmCloud||!fmDogId)return;if(fmRealtimeChannel)fmCloud.removeChannel(fmRealtimeChannel);
+ fmRealtimeChannel=fmCloud.channel('field-manual-family-'+fmDogId).on('postgres_changes',{event:'*',schema:'public',table:'daily_tasks',filter:`dog_id=eq.${fmDogId}`},()=>{pullCloudToday()}).subscribe(status=>{if(status==='SUBSCRIBED')setCloudStatus('Familjesynk aktiv · live')});
+}
+window.addEventListener('online',()=>initFamilySync());window.addEventListener('offline',()=>setCloudStatus('Offline · ändringar sparas lokalt tills vidare',false));
+
 
 let sessionTimer=null;
 function trainingSessionPlan(){const ids=(state.activeTrainingSession&&state.activeTrainingSession.exerciseIds)||getDailyPlan().map(x=>x.id);return ids.map(id=>exerciseLibrary.find(x=>x.id===id)).filter(Boolean)}
@@ -1495,7 +1545,7 @@ document.addEventListener("click",async e=>{
  if(e.target.closest('[data-change-device-profile]')){showProfileSetup()}
  if(e.target.dataset.openFamily!==undefined){document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));document.querySelector('[data-screen="family"]').classList.add('active');document.querySelector('#family').classList.add('active');scrollTo(0,0)}
  if(e.target.dataset.openSettings!==undefined){document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));document.querySelector('#settings').classList.add('active');scrollTo(0,0)}
- if(e.target.dataset.familydone!==undefined){const i=+e.target.dataset.familydone,t=state.familyTasks[i];if(!canProfileDoTask(t,activeProfile())&&!t.done){alert('Den här uppgiften är inte tilldelad den valda profilen.');return}t.done=e.target.checked;t.completedBy=t.done?state.activeProfile:'';t.completedAt=t.done?new Date().toISOString():'';save()}
+ if(e.target.dataset.familydone!==undefined){const i=+e.target.dataset.familydone,t=state.familyTasks[i];if(!canProfileDoTask(t,activeProfile())&&!t.done){alert('Den här uppgiften är inte tilldelad den valda profilen.');return}t.done=e.target.checked;t.completedBy=t.done?state.activeProfile:'';t.completedAt=t.done?new Date().toISOString():'';save();if(t.cloudId)pushCloudCompletion(t)}
  if(e.target.dataset.delfamily!==undefined&&confirm('Ta bort uppgiften?')){state.familyTasks.splice(+e.target.dataset.delfamily,1);save()}
  if(e.target.dataset.dellife!==undefined&&confirm('Ta bort händelsen ur livsboken?')){state.lifeEvents.splice(+e.target.dataset.dellife,1);save()}
  if(e.target.id==='saveFamilyTask'){const title=(document.querySelector('#taskTitle').value.trim()||document.querySelector('#taskTemplate').value),date=document.querySelector('#taskDate').value;if(!title||!date)return alert('Välj uppgift/rubrik och datum.');const reminder=document.querySelector('#taskReminder').checked;if(reminder&&document.querySelector('#taskTime').value)await requestNotifications();state.familyTasks.push({title,date,time:document.querySelector('#taskTime').value,assignee:document.querySelector('#taskAssignee').value,access:document.querySelector('#taskAccess').value,note:document.querySelector('#taskNote').value.trim(),reminder,reminderOffset:+document.querySelector('#taskReminderOffset').value,reminderAudience:document.querySelector('#taskReminderAudience').value,repeatReminder:document.querySelector('#taskRepeatReminder').checked,done:false,created:new Date().toISOString()});document.querySelector('#taskTitle').value='';document.querySelector('#taskTemplate').value='';document.querySelector('#taskNote').value='';document.querySelector('#taskTime').value='';document.querySelector('#taskReminder').checked=false;document.querySelector('#reminderOptions').classList.add('hidden');save()}
@@ -1548,11 +1598,11 @@ document.querySelector("#journalPhoto").addEventListener("change",async e=>{if(!
 document.querySelector("#importData").addEventListener("change",async e=>{try{const j=JSON.parse(await e.target.files[0].text());state={...clone(defaults),...(j.data||j)};save();alert("Importerad.")}catch(err){alert("Filen kunde inte läsas.")}});
 document.querySelector("#journalDate").value=isoToday();const careDateEl=document.querySelector("#careDate");if(careDateEl)careDateEl.value=isoToday();document.querySelector("#taskDate").value=isoToday();document.querySelector("#lifeDate").value=isoToday();clearShift();seedFamilyTasks();
 if(localStorage.getItem("iceAppVersion")!==VERSION){localStorage.setItem("iceAppVersion",VERSION);document.querySelector("#updateNotice").style.display="block";setTimeout(()=>document.querySelector("#updateNotice").style.display="none",5000)}
-configureILO40Dashboard();renderAll();updateILOTopProfile();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();checkReminders();setInterval(checkReminders,60000);setInterval(refreshLiveGreeting,60000);window.addEventListener('focus',refreshLiveGreeting);window.addEventListener('pageshow',refreshLiveGreeting);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshLiveGreeting()});if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("./sw.js?v=1.0-rc8",{updateViaCache:"none"}).then(reg=>reg.update()).catch(()=>{});
+configureILO40Dashboard();renderAll();updateILOTopProfile();initFamilySync();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();checkReminders();setInterval(checkReminders,60000);setInterval(refreshLiveGreeting,60000);window.addEventListener('focus',refreshLiveGreeting);window.addEventListener('pageshow',refreshLiveGreeting);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshLiveGreeting()});if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("./sw.js?v=1.0-rc12",{updateViaCache:"none"}).then(reg=>reg.update()).catch(()=>{});
   navigator.serviceWorker.addEventListener("controllerchange",()=>{
-    if(!sessionStorage.getItem("fm_rc8_reloaded")){
-      sessionStorage.setItem("fm_rc8_reloaded","1");
+    if(!sessionStorage.getItem("fm_rc12_reloaded")){
+      sessionStorage.setItem("fm_rc12_reloaded","1");
       location.reload();
     }
   });
