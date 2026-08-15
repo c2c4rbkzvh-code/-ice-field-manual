@@ -281,7 +281,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="ILO i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">FIELD MANUAL 1.0 RC10 · DAILY CONTROL</span>
+<span class="version">FIELD MANUAL 1.0 RC11 · FAMILY CONTROL</span>
 <h1>FIELD MANUAL</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -289,7 +289,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Field Manual 1.0 RC10 · Daily Control är installerad.</div>
+<div id="updateNotice" class="notice">Field Manual 1.0 RC11 · Family Control är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -1446,7 +1446,7 @@ function goBackScreen(){if(screenHistory.length>1){screenHistory.pop();openScree
 
 function configureILO40Dashboard(){
  const today=document.querySelector('#today'); if(!today||today.classList.contains('dashboard-ready'))return;
- const keepTitles=['FIELD MANUAL idag','FIELD MANUAL Intelligence','Smart coach','Idag med ILO','Färdighetsmotor'];
+ const keepTitles=['Att göra idag','Idag med ILO','Färdighetsmotor','FIELD MANUAL idag','FIELD MANUAL Intelligence','Smart coach'];
  [...today.children].forEach(el=>el.classList.add('dashboard-hidden'));
  const welcome=today.querySelector('.hq-welcome'); if(welcome)welcome.classList.remove('dashboard-hidden');
  const notice=today.querySelector('#updateNotice'); if(notice)notice.classList.remove('dashboard-hidden');

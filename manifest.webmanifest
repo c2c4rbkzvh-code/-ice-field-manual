@@ -1,7 +1,7 @@
 {
   "name": "Field Manual",
   "short_name": "Field Manual",
-  "description": "Field Manual 1.0 RC10 – Daily Control: träning, utveckling, daglig omsorg och manuell nutrition.",
+  "description": "Field Manual 1.0 RC11 – Daily Control: träning, utveckling, daglig omsorg och manuell nutrition.",
   "start_url": "./?v=1.0-rc10",
   "scope": "./",
   "display": "standalone",

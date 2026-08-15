@@ -1,10 +1,3 @@
-FIELD MANUAL 1.0 RC6 – SMART SCAN FIX
+Field Manual 1.0 RC11 · Family Control
 
-Bugfix för foderbildläsning:
-- OCR-värden ersätter nu gamla formulärvärden när de hittas.
-- När ett nytt foder identifieras rensas gamla näringsvärden som OCR inte kan verifiera.
-- Resultatet visas i en separat kontrollruta före beräkning.
-- Fält som ändrats av OCR markeras tydligt.
-- Befintlig lokal appdata och lagringsnycklar är oförändrade.
-
-RC9: Att göra idag visas på Hem för aktiv familjeprofil, med tider, ansvarig och vem som checkat av.
+Fix: Att göra idag renderas permanent direkt under Dagens kommandovy på Hem. Gemensam familjelista med planerad tid, faktisk tid och utförare.
