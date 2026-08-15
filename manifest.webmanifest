@@ -1,7 +1,7 @@
 {
   "name": "Field Manual",
   "short_name": "Field Manual",
-  "description": "Field Manual 1.0 RC12 – Family Sync: träning, utveckling, daglig omsorg och manuell nutrition.",
+  "description": "Field Manual 1.0 RC13 – Shared Home: träning, utveckling, daglig omsorg och manuell nutrition.",
   "start_url": "./?v=1.0-rc12",
   "scope": "./",
   "display": "standalone",

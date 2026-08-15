@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Field Manual">
 <link rel="apple-touch-icon" href="fm-icon-180-rc5.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Field Manual 1.0 RC12 – Family Sync</title>
+<title>Field Manual 1.0 RC13 – Shared Home</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -271,6 +271,9 @@ body:not(.home-view) main{padding-top:18px}
 .ocr-cell b{display:block;color:#eef4f0;font-size:14px;margin-top:2px;word-break:break-word}
 .ocr-cell.missing b{color:#d6a25e}
 .ocr-changed{outline:2px solid rgba(240,199,94,.75)!important;box-shadow:0 0 0 3px rgba(240,199,94,.08)}
+
+/* RC13 · Shared Home */
+.hq-welcome{padding:20px 24px!important;margin-bottom:16px!important}.hq-welcome h2{font-size:34px!important;margin:4px 0 6px!important}.hq-welcome p{margin:0 0 12px!important}.command-chips{gap:8px!important}.command-chip{padding:12px 14px!important}.daily-control-card{display:block!important;padding:8px 14px 12px!important;background:linear-gradient(145deg,rgba(14,55,41,.98),rgba(6,29,22,.98))!important;border-color:rgba(226,180,78,.42)!important}.home-daily-list .task-card{padding:13px 4px!important}.home-daily-list .task-card strong{font-size:17px}.home-daily-list .task-meta{font-size:13px}.home-daily-list input[type=checkbox]{width:30px;height:30px}.cloud-error{background:#472c18!important;color:#ffe0b9!important}.cloud-saving{background:#263b50!important;color:#d9ecff!important}
 </style>
 </head>
 <body class="home-view">
@@ -281,7 +284,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="ILO i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">FIELD MANUAL 1.0 RC12 · FAMILY SYNC</span>
+<span class="version">FIELD MANUAL 1.0 RC13 · SHARED HOME</span>
 <h1>FIELD MANUAL</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -289,7 +292,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Field Manual 1.0 RC12 · Family Sync är installerad.</div>
+<div id="updateNotice" class="notice">Field Manual 1.0 RC13 · Shared Home är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -1203,9 +1206,20 @@ async function pullCloudToday(){
  }finally{fmSyncBusy=false}
 }
 async function pushCloudCompletion(t){
- if(!fmCloud||!t?.cloudId){return}
+ if(!fmCloud||!t?.cloudId){setCloudStatus('Ingen molnrad kopplad · prova ladda om',false);return false}
  const payload={completed:!!t.done,completed_at:t.done?(t.completedAt||new Date().toISOString()):null,completed_by:t.done?(fmMemberIds[state.activeProfile]||null):null};
- const {error}=await fmCloud.from('daily_tasks').update(payload).eq('id',t.cloudId);if(error){console.error(error);setCloudStatus('Kunde inte spara i molnet',false);return}setCloudStatus('Sparat · familjen uppdateras');
+ setCloudStatus('Sparar…');
+ try{
+   const {data,error}=await fmCloud.from('daily_tasks').update(payload).eq('id',t.cloudId).select('id,completed,completed_at,completed_by').single();
+   if(error)throw error;
+   if(!data)throw new Error('Ingen rad uppdaterades');
+   setCloudStatus('Sparat · familjen uppdateras');
+   return true;
+ }catch(error){
+   console.error('Cloud task update failed',error);
+   setCloudStatus('Sparningen misslyckades · ändringen återställd',false);
+   return false;
+ }
 }
 function subscribeFamilySync(){
  if(!fmCloud||!fmDogId)return;if(fmRealtimeChannel)fmCloud.removeChannel(fmRealtimeChannel);
@@ -1503,7 +1517,17 @@ function configureILO40Dashboard(){
  const ordered=[];
  keepTitles.forEach(name=>{
    const title=[...today.querySelectorAll(':scope > .section-title')].find(x=>x.querySelector('h2')?.textContent.trim()===name);
-   if(title){title.classList.remove('dashboard-hidden');ordered.push(title);const content=title.nextElementSibling;if(content){content.classList.remove('dashboard-hidden');ordered.push(content)}}
+   if(title){
+     title.classList.remove('dashboard-hidden');ordered.push(title);
+     if(name==='Att göra idag'){
+       const status=document.querySelector('#cloudSyncStatus');
+       const card=document.querySelector('.daily-control-card');
+       if(status){status.classList.remove('dashboard-hidden');ordered.push(status)}
+       if(card){card.classList.remove('dashboard-hidden');ordered.push(card)}
+     }else{
+       const content=title.nextElementSibling;if(content){content.classList.remove('dashboard-hidden');ordered.push(content)}
+     }
+   }
  });
  ordered.forEach(el=>today.appendChild(el));
  today.classList.add('dashboard-ready');
@@ -1545,7 +1569,16 @@ document.addEventListener("click",async e=>{
  if(e.target.closest('[data-change-device-profile]')){showProfileSetup()}
  if(e.target.dataset.openFamily!==undefined){document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));document.querySelector('[data-screen="family"]').classList.add('active');document.querySelector('#family').classList.add('active');scrollTo(0,0)}
  if(e.target.dataset.openSettings!==undefined){document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));document.querySelector('#settings').classList.add('active');scrollTo(0,0)}
- if(e.target.dataset.familydone!==undefined){const i=+e.target.dataset.familydone,t=state.familyTasks[i];if(!canProfileDoTask(t,activeProfile())&&!t.done){alert('Den här uppgiften är inte tilldelad den valda profilen.');return}t.done=e.target.checked;t.completedBy=t.done?state.activeProfile:'';t.completedAt=t.done?new Date().toISOString():'';save();if(t.cloudId)pushCloudCompletion(t)}
+ if(e.target.dataset.familydone!==undefined){
+  const i=+e.target.dataset.familydone,t=state.familyTasks[i];
+  if(!canProfileDoTask(t,activeProfile())&&!t.done){alert('Den här uppgiften är inte tilldelad den valda profilen.');e.target.checked=!!t.done;return}
+  const prev={done:!!t.done,completedBy:t.completedBy||'',completedAt:t.completedAt||''};
+  t.done=e.target.checked;t.completedBy=t.done?state.activeProfile:'';t.completedAt=t.done?new Date().toISOString():'';
+  localStorage.setItem(STORE,JSON.stringify(state));renderAll();
+  if(t.cloudId){const ok=await pushCloudCompletion(t);if(!ok){t.done=prev.done;t.completedBy=prev.completedBy;t.completedAt=prev.completedAt;localStorage.setItem(STORE,JSON.stringify(state));renderAll()}else{await pullCloudToday()}}
+  else save();
+  return
+}
  if(e.target.dataset.delfamily!==undefined&&confirm('Ta bort uppgiften?')){state.familyTasks.splice(+e.target.dataset.delfamily,1);save()}
  if(e.target.dataset.dellife!==undefined&&confirm('Ta bort händelsen ur livsboken?')){state.lifeEvents.splice(+e.target.dataset.dellife,1);save()}
  if(e.target.id==='saveFamilyTask'){const title=(document.querySelector('#taskTitle').value.trim()||document.querySelector('#taskTemplate').value),date=document.querySelector('#taskDate').value;if(!title||!date)return alert('Välj uppgift/rubrik och datum.');const reminder=document.querySelector('#taskReminder').checked;if(reminder&&document.querySelector('#taskTime').value)await requestNotifications();state.familyTasks.push({title,date,time:document.querySelector('#taskTime').value,assignee:document.querySelector('#taskAssignee').value,access:document.querySelector('#taskAccess').value,note:document.querySelector('#taskNote').value.trim(),reminder,reminderOffset:+document.querySelector('#taskReminderOffset').value,reminderAudience:document.querySelector('#taskReminderAudience').value,repeatReminder:document.querySelector('#taskRepeatReminder').checked,done:false,created:new Date().toISOString()});document.querySelector('#taskTitle').value='';document.querySelector('#taskTemplate').value='';document.querySelector('#taskNote').value='';document.querySelector('#taskTime').value='';document.querySelector('#taskReminder').checked=false;document.querySelector('#reminderOptions').classList.add('hidden');save()}
