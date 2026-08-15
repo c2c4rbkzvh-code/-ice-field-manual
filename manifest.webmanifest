@@ -1,7 +1,7 @@
 {
   "name": "Field Manual",
   "short_name": "Field Manual",
-  "description": "Field Manual 1.0 RC8 – Dagens checklista och manuell nutrition.",
+  "description": "Field Manual 1.0 RC8 – Daily Care: träning, utveckling, daglig omsorg och manuell nutrition.",
   "start_url": "./?v=1.0-rc8",
   "scope": "./",
   "display": "standalone",

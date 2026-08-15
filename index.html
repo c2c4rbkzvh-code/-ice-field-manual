@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Field Manual">
 <link rel="apple-touch-icon" href="fm-icon-180-rc5.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Field Manual 1.0 RC7 – Manual Nutrition</title>
+<title>Field Manual 1.0 RC8 – Daily Care</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -229,23 +229,6 @@ body:not(.home-view) main{padding-top:18px}
 /* FIELD MANUAL 9.1 — Operational Intelligence */
 .op-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.op-metric{background:#091b15;border:1px solid var(--line);border-radius:16px;padding:13px}.op-metric-head{display:flex;justify-content:space-between;gap:8px;align-items:center}.op-metric-head strong{font-size:14px}.op-metric-head span{font-size:15px;font-weight:900;color:var(--gold)}.op-state{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.op-state div{background:rgba(255,255,255,.045);border-radius:13px;padding:10px;text-align:center}.op-state b{display:block;font-size:16px}.op-state small{font-size:10px;color:var(--muted)}.weekly-report{border-color:#5a7049;background:linear-gradient(145deg,#203622,#10231a)}.report-focus{display:grid;grid-template-columns:1fr 1fr;gap:10px}.report-focus>div{background:#091b15;border-radius:14px;padding:12px}.report-focus small{color:var(--muted)}.recovery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:12px}.recovery-grid button{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:12px;padding:10px 5px;font-size:11px;font-weight:800}.recovery-grid button.on{border-color:var(--gold);color:var(--gold);background:rgba(226,180,78,.12)}.recovery-alert{border-left:3px solid var(--orange);padding:10px 12px;background:rgba(232,163,75,.1);border-radius:0 12px 12px 0;margin-top:12px}.competence-note{font-size:12px;color:var(--muted);margin-top:10px}@media(max-width:390px){.op-grid{grid-template-columns:1fr}.report-focus{grid-template-columns:1fr}}
 
-
-/* RC9 · Tidsstyrd dagschecklista */
-.daily-checklist{background:linear-gradient(145deg,#10271e,#0a1712);border-color:rgba(226,180,78,.28)}
-.daily-check-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
-.daily-check-head h3{font-size:23px;margin:5px 0 0}
-.daily-check-score{min-width:62px;text-align:center;border:1px solid rgba(226,180,78,.32);border-radius:14px;padding:8px 7px;background:rgba(226,180,78,.08)}
-.daily-check-score b{display:block;color:#f0c75e;font-size:18px}.daily-check-score small{font-size:9px;color:#a9b9b1}
-.checklist-grid{display:grid;grid-template-columns:1fr;gap:8px;margin-top:12px}
-.checklist-item{display:flex;align-items:center;gap:10px;width:100%;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);border-radius:14px;padding:11px;color:inherit;text-align:left}.checklist-time{font-variant-numeric:tabular-nums;font-weight:800;min-width:48px}.checklist-actual{margin-left:auto;font-size:10px;color:#7fcf9a;white-space:nowrap}.checklist-status{font-size:10px;color:#9dafA7;margin-left:auto;white-space:nowrap}
-.checklist-item input{appearance:none;width:23px;height:23px;min-width:23px;border-radius:7px;border:2px solid #557066;background:#07130f;margin:0;position:relative}
-.checklist-item input:checked{background:#4e9c69;border-color:#4e9c69}
-.checklist-item input:checked:after{content:'✓';position:absolute;left:3px;top:-2px;color:#fff;font-size:17px;font-weight:900}
-.checklist-item.done{border-color:rgba(99,197,140,.28);background:rgba(99,197,140,.07)}
-.checklist-item b{display:block;font-size:13px}.checklist-item small{display:block;color:#9dafA7;font-size:10px;margin-top:2px}
-.checklist-item.auto{cursor:default}.checklist-note{font-size:11px;color:#9dafA7;line-height:1.4;margin-top:10px}
-@media(max-width:420px){.checklist-grid{grid-template-columns:1fr}}
-
 /* FIELD MANUAL 10.0 — Foundation */
 .foundation-hero{border-color:rgba(226,180,78,.62);background:linear-gradient(145deg,rgba(84,64,20,.38),rgba(11,45,33,.97))}
 .foundation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.foundation-metric{background:#091b15;border:1px solid var(--line);border-radius:16px;padding:13px}.foundation-metric b{display:flex;justify-content:space-between;gap:8px}.foundation-metric small{color:var(--muted)}
@@ -275,7 +258,7 @@ body:not(.home-view) main{padding-top:18px}
 .requirement-grid{display:grid;gap:8px}.requirement-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:11px;border-radius:13px;background:rgba(255,255,255,.04)}.requirement-row small{display:block;color:var(--muted);margin-top:3px}.source-note{font-size:11px;color:var(--muted);line-height:1.45;margin-top:12px}
 @media(max-width:430px){.course-actions{grid-template-columns:repeat(2,1fr)}}
 
-/* RC7 · Development Engine + manual nutrition calculator */
+/* RC8 · Daily Care + calendar age + cache-safe updates */
 .dev-engine{background:linear-gradient(145deg,rgba(16,58,43,.96),rgba(7,29,23,.98));border:1px solid rgba(226,180,78,.42)}
 .dev-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.dev-score{min-width:72px;text-align:center;border:1px solid rgba(226,180,78,.5);border-radius:18px;padding:10px}.dev-score b{font-size:28px;color:var(--gold);display:block}.dev-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.dev-domain{background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:11px}.dev-domain strong{display:flex;justify-content:space-between;gap:8px}.dev-domain small{display:block;color:var(--muted);margin-top:5px}.dev-bar{height:5px;background:rgba(255,255,255,.1);border-radius:9px;overflow:hidden;margin-top:8px}.dev-bar i{display:block;height:100%;background:var(--gold)}.dev-plan{margin-top:14px;border-top:1px solid rgba(255,255,255,.12);padding-top:13px}.dev-session{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}.dev-session:last-child{border-bottom:0}.evidence-tag{font-size:10px;letter-spacing:.08em;border:1px solid rgba(226,180,78,.45);border-radius:999px;padding:4px 7px;color:var(--gold)}
 .food-photo-grid label small{display:block;font-size:10px;color:var(--muted);margin:3px 0 5px}
@@ -298,7 +281,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="ILO i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">FIELD MANUAL 1.0 RC7 · MANUAL NUTRITION</span>
+<span class="version">FIELD MANUAL 1.0 RC8 · DAILY CARE</span>
 <h1>FIELD MANUAL</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -306,7 +289,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Field Manual 1.0 RC9 · Tidsstyrd dagschecklista + Manual Nutrition är installerad.</div>
+<div id="updateNotice" class="notice">Field Manual 1.0 RC8 · Daily Care är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -316,12 +299,6 @@ body:not(.home-view) main{padding-top:18px}
     <button class="command-chip" data-goto="journal">✎ <span>Logga</span></button>
     <button class="command-chip" id="homeOpenILO">☰ <span>Öppna FIELD MANUAL</span></button>
   </div>
-</div>
-<div class="section-title"><h2>Dagens checklista</h2><span id="dailyChecklistLabel">0 / 5 klara</span></div>
-<div class="card daily-checklist">
-  <div class="daily-check-head"><div><div class="eyebrow">VARDAGSKONTROLL</div><h3>Det viktiga först</h3></div><div class="daily-check-score"><b id="dailyChecklistScore">0/5</b><small>KLARA</small></div></div>
-  <div class="checklist-grid" id="dailyChecklist"></div>
-  <p class="checklist-note">Planerade tider visas här. När du markerar en uppgift sparas den faktiska tiden automatiskt. Foder hämtar sina måltidstider från foderplanen. Utgångstider kan ändras i dagsplanen senare.</p>
 </div>
 <div class="section-title"><h2>Idag</h2><span>datadriven plan</span></div>
 <div class="card ice-today">
@@ -668,7 +645,7 @@ body:not(.home-view) main{padding-top:18px}
 <div class="card"><label>Födelsedatum</label><input type="date" id="birthDate"><label>Hämtningsdatum</label><input type="date" id="pickupDate"><button class="button block" id="saveSettings" style="margin-top:12px">Spara datum</button></div>
 <div class="card" style="margin-top:14px"><h3>Säkerhetskopia</h3><p>Exportera all data. Bilder gör filen större.</p><div class="row"><button class="button secondary" id="exportData">Exportera</button><button class="button secondary" id="importButton">Importera</button><input type="file" id="importData" accept="application/json" hidden></div></div>
 <div class="card" style="margin-top:14px"><h3>Appuppdatering</h3><button class="button secondary block" id="forceUpdate">Sök efter ny version</button></div>
-<div class="card" style="margin-top:14px"><h3>Om</h3><p>Field Manual 1.0 RC7 · Manual Nutrition. Träning och utveckling är huvudmotorn. Foder registreras manuellt och dagsgiva/måltider beräknas lokalt. Nutrition Intelligence, viktkurva, hälsologg och Bur & Fordon är integrerade. Mission-systemet och kompetensmotorn kopplar nu ihop Academy, journal och fysisk utveckling. Träningspass-läget guidar steg för steg och FIELD MANUAL-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och FIELD MANUAL idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
+<div class="card" style="margin-top:14px"><h3>Om</h3><p>Field Manual 1.0 RC8 · Daily Care. Träning och utveckling är huvudmotorn. Foder registreras manuellt och dagsgiva/måltider beräknas lokalt. Nutrition Intelligence, viktkurva, hälsologg och Bur & Fordon är integrerade. Mission-systemet och kompetensmotorn kopplar nu ihop Academy, journal och fysisk utveckling. Träningspass-läget guidar steg för steg och FIELD MANUAL-motorn kopplar nu samman journal, dagens uppdrag, familjeuppgifter, miljöträning, milstolpar, livsbok och Mission Control. XP och färdighetsområden räknas automatiskt från sparad data, och FIELD MANUAL idag sammanfattar nästa bästa steg lokalt utan extern AI. Data lagras i denna webbläsare.</p><button class="button danger" id="resetData">Nollställ all data</button></div>
 </section>
 
 <section id="missions" class="screen"><button class="screen-back" data-back="1">‹ Tillbaka</button>
@@ -699,7 +676,7 @@ const defaults={
  birthDate:"2026-06-04",pickupDate:"2026-08-05",currentWorkMode:"ledig",
  shifts:[{date:"2026-08-25",type:"dag",start:"08:00",end:"17:30",note:""},{date:"2026-08-26",type:"natt",start:"17:30",end:"08:00",note:""},{date:"2026-08-31",type:"natt",start:"17:30",end:"08:00",note:""}],
  journal:[],completedMissions:{},milestones:{},environments:{},sarCompleted:{},
- favoriteExercises:[],commandProgress:{},activeProfile:"marcus",profiles:[{id:"marcus",name:"Marcus",role:"driver",icon:"👨"},{id:"anna-lena",name:"Anna-Lena",role:"family",icon:"👩"},{id:"elliot",name:"Elliot",role:"family",icon:"👤"},{id:"rasmus",name:"Rasmus",role:"family",icon:"👤"},{id:"benjamin",name:"Benjamin",role:"family",icon:"👤"}],familyTasks:[],lifeEvents:[],notificationPermissionAsked:false,activeTrainingSession:null,equipmentStatus:{},dailyCheckins:{},dailyChecklist:{},dailySchedule:{outings:["07:30","10:00","12:30","15:30","18:30","22:00"]},academyCompleted:{},physicalProgress:{},recoveryLogs:[],missionHistory:[],competenceTargets:{},nutrition:{currentFood:"Standardt Original Normal",gramsPerMeal:100,mealsPerDay:3,mealTimes:["07:00","12:00","18:00"],mealLog:{},appetiteLog:{},weights:[],plannedFood:"",switchDate:"",kcalPerKg:0,manufacturerGrams:0,protein:24,fat:0,calcium:1.65,phosphorus:0,completePuppy:false,foodPhotos:{},calculatedDailyGrams:300},crate:{sessions:[],level:1},health:{daily:{},care:[]},education:{courses:{},notes:""}
+ favoriteExercises:[],commandProgress:{},activeProfile:"marcus",profiles:[{id:"marcus",name:"Marcus",role:"driver",icon:"👨"},{id:"anna-lena",name:"Anna-Lena",role:"family",icon:"👩"},{id:"elliot",name:"Elliot",role:"family",icon:"👤"},{id:"rasmus",name:"Rasmus",role:"family",icon:"👤"},{id:"benjamin",name:"Benjamin",role:"family",icon:"👤"}],familyTasks:[],lifeEvents:[],notificationPermissionAsked:false,activeTrainingSession:null,equipmentStatus:{},dailyCheckins:{},academyCompleted:{},physicalProgress:{},recoveryLogs:[],missionHistory:[],competenceTargets:{},nutrition:{currentFood:"Standardt Original Normal",gramsPerMeal:100,mealsPerDay:3,mealTimes:["07:00","12:00","18:00"],mealLog:{},appetiteLog:{},weights:[],plannedFood:"",switchDate:"",kcalPerKg:0,manufacturerGrams:0,protein:24,fat:0,calcium:1.65,phosphorus:0,completePuppy:false,foodPhotos:{},calculatedDailyGrams:300},crate:{sessions:[],level:1},health:{daily:{},care:[]},education:{courses:{},notes:""}
 };
 const equipmentLibrary=[
 {id:"line5",name:"Non-stop Line Harness 5.0",category:"Sele",phase:"Valp",price:550,priority:1,note:"Lätt sele för vardag, miljö och tidigt sökarbete."},
@@ -721,7 +698,19 @@ function save(){try{localStorage.setItem(STORE,JSON.stringify(state));renderAll(
 function dateOnly(s){return new Date(s+"T12:00:00")}function isoToday(){return new Date().toISOString().slice(0,10)}
 function svDate(s){return dateOnly(s).toLocaleDateString("sv-SE",{day:"numeric",month:"long",year:"numeric"})}
 function daysBetween(a,b){return Math.round((dateOnly(b)-dateOnly(a))/86400000)}
-function ageParts(){const total=Math.max(0,Math.floor((new Date()-dateOnly(state.birthDate))/86400000));return{days:total,weeks:Math.floor(total/7),rest:total%7}}
+function ageParts(){
+ const birth=dateOnly(state.birthDate), now=new Date();
+ const total=Math.max(0,Math.floor((now-birth)/86400000));
+ let years=now.getFullYear()-birth.getFullYear();
+ let anchor=new Date(birth);anchor.setFullYear(birth.getFullYear()+years);
+ if(anchor>now){years--;anchor=new Date(birth);anchor.setFullYear(birth.getFullYear()+years)}
+ let months=0,next=new Date(anchor);
+ while(months<11){next=new Date(anchor);next.setMonth(anchor.getMonth()+months+1);if(next<=now)months++;else break}
+ const monthAnchor=new Date(anchor);monthAnchor.setMonth(anchor.getMonth()+months);
+ const remDays=Math.max(0,Math.floor((now-monthAnchor)/86400000));
+ return{days:total,weeks:Math.floor(total/7),rest:total%7,years,months,calendarWeeks:Math.floor(remDays/7),calendarDays:remDays%7}
+}
+function calendarAgeText(a=ageParts()){const parts=[];if(a.years)parts.push(`${a.years} ${a.years===1?'år':'år'}`);if(a.months)parts.push(`${a.months} ${a.months===1?'månad':'månader'}`);if(a.calendarWeeks)parts.push(`${a.calendarWeeks} ${a.calendarWeeks===1?'vecka':'veckor'}`);if(a.calendarDays||!parts.length)parts.push(`${a.calendarDays} ${a.calendarDays===1?'dag':'dagar'}`);return parts.join(' · ')}
 function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
 function phase(){const w=ageParts().weeks;if(new Date()<dateOnly(state.pickupDate))return["Förberedelse","Hemmet, rutiner och planering."];if(w<12)return["Trygg start","Relation, sömn, lek och lugn miljö."];if(w<16)return["Grundperiod","Inkallning, följsamhet och enkel nos."];if(w<24)return["Upptäckarperiod","Miljö, personsök som lek och återhämtning."];if(w<40)return["Unghund","Självkontroll, uthållighet och progression."];return["Fortsatt utveckling","Individanpassad SAR-träning."]}
 function shiftForDate(d){return state.shifts.find(s=>s.date===d)||null}
@@ -1045,39 +1034,9 @@ function iceEngine(){
 function levelName(level){return level<3?'Grund':level<6?'Relation':level<10?'Utforskare':level<15?'Sökgrund':'Ekipage'}
 function renderEngine(){const e=iceEngine();document.querySelector('#iceTodayTitle').textContent=e.title;document.querySelector('#iceTodayText').textContent=e.text;document.querySelector('#iceLevel').textContent=e.level;document.querySelector('#iceLevelName').textContent=levelName(e.level);document.querySelector('#iceXpText').textContent=`${e.xp} XP totalt`;document.querySelector('#iceNextXp').textContent=`${Math.max(0,e.levelEnd-e.xp)} XP till nivå ${e.level+1}`;document.querySelector('#iceXpBar').style.width=e.levelPct+'%';document.querySelector('#nextUnlockTitle').textContent=e.nextSar?`Nästa SAR-steg: ${e.nextSar[1]}`:'Grundvägen genomförd';document.querySelector('#nextUnlockText').textContent=e.nextSar?e.nextSar[2]:'Fortsätt generalisera och kvalitetssäkra färdigheterna.';document.querySelector('#skillGrid').innerHTML=e.skills.map(x=>`<div class="skill-card"><div class="skill-card-head"><strong>${x.icon} ${escapeHtml(x.name)}</strong><span class="skill-trend ${x.percent>0?'up':'flat'}">${x.percent>0?'↑':'→'} ${x.percent}%</span></div><div class="bar"><i style="width:${x.percent}%"></i></div><small>${x.sessions?`${x.sessions} pass · ${x.points} p`:'Inte påbörjad'}</small></div>`).join('');const labels=[['journal','Journal'],['mission','Uppdrag'],['family','Familj'],['life','Livsbok'],['environment','Miljö']];document.querySelector('#engineImpact').innerHTML=labels.map(([k,n])=>`<span class="impact-chip ${e.impact[k]?'on':''}">${e.impact[k]?'✓':'○'} ${n}</span>`).join('')}
 
-function dailyChecklistState(){
- state.dailyChecklist=state.dailyChecklist||{};
- const d=state.dailyChecklist[isoToday()]||{};
- return d;
-}
-function checklistActual(id){return dailyChecklistState()[id]||null}
-function formatActual(iso){if(!iso)return '';const d=new Date(iso);return Number.isNaN(d.getTime())?'':d.toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'})}
-function toggleDailyChecklist(id,checked){
- state.dailyChecklist=state.dailyChecklist||{};const day={...(state.dailyChecklist[isoToday()]||{})};
- if(checked) day[id]=new Date().toISOString(); else delete day[id];
- state.dailyChecklist[isoToday()]=day;save();renderDailyChecklist();
-}
-function renderDailyChecklist(){
- const host=document.querySelector('#dailyChecklist');if(!host)return;
- const n=nutritionState(),d=dailyChecklistState(),outings=(state.dailySchedule?.outings||['07:30','10:00','12:30','15:30','18:30','22:00']);
- const items=[];
- n.mealTimes.slice(0,n.mealsPerDay).forEach((t,i)=>{
-   const id=`meal-${i}`,actual=n.mealLog[mealKey(i)]||checklistActual(id),done=!!actual;
-   items.push({id,title:`Foder · ${i+1}`,sub:`${n.gramsPerMeal} g · ${escapeHtml(n.currentFood)}`,time:t,done,actual,kind:'meal'});
- });
- outings.forEach((t,i)=>{const id=`out-${i}`,actual=checklistActual(id);items.push({id,title:`Utgång ${i+1}`,sub:'Rastning / möjlighet till avföring',time:t,done:!!actual,actual,kind:'out'});});
- const stool=checklistActual('stool'),water=checklistActual('water'),condition=checklistActual('condition');
- items.push({id:'stool',title:'Avföring',sub:stool?'Kontrollerad idag':'Markera när avföring har observerats',time:'',done:!!stool,actual:stool,kind:'manual'});
- items.push({id:'water',title:'Vatten',sub:water?'Kontrollerat och tillgängligt':'Kontrollera skål och tillgång',time:'',done:!!water,actual:water,kind:'manual'});
- items.push({id:'condition',title:'Allmäntillstånd',sub:condition?'Normalt idag':'Pigg, kontaktbar och återhämtad?',time:'',done:!!condition,actual:condition,kind:'manual'});
- const count=items.filter(x=>x.done).length;
- const label=document.querySelector('#dailyChecklistLabel');if(label)label.textContent=`${count} / ${items.length} klara`;
- const score=document.querySelector('#dailyChecklistScore');if(score)score.textContent=`${count}/${items.length}`;
- host.innerHTML=items.map(x=>`<label class="checklist-item ${x.done?'done':''}"><input type="checkbox" data-dailycheck="${x.id}" ${x.done?'checked':''}><span class="checklist-time">${x.time||'—'}</span><span><b>${x.title}</b><small>${x.sub}</small></span>${x.done?`<span class="checklist-actual">✓ ${formatActual(x.actual)}</span>`:`<span class="checklist-status">inte klar</span>`}</label>`).join('');
-}
 function renderToday(){
  const a=ageParts(),p=phase(),wl=workload(),c=coach(),m=mission(),today=isoToday(),done=state.completedMissions[today]?.tasks||[];renderEngine();renderDevelopmentEngine();
- const active=activeProfile(),g=timeGreeting();document.querySelector('#greetingTitle').textContent=`${g} ${active.name} 👋`;document.querySelector('#greetingSubtitle').textContent=`${a.weeks} veckor och ${a.rest} dagar · dagens fokus på en blick.`;document.querySelector('#hqTodayLabel').textContent=new Date().toLocaleDateString('sv-SE',{weekday:'long',day:'numeric',month:'short'});
+ const active=activeProfile(),g=timeGreeting();document.querySelector('#greetingTitle').textContent=`${g} ${active.name} 👋`;document.querySelector('#greetingSubtitle').textContent=`${calendarAgeText(a)} · dagens fokus på en blick.`;document.querySelector('#hqTodayLabel').textContent=new Date().toLocaleDateString('sv-SE',{weekday:'long',day:'numeric',month:'short'});
  const allToday=state.familyTasks.filter(t=>t.date===today),doneToday=allToday.filter(t=>t.done).length,totalToday=allToday.length,missionDone=state.completedMissions[today]?.complete?1:0,totalUnits=totalToday+1,doneUnits=doneToday+missionDone,dayPct=Math.round(doneUnits/Math.max(1,totalUnits)*100);document.querySelector('#todayProgressText').textContent=`${doneUnits} av ${totalUnits} delar klara`;document.querySelector('#todayProgressBar').style.width=dayPct+'%';
  const upcoming=allToday.filter(t=>!t.done).sort((x,y)=>(x.time||'99:99').localeCompare(y.time||'99:99'))[0];document.querySelector('#nextTaskText').textContent=upcoming?`Nästa: ${upcoming.title}${upcoming.time?' · '+upcoming.time:''}`:(missionDone?'Dagens plan är genomförd.':'Nästa: genomför dagens träningsuppdrag.');document.querySelector('#hqNextTime').textContent=upcoming?.time||'Flex';document.querySelector('#hqNextLabel').textContent=upcoming?upcoming.title:'dagens uppdrag';
  const healthRecent=state.lifeEvents.filter(e=>['Hälsa','Veterinär','Vaccination'].includes(e.category)).sort((x,y)=>(y.date+(y.created||'')).localeCompare(x.date+(x.created||'')))[0];const healthEl=document.querySelector('#hqHealth'),healthDetail=document.querySelector('#hqHealthDetail');if(healthRecent&&+healthRecent.rating<=2){healthEl.textContent='Följ upp';healthEl.className='status-watch';healthDetail.textContent=healthRecent.title}else if(healthRecent){healthEl.textContent='Allt bra';healthEl.className='status-ok';healthDetail.textContent=`senast: ${healthRecent.title}`}else{healthEl.textContent='Ingen logg';healthEl.className='status-time';healthDetail.textContent='lägg till hälsostatus'};
@@ -1086,7 +1045,7 @@ function renderToday(){
  const sarDone=sarSteps.filter(x=>state.sarCompleted[x[0]]).length,sarPct=Math.round(sarDone/sarSteps.length*100),nextSar=sarSteps.find(x=>!state.sarCompleted[x[0]]);document.querySelector('#sarPercent').textContent=sarPct+'%';document.querySelector('#sarProgressBar').style.width=sarPct+'%';document.querySelector('#sarNextTitle').textContent=nextSar?nextSar[1]:'Alla grundsteg genomförda';document.querySelector('#sarNextText').textContent=nextSar?nextSar[2]:'Fortsätt kvalitetssäkra momenten i varierade miljöer.';document.querySelector('#sarRoadmap').innerHTML=sarSteps.slice(0,5).map((step,i)=>{const isDone=!!state.sarCompleted[step[0]],isCurrent=!isDone&&(i===0||state.sarCompleted[sarSteps[i-1][0]]),cls=isDone?'done':isCurrent?'current':'locked';return `<div class="sar-roadmap-row ${cls}"><span class="roadmap-mark">${isDone?'✓':i+1}</span><div><strong>${escapeHtml(step[1])}</strong><div class="task-meta">${escapeHtml(step[2])}</div></div><span class="roadmap-state">${isDone?'KLAR':isCurrent?'PÅGÅR':'LÅST'}</span></div>`}).join('');
  const feed=latestFeed();document.querySelector('#latestILOTimeline').innerHTML=feed.length?feed.map(x=>`<div class="feed-row"><span class="feed-icon">${x.icon}</span><div><strong>${escapeHtml(x.title)}</strong><div><small>${svDate(x.date)} · ${escapeHtml(x.meta)}</small></div></div><span class="feed-chevron">›</span></div>`).join(''):'<div class="empty"><strong>Livsboken väntar på första minnet</strong><p>Logga ett träningspass, en vikt, en hälsokontroll eller en milstolpe. Då visas den automatiskt här.</p><span class="pill">Tryck för att öppna livsboken</span></div>';
 
- document.querySelector("#heroAge").textContent=`${a.weeks} veckor och ${a.rest} dagar · född ${svDate(state.birthDate)}`;
+ document.querySelector("#heroAge").textContent=`${calendarAgeText(a)} · född ${svDate(state.birthDate)}`;
  const af=ageFocus();document.querySelector("#ageStageLabel").textContent=af.label;document.querySelector("#ageFocusTitle").textContent=af.title;document.querySelector("#ageFocusText").textContent=af.text;document.querySelector("#ageFocusList").innerHTML=af.items.map(x=>`<div>✓ ${escapeHtml(x)}</div>`).join("");
  document.querySelector("#overviewAge").textContent=`${a.weeks} v ${a.rest} d`;document.querySelector("#overviewPhase").textContent=p[0];document.querySelector("#overviewJournal").textContent=recentJournal(7).length;
  const todays=state.familyTasks.filter(t=>t.date===today&&!t.done);document.querySelector("#hqTasks").textContent=todays.length;document.querySelector("#overviewTasks").textContent=todays.length;document.querySelector("#hqMinutes").textContent=recentJournal(7).reduce((n,j)=>n+(+j.minutes||0),0);const activeDays=new Set(recentJournal(14).map(j=>j.date));let streak=0,d=new Date();while(activeDays.has(d.toISOString().slice(0,10))){streak++;d.setDate(d.getDate()-1)}document.querySelector("#hqStreak").textContent=streak;
@@ -1270,7 +1229,7 @@ function renderMissions(){
 function startFoundationMission(id){
  const m=foundationMissions.find(x=>x.id===id);if(!m)return;const rating=prompt(`Mission: ${m.title}\n\nGenomför stegen och ange sedan helhetsbetyg 1–5.`,"4");if(rating===null)return;const n=Math.max(1,Math.min(5,parseInt(rating)||4));const note=prompt('Kort anteckning (valfritt):','')||'';state.missionHistory=state.missionHistory||[];state.missionHistory.push({id,date:isoToday(),rating:n,minutes:m.duration,note,profile:state.activeProfile,created:new Date().toISOString()});state.journal.push({date:isoToday(),type:'Mission',rating:n,minutes:m.duration,note:m.title+(note?' – '+note:''),exerciseId:m.id,exerciseCategory:Object.keys(m.skills)[0],created:new Date().toISOString()});save();openScreen('missions');}
 document.addEventListener('click',e=>{
- if(e.target.closest('[data-meal-index]')){const b=e.target.closest('[data-meal-index]'),i=+b.dataset.mealIndex,n=nutritionState(),k=mealKey(i);if(n.mealLog[k])delete n.mealLog[k];else n.mealLog[k]=new Date().toISOString();save();renderDailyChecklist();return}
+ if(e.target.closest('[data-meal-index]')){const b=e.target.closest('[data-meal-index]'),i=+b.dataset.mealIndex,n=nutritionState(),k=mealKey(i);if(n.mealLog[k])delete n.mealLog[k];else n.mealLog[k]=new Date().toISOString();save();return}
  if(e.target.closest('[data-appetite]')){nutritionState().appetiteLog[isoToday()]=e.target.closest('[data-appetite]').dataset.appetite;save();return}
  if(e.target.id==="saveWeight"){const raw=document.querySelector('#weightInput').value.replace(',','.'),kg=parseFloat(raw),bcs=document.querySelector('#bcsInput').value,note=document.querySelector('#weightNote').value.trim();if(!kg||kg<=0){alert('Ange en giltig vikt.');return}const n=nutritionState();n.weights=n.weights.filter(x=>x.date!==isoToday());n.weights.push({date:isoToday(),kg:+kg.toFixed(1),bcs,note,person:state.activeProfile});state.lifeEvents.push({date:isoToday(),category:'Hälsa',title:`Vikt ${kg.toFixed(1)} kg`,note:`BCS ${bcs||'ej angivet'}${note?' · '+note:''}`,rating:5,person:state.activeProfile,created:new Date().toISOString(),source:`weight-${isoToday()}`});document.querySelector('#weightInput').value='';document.querySelector('#weightNote').value='';save();return}
  if(e.target.id==="saveFoodPlan"){const n=nutritionState();n.plannedFood=document.querySelector('#plannedFood').value.trim();n.switchDate=document.querySelector('#foodSwitchDate').value;save();return}
@@ -1435,7 +1394,7 @@ function renderNutrition(){
  const wh=document.querySelector('#weightHistory');if(wh){const arr=n.weights.slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,10);wh.innerHTML=arr.length?arr.map(x=>`<div class="weight-item"><span>${svDate(x.date)}${x.bcs?` · BCS ${x.bcs}`:''}</span><strong>${String(x.kg).replace('.',',')} kg</strong></div>`).join(''):'<p>Ingen vikt registrerad ännu. Väg ILO idag för att starta tillväxtkurvan.</p>'}
  const pf=document.querySelector('#plannedFood');if(pf)pf.value=n.plannedFood||'';const sd=document.querySelector('#foodSwitchDate');if(sd)sd.value=n.switchDate||'';const fs=document.querySelector('#foodPlanStatus');if(fs)fs.textContent=n.plannedFood?`Plan: ${n.plannedFood}${n.switchDate?` från ${svDate(n.switchDate)}`:''}.`:'Ingen ny fodersort planerad ännu.';drawWeightChart();renderWeightAnalysis();renderHomecoming();updateFoodPhotoStatus();
 }
-function renderAll(){renderCoursePlanner();updateILOTopProfile();renderToday();renderOperationalDashboard();renderWeeklyReport();renderIntelligence();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderWeeklyTraining();renderExerciseLibrary();renderProgress();renderSettings();renderFamily();renderEquipment();renderAcademy();renderPhysical();renderMissions();renderNutrition();renderDailyChecklist();renderCrate();renderHealth()}
+function renderAll(){renderCoursePlanner();updateILOTopProfile();renderToday();renderOperationalDashboard();renderWeeklyReport();renderIntelligence();renderDailyPlan();renderPlan();renderJournal();renderEnvironment();renderSar();renderWeeklyTraining();renderExerciseLibrary();renderProgress();renderSettings();renderFamily();renderEquipment();renderAcademy();renderPhysical();renderMissions();renderNutrition();renderCrate();renderHealth()}
 function defaultsForShift(t){return{ledig:["",""],dag:["08:00","17:30"],natt:["17:30","08:00"],dygn:["08:00","08:00"],annat:["",""]}[t]||["",""]}
 function clearShift(){document.querySelector("#shiftEditIndex").value="";document.querySelector("#shiftDate").value=isoToday();document.querySelector("#shiftType").value="dag";const p=defaultsForShift("dag");document.querySelector("#shiftStart").value=p[0];document.querySelector("#shiftEnd").value=p[1];document.querySelector("#shiftNote").value="";document.querySelector("#cancelShiftEdit").style.display="none";document.querySelector("#saveShift").textContent="Spara pass"}
 function editShift(i){const s=state.shifts[i];document.querySelector("#shiftEditIndex").value=i;document.querySelector("#shiftDate").value=s.date;document.querySelector("#shiftType").value=s.type;document.querySelector("#shiftStart").value=s.start||"";document.querySelector("#shiftEnd").value=s.end||"";document.querySelector("#shiftNote").value=s.note||"";document.querySelector("#cancelShiftEdit").style.display="inline-block";document.querySelector("#saveShift").textContent="Spara ändring"}
@@ -1493,7 +1452,6 @@ document.addEventListener("click",async e=>{
  const academyLog=e.target.closest('[data-academy-log]');if(academyLog){const x=academyLessons.find(v=>v.id===academyLog.dataset.academyLog);openScreen('journal');document.querySelector('#journalType').value='Relation & lek';document.querySelector('#journalMinutes').value=x.minutes;document.querySelector('#journalNote').value=x.title+' – ';document.querySelector('#journalNote').dataset.exerciseCategory='academy';return}
  const physicalLog=e.target.closest('[data-physical-log]');if(physicalLog){const x=physicalExercises.find(v=>v.id===physicalLog.dataset.physicalLog);openScreen('journal');document.querySelector('#journalType').value='Fysisk utveckling';document.querySelector('#journalMinutes').value=parseInt(x.dose)||3;document.querySelector('#journalNote').value=x.title+' – ';document.querySelector('#journalNote').dataset.exerciseId=x.id;document.querySelector('#journalNote').dataset.exerciseCategory='fysik';document.querySelector('#journalNote').dataset.physicalArea=x.area;return}
  const checkin=e.target.closest('[data-checkin]');if(checkin){state.dailyCheckins=state.dailyCheckins||{};const current=todayCheckin();state.dailyCheckins[isoToday()]={...current,[checkin.dataset.checkin]:checkin.dataset.value};delete state['dailyPlan_'+isoToday()];save();return}
- const dailyCheck=e.target.closest('[data-dailycheck]');if(dailyCheck){const id=dailyCheck.dataset.dailycheck;toggleDailyChecklist(id,dailyCheck.checked);return}
  if(e.target.id==='startTrainingSession'||e.target.closest('#startTrainingFromHQ')){openTrainingSession();return}
  if(e.target.id==='closeSession'){closeTrainingSession();return}
  if(e.target.id==='toggleTimer'){startStepTimer();return}
@@ -1564,10 +1522,10 @@ document.querySelector("#importData").addEventListener("change",async e=>{try{co
 document.querySelector("#journalDate").value=isoToday();const careDateEl=document.querySelector("#careDate");if(careDateEl)careDateEl.value=isoToday();document.querySelector("#taskDate").value=isoToday();document.querySelector("#lifeDate").value=isoToday();clearShift();seedFamilyTasks();
 if(localStorage.getItem("iceAppVersion")!==VERSION){localStorage.setItem("iceAppVersion",VERSION);document.querySelector("#updateNotice").style.display="block";setTimeout(()=>document.querySelector("#updateNotice").style.display="none",5000)}
 configureILO40Dashboard();renderAll();updateILOTopProfile();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();checkReminders();setInterval(checkReminders,60000);setInterval(refreshLiveGreeting,60000);window.addEventListener('focus',refreshLiveGreeting);window.addEventListener('pageshow',refreshLiveGreeting);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshLiveGreeting()});if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("./sw.js?v=1.0-rc4",{updateViaCache:"none"}).then(reg=>reg.update()).catch(()=>{});
+  navigator.serviceWorker.register("./sw.js?v=1.0-rc8",{updateViaCache:"none"}).then(reg=>reg.update()).catch(()=>{});
   navigator.serviceWorker.addEventListener("controllerchange",()=>{
-    if(!sessionStorage.getItem("fm_rc2_reloaded")){
-      sessionStorage.setItem("fm_rc2_reloaded","1");
+    if(!sessionStorage.getItem("fm_rc8_reloaded")){
+      sessionStorage.setItem("fm_rc8_reloaded","1");
       location.reload();
     }
   });

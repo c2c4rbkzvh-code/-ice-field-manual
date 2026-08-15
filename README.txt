@@ -1,11 +1,8 @@
-FIELD MANUAL 1.0 RC8
+FIELD MANUAL 1.0 RC6 – SMART SCAN FIX
 
-RC8 adds a compact daily checklist to the home screen:
-- Foder: automatically completes when all scheduled meals are marked served.
-- Utgång / rastning: manual daily check.
-- Avföring: manual observation check.
-- Vatten: manual check.
-- Allmäntillstånd: manual check.
-
-The checklist is stored locally per calendar day and does not replace the detailed Health or Nutrition modules.
-Nutrition remains manual-entry with local calculation of daily grams and meals.
+Bugfix för foderbildläsning:
+- OCR-värden ersätter nu gamla formulärvärden när de hittas.
+- När ett nytt foder identifieras rensas gamla näringsvärden som OCR inte kan verifiera.
+- Resultatet visas i en separat kontrollruta före beräkning.
+- Fält som ändrats av OCR markeras tydligt.
+- Befintlig lokal appdata och lagringsnycklar är oförändrade.
