@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Field Manual">
 <link rel="apple-touch-icon" href="fm-icon-180-rc5.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Field Manual 1.0 RC14 – Sync Fix + Compact Home</title>
+<title>Field Manual 1.0 RC15 – Visible Completion</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -57,7 +57,7 @@ textarea{min-height:100px;resize:vertical}
 .tabs{position:fixed;z-index:20;left:0;right:0;bottom:0;background:rgba(6,16,13,.96);backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:7px 6px calc(7px + env(safe-area-inset-bottom));display:flex;justify-content:center}
 .tabs-inner{display:grid;grid-template-columns:repeat(7,1fr);max-width:780px;width:100%}.tab{border:0;background:none;color:var(--muted);padding:7px 1px;font-size:10px;font-weight:750}.tab b{display:block;font-size:21px;line-height:1.1;margin-bottom:3px}.tab.active{color:var(--gold)}
 .empty{text-align:center;color:var(--muted);padding:25px 8px}.notice{display:none;padding:11px 13px;border-radius:13px;background:#26371c;color:#dcf0d1;margin-bottom:12px}
-.profile-row{display:flex;gap:9px;overflow:auto;padding:2px 1px 6px;scroll-snap-type:x proximity}.profile{min-width:104px;border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:16px;padding:12px 8px;text-align:center;scroll-snap-align:start}.profile.active{border-color:var(--gold);box-shadow:0 0 0 2px rgba(226,180,78,.18)}.profile b{display:block;font-size:24px}.profile-name{display:block;font-weight:800;line-height:1.15;margin-top:6px;overflow-wrap:anywhere}.profile-role{display:block;color:var(--muted);font-size:11px;margin-top:4px}.badge{display:inline-block;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:800;background:#203f33;color:#dce5e0}.badge.driver{background:#4d3d16;color:#ffe2a1}.badge.family{background:#173a2b;color:#c9f1d7}.task-card{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}.task-card:first-child{border-top:0}.task-card input[type=checkbox]{width:23px;height:23px;accent-color:var(--gold)}.home-daily-list .task-card{padding:13px 0}.home-daily-list .task-meta{line-height:1.45}.home-daily-list .done strong{text-decoration:line-through;opacity:.65}.home-daily-list .done{opacity:.72}.task-meta{font-size:12px;color:var(--muted);margin-top:4px}.icon-btn{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:11px;padding:7px 9px}.segmented{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.segmented button{border:1px solid var(--line);background:#0a1a15;color:var(--muted);border-radius:12px;padding:10px 5px}.segmented button.active{background:#294b3d;color:var(--text);border-color:#4a7965}.hidden{display:none!important}.timeline-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);margin-top:6px}.timeline-item{display:grid;grid-template-columns:14px 1fr;gap:9px;padding:12px 0;border-top:1px solid var(--line)}
+.profile-row{display:flex;gap:9px;overflow:auto;padding:2px 1px 6px;scroll-snap-type:x proximity}.profile{min-width:104px;border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:16px;padding:12px 8px;text-align:center;scroll-snap-align:start}.profile.active{border-color:var(--gold);box-shadow:0 0 0 2px rgba(226,180,78,.18)}.profile b{display:block;font-size:24px}.profile-name{display:block;font-weight:800;line-height:1.15;margin-top:6px;overflow-wrap:anywhere}.profile-role{display:block;color:var(--muted);font-size:11px;margin-top:4px}.badge{display:inline-block;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:800;background:#203f33;color:#dce5e0}.badge.driver{background:#4d3d16;color:#ffe2a1}.badge.family{background:#173a2b;color:#c9f1d7}.task-card{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}.task-card:first-child{border-top:0}.task-card input[type=checkbox]{width:23px;height:23px;accent-color:var(--gold)}.home-daily-list .task-card{padding:13px 0}.home-daily-list .task-meta{line-height:1.45}.home-daily-list .done strong{opacity:1}.home-daily-list .done{opacity:1;background:rgba(91,203,144,.08);border-radius:14px;padding-left:8px!important;padding-right:8px!important}.done-chip{display:inline-flex;align-items:center;margin-left:8px;padding:3px 7px;border-radius:999px;background:rgba(91,203,144,.18);color:#8ee0b2;font-size:10px;font-weight:900;letter-spacing:.04em;vertical-align:middle}.daily-group-label{margin:6px 4px 2px;color:var(--gold);font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.task-meta{font-size:12px;color:var(--muted);margin-top:4px}.icon-btn{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:11px;padding:7px 9px}.segmented{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.segmented button{border:1px solid var(--line);background:#0a1a15;color:var(--muted);border-radius:12px;padding:10px 5px}.segmented button.active{background:#294b3d;color:var(--text);border-color:#4a7965}.hidden{display:none!important}.timeline-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);margin-top:6px}.timeline-item{display:grid;grid-template-columns:14px 1fr;gap:9px;padding:12px 0;border-top:1px solid var(--line)}
 .quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.quick-action{border:1px solid var(--line);background:#0a1a15;color:var(--text);border-radius:16px;padding:12px 6px;text-align:center;font-weight:750}.quick-action b{display:block;font-size:23px;margin-bottom:5px}.filter-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.activity-card{position:relative}.favorite{position:absolute;right:12px;top:12px;border:0;background:transparent;color:var(--muted);font-size:24px}.favorite.on{color:var(--gold)}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-size:11px;color:var(--muted);margin:3px 3px 0 0}
 .training-group{margin:16px 0}.training-group-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:0 2px 10px}.training-group-head h3{margin:0;font-size:21px}.training-group-head span{color:var(--muted);font-size:12px;text-align:right}.smart-week-card{border:1px solid rgba(222,178,72,.55);background:linear-gradient(145deg,rgba(93,70,24,.34),rgba(19,54,42,.92));border-radius:22px;padding:18px;margin:12px 0}.week-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:var(--muted);font-size:11px;margin:3px 4px 0 0}.activity-card.locked{opacity:.64}.activity-card.soon{border-style:dashed}.activity-card.recommended{border-color:rgba(222,178,72,.62);box-shadow:0 0 0 1px rgba(222,178,72,.12) inset}.activity-status{display:inline-block;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800;margin-bottom:8px}.activity-status.now{background:rgba(91,203,144,.14);color:#8ee0b2}.activity-status.soon{background:rgba(222,178,72,.14);color:var(--gold)}.activity-status.future{background:rgba(255,255,255,.06);color:var(--muted)}.progress-dots{display:flex;gap:6px;margin-top:10px}.progress-dots i{width:8px;height:8px;border-radius:50%;background:#183128}.progress-dots i.on{background:var(--gold)}.section-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;border:0;background:transparent;color:var(--text);font:inherit;padding:0;text-align:left}.section-toggle small{color:var(--muted)}
 .command-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.level-select{width:auto;min-width:112px;padding:8px}.hq-status{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}.hq-status strong{display:block;font-size:22px}.hq-status small{color:var(--muted)}
@@ -272,10 +272,10 @@ body:not(.home-view) main{padding-top:18px}
 .ocr-cell.missing b{color:#d6a25e}
 .ocr-changed{outline:2px solid rgba(240,199,94,.75)!important;box-shadow:0 0 0 3px rgba(240,199,94,.08)}
 
-/* RC14 · Sync Fix + Compact Home */
+/* RC15 · Visible Completion */
 .hq-welcome{padding:20px 24px!important;margin-bottom:16px!important}.hq-welcome h2{font-size:34px!important;margin:4px 0 6px!important}.hq-welcome p{margin:0 0 12px!important}.command-chips{gap:8px!important}.command-chip{padding:12px 14px!important}.daily-control-card{display:block!important;padding:8px 14px 12px!important;background:linear-gradient(145deg,rgba(14,55,41,.98),rgba(6,29,22,.98))!important;border-color:rgba(226,180,78,.42)!important}.home-daily-list .task-card{padding:13px 4px!important}.home-daily-list .task-card strong{font-size:17px}.home-daily-list .task-meta{font-size:13px}.home-daily-list input[type=checkbox]{width:30px;height:30px}.cloud-error{background:#472c18!important;color:#ffe0b9!important}.cloud-saving{background:#263b50!important;color:#d9ecff!important}
 
-/* RC14 · compact daily control */
+/* RC15 · compact daily control + visible completion */
 .home-daily-list{display:grid;gap:10px;margin-bottom:8px}
 .home-daily-list .task-card{padding:13px 14px;border-radius:16px;background:rgba(16,60,45,.78);border:1px solid rgba(98,153,127,.28);display:grid;grid-template-columns:46px 1fr;align-items:center;gap:10px}
 .home-daily-list .task-card input[type=checkbox]{width:38px;height:38px;margin:0}
@@ -297,7 +297,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="ILO i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">FIELD MANUAL 1.0 RC14 · SYNC FIX + COMPACT HOME</span>
+<span class="version">FIELD MANUAL 1.0 RC15 · VISIBLE COMPLETION</span>
 <h1>FIELD MANUAL</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -305,7 +305,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Field Manual 1.0 RC14 · Sync Fix + Compact Home är installerad.</div>
+<div id="updateNotice" class="notice">Field Manual 1.0 RC15 · Visible Completion är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -1133,23 +1133,33 @@ function profileButtons(target){
 function accessBadge(a){return a==='driver'?'<span class="badge driver">Endast Marcus</span>':a==='instructor'?'<span class="badge">Instruktör</span>':a==='all'?'<span class="badge family">Alla</span>':'<span class="badge family">Familjen</span>'}
 function canProfileDoTask(t,p){if(t.access==='driver')return p.id==='marcus';if(t.access==='instructor')return false;return t.assignee==='all'||t.assignee===p.id||p.id==='marcus'}
 function taskVisible(t,p){return t.assignee==='all'||t.assignee===p.id||p.id==='marcus'}
-function renderTask(t,index,compact=false){const who=t.completedBy?profileById(t.completedBy).name:'';const doneTime=t.completedAt?new Date(t.completedAt).toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'}):'';const planned=t.time||'Flex';return `<div class="task-card ${t.done?'done':''}"><input type="checkbox" data-familydone="${index}" ${t.done?'checked':''} ${!canProfileDoTask(t,activeProfile())&&!t.done?'disabled':''}><div><strong>${escapeHtml(t.title)}</strong><div class="task-meta">Plan ${planned}${t.done?` · ✓ ${doneTime||'klar'} · ${escapeHtml(who)}`:` · ${t.assignee==='all'?'hela familjen':escapeHtml(profileById(t.assignee).name)}`}</div>${(!compact&&t.note)?`<div class="task-meta">${escapeHtml(t.note)}</div>`:''}${compact?'':`<div style="margin-top:6px">${accessBadge(t.access)}</div>`}</div>${compact?'':`<button class="icon-btn" data-delfamily="${index}" aria-label="Ta bort">×</button>`}</div>`}
+function renderTask(t,index,compact=false){const who=t.completedBy?profileById(t.completedBy).name:'';const doneTime=t.completedAt?new Date(t.completedAt).toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'}):'';const planned=t.time||'Flex';const chip=t.done?'<span class="done-chip">✓ KLAR</span>':'';return `<div class="task-card ${t.done?'done':''}"><input type="checkbox" data-familydone="${index}" ${t.done?'checked':''} ${!canProfileDoTask(t,activeProfile())&&!t.done?'disabled':''}><div><strong>${escapeHtml(t.title)}${chip}</strong><div class="task-meta">Plan ${planned}${t.done?` · ✓ ${doneTime||'klar'} · ${escapeHtml(who||'familjen')}`:` · ${t.assignee==='all'?'hela familjen':escapeHtml(profileById(t.assignee).name)}`}</div>${(!compact&&t.note)?`<div class="task-meta">${escapeHtml(t.note)}</div>`:''}${compact?'':`<div style="margin-top:6px">${accessBadge(t.access)}</div>`}</div>${compact?'':`<button class="icon-btn" data-delfamily="${index}" aria-label="Ta bort">×</button>`}</div>`}
 
 function renderHomeDailyTasks(){
  const el=document.querySelector('#homeDailyTasks'); if(!el)return;
  const today=isoToday(), p=activeProfile(), now=new Date(), nowMins=now.getHours()*60+now.getMinutes();
  const rows=state.familyTasks.map((t,i)=>({t,i})).filter(x=>x.t.date===today&&(x.t.access!=='driver'||p.id==='marcus')).sort((a,b)=>(a.t.time||'99:99').localeCompare(b.t.time||'99:99'));
- const done=rows.filter(x=>x.t.done).length;
+ const completed=rows.filter(x=>x.t.done).sort((a,b)=>(b.t.completedAt||'').localeCompare(a.t.completedAt||''));
+ const pending=rows.filter(x=>!x.t.done);
+ const done=completed.length;
  const sum=document.querySelector('#homeDailySummary'); if(sum)sum.textContent=`${done}/${rows.length} klara · gemensam lista`;
  if(!rows.length){el.innerHTML='<div class="empty">Inga uppgifter registrerade idag.</div>';return}
- const pending=rows.filter(x=>!x.t.done), completed=rows.filter(x=>x.t.done);
- const visible=(pending.length?pending:completed.slice(-1)).slice(0,4);
- el.innerHTML=visible.map(x=>{
+ // Always keep completed work visible on Home so a checked item does not seem to disappear.
+ const visibleDone=completed.slice(0,2);
+ const pendingSlots=Math.max(2,5-visibleDone.length);
+ const visiblePending=pending.slice(0,pendingSlots);
+ let html='';
+ if(visibleDone.length){html+='<div class="daily-group-label">Senast klart</div>'+visibleDone.map(x=>renderTask(x.t,x.i,true)).join('')}
+ if(visiblePending.length){html+='<div class="daily-group-label">Nästa att göra</div>'+visiblePending.map(x=>{
    const tm=(x.t.time||'').split(':').map(Number), mins=tm.length===2?tm[0]*60+tm[1]:9999;
-   const html=renderTask(x.t,x.i,true);
-   return (!x.t.done&&mins<nowMins)?html.replace('task-card ','task-card daily-overdue '):html;
- }).join('') + (rows.length>visible.length?`<button class="button secondary daily-more" data-open-family>Visa alla ${rows.length} uppgifter</button>`:'');
+   const card=renderTask(x.t,x.i,true);
+   return mins<nowMins?card.replace('task-card ','task-card daily-overdue '):card;
+ }).join('')}
+ if(!visiblePending.length&&completed.length)html+='<div class="good" style="margin-top:8px">Alla dagens gemensamma uppgifter är klara ✓</div>';
+ if(rows.length>(visibleDone.length+visiblePending.length))html+=`<button class="button secondary daily-more" data-open-family>Visa alla ${rows.length} uppgifter</button>`;
+ el.innerHTML=html;
 }
+
 function renderFamily(){
  applyProfileMode();
  const p=activeProfile();const heroProfile=document.querySelector('#heroProfileName');if(heroProfile)heroProfile.textContent=p.name;profileButtons(document.querySelector('#todayProfiles'));profileButtons(document.querySelector('#familyProfiles'));
