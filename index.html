@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Field Manual">
 <link rel="apple-touch-icon" href="fm-icon-180-rc5.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Field Manual 1.0 RC13 – Shared Home</title>
+<title>Field Manual 1.0 RC14 – Sync Fix + Compact Home</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -272,8 +272,21 @@ body:not(.home-view) main{padding-top:18px}
 .ocr-cell.missing b{color:#d6a25e}
 .ocr-changed{outline:2px solid rgba(240,199,94,.75)!important;box-shadow:0 0 0 3px rgba(240,199,94,.08)}
 
-/* RC13 · Shared Home */
+/* RC14 · Sync Fix + Compact Home */
 .hq-welcome{padding:20px 24px!important;margin-bottom:16px!important}.hq-welcome h2{font-size:34px!important;margin:4px 0 6px!important}.hq-welcome p{margin:0 0 12px!important}.command-chips{gap:8px!important}.command-chip{padding:12px 14px!important}.daily-control-card{display:block!important;padding:8px 14px 12px!important;background:linear-gradient(145deg,rgba(14,55,41,.98),rgba(6,29,22,.98))!important;border-color:rgba(226,180,78,.42)!important}.home-daily-list .task-card{padding:13px 4px!important}.home-daily-list .task-card strong{font-size:17px}.home-daily-list .task-meta{font-size:13px}.home-daily-list input[type=checkbox]{width:30px;height:30px}.cloud-error{background:#472c18!important;color:#ffe0b9!important}.cloud-saving{background:#263b50!important;color:#d9ecff!important}
+
+/* RC14 · compact daily control */
+.home-daily-list{display:grid;gap:10px;margin-bottom:8px}
+.home-daily-list .task-card{padding:13px 14px;border-radius:16px;background:rgba(16,60,45,.78);border:1px solid rgba(98,153,127,.28);display:grid;grid-template-columns:46px 1fr;align-items:center;gap:10px}
+.home-daily-list .task-card input[type=checkbox]{width:38px;height:38px;margin:0}
+.home-daily-list .task-card strong{font-size:17px}
+.home-daily-list .task-card.done{opacity:.72}
+.daily-more{width:100%;margin:8px 0 18px}
+.daily-overdue .task-meta{color:#efc46b}
+.home-view #today .hero .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.home-view #today .hero .actions .button:last-child{grid-column:1/-1}
+.home-view #today .hero .actions .button{min-width:0;width:100%;white-space:normal}
+@media(max-width:430px){.home-view #today .hero .actions{grid-template-columns:1fr 1fr}.home-view #today .hero .actions .button:last-child{grid-column:1/-1}.home-daily-list .task-card{grid-template-columns:42px 1fr}.home-daily-list .task-card input[type=checkbox]{width:34px;height:34px}}
 </style>
 </head>
 <body class="home-view">
@@ -284,7 +297,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="ILO i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">FIELD MANUAL 1.0 RC13 · SHARED HOME</span>
+<span class="version">FIELD MANUAL 1.0 RC14 · SYNC FIX + COMPACT HOME</span>
 <h1>FIELD MANUAL</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -292,7 +305,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Field Manual 1.0 RC13 · Shared Home är installerad.</div>
+<div id="updateNotice" class="notice">Field Manual 1.0 RC14 · Sync Fix + Compact Home är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -1124,11 +1137,18 @@ function renderTask(t,index,compact=false){const who=t.completedBy?profileById(t
 
 function renderHomeDailyTasks(){
  const el=document.querySelector('#homeDailyTasks'); if(!el)return;
- const today=isoToday(), p=activeProfile();
+ const today=isoToday(), p=activeProfile(), now=new Date(), nowMins=now.getHours()*60+now.getMinutes();
  const rows=state.familyTasks.map((t,i)=>({t,i})).filter(x=>x.t.date===today&&(x.t.access!=='driver'||p.id==='marcus')).sort((a,b)=>(a.t.time||'99:99').localeCompare(b.t.time||'99:99'));
  const done=rows.filter(x=>x.t.done).length;
  const sum=document.querySelector('#homeDailySummary'); if(sum)sum.textContent=`${done}/${rows.length} klara · gemensam lista`;
- el.innerHTML=rows.length?rows.map(x=>renderTask(x.t,x.i,true)).join(''):'<div class="empty">Inga uppgifter registrerade idag.</div>';
+ if(!rows.length){el.innerHTML='<div class="empty">Inga uppgifter registrerade idag.</div>';return}
+ const pending=rows.filter(x=>!x.t.done), completed=rows.filter(x=>x.t.done);
+ const visible=(pending.length?pending:completed.slice(-1)).slice(0,4);
+ el.innerHTML=visible.map(x=>{
+   const tm=(x.t.time||'').split(':').map(Number), mins=tm.length===2?tm[0]*60+tm[1]:9999;
+   const html=renderTask(x.t,x.i,true);
+   return (!x.t.done&&mins<nowMins)?html.replace('task-card ','task-card daily-overdue '):html;
+ }).join('') + (rows.length>visible.length?`<button class="button secondary daily-more" data-open-family>Visa alla ${rows.length} uppgifter</button>`:'');
 }
 function renderFamily(){
  applyProfileMode();
@@ -1206,21 +1226,30 @@ async function pullCloudToday(){
  }finally{fmSyncBusy=false}
 }
 async function pushCloudCompletion(t){
- if(!fmCloud||!t?.cloudId){setCloudStatus('Ingen molnrad kopplad · prova ladda om',false);return false}
- const payload={completed:!!t.done,completed_at:t.done?(t.completedAt||new Date().toISOString()):null,completed_by:t.done?(fmMemberIds[state.activeProfile]||null):null};
+ if(!fmCloud||!fmDogId){setCloudStatus('Ingen molnanslutning · ändringen sparades inte',false);return false}
+ const memberId=fmMemberIds[state.activeProfile]||null;
+ const payload={completed:!!t.done,completed_at:t.done?(t.completedAt||new Date().toISOString()):null,completed_by:t.done?memberId:null};
  setCloudStatus('Sparar…');
  try{
-   const {data,error}=await fmCloud.from('daily_tasks').update(payload).eq('id',t.cloudId).select('id,completed,completed_at,completed_by').single();
+   let q=fmCloud.from('daily_tasks').update(payload).eq('dog_id',fmDogId).eq('task_date',isoToday());
+   if(t.cloudId) q=q.eq('id',t.cloudId); else if(t.taskKey) q=q.eq('task_key',t.taskKey); else q=q.eq('title',t.title);
+   const {data,error}=await q.select('id,task_key,completed,completed_at,completed_by').maybeSingle();
    if(error)throw error;
-   if(!data)throw new Error('Ingen rad uppdaterades');
-   setCloudStatus('Sparat · familjen uppdateras');
+   if(!data)throw new Error('Supabase uppdaterade ingen rad');
+   if(Boolean(data.completed)!==Boolean(t.done))throw new Error('Verifieringen efter sparning stämde inte');
+   t.cloudId=data.id;t.completedAt=data.completed_at||'';
+   if(data.completed_by){t.completedBy=Object.keys(fmMemberIds).find(k=>fmMemberIds[k]===data.completed_by)||state.activeProfile}else if(!t.done)t.completedBy='';
+   localStorage.setItem(STORE,JSON.stringify(state));
+   setCloudStatus(`Sparat ${new Date().toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'})} · synkas till familjen`);
    return true;
  }catch(error){
    console.error('Cloud task update failed',error);
-   setCloudStatus('Sparningen misslyckades · ändringen återställd',false);
+   const msg=(error&&((error.message)||(error.details)||(error.hint)))||'okänt fel';
+   setCloudStatus('Sparfel: '+String(msg).slice(0,110),false);
    return false;
  }
 }
+
 function subscribeFamilySync(){
  if(!fmCloud||!fmDogId)return;if(fmRealtimeChannel)fmCloud.removeChannel(fmRealtimeChannel);
  fmRealtimeChannel=fmCloud.channel('field-manual-family-'+fmDogId).on('postgres_changes',{event:'*',schema:'public',table:'daily_tasks',filter:`dog_id=eq.${fmDogId}`},()=>{pullCloudToday()}).subscribe(status=>{if(status==='SUBSCRIBED')setCloudStatus('Familjesynk aktiv · live')});
@@ -1567,16 +1596,20 @@ document.addEventListener("click",async e=>{
  const profileChoice=e.target.closest('[data-profile]');if(profileChoice){setDeviceProfile(profileChoice.dataset.profile)}
  const deviceChoice=e.target.closest('[data-device-profile]');if(deviceChoice){setDeviceProfile(deviceChoice.dataset.deviceProfile)}
  if(e.target.closest('[data-change-device-profile]')){showProfileSetup()}
- if(e.target.dataset.openFamily!==undefined){document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));document.querySelector('[data-screen="family"]').classList.add('active');document.querySelector('#family').classList.add('active');scrollTo(0,0)}
+ if(e.target.dataset.openFamily!==undefined||e.target.closest('[data-open-family]')){document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));document.querySelector('[data-screen="family"]').classList.add('active');document.querySelector('#family').classList.add('active');scrollTo(0,0);return}
  if(e.target.dataset.openSettings!==undefined){document.querySelectorAll('.tab,.screen').forEach(x=>x.classList.remove('active'));document.querySelector('#settings').classList.add('active');scrollTo(0,0)}
  if(e.target.dataset.familydone!==undefined){
-  const i=+e.target.dataset.familydone,t=state.familyTasks[i];
-  if(!canProfileDoTask(t,activeProfile())&&!t.done){alert('Den här uppgiften är inte tilldelad den valda profilen.');e.target.checked=!!t.done;return}
+  const box=e.target,i=+box.dataset.familydone,t=state.familyTasks[i];
+  if(!t)return;
+  if(!canProfileDoTask(t,activeProfile())&&!t.done){alert('Den här uppgiften är inte tilldelad den valda profilen.');box.checked=!!t.done;return}
   const prev={done:!!t.done,completedBy:t.completedBy||'',completedAt:t.completedAt||''};
-  t.done=e.target.checked;t.completedBy=t.done?state.activeProfile:'';t.completedAt=t.done?new Date().toISOString():'';
-  localStorage.setItem(STORE,JSON.stringify(state));renderAll();
-  if(t.cloudId){const ok=await pushCloudCompletion(t);if(!ok){t.done=prev.done;t.completedBy=prev.completedBy;t.completedAt=prev.completedAt;localStorage.setItem(STORE,JSON.stringify(state));renderAll()}else{await pullCloudToday()}}
-  else save();
+  const wanted=!!box.checked; box.disabled=true;
+  t.done=wanted;t.completedBy=wanted?state.activeProfile:'';t.completedAt=wanted?new Date().toISOString():'';
+  if(fmCloud&&(t.cloudId||t.taskKey)){
+    const ok=await pushCloudCompletion(t);
+    if(!ok){t.done=prev.done;t.completedBy=prev.completedBy;t.completedAt=prev.completedAt;box.checked=prev.done;box.disabled=false;localStorage.setItem(STORE,JSON.stringify(state));renderAll();return}
+    await pullCloudToday();
+  }else{save()}
   return
 }
  if(e.target.dataset.delfamily!==undefined&&confirm('Ta bort uppgiften?')){state.familyTasks.splice(+e.target.dataset.delfamily,1);save()}
