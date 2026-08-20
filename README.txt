@@ -1,13 +1,11 @@
-FIELD MANUAL 1.0 RC15 · VISIBLE COMPLETION
+FIELD MANUAL 1.0 RC16 · PERSISTENT COMPLETION
 
-- Robust Supabase completion writes with verification and visible errors
-- Compact Home daily list: next 4 pending tasks, Show all button
-- Overdue tasks visually highlighted
-- Mobile hero actions no longer overflow
-- RC15 cache/version bump
-- Completed tasks remain visible on Home with ✓ KLAR, actual time and family member
-- Home shows up to 2 latest completed tasks + next upcoming tasks
+Fixes the daily family checklist persistence bug.
 
-Field Manual 1.0 RC11 · Family Control
+Key fix:
+- Daily routine rows are now INSERTED ONLY WHEN MISSING.
+- Existing rows are never upserted during app startup, so completed/completed_at/completed_by are not reset.
+- A successful checkbox change remains visible immediately and is then reconciled with Supabase.
+- Supabase Realtime remains enabled for cross-device updates.
 
-Fix: Att göra idag renderas permanent direkt under Dagens kommandovy på Hem. Gemensam familjelista med planerad tid, faktisk tid och utförare.
+Upload every file in this folder to the GitHub Pages repository root and commit to main.

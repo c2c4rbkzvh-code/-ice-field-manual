@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Field Manual">
 <link rel="apple-touch-icon" href="fm-icon-180-rc5.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Field Manual 1.0 RC15 – Visible Completion</title>
+<title>Field Manual 1.0 RC16 – Persistent Completion</title>
 <style>
 :root{
  --bg:#06100d;--panel:#10251d;--panel2:#173429;--line:#2a4c3e;--text:#f1f7f3;
@@ -272,10 +272,10 @@ body:not(.home-view) main{padding-top:18px}
 .ocr-cell.missing b{color:#d6a25e}
 .ocr-changed{outline:2px solid rgba(240,199,94,.75)!important;box-shadow:0 0 0 3px rgba(240,199,94,.08)}
 
-/* RC15 · Visible Completion */
+/* RC16 · Persistent Completion */
 .hq-welcome{padding:20px 24px!important;margin-bottom:16px!important}.hq-welcome h2{font-size:34px!important;margin:4px 0 6px!important}.hq-welcome p{margin:0 0 12px!important}.command-chips{gap:8px!important}.command-chip{padding:12px 14px!important}.daily-control-card{display:block!important;padding:8px 14px 12px!important;background:linear-gradient(145deg,rgba(14,55,41,.98),rgba(6,29,22,.98))!important;border-color:rgba(226,180,78,.42)!important}.home-daily-list .task-card{padding:13px 4px!important}.home-daily-list .task-card strong{font-size:17px}.home-daily-list .task-meta{font-size:13px}.home-daily-list input[type=checkbox]{width:30px;height:30px}.cloud-error{background:#472c18!important;color:#ffe0b9!important}.cloud-saving{background:#263b50!important;color:#d9ecff!important}
 
-/* RC15 · compact daily control + visible completion */
+/* RC16 · compact daily control + persistent completion */
 .home-daily-list{display:grid;gap:10px;margin-bottom:8px}
 .home-daily-list .task-card{padding:13px 14px;border-radius:16px;background:rgba(16,60,45,.78);border:1px solid rgba(98,153,127,.28);display:grid;grid-template-columns:46px 1fr;align-items:center;gap:10px}
 .home-daily-list .task-card input[type=checkbox]{width:38px;height:38px;margin:0}
@@ -297,7 +297,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="ILO i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">FIELD MANUAL 1.0 RC15 · VISIBLE COMPLETION</span>
+<span class="version">FIELD MANUAL 1.0 RC16 · PERSISTENT COMPLETION</span>
 <h1>FIELD MANUAL</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -305,7 +305,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Field Manual 1.0 RC15 · Visible Completion är installerad.</div>
+<div id="updateNotice" class="notice">Field Manual 1.0 RC16 · Persistent Completion är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -1221,9 +1221,22 @@ async function initFamilySync(){
  }catch(err){console.error('Family sync init',err);setCloudStatus('Synk kunde inte starta · lokal data används',false)}
 }
 async function ensureCloudDailyTasks(){
- if(!fmCloud||!fmDogId)return;const d=isoToday();
- const rows=FM_ROUTINE.map(([task_key,title,planned_time,category])=>({dog_id:fmDogId,task_date:d,task_key,title,planned_time,category}));
- const {error}=await fmCloud.from('daily_tasks').upsert(rows,{onConflict:'dog_id,task_date,task_key',ignoreDuplicates:false});if(error)throw error;
+ if(!fmCloud||!fmDogId)return;
+ const d=isoToday();
+ // IMPORTANT: never upsert the full routine here. An upsert can overwrite completion
+ // fields on an already completed row when another device/app instance starts.
+ const {data:existing,error:readErr}=await fmCloud.from('daily_tasks')
+   .select('task_key')
+   .eq('dog_id',fmDogId)
+   .eq('task_date',d);
+ if(readErr)throw readErr;
+ const have=new Set((existing||[]).map(r=>r.task_key));
+ const missing=FM_ROUTINE
+   .filter(([task_key])=>!have.has(task_key))
+   .map(([task_key,title,planned_time,category])=>({dog_id:fmDogId,task_date:d,task_key,title,planned_time,category}));
+ if(!missing.length)return;
+ const {error:insertErr}=await fmCloud.from('daily_tasks').insert(missing);
+ if(insertErr)throw insertErr;
 }
 async function pullCloudToday(){
  if(!fmCloud||!fmDogId||fmSyncBusy)return;fmSyncBusy=true;
@@ -1618,6 +1631,9 @@ document.addEventListener("click",async e=>{
   if(fmCloud&&(t.cloudId||t.taskKey)){
     const ok=await pushCloudCompletion(t);
     if(!ok){t.done=prev.done;t.completedBy=prev.completedBy;t.completedAt=prev.completedAt;box.checked=prev.done;box.disabled=false;localStorage.setItem(STORE,JSON.stringify(state));renderAll();return}
+    // Keep the checked state visible immediately; then reconcile with the cloud row.
+    localStorage.setItem(STORE,JSON.stringify(state));
+    renderAll();
     await pullCloudToday();
   }else{save()}
   return
