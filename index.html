@@ -297,7 +297,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="ILO i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">FIELD MANUAL 1.0 RC16 · PERSISTENT COMPLETION</span>
+<span class="version">FIELD MANUAL 1.0 RC17 · TRAINING FOCUS</span>
 <h1>FIELD MANUAL</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -305,7 +305,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Field Manual 1.0 RC16 · Persistent Completion är installerad.</div>
+<div id="updateNotice" class="notice">Field Manual 1.0 RC17 · Training Focus är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -316,11 +316,7 @@ body:not(.home-view) main{padding-top:18px}
     <button class="command-chip" id="homeOpenILO">☰ <span>Öppna FIELD MANUAL</span></button>
   </div>
 </div>
-<div class="section-title"><h2>Att göra idag</h2><span id="homeDailySummary">hela familjen</span></div><div id="cloudSyncStatus" class="device-badge" style="margin:0 0 10px">☁️ Ansluter familjesynk…</div>
-<div class="card daily-control-card">
-  <div id="homeDailyTasks" class="home-daily-list"></div>
-  <button class="button secondary block" data-goto="family" style="margin-top:10px">Öppna familj & planering</button>
-</div>
+
 <div class="section-title"><h2>Idag</h2><span>datadriven plan</span></div>
 <div class="card ice-today">
   <div class="ice-today-head"><div><div class="eyebrow">DAGENS BRIEF</div><h3 id="iceTodayTitle" style="font-size:25px;margin:6px 0">–</h3><p id="iceTodayText" style="margin:0"></p></div><div class="ice-level"><small>NIVÅ</small><b id="iceLevel">1</b><small id="iceLevelName">Start</small></div></div>
@@ -337,15 +333,15 @@ body:not(.home-view) main{padding-top:18px}
 <div class="section-title"><h2>Dagens lägesbild</h2><span id="hqTodayLabel">live</span></div>
 <div class="card command-center">
   <div class="command-primary">
-    <div class="eyebrow">DAGENS GENOMFÖRANDE</div>
-    <strong id="todayProgressText">0 av 0 uppgifter klara</strong>
+    <div class="eyebrow">TRÄNING & UTVECKLING</div>
+    <strong id="todayProgressText">Dagens fokus är klart att starta</strong>
     <div class="progress-line"><i id="todayProgressBar" style="width:0%"></i></div>
-    <small id="nextTaskText">Ingen nästa uppgift registrerad.</small>
+    <small id="nextTaskText">Starta dagens korta träningspass när ILO är mottaglig.</small>
   </div>
   <div class="command-stats">
     <div class="command-stat click-card" data-goto="progress"><span class="status-icon">❤</span><b id="hqHealth">Allt bra</b><small id="hqHealthDetail">ingen avvikelse</small></div>
     <div class="command-stat click-card" data-goto="progress"><span class="status-icon">↗</span><b id="hqWeekPercent">0%</b><small>veckans aktivitet</small></div>
-    <div class="command-stat click-card" data-goto="family"><span class="status-icon">◷</span><b id="hqNextTime">Flex</b><small id="hqNextLabel">nästa aktivitet</small></div>
+    <div class="command-stat click-card" data-goto="sar"><span class="status-icon">◎</span><b id="hqNextTime">SAR</b><small id="hqNextLabel">nästa utvecklingssteg</small></div>
   </div>
 </div>
 
@@ -362,18 +358,17 @@ body:not(.home-view) main{padding-top:18px}
 <div class="today-overview">
 <div class="overview-card click-card" data-open-settings="1"><b id="overviewAge">–</b><small>ålder</small></div>
 <div class="overview-card click-card" data-goto="progress"><b id="overviewPhase">–</b><small>utvecklingsfas</small></div>
-<div class="overview-card click-card" data-goto="family"><b id="overviewTasks">0</b><small>uppgifter kvar idag</small></div>
+<div class="overview-card click-card" data-goto="sar"><b id="overviewTasks">0%</b><small>SAR-progression</small></div>
 <div class="overview-card click-card" data-goto="journal"><b id="overviewJournal">0</b><small>loggade pass senaste 7 dagarna</small></div>
 </div>
 <div class="section-title"><h2>FIELD MANUAL HQ</h2><span>snabbåtkomst</span></div>
 <div class="card">
-<div class="hq-status"><div><strong id="hqTasks">0</strong><small>uppgifter kvar</small></div><div><strong id="hqMinutes">0</strong><small>minuter / 7 dagar</small></div><div><strong id="hqStreak">0</strong><small>aktiva dagar</small></div></div>
+<div class="hq-status"><div><strong id="hqTasks">0%</strong><small>SAR-progression</small></div><div><strong id="hqMinutes">0</strong><small>minuter / 7 dagar</small></div><div><strong id="hqStreak">0</strong><small>aktiva dagar</small></div></div>
 <div class="quick-grid" style="margin-top:16px">
-<button class="quick-action" data-goto="journal"><b>✎</b>Logga</button><button class="quick-action driver-only" data-goto="missions"><b>🎯</b>Mission</button><button class="quick-action" data-goto="family"><b>⌂</b>Uppgift</button><button class="quick-action" data-goto="equipment"><b>🎒</b>Utrustning</button><button class="quick-action driver-only" data-goto="progress"><b>↗</b>Statistik</button>
+<button class="quick-action" data-goto="journal"><b>✎</b>Logga</button><button class="quick-action driver-only" data-goto="missions"><b>🎯</b>Mission</button><button class="quick-action" data-goto="sar"><b>◎</b>Personsök</button><button class="quick-action" data-goto="equipment"><b>🎒</b>Utrustning</button><button class="quick-action driver-only" data-goto="progress"><b>↗</b>Statistik</button>
 </div></div>
 
-<div class="section-title"><h2>Mina uppgifter idag</h2><span id="myTaskCount"></span></div>
-<div class="card"><div id="myTasksToday"></div><button class="button secondary block" data-open-family="1" style="margin-top:12px">Öppna familjecentralen</button></div>
+
 <div class="grid two">
 <div class="card"><div class="eyebrow">Fas</div><div class="metric" id="phaseMetric">–</div><small id="phaseText">–</small></div>
 <div class="card"><div class="eyebrow">Dagens belastning</div><div class="metric" id="loadMetric">–</div><small id="loadText">–</small></div>
@@ -593,21 +588,8 @@ body:not(.home-view) main{padding-top:18px}
 <div class="section-title"><h2>Familjecentral</h2><span>vardag, ansvar och livsbok</span></div>
 <div class="card"><div id="familyProfiles" class="profile-row"></div><div id="familyRoleText" class="good"></div></div>
 
-<div class="section-title"><h2>Dagens gemensamma läge</h2><span id="familyDoneSummary"></span></div>
-<div class="card"><div id="familyTaskList"></div></div>
-
-<div class="section-title"><h2>Ny uppgift</h2><span>larm är valfritt</span></div>
-<div class="card">
-<label>Uppgift</label><select id="taskTemplate"><option value="">Välj eller skriv egen</option><option>Gå promenad</option><option>Ge mat</option><option>Kontrollera/fyll vatten</option><option>Rastning</option><option>Lek och samvaro</option><option>Godissök</option><option>Borstning</option><option>Tasskontroll</option><option>Vila/passivitet</option><option>Åka bil</option></select>
-<label>Egen rubrik</label><input id="taskTitle" placeholder="t.ex. Kvällspromenad">
-<div class="grid two"><div><label>Datum</label><input type="date" id="taskDate"></div><div><label>Tid (valfritt)</label><input type="time" id="taskTime"></div></div>
-<label>Ansvarig</label><select id="taskAssignee"></select>
-<label>Typ</label><select id="taskAccess"><option value="family">Familjen kan göra</option><option value="all">Alla kan göra</option><option value="driver">Endast Marcus</option><option value="instructor">Instruktör/figurant</option></select>
-<label>Anteckning</label><input id="taskNote" placeholder="kort instruktion eller mängd">
-<label><input type="checkbox" id="taskReminder" style="width:auto;margin-right:8px"> Aktivera larm/påminnelse</label>
-<div id="reminderOptions" class="hidden"><div class="grid two"><div><label>Påminn</label><select id="taskReminderOffset"><option value="0">Vid tiden</option><option value="10">10 min före</option><option value="30">30 min före</option><option value="60">1 timme före</option><option value="1440">1 dag före</option></select></div><div><label>Mottagare</label><select id="taskReminderAudience"><option value="assignee">Endast ansvarig</option><option value="all">Hela familjen</option></select></div></div><label><input type="checkbox" id="taskRepeatReminder" style="width:auto;margin-right:8px"> Upprepa var 30:e minut tills klar</label></div>
-<button class="button block" id="saveFamilyTask" style="margin-top:12px">Lägg till uppgift</button>
-</div>
+<div class="section-title"><h2>Familj & livsbok</h2><span>gemensamma minnen och vardag</span></div>
+<div class="card"><p>Uppgiftslistan är borttagen. Familjesektionen används nu för profiler och ILOs livsbok.</p></div>
 
 <div class="section-title"><h2>Registrera händelse</h2><span>ILOs livsbok</span></div>
 <div class="card">
@@ -692,7 +674,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const VERSION="1.0.0-rc12", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
+const VERSION="1.0.0-rc17", STORE="iceFieldManualV3", DEVICE_PROFILE_KEY="iceDeviceProfileV1";
 const defaults={
  dog:{name:"ILO",breed:"Belgisk Malinois",sex:"Hane",photo:"ice-photo.jpg"},
  birthDate:"2026-06-04",pickupDate:"2026-08-05",currentWorkMode:"ledig",
@@ -1043,24 +1025,24 @@ function developmentSnapshot(){
 function renderDevelopmentEngine(){const d=developmentSnapshot();const a=ageParts();const title=a.weeks<16?'Bygg systemet – inte perfekta moment':a.weeks<28?'Generalisera utan att jaga svårighet':'Kvalitet före belastning';document.querySelector('#devReadiness').textContent=d.readiness;document.querySelector('#devMainTitle').textContent=title;document.querySelector('#devMainText').textContent=`${a.weeks} veckor: dagens plan prioriterar utveckling, motivation och återhämtning. ${d.weakest.hits?'Minst dokumenterat just nu: '+d.weakest.name+'.':'Börja med korta baslinjepass så motorn lär känna Dex/ILO.'}`;document.querySelector('#devDailyPlan').innerHTML=d.sessions.map(x=>`<div class="dev-session"><span style="font-size:22px">${x.icon}</span><div><strong>${escapeHtml(x.title)} · ${escapeHtml(x.dose)}</strong><small>${escapeHtml(x.why)}</small></div><span class="evidence-tag">EVIDENS ${x.e}</span></div>`).join('');document.querySelector('#devDomainGrid').innerHTML=d.domains.map(x=>`<div class="dev-domain"><strong><span>${x.icon} ${escapeHtml(x.name)}</span><span>${x.percent}%</span></strong><div class="dev-bar"><i style="width:${x.percent}%"></i></div><small>${x.hits?x.hits+' dokumenterade pass':'Baslinje saknas'} · ${x.evidence}</small></div>`).join('');}
 
 function iceEngine(){
- const today=isoToday(),completedTasks=state.familyTasks.filter(t=>t.done).length,missions=Object.values(state.completedMissions).filter(x=>x.complete).length,envs=Object.values(state.environments).filter(Boolean).length,miles=Object.values(state.milestones).filter(Boolean).length,sar=Object.values(state.sarCompleted).filter(Boolean).length;
+ const today=isoToday(),completedTasks=0,missions=Object.values(state.completedMissions).filter(x=>x.complete).length,envs=Object.values(state.environments).filter(Boolean).length,miles=Object.values(state.milestones).filter(Boolean).length,sar=Object.values(state.sarCompleted).filter(Boolean).length;
  const journalXp=state.journal.reduce((n,j)=>n+20+Math.min(30,(+j.minutes||0))+Math.max(0,(+j.rating||0)-2)*4+(j.photo?8:0),0);
  const xp=journalXp+completedTasks*8+missions*35+envs*6+miles*25+sar*60+state.lifeEvents.length*5;
  const level=Math.max(1,Math.floor(Math.sqrt(xp/90))+1),levelStart=90*(level-1)*(level-1),levelEnd=90*level*level,levelPct=Math.min(100,Math.round((xp-levelStart)/Math.max(1,levelEnd-levelStart)*100));
  const skills=skillDefinitions.map(def=>{let points=0,sessions=0;state.journal.forEach(j=>{if(def.types.includes(j.type)||def.cats.includes(j.exerciseCategory)){sessions++;points+=18+Math.min(22,+j.minutes||0)+Math.max(0,(+j.rating||0)-2)*3}});points+=def.sar.filter(k=>state.sarCompleted[k]).length*55;points+=def.milestones.filter(k=>state.milestones[k]).length*30;if(def.id==='miljo')points+=envs*5;return{...def,points,sessions,percent:Math.min(100,Math.round(points/260*100))}});
  const lowest=[...skills].filter(x=>x.id!=='markering'||ageParts().weeks>=20).sort((a,b)=>a.points-b.points)[0];
- const nextSar=sarSteps.find(x=>!state.sarCompleted[x[0]]);const taskToday=state.familyTasks.find(t=>t.date===today&&!t.done);const recommendation=dailyRecommendation();
- let title=recommendation.title,text=recommendation.text;if(taskToday){title=`Nästa: ${taskToday.title}`;text=taskToday.note||'Genomför uppgiften lugnt och markera den klar när den är färdig.'}else if(lowest&&state.journal.length){title=`Balansförslag: ${lowest.name}`;text=`${lowest.name} är just nu det minst dokumenterade området. Välj ett kort, enkelt pass utan att jaga poäng.`}
- return{xp,level,levelPct,levelStart,levelEnd,skills,lowest,title,text,nextSar,impact:{journal:state.journal.length>0,mission:missions>0,family:completedTasks>0,life:state.lifeEvents.length>0,environment:envs>0}};
+ const nextSar=sarSteps.find(x=>!state.sarCompleted[x[0]]);const recommendation=dailyRecommendation();
+ let title=recommendation.title,text=recommendation.text;if(lowest&&state.journal.length){title=`Balansförslag: ${lowest.name}`;text=`${lowest.name} är just nu det minst dokumenterade området. Välj ett kort, enkelt pass utan att jaga poäng.`}
+ return{xp,level,levelPct,levelStart,levelEnd,skills,lowest,title,text,nextSar,impact:{journal:state.journal.length>0,mission:missions>0,life:state.lifeEvents.length>0,environment:envs>0}};
 }
 function levelName(level){return level<3?'Grund':level<6?'Relation':level<10?'Utforskare':level<15?'Sökgrund':'Ekipage'}
-function renderEngine(){const e=iceEngine();document.querySelector('#iceTodayTitle').textContent=e.title;document.querySelector('#iceTodayText').textContent=e.text;document.querySelector('#iceLevel').textContent=e.level;document.querySelector('#iceLevelName').textContent=levelName(e.level);document.querySelector('#iceXpText').textContent=`${e.xp} XP totalt`;document.querySelector('#iceNextXp').textContent=`${Math.max(0,e.levelEnd-e.xp)} XP till nivå ${e.level+1}`;document.querySelector('#iceXpBar').style.width=e.levelPct+'%';document.querySelector('#nextUnlockTitle').textContent=e.nextSar?`Nästa SAR-steg: ${e.nextSar[1]}`:'Grundvägen genomförd';document.querySelector('#nextUnlockText').textContent=e.nextSar?e.nextSar[2]:'Fortsätt generalisera och kvalitetssäkra färdigheterna.';document.querySelector('#skillGrid').innerHTML=e.skills.map(x=>`<div class="skill-card"><div class="skill-card-head"><strong>${x.icon} ${escapeHtml(x.name)}</strong><span class="skill-trend ${x.percent>0?'up':'flat'}">${x.percent>0?'↑':'→'} ${x.percent}%</span></div><div class="bar"><i style="width:${x.percent}%"></i></div><small>${x.sessions?`${x.sessions} pass · ${x.points} p`:'Inte påbörjad'}</small></div>`).join('');const labels=[['journal','Journal'],['mission','Uppdrag'],['family','Familj'],['life','Livsbok'],['environment','Miljö']];document.querySelector('#engineImpact').innerHTML=labels.map(([k,n])=>`<span class="impact-chip ${e.impact[k]?'on':''}">${e.impact[k]?'✓':'○'} ${n}</span>`).join('')}
+function renderEngine(){const e=iceEngine();document.querySelector('#iceTodayTitle').textContent=e.title;document.querySelector('#iceTodayText').textContent=e.text;document.querySelector('#iceLevel').textContent=e.level;document.querySelector('#iceLevelName').textContent=levelName(e.level);document.querySelector('#iceXpText').textContent=`${e.xp} XP totalt`;document.querySelector('#iceNextXp').textContent=`${Math.max(0,e.levelEnd-e.xp)} XP till nivå ${e.level+1}`;document.querySelector('#iceXpBar').style.width=e.levelPct+'%';document.querySelector('#nextUnlockTitle').textContent=e.nextSar?`Nästa SAR-steg: ${e.nextSar[1]}`:'Grundvägen genomförd';document.querySelector('#nextUnlockText').textContent=e.nextSar?e.nextSar[2]:'Fortsätt generalisera och kvalitetssäkra färdigheterna.';document.querySelector('#skillGrid').innerHTML=e.skills.map(x=>`<div class="skill-card"><div class="skill-card-head"><strong>${x.icon} ${escapeHtml(x.name)}</strong><span class="skill-trend ${x.percent>0?'up':'flat'}">${x.percent>0?'↑':'→'} ${x.percent}%</span></div><div class="bar"><i style="width:${x.percent}%"></i></div><small>${x.sessions?`${x.sessions} pass · ${x.points} p`:'Inte påbörjad'}</small></div>`).join('');const labels=[['journal','Journal'],['mission','Uppdrag'],['life','Livsbok'],['environment','Miljö']];document.querySelector('#engineImpact').innerHTML=labels.map(([k,n])=>`<span class="impact-chip ${e.impact[k]?'on':''}">${e.impact[k]?'✓':'○'} ${n}</span>`).join('')}
 
 function renderToday(){
  const a=ageParts(),p=phase(),wl=workload(),c=coach(),m=mission(),today=isoToday(),done=state.completedMissions[today]?.tasks||[];renderEngine();renderDevelopmentEngine();
  const active=activeProfile(),g=timeGreeting();document.querySelector('#greetingTitle').textContent=`${g} ${active.name} 👋`;document.querySelector('#greetingSubtitle').textContent=`${calendarAgeText(a)} · dagens fokus på en blick.`;document.querySelector('#hqTodayLabel').textContent=new Date().toLocaleDateString('sv-SE',{weekday:'long',day:'numeric',month:'short'});
- const allToday=state.familyTasks.filter(t=>t.date===today),doneToday=allToday.filter(t=>t.done).length,totalToday=allToday.length,missionDone=state.completedMissions[today]?.complete?1:0,totalUnits=totalToday+1,doneUnits=doneToday+missionDone,dayPct=Math.round(doneUnits/Math.max(1,totalUnits)*100);document.querySelector('#todayProgressText').textContent=`${doneUnits} av ${totalUnits} delar klara`;document.querySelector('#todayProgressBar').style.width=dayPct+'%';
- const upcoming=allToday.filter(t=>!t.done).sort((x,y)=>(x.time||'99:99').localeCompare(y.time||'99:99'))[0];document.querySelector('#nextTaskText').textContent=upcoming?`Nästa: ${upcoming.title}${upcoming.time?' · '+upcoming.time:''}`:(missionDone?'Dagens plan är genomförd.':'Nästa: genomför dagens träningsuppdrag.');document.querySelector('#hqNextTime').textContent=upcoming?.time||'Flex';document.querySelector('#hqNextLabel').textContent=upcoming?upcoming.title:'dagens uppdrag';
+ const missionDone=state.completedMissions[today]?.complete?1:0;const dayPct=missionDone?100:0;document.querySelector('#todayProgressText').textContent=missionDone?'Dagens träningsuppdrag genomfört':'Dagens träningsuppdrag väntar';document.querySelector('#todayProgressBar').style.width=dayPct+'%';
+ document.querySelector('#nextTaskText').textContent=missionDone?'Dagens pass är loggat. Fortsätt med vila, relation och vardag.':'Nästa: genomför dagens korta träningsuppdrag.';document.querySelector('#hqNextTime').textContent='SAR';document.querySelector('#hqNextLabel').textContent='nästa utvecklingssteg';
  const healthRecent=state.lifeEvents.filter(e=>['Hälsa','Veterinär','Vaccination'].includes(e.category)).sort((x,y)=>(y.date+(y.created||'')).localeCompare(x.date+(x.created||'')))[0];const healthEl=document.querySelector('#hqHealth'),healthDetail=document.querySelector('#hqHealthDetail');if(healthRecent&&+healthRecent.rating<=2){healthEl.textContent='Följ upp';healthEl.className='status-watch';healthDetail.textContent=healthRecent.title}else if(healthRecent){healthEl.textContent='Allt bra';healthEl.className='status-ok';healthDetail.textContent=`senast: ${healthRecent.title}`}else{healthEl.textContent='Ingen logg';healthEl.className='status-time';healthDetail.textContent='lägg till hälsostatus'};
  const weekEntries=recentJournal(7).length+state.lifeEvents.filter(e=>daysBetween(e.date,today)<=7&&daysBetween(e.date,today)>=0).length;const weekPct=Math.min(100,Math.round(weekEntries/7*100));document.querySelector('#hqWeekPercent').textContent=weekPct+'%';
  const rec=dailyRecommendation();document.querySelector('#dailyRecommendTitle').textContent=rec.title;document.querySelector('#dailyRecommendText').textContent=rec.text;document.querySelector('#dailyRecommendIcon').textContent=rec.icon;document.querySelector('#dailyRecommendAction').textContent=rec.action;document.querySelector('#dailyRecommendDose').textContent=rec.dose;
@@ -1070,7 +1052,7 @@ function renderToday(){
  document.querySelector("#heroAge").textContent=`${calendarAgeText(a)} · född ${svDate(state.birthDate)}`;
  const af=ageFocus();document.querySelector("#ageStageLabel").textContent=af.label;document.querySelector("#ageFocusTitle").textContent=af.title;document.querySelector("#ageFocusText").textContent=af.text;document.querySelector("#ageFocusList").innerHTML=af.items.map(x=>`<div>✓ ${escapeHtml(x)}</div>`).join("");
  document.querySelector("#overviewAge").textContent=`${a.weeks} v ${a.rest} d`;document.querySelector("#overviewPhase").textContent=p[0];document.querySelector("#overviewJournal").textContent=recentJournal(7).length;
- const todays=state.familyTasks.filter(t=>t.date===today&&!t.done);document.querySelector("#hqTasks").textContent=todays.length;document.querySelector("#overviewTasks").textContent=todays.length;document.querySelector("#hqMinutes").textContent=recentJournal(7).reduce((n,j)=>n+(+j.minutes||0),0);const activeDays=new Set(recentJournal(14).map(j=>j.date));let streak=0,d=new Date();while(activeDays.has(d.toISOString().slice(0,10))){streak++;d.setDate(d.getDate()-1)}document.querySelector("#hqStreak").textContent=streak;
+ const sarDoneCount=sarSteps.filter(x=>state.sarCompleted[x[0]]).length,sarProgress=Math.round(sarDoneCount/Math.max(1,sarSteps.length)*100);document.querySelector("#hqTasks").textContent=sarProgress+"%";document.querySelector("#overviewTasks").textContent=sarProgress+"%";document.querySelector("#hqMinutes").textContent=recentJournal(7).reduce((n,j)=>n+(+j.minutes||0),0);const activeDays=new Set(recentJournal(14).map(j=>j.date));let streak=0,d=new Date();while(activeDays.has(d.toISOString().slice(0,10))){streak++;d.setDate(d.getDate()-1)}document.querySelector("#hqStreak").textContent=streak;
  document.querySelector("#phaseMetric").textContent=p[0];document.querySelector("#phaseText").textContent=p[1];
  document.querySelector("#loadMetric").textContent=wl.level;document.querySelector("#loadText").textContent=wl.text;
  document.querySelector("#coachScore").textContent=c.score;document.querySelector("#coachTitle").textContent=c.title;document.querySelector("#coachText").textContent=`ILO är fortfarande ${a.weeks} veckor. ${c.text} Håll passen korta och avsluta medan han fortfarande vill fortsätta.`;
@@ -1164,15 +1146,8 @@ function renderFamily(){
  applyProfileMode();
  const p=activeProfile();const heroProfile=document.querySelector('#heroProfileName');if(heroProfile)heroProfile.textContent=p.name;profileButtons(document.querySelector('#todayProfiles'));profileButtons(document.querySelector('#familyProfiles'));
  document.querySelector('#activeProfileNote').innerHTML=p.role==='driver'?`<strong>${p.name} · hundförare</strong><br>Du ser hela planen och de förarunika momenten.`:`<strong>${p.name} · familjeläge</strong><br>Du ser vardagsuppgifter och invigda moment som hjälper ILO utan att störa förararbetet.`;
- document.querySelector('#familyRoleText').innerHTML=p.role==='driver'?'<strong>Förarläge</strong><br>Full åtkomst till uppgifter, livsbok och planering.':'<strong>Familjeläge</strong><br>Promenad, mat, vatten, skötsel, social samvaro och tilldelade aktiviteter.';
- const today=isoToday(),mine=state.familyTasks.map((t,i)=>({t,i})).filter(x=>x.t.date===today&&taskVisible(x.t,p));
- document.querySelector('#myTaskCount').textContent=`${mine.filter(x=>!x.t.done).length} kvar`;
- document.querySelector('#myTasksToday').innerHTML=mine.length?mine.map(x=>renderTask(x.t,x.i,true)).join(''):'<div class="empty">Inga uppgifter tilldelade idag.</div>';
- const all=state.familyTasks.map((t,i)=>({t,i})).filter(x=>x.t.date===today);
- document.querySelector('#familyDoneSummary').textContent=`${all.filter(x=>x.t.done).length}/${all.length} klara`;
- document.querySelector('#familyTaskList').innerHTML=all.length?all.map(x=>renderTask(x.t,x.i)).join(''):'<div class="empty">Inga gemensamma uppgifter idag.</div>';
- const opts='<option value="all">Alla</option>'+state.profiles.map(x=>`<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('');
- document.querySelector('#taskAssignee').innerHTML=opts;document.querySelector('#lifePerson').innerHTML=state.profiles.map(x=>`<option value="${x.id}" ${x.id===state.activeProfile?'selected':''}>${escapeHtml(x.name)}</option>`).join('');
+ document.querySelector('#familyRoleText').innerHTML=p.role==='driver'?'<strong>Förarläge</strong><br>Träning, utveckling och livsbok.':'<strong>Familjeläge</strong><br>Familjeprofil och gemensam livsbok.';
+ document.querySelector('#lifePerson').innerHTML=state.profiles.map(x=>`<option value="${x.id}" ${x.id===state.activeProfile?'selected':''}>${escapeHtml(x.name)}</option>`).join('');
  const events=[...state.lifeEvents].sort((a,b)=>(b.date+b.created).localeCompare(a.date+a.created)).slice(0,20);
  document.querySelector('#lifeTimeline').innerHTML=events.length?events.map((e,i)=>`<div class="timeline-item"><span class="timeline-dot"></span><div><strong>${escapeHtml(e.title)}</strong><div class="task-meta">${svDate(e.date)} · ${escapeHtml(e.category)} · ${escapeHtml(profileById(e.person).name)} · ${'★'.repeat(+e.rating)}</div>${e.note?`<p>${escapeHtml(e.note)}</p>`:''}<button class="icon-btn" data-dellife="${state.lifeEvents.indexOf(e)}">Ta bort</button></div></div>`).join(''):'<div class="empty">Livsboken är tom ännu.</div>';
  renderHomeDailyTasks();
@@ -1562,7 +1537,7 @@ function goBackScreen(){if(screenHistory.length>1){screenHistory.pop();openScree
 
 function configureILO40Dashboard(){
  const today=document.querySelector('#today'); if(!today||today.classList.contains('dashboard-ready'))return;
- const keepTitles=['Att göra idag','Idag med ILO','Färdighetsmotor','FIELD MANUAL idag','FIELD MANUAL Intelligence','Smart coach'];
+ const keepTitles=['Idag med ILO','Färdighetsmotor','FIELD MANUAL idag','FIELD MANUAL Intelligence','Smart coach'];
  [...today.children].forEach(el=>el.classList.add('dashboard-hidden'));
  const welcome=today.querySelector('.hq-welcome'); if(welcome)welcome.classList.remove('dashboard-hidden');
  const notice=today.querySelector('#updateNotice'); if(notice)notice.classList.remove('dashboard-hidden');
@@ -1571,14 +1546,7 @@ function configureILO40Dashboard(){
    const title=[...today.querySelectorAll(':scope > .section-title')].find(x=>x.querySelector('h2')?.textContent.trim()===name);
    if(title){
      title.classList.remove('dashboard-hidden');ordered.push(title);
-     if(name==='Att göra idag'){
-       const status=document.querySelector('#cloudSyncStatus');
-       const card=document.querySelector('.daily-control-card');
-       if(status){status.classList.remove('dashboard-hidden');ordered.push(status)}
-       if(card){card.classList.remove('dashboard-hidden');ordered.push(card)}
-     }else{
-       const content=title.nextElementSibling;if(content){content.classList.remove('dashboard-hidden');ordered.push(content)}
-     }
+     const content=title.nextElementSibling;if(content){content.classList.remove('dashboard-hidden');ordered.push(content)}
    }
  });
  ordered.forEach(el=>today.appendChild(el));
@@ -1682,19 +1650,17 @@ document.querySelector("#favoriteFilter").addEventListener("change",renderExerci
 document.querySelector("#activitySearch").addEventListener("input",renderExerciseLibrary);
 document.querySelector("#commandSearch").addEventListener("input",renderCommandLibrary);
 document.addEventListener("change",e=>{if(e.target.dataset.commandlevel){state.commandProgress=state.commandProgress||{};state.commandProgress[e.target.dataset.commandlevel]=+e.target.value;save()}});
-document.querySelector("#taskReminder").addEventListener("change",e=>document.querySelector("#reminderOptions").classList.toggle("hidden",!e.target.checked));
-document.querySelector("#taskTemplate").addEventListener("change",e=>{if(e.target.value)document.querySelector("#taskTitle").value=e.target.value});
 document.querySelector("#shiftType").addEventListener("change",e=>{const p=defaultsForShift(e.target.value);document.querySelector("#shiftStart").value=p[0];document.querySelector("#shiftEnd").value=p[1]});
 document.querySelector("#journalPhoto").addEventListener("change",async e=>{if(!e.target.files[0])return;pendingPhoto=await compressImage(e.target.files[0]);const p=document.querySelector("#photoPreview");p.src=pendingPhoto;p.style.display="block"});
 
 document.querySelector("#importData").addEventListener("change",async e=>{try{const j=JSON.parse(await e.target.files[0].text());state={...clone(defaults),...(j.data||j)};save();alert("Importerad.")}catch(err){alert("Filen kunde inte läsas.")}});
-document.querySelector("#journalDate").value=isoToday();const careDateEl=document.querySelector("#careDate");if(careDateEl)careDateEl.value=isoToday();document.querySelector("#taskDate").value=isoToday();document.querySelector("#lifeDate").value=isoToday();clearShift();seedFamilyTasks();
+document.querySelector("#journalDate").value=isoToday();const careDateEl=document.querySelector("#careDate");if(careDateEl)careDateEl.value=isoToday();document.querySelector("#lifeDate").value=isoToday();clearShift();
 if(localStorage.getItem("iceAppVersion")!==VERSION){localStorage.setItem("iceAppVersion",VERSION);document.querySelector("#updateNotice").style.display="block";setTimeout(()=>document.querySelector("#updateNotice").style.display="none",5000)}
-configureILO40Dashboard();renderAll();updateILOTopProfile();initFamilySync();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();checkReminders();setInterval(checkReminders,60000);setInterval(refreshLiveGreeting,60000);window.addEventListener('focus',refreshLiveGreeting);window.addEventListener('pageshow',refreshLiveGreeting);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshLiveGreeting()});if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("./sw.js?v=1.0-rc12",{updateViaCache:"none"}).then(reg=>reg.update()).catch(()=>{});
+configureILO40Dashboard();renderAll();updateILOTopProfile();if(!localStorage.getItem(DEVICE_PROFILE_KEY))showProfileSetup();setInterval(refreshLiveGreeting,60000);window.addEventListener('focus',refreshLiveGreeting);window.addEventListener('pageshow',refreshLiveGreeting);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshLiveGreeting()});if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("./sw.js?v=1.0-rc17",{updateViaCache:"none"}).then(reg=>reg.update()).catch(()=>{});
   navigator.serviceWorker.addEventListener("controllerchange",()=>{
-    if(!sessionStorage.getItem("fm_rc12_reloaded")){
-      sessionStorage.setItem("fm_rc12_reloaded","1");
+    if(!sessionStorage.getItem("fm_rc17_reloaded")){
+      sessionStorage.setItem("fm_rc17_reloaded","1");
       location.reload();
     }
   });

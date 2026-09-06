@@ -1,8 +1,8 @@
 {
   "name": "Field Manual",
   "short_name": "Field Manual",
-  "description": "Field Manual 1.0 RC16 – Persistent Completion: family sync with completion state preserved across devices.",
-  "start_url": "./?v=1.0-rc16",
+  "description": "Field Manual 1.0 RC17 – Training Focus: daily task checklist removed; focus on training, development and SAR.",
+  "start_url": "./?v=1.0-rc17",
   "scope": "./",
   "display": "standalone",
   "background_color": "#06100d",

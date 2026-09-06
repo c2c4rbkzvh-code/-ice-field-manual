@@ -1,11 +1,7 @@
-FIELD MANUAL 1.0 RC16 · PERSISTENT COMPLETION
+Field Manual 1.0 RC17 – Training Focus
 
-Fixes the daily family checklist persistence bug.
-
-Key fix:
-- Daily routine rows are now INSERTED ONLY WHEN MISSING.
-- Existing rows are never upserted during app startup, so completed/completed_at/completed_by are not reset.
-- A successful checkbox change remains visible immediately and is then reconciled with Supabase.
-- Supabase Realtime remains enabled for cross-device updates.
-
-Upload every file in this folder to the GitHub Pages repository root and commit to main.
+- Removed daily task/checklist and checkboxes from Home and Family.
+- Home now focuses on training, development, SAR and current status.
+- Family remains for profiles and ILO/Dex life book.
+- Previous Supabase task data is left untouched in the cloud but is no longer used by the app.
+- New cache/version RC17.
