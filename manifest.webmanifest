@@ -1,7 +1,7 @@
 {
   "name": "Field Manual",
   "short_name": "Field Manual",
-  "description": "Field Manual 1.0 RC17 – Training Focus: daily task checklist removed; focus on training, development and SAR.",
+  "description": "Field Manual 1.0 RC18 – Pro Plan: active food corrected to Purina Pro Plan Large Athletic Puppy; training-focused home retained.",
   "start_url": "./?v=1.0-rc17",
   "scope": "./",
   "display": "standalone",

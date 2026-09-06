@@ -1,7 +1,8 @@
-Field Manual 1.0 RC17 – Training Focus
+Field Manual 1.0 RC18 – Pro Plan
 
-- Removed daily task/checklist and checkboxes from Home and Family.
-- Home now focuses on training, development, SAR and current status.
-- Family remains for profiles and ILO/Dex life book.
-- Previous Supabase task data is left untouched in the cloud but is no longer used by the app.
-- New cache/version RC17.
+Changes:
+- Active food corrected to Purina Pro Plan Large Athletic Puppy.
+- One-time migration replaces stale Standardt Original Normal in existing local data.
+- Existing meal quantity is preserved; no new gram amount is guessed.
+- Training-focused home from RC17 retained.
+- New cache/version RC18.

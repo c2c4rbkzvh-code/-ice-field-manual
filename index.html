@@ -297,7 +297,7 @@ body:not(.home-view) main{padding-top:18px}
 <img src="ice-hero-dark.jpg" alt="ILO i mörk taktisk stil">
 <button class="hero-profile" data-change-device-profile="1" aria-label="Byt aktiv profil"><img src="icon-180.png" alt=""><span>Aktiv profil<strong id="heroProfileName">Marcus</strong></span><i>⌄</i></button>
 <div class="hero">
-<span class="version">FIELD MANUAL 1.0 RC17 · TRAINING FOCUS</span>
+<span class="version">FIELD MANUAL 1.0 RC19 · TYDLIG ÅLDER</span>
 <h1>FIELD MANUAL</h1>
 <p id="heroAge">Beräknar ålder…</p>
 </div>
@@ -305,7 +305,7 @@ body:not(.home-view) main{padding-top:18px}
 
 <main>
 <section id="today" class="screen active">
-<div id="updateNotice" class="notice">Field Manual 1.0 RC17 · Training Focus är installerad.</div>
+<div id="updateNotice" class="notice">Field Manual 1.0 RC19 · Tydlig ålder är installerad.</div>
 <div class="hq-welcome">
   <div class="eyebrow">DAGENS KOMMANDOVY</div>
   <h2 id="greetingTitle">Hej Marcus 👋</h2>
@@ -680,7 +680,7 @@ const defaults={
  birthDate:"2026-06-04",pickupDate:"2026-08-05",currentWorkMode:"ledig",
  shifts:[{date:"2026-08-25",type:"dag",start:"08:00",end:"17:30",note:""},{date:"2026-08-26",type:"natt",start:"17:30",end:"08:00",note:""},{date:"2026-08-31",type:"natt",start:"17:30",end:"08:00",note:""}],
  journal:[],completedMissions:{},milestones:{},environments:{},sarCompleted:{},
- favoriteExercises:[],commandProgress:{},activeProfile:"marcus",profiles:[{id:"marcus",name:"Marcus",role:"driver",icon:"👨"},{id:"anna-lena",name:"Anna-Lena",role:"family",icon:"👩"},{id:"elliot",name:"Elliot",role:"family",icon:"👤"},{id:"rasmus",name:"Rasmus",role:"family",icon:"👤"},{id:"benjamin",name:"Benjamin",role:"family",icon:"👤"}],familyTasks:[],lifeEvents:[],notificationPermissionAsked:false,activeTrainingSession:null,equipmentStatus:{},dailyCheckins:{},academyCompleted:{},physicalProgress:{},recoveryLogs:[],missionHistory:[],competenceTargets:{},nutrition:{currentFood:"Standardt Original Normal",gramsPerMeal:100,mealsPerDay:3,mealTimes:["07:00","12:00","18:00"],mealLog:{},appetiteLog:{},weights:[],plannedFood:"",switchDate:"",kcalPerKg:0,manufacturerGrams:0,protein:24,fat:0,calcium:1.65,phosphorus:0,completePuppy:false,foodPhotos:{},calculatedDailyGrams:300},crate:{sessions:[],level:1},health:{daily:{},care:[]},education:{courses:{},notes:""}
+ favoriteExercises:[],commandProgress:{},activeProfile:"marcus",profiles:[{id:"marcus",name:"Marcus",role:"driver",icon:"👨"},{id:"anna-lena",name:"Anna-Lena",role:"family",icon:"👩"},{id:"elliot",name:"Elliot",role:"family",icon:"👤"},{id:"rasmus",name:"Rasmus",role:"family",icon:"👤"},{id:"benjamin",name:"Benjamin",role:"family",icon:"👤"}],familyTasks:[],lifeEvents:[],notificationPermissionAsked:false,activeTrainingSession:null,equipmentStatus:{},dailyCheckins:{},academyCompleted:{},physicalProgress:{},recoveryLogs:[],missionHistory:[],competenceTargets:{},nutrition:{currentFood:"Purina Pro Plan Large Athletic Puppy",gramsPerMeal:100,mealsPerDay:3,mealTimes:["07:00","12:00","18:00"],mealLog:{},appetiteLog:{},weights:[],plannedFood:"",switchDate:"",kcalPerKg:0,manufacturerGrams:0,protein:24,fat:0,calcium:1.65,phosphorus:0,completePuppy:false,foodPhotos:{},calculatedDailyGrams:300},crate:{sessions:[],level:1},health:{daily:{},care:[]},education:{courses:{},notes:""}
 };
 const equipmentLibrary=[
 {id:"line5",name:"Non-stop Line Harness 5.0",category:"Sele",phase:"Valp",price:550,priority:1,note:"Lätt sele för vardag, miljö och tidigt sökarbete."},
@@ -695,6 +695,11 @@ const equipmentLibrary=[
 {id:"linewd",name:"Non-stop Line Harness Grip WD",category:"Sele",phase:"Vuxen",price:1000,priority:3,note:"Operativ arbetssele när ILO är färdigväxt."}
 ];
 let state=load(), pendingPhoto="";
+// RC18 migration: Standardt was the previous food and must not remain as the active plan.
+if(state.nutrition && state.nutrition.currentFood === "Standardt Original Normal"){
+  state.nutrition.currentFood = "Purina Pro Plan Large Athletic Puppy";
+  try{ localStorage.setItem(STORE,JSON.stringify(state)); }catch(e){}
+}
 const storedDeviceProfile=localStorage.getItem(DEVICE_PROFILE_KEY);if(storedDeviceProfile&&state.profiles.some(p=>p.id===storedDeviceProfile))state.activeProfile=storedDeviceProfile;
 function clone(x){return JSON.parse(JSON.stringify(x))}
 function load(){try{const p=JSON.parse(localStorage.getItem(STORE)||"null");return p?{...clone(defaults),...p}:clone(defaults)}catch(e){return clone(defaults)}}
@@ -714,7 +719,7 @@ function ageParts(){
  const remDays=Math.max(0,Math.floor((now-monthAnchor)/86400000));
  return{days:total,weeks:Math.floor(total/7),rest:total%7,years,months,calendarWeeks:Math.floor(remDays/7),calendarDays:remDays%7}
 }
-function calendarAgeText(a=ageParts()){const parts=[];if(a.years)parts.push(`${a.years} ${a.years===1?'år':'år'}`);if(a.months)parts.push(`${a.months} ${a.months===1?'månad':'månader'}`);if(a.calendarWeeks)parts.push(`${a.calendarWeeks} ${a.calendarWeeks===1?'vecka':'veckor'}`);if(a.calendarDays||!parts.length)parts.push(`${a.calendarDays} ${a.calendarDays===1?'dag':'dagar'}`);return parts.join(' · ')}
+function calendarAgeText(a=ageParts()){const parts=[`${a.years} år`,`${a.months} ${a.months===1?'månad':'månader'}`,`${a.calendarWeeks} ${a.calendarWeeks===1?'vecka':'veckor'}`,`${a.calendarDays} ${a.calendarDays===1?'dag':'dagar'}`];const total=`${a.weeks} ${a.weeks===1?'vecka':'veckor'}${a.rest?` + ${a.rest} ${a.rest===1?'dag':'dagar'}`:''} totalt`;return `${parts.join(' · ')} (${total})`}
 function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
 function phase(){const w=ageParts().weeks;if(new Date()<dateOnly(state.pickupDate))return["Förberedelse","Hemmet, rutiner och planering."];if(w<12)return["Trygg start","Relation, sömn, lek och lugn miljö."];if(w<16)return["Grundperiod","Inkallning, följsamhet och enkel nos."];if(w<24)return["Upptäckarperiod","Miljö, personsök som lek och återhämtning."];if(w<40)return["Unghund","Självkontroll, uthållighet och progression."];return["Fortsatt utveckling","Individanpassad SAR-träning."]}
 function shiftForDate(d){return state.shifts.find(s=>s.date===d)||null}
